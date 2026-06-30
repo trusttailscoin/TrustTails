@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css?v=3">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://trusttails.io/tools/"},{"@type":"ListItem","position":3,"name":"Token comparison","item":"https://trusttails.io/tools/token-comparison"}]}</script>
 <style>
 /* ---- Tool-specific styles only ---- */
@@ -65,6 +65,7 @@
 </style>
 </head>
 <body>
+<!--NAV-->
 <header class="nav"><div class="container">
   <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
   <nav class="nav-links" aria-label="Primary">
@@ -121,6 +122,7 @@
   <a class="mm-direct" href="/faq">FAQ</a>
   <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
 </div>
+<!--/NAV-->
 
 <!-- HERO -->
 <section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
@@ -612,7 +614,7 @@
       circulatingApprox: '~19.7M (as of mid-2025)',
       mintAuthority: 'N/A (protocol-enforced)',
       mintAuthorityBadge: 'info',
-      mintAuthorityNote: 'No mint authority — supply rules are enforced by Bitcoin's consensus protocol. New BTC enters via block rewards that halve roughly every 4 years until ~2140.',
+      mintAuthorityNote: 'No mint authority — supply rules are enforced by Bitcoin\'s consensus protocol. New BTC enters via block rewards that halve roughly every 4 years until ~2140.',
       freezeAuthority: 'N/A',
       freezeAuthorityBadge: 'info',
       freezeAuthorityNote: 'Concept does not apply to Bitcoin. No entity can freeze a Bitcoin wallet.',
@@ -631,7 +633,7 @@
       circulatingApprox: '~120M (as of mid-2025)',
       mintAuthority: 'N/A (protocol-enforced)',
       mintAuthorityBadge: 'info',
-      mintAuthorityNote: 'ETH issuance is governed by Ethereum's protocol rules. Validators earn new ETH as staking rewards; EIP-1559 burns a portion of fees, making net issuance variable and sometimes negative.',
+      mintAuthorityNote: 'ETH issuance is governed by Ethereum\'s protocol rules. Validators earn new ETH as staking rewards; EIP-1559 burns a portion of fees, making net issuance variable and sometimes negative.',
       freezeAuthority: 'N/A',
       freezeAuthorityBadge: 'info',
       freezeAuthorityNote: 'Concept does not apply to ETH itself. However, individual ERC-20 tokens built on Ethereum may have their own freeze mechanisms.',
@@ -669,7 +671,7 @@
       circulatingApprox: '~145B (as of mid-2025)',
       mintAuthority: 'N/A (protocol-enforced)',
       mintAuthorityBadge: 'info',
-      mintAuthorityNote: 'Dogecoin's 10,000 DOGE per block reward is fixed and continues indefinitely. There is no mint authority in the Solana sense — issuance is hardcoded in the protocol.',
+      mintAuthorityNote: 'Dogecoin\'s 10,000 DOGE per block reward is fixed and continues indefinitely. There is no mint authority in the Solana sense — issuance is hardcoded in the protocol.',
       freezeAuthority: 'N/A',
       freezeAuthorityBadge: 'info',
       freezeAuthorityNote: 'Freeze authority is not a Dogecoin feature.',
@@ -856,6 +858,6 @@
   }
 })();
 </script>
-<script src="/assets/js/app.js" defer></script>
+<script src="/assets/js/app.js?v=3" defer></script>
 </body>
 </html>
