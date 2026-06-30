@@ -25,12 +25,7 @@
     });
   }
 
-  /* ---------- Smooth scroll (Lenis, optional) ---------- */
-  if (!reduce && window.Lenis) {
-    var lenis = new window.Lenis({ duration: 1.1, smoothWheel: true });
-    function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-  }
+  /* ---------- Native scrolling (Lenis removed — normal wheel/trackpad feel) ---------- */
 
   /* ---------- Scroll reveals ---------- */
   var reveals = document.querySelectorAll(".reveal");
