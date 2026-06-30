@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://trusttails.io/</loc><changefreq>weekly</changefreq><priority>1.0</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/</loc><changefreq>monthly</changefreq><priority>1.0</priority><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://trusttails.io/about</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/best-cryptocurrencies-2026</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/best-meme-coins-2026</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/best-new-solana-tokens-june-2026</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/crypto-glossary</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/crypto-red-flags-checklist</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/crypto-risk-honest-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/fixed-supply-explained</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/how-liquidity-works</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/how-to-avoid-crypto-scams-2026</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/how-to-buy-solana-tokens</loc><changefreq>monthly</changefreq><priority>0.9</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/how-to-research-a-crypto-project</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/how-to-spot-a-rug-pull</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/how-to-verify-a-solana-token</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/jupiter-vs-raydium</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/long-term-vs-short-term-crypto</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/meme-coin-vs-utility</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/phantom-wallet-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/reading-a-dexscreener-chart</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/self-custody-101</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/solana-ecosystem-guide-2026</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/solana-for-beginners</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/solana-vs-other-chains</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/trusttails-roadmap-explained</loc><changefreq>monthly</changefreq><priority>0.9</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/understanding-token-supply</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/what-community-driven-means</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/what-is-a-meme-coin</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/what-is-trusttails</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/what-makes-a-good-community-coin</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/why-revoked-authorities-matter</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/blog/why-trust-matters-in-crypto</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://trusttails.io/community</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://trusttails.io/compare</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://trusttails.io/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-06-30</lastmod></url>
@@ -17,22 +48,17 @@
   <url><loc>https://trusttails.io/tail-network</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://trusttails.io/terms</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://trusttails.io/tokenomics</loc><changefreq>monthly</changefreq><priority>0.9</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/tools/</loc><changefreq>monthly</changefreq><priority>0.9</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/tools/dca-calculator</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/tools/holdings-calculator</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/tools/market-cap-calculator</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/tools/rug-pull-checklist</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/tools/solana-fee-estimator</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/tools/solana-token-checker</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/tools/supply-percentage-calculator</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/tools/token-comparison</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://trusttails.io/tools/wallet-setup-guide</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://trusttails.io/trust-and-transparency</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://trusttails.io/vision</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://trusttails.io/whitepaper</loc><changefreq>monthly</changefreq><priority>0.9</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/crypto-risk-honest-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/fixed-supply-explained</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/how-liquidity-works</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/how-to-spot-a-rug-pull</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/how-to-verify-a-solana-token</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/meme-coin-vs-utility</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/self-custody-101</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/solana-for-beginners</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/solana-vs-other-chains</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/trusttails-roadmap-explained</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/what-community-driven-means</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/what-is-a-meme-coin</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/what-is-trusttails</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://trusttails.io/blog/why-revoked-authorities-matter</loc><changefreq>monthly</changefreq><priority>0.6</priority><lastmod>2026-06-30</lastmod></url>
 </urlset>

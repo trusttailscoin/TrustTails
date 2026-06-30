@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>How to Set Up a Phantom Wallet (Step by Step, 2026)</title>
+<meta name="description" content="A clear, safe, step-by-step guide to installing and securing a Phantom wallet on Solana — including the seed-phrase rules that protect you.">
+<link rel="canonical" href="https://trusttails.io/blog/phantom-wallet-guide">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trusttails.io/blog/phantom-wallet-guide">
+<meta property="og:title" content="How to Set Up a Phantom Wallet (Step by Step, 2026)">
+<meta property="og:description" content="A clear, safe, step-by-step guide to installing and securing a Phantom wallet on Solana — including the seed-phrase rules that protect you.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="How to Set Up a Phantom Wallet (Step by Step, 2026)">
+<meta name="twitter:description" content="A clear, safe, step-by-step guide to installing and securing a Phantom wallet on Solana — including the seed-phrase rules that protect you.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://trusttails.io/blog/"},{"@type":"ListItem","position":3,"name":"Phantom wallet guide","item":"https://trusttails.io/blog/phantom-wallet-guide"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Project <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/about"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span><b>About & Story</b><span class="ms">How TrustTails began</span></span></a>
+        <a class="mega-link" href="/tokenomics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 0 1 0 4H9m2-4v8"/></svg></span><span><b>Tokenomics</b><span class="ms">Fixed 1B, revoked authorities</span></span></a>
+        <a class="mega-link" href="/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></span><span><b>Roadmap</b><span class="ms">The honest 3-phase journey</span></span></a>
+        <a class="mega-link" href="/vision"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6Z"/></svg></span><span><b>Vision</b><span class="ms">The long-term north star</span></span></a>
+        <a class="mega-link" href="/tail-network"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg></span><span><b>TAIL Network</b><span class="ms">The technology behind TAIL</span></span></a>
+        <a class="mega-link" href="/solana"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h12l2-2H7Zm0 5h12l2-2H7Zm0 5h12l2-2H7Z"/></svg></span><span><b>Why Solana</b><span class="ms">Speed and low fees</span></span></a>
+        <a class="mega-feature" href="/whitepaper"><span><b>Whitepaper</b><span class="ms">The full vision &amp; tokenomics</span></span><span class="btn btn-gold btn-sm">Read</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Trust <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/is-it-legit"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Is it legit?</b><span class="ms">Verify on-chain in 60s</span></span></a>
+        <a class="mega-link" href="/security"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Security</b><span class="ms">Stay safe from scams</span></span></a>
+        <a class="mega-link" href="/trust-and-transparency"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Transparency</b><span class="ms">How we communicate</span></span></a>
+        <a class="mega-link" href="/compare"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>How we compare</b><span class="ms">vs a typical meme coin</span></span></a>
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token checker</b><span class="ms">Check any Solana token</span></span></a>
+        <a class="mega-feature" href="/is-it-legit"><span><b>Live on-chain proof</b><span class="ms">Supply &amp; authorities, verified</span></span><span class="btn btn-gold btn-sm">Verify</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Tools <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token Checker</b><span class="ms">Verify any SPL token</span></span></a>
+        <a class="mega-link" href="/tools/token-comparison"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>Comparison</b><span class="ms">Compare tokens side by side</span></span></a>
+        <a class="mega-link" href="/tools/market-cap-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M14 10h2v8h-2zM8 18h2"/></svg></span><span><b>Market Cap Calc</b><span class="ms">Hypothetical market cap</span></span></a>
+        <a class="mega-link" href="/tools/holdings-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9l8 4"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Holdings Calc</b><span class="ms">Value your holdings</span></span></a>
+        <a class="mega-link" href="/tools/rug-pull-checklist"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span><b>Rug-Pull Checklist</b><span class="ms">Score safety signals</span></span></a>
+        <a class="mega-link" href="/tools/wallet-setup-guide"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 12h3M3 9h18"/></svg></span><span><b>Wallet Setup</b><span class="ms">Phantom & Solflare</span></span></a>
+        <a class="mega-feature" href="/tools/"><span><b>All free tools</b><span class="ms">No sign-up, no hype</span></span><span class="btn btn-gold btn-sm">Open</span></a>
+      </div>
+    </div>
+    <a class="nav-top-link nav-top" href="/blog/">Insights</a>
+    <a class="nav-top-link nav-top" href="/how-to-buy">How to buy</a>
+    <a class="nav-top-link nav-top" href="/faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+<div class="mobile-menu">
+  <details class="mm-sec"><summary>Project</summary><div class="mm-links"><a href="/about">About &amp; Story</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/tail-network">TAIL Network</a><a href="/solana">Why Solana</a><a href="/whitepaper">Whitepaper</a></div></details>
+  <details class="mm-sec"><summary>Trust</summary><div class="mm-links"><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">How we compare</a></div></details>
+  <details class="mm-sec"><summary>Tools</summary><div class="mm-links"><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calculator</a><a href="/tools/holdings-calculator">Holdings Calculator</a><a href="/tools/rug-pull-checklist">Rug-Pull Checklist</a><a href="/tools/wallet-setup-guide">Wallet Setup</a><a href="/tools/">All tools</a></div></details>
+  <a class="mm-direct" href="/blog/">Insights</a>
+  <a class="mm-direct" href="/how-to-buy">How to buy</a>
+  <a class="mm-direct" href="/faq">FAQ</a>
+  <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+</div>
+
+<!-- Article JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Set Up a Phantom Wallet (Step by Step, 2026)",
+  "datePublished": "2026-06-18",
+  "author": {
+    "@type": "Organization",
+    "name": "TrustTails"
+  },
+  "image": "https://trusttails.io/assets/img/og-cover.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TrustTails",
+    "url": "https://trusttails.io"
+  },
+  "description": "A clear, safe, step-by-step guide to installing and securing a Phantom wallet on Solana — including the seed-phrase rules that protect you."
+}
+</script>
+
+<!-- HERO SECTION -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Wallet Guide &middot; Solana</span>
+      <h1>How to Set Up a <span class="text-grad">Phantom Wallet</span> (Step by Step, 2026)</h1>
+      <p class="lead">Everything you need to install, create, and secure a Phantom wallet on Solana — with clear warnings about the one mistake that causes permanent, unrecoverable loss of funds.</p>
+    </div>
+
+    <!-- Educational disclaimer chip row -->
+    <div class="fact-chips reveal d1">
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Educational only — not financial advice
+      </span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Crypto carries significant risk — DYOR
+      </span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Always verify downloads from official sources only
+      </span>
+    </div>
+
+    <!-- Critical warning card -->
+    <div class="glass reveal d2" style="margin-top:40px;border-color:rgba(242,183,54,.35);background:rgba(242,183,54,.05)">
+      <div style="display:flex;align-items:flex-start;gap:18px">
+        <div class="icon" style="flex-shrink:0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <h3 style="margin-bottom:8px">Important before you start</h3>
+          <p style="font-size:.95rem">This guide is for educational purposes only. Nothing here is financial advice. Setting up a self-custody wallet means you are fully responsible for your own funds. If you lose your seed phrase, nobody — including Phantom or any support team — can recover your wallet. Only proceed if you understand and accept these risks. Never invest more than you can afford to lose entirely.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS PHANTOM -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+
+    <article class="glass reveal" style="margin-bottom:32px">
+      <h2 style="margin-bottom:16px">What Is Phantom and Why Do Solana Users Choose It?</h2>
+      <p style="margin-bottom:16px">Phantom is a non-custodial browser extension and mobile app wallet primarily used on the Solana blockchain. "Non-custodial" is the key phrase: it means the private keys that control your funds live only on your device and in your seed phrase, not on Phantom's servers. No company holds your assets on your behalf.</p>
+      <p style="margin-bottom:16px">Phantom is one of the most widely used Solana-compatible wallets, supporting SPL tokens (Solana Program Library tokens), NFTs, and dApps built on the Solana network. It also added Bitcoin and Ethereum support in recent versions, making it a multi-chain option — though Solana remains its core focus.</p>
+      <p>Using Phantom does not make your funds safe by default. A wallet is a tool for interacting with a blockchain. Its safety depends entirely on how well you protect your seed phrase and how carefully you avoid phishing sites and scam links. This guide covers both.</p>
+    </article>
+
+    <!-- 4 stats -->
+    <div class="grid grid-4 reveal d1" style="margin-bottom:32px">
+      <div class="glass stat">
+        <div class="num gold">Self-custody</div>
+        <div class="lbl">You hold your keys</div>
+      </div>
+      <div class="glass stat">
+        <div class="num gold">Multi-chain</div>
+        <div class="lbl">Solana, Ethereum, Bitcoin</div>
+      </div>
+      <div class="glass stat">
+        <div class="num gold">Free</div>
+        <div class="lbl">No subscription cost</div>
+      </div>
+      <div class="glass stat">
+        <div class="num gold">Open source</div>
+        <div class="lbl">Auditable codebase</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STEP BY STEP -->
+<section class="section" style="background:var(--bg-2);padding-top:clamp(48px,6vw,80px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Step-by-Step Setup</span>
+      <h2>Installing and Creating Your Phantom Wallet</h2>
+      <p class="lead">Follow each step carefully. Skipping steps — especially around the seed phrase — is where people lose funds permanently.</p>
+    </div>
+
+    <div class="timeline reveal">
+
+      <!-- Step 1 -->
+      <div class="tl-item">
+        <div class="tl-rail">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 1</span>
+          <h3>Download Only from the Official Phantom Website</h3>
+          <p>Go directly to <strong style="color:var(--text)">phantom.app</strong> — type the address manually into your browser. Do not click links in emails, Discord messages, Telegram groups, or search ads. Phishing sites that mimic Phantom are common and designed to steal your seed phrase.</p>
+          <ul>
+            <li>For desktop: install the browser extension (Chrome, Firefox, Brave, Edge)</li>
+            <li>For mobile: download from the Apple App Store or Google Play — search "Phantom" and verify the developer is listed as "Phantom Labs"</li>
+            <li>Never install Phantom from a third-party link, even if it looks convincing</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="tl-item">
+        <div class="tl-rail">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 2</span>
+          <h3>Create a New Wallet</h3>
+          <p>After installing the extension or app, open it and choose <strong style="color:var(--text)">"Create a new wallet"</strong>. Do not import an existing wallet unless you already have one and are moving it to a new device.</p>
+          <ul>
+            <li>Choose a strong password — this unlocks the app on your device, but it does not protect your wallet if your device is compromised</li>
+            <li>Your password and your seed phrase are two different things (more on this below)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="tl-item">
+        <div class="tl-rail">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-status" style="color:var(--gold);border-color:rgba(242,183,54,.4);background:rgba(242,183,54,.08)">Step 3 — Most Important</span>
+          <h3>Write Down Your Secret Recovery Phrase (Seed Phrase)</h3>
+          <p>Phantom will display a 12-word or 24-word <strong style="color:var(--text)">secret recovery phrase</strong> — sometimes called a seed phrase or mnemonic. This sequence of words is the master key to your wallet. Anyone who has it can access and drain every token in your wallet from any device, anywhere in the world.</p>
+          <ul>
+            <li><strong style="color:var(--text)">Write it on paper.</strong> Multiple copies. Store them in separate secure physical locations.</li>
+            <li><strong style="color:var(--text)">Do not photograph it.</strong> Do not type it into any app, note-taking tool, cloud service, or messaging app — including encrypted ones.</li>
+            <li><strong style="color:var(--text)">Do not share it with anyone</strong> — not support staff, not moderators, not "official" accounts that DM you, not this website, nobody.</li>
+            <li>The order of the words matters. Number each word as you write it down.</li>
+            <li>Test your backup: use Phantom's verification step to confirm you wrote the words correctly before adding any funds.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="tl-item">
+        <div class="tl-rail">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 4</span>
+          <h3>Verify the Seed Phrase Before Continuing</h3>
+          <p>Phantom asks you to confirm the phrase by selecting words in order. This step is not a formality — it is the only way to know your written backup is correct before you depend on it. If you copy down a word wrong and later need to restore your wallet, you will lose access permanently.</p>
+          <ul>
+            <li>Complete the verification step before closing the setup screen</li>
+            <li>If you make an error, restart the process — do not continue with an unverified backup</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="tl-item">
+        <div class="tl-rail">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 5</span>
+          <h3>Find Your Wallet Address</h3>
+          <p>Your Solana wallet address appears at the top of the Phantom interface — it is a long string of letters and numbers starting with a random character. This is your <strong style="color:var(--text)">public address</strong> and is safe to share when receiving tokens. It is not the same as your seed phrase or private key.</p>
+          <ul>
+            <li>Copy your address using the copy icon in Phantom</li>
+            <li>You can verify it looks correct on <a href="https://solscan.io" target="_blank" rel="noopener" style="color:var(--cyan)">Solscan</a> — a free, public Solana block explorer</li>
+            <li>Anyone can send SOL or SPL tokens to this address — you do not need to "approve" incoming transfers</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="tl-item">
+        <div class="tl-rail">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 6</span>
+          <h3>Fund Your Wallet with a Small Amount of SOL</h3>
+          <p>To use your wallet on Solana — including receiving tokens, swapping, or paying transaction fees — you need a small amount of SOL. SOL is Solana's native currency and is used to pay for every on-chain action (called "rent" or "gas").</p>
+          <ul>
+            <li>Purchase SOL from a regulated exchange in your country and withdraw it to your wallet address</li>
+            <li>Transaction fees on Solana are typically fractions of a cent, so you do not need much SOL to start</li>
+            <li>Sending only a test amount first (e.g. a very small quantity) before a larger transfer is a sensible precaution</li>
+            <li><strong style="color:var(--text)">This is not a recommendation to buy SOL or any other asset.</strong> Assess your own situation and risk tolerance carefully.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="tl-item">
+        <div class="tl-rail">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 7</span>
+          <h3>Basic Wallet Use: Sending, Receiving, Viewing Tokens</h3>
+          <p>With a funded wallet, you can send and receive SPL tokens, connect to Solana dApps, and view your token balances. Key things to know:</p>
+          <ul>
+            <li><strong style="color:var(--text)">Sending:</strong> Click "Send", paste the recipient address, double-check it character by character, enter the amount, and confirm the transaction. Blockchain transactions are irreversible.</li>
+            <li><strong style="color:var(--text)">Receiving:</strong> Share your public wallet address or have the sender scan your QR code.</li>
+            <li><strong style="color:var(--text)">Connecting to dApps:</strong> Visit the dApp's website (verify the URL carefully), click "Connect Wallet", and select Phantom. Only approve the connection if you trust the site.</li>
+            <li><strong style="color:var(--text)">Viewing tokens:</strong> SPL tokens sent to your address appear automatically in the Phantom interface. You can also search tokens or look up your address on Solscan.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SEED PHRASE SAFETY — DO / DON'T -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Seed Phrase Security</span>
+      <h2>The Rules That Prevent Permanent Loss</h2>
+      <p class="lead">The seed phrase is the one point of failure in self-custody. These rules are not suggestions — ignoring them has caused real, unrecoverable losses for real people.</p>
+    </div>
+
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Protect it like this
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Write it on paper in pen — multiple physical copies in different locations
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Number each word and write them in the exact order shown
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Store copies in physically separate, secure locations (e.g. a safe, a locked drawer)
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Complete Phantom's verification step to confirm your backup is accurate
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Consider engraving words on steel for fire and flood resistance (for large holdings)
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Treat it with the same seriousness as a bank vault combination
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Never do this
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Screenshot or photograph the seed phrase — cloud backups sync automatically
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Type it into Notes, Google Docs, email, Notion, or any cloud-connected app
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Share it with anyone claiming to be support staff, moderators, or influencers
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Enter it on any website other than the official Phantom app to "restore" your wallet
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Store it in a password manager unless it is completely offline and encrypted
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Send it to yourself in a Telegram or Discord message "for safekeeping"
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHISHING & SCAM PROTECTION -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Phishing &amp; Scam Awareness</span>
+      <h2>How Wallets Are Stolen — and How to Avoid It</h2>
+      <p class="lead">The vast majority of wallet compromises are not technical hacks. They are social engineering attacks where people are tricked into revealing their seed phrase or approving malicious transactions.</p>
+    </div>
+
+    <div class="grid grid-3 reveal">
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3>Fake Support DMs</h3>
+        <p>Scammers monitor crypto communities and message anyone who mentions a problem. They pose as official Phantom support and ask for your seed phrase to "verify" or "restore" your wallet. Phantom support will never DM you first and will never ask for your seed phrase. Report and block anyone who does.</p>
+      </article>
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Phishing Websites</h3>
+        <p>Fake sites that look identical to Phantom, popular DEXs, or NFT platforms ask you to "connect your wallet" and then prompt you to enter your seed phrase. Legitimate wallets and dApps never ask for your seed phrase. Always type URLs manually. Look for subtle misspellings like "phantorn.app" or "phantоm.app" (using a Cyrillic letter).</p>
+      </article>
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <h3>Malicious Token Approvals</h3>
+        <p>Some dApps request wallet permissions that go far beyond what is needed. Before approving any transaction in Phantom, read what it says. If a transaction asks to "transfer all tokens" or grant unlimited spending to an unknown contract, decline it. Use tools like <a href="/tools/" style="color:var(--cyan)">TrustTails' on-chain tools</a> to verify contract details before interacting.</p>
+      </article>
+
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Fake Presales and Airdrops</h3>
+        <p>Scammers advertise fake token presales or airdrop claims that require you to connect your wallet and sign a transaction. If you did not seek out a project, did not find it through its official verified channels, or if it promises guaranteed returns — treat it as a scam until proven otherwise. Always verify through official project channels only.</p>
+      </article>
+
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h3>Malicious Browser Extensions</h3>
+        <p>Only install extensions from official browser stores. Even then, some malicious extensions impersonate legitimate wallets. After installing Phantom, check the extension ID against what is listed on phantom.app. Keep your browser extensions to a minimum — every additional extension is a potential attack surface.</p>
+      </article>
+
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Impersonation on Social Media</h3>
+        <p>Fake accounts impersonate token projects, influencers, and wallet providers on X (Twitter) and Telegram. A verified-looking account, many followers, and a professional profile are not guarantees of legitimacy. Always navigate to community links from the project's official website only. For TrustTails, the verified community is at <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" style="color:var(--cyan)">t.me/TrustTailsCommunity</a> and <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" style="color:var(--cyan)">@trusttailscoin</a> — never a DM link.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE TRUSTTAILS FITS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Context</span>
+      <h2>Where TrustTails Fits In</h2>
+      <p class="lead">If you are setting up a Phantom wallet to eventually hold Solana SPL tokens, here is an honest overview of the landscape — including where TrustTails (TAIL) sits within it. This is educational context, not a buying recommendation.</p>
+    </div>
+
+    <div class="glass reveal" style="margin-bottom:28px;border-color:rgba(255,255,255,.12)">
+      <h3 style="margin-bottom:16px">The Solana Token Landscape — a Factual Overview</h3>
+      <p style="margin-bottom:16px">The Solana blockchain hosts thousands of tokens. They range from large, well-established projects to small community experiments. Understanding the spectrum helps you evaluate any token honestly:</p>
+
+      <div class="grid grid-2" style="margin-top:24px;gap:16px">
+        <div style="padding:20px;border:1px solid var(--border);border-radius:var(--radius-sm)">
+          <h3 style="font-size:1rem;margin-bottom:8px;color:var(--text)">Well-established cryptocurrencies (educational reference)</h3>
+          <p style="font-size:.9rem">Bitcoin (BTC) and Ethereum (ETH) are the largest cryptocurrencies by market capitalisation and have the longest track records, though past performance does not predict future results. SOL (Solana) is the native token of the Solana blockchain. These are not recommendations — all carry significant risk and high volatility.</p>
+        </div>
+        <div style="padding:20px;border:1px solid var(--border);border-radius:var(--radius-sm)">
+          <h3 style="font-size:1rem;margin-bottom:8px;color:var(--text)">Community and niche tokens</h3>
+          <p style="font-size:.9rem">Many Solana SPL tokens are smaller, community-focused projects. They tend to have higher risk and lower liquidity than established assets. Most fail to gain lasting traction. A small number build genuine communities. Thorough research and caution are essential with any token in this category.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;padding:20px;border:1px solid rgba(242,183,54,.3);border-radius:var(--radius-sm);background:rgba(242,183,54,.04)">
+        <h3 style="font-size:1rem;margin-bottom:8px">TrustTails (TAIL) — honest positioning</h3>
+        <p style="font-size:.9rem;margin-bottom:10px">TrustTails is a small, pre-launch, community-first Solana SPL token. It has a fixed supply of 1,000,000,000 TAIL. Both mint authority and freeze authority have been revoked, which are verifiable on-chain facts. The contract address is <strong style="color:var(--cyan-2);font-family:var(--font-mono);font-size:.82rem">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</strong> — you can check this yourself on Solscan.</p>
+        <p style="font-size:.9rem">TAIL is currently pre-launch and not yet available to purchase. We will not tell you it is a good investment or predict its future value. What we do say is that the on-chain facts are verifiable, the team is committed to transparency, and the community is being built openly. <a href="/is-it-legit" style="color:var(--gold)">Read our full transparency page</a> and <a href="/tools/" style="color:var(--gold)">use our tools to verify on-chain data yourself</a>. Always do your own research.</p>
+      </div>
+    </div>
+
+    <!-- Contract address copy block -->
+    <div class="glass reveal d1" style="padding:24px 28px">
+      <p style="font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-family:var(--font-mono);margin-bottom:10px">TrustTails (TAIL) Contract Address — Verify on Solscan</p>
+      <div class="contract-pill" style="border-radius:var(--radius-sm);padding:14px 16px">
+        <code>4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+        <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" aria-label="Copy contract address">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+      </div>
+      <p style="font-size:.83rem;margin-top:10px">Always verify the contract address yourself at <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" style="color:var(--cyan)">Solscan</a> before interacting with any token claiming to be TAIL. Never trust a contract address shared in a DM.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WALLET TOOLS LINK -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Go Further</span>
+      <h2>Useful Tools for Solana Wallet Users</h2>
+      <p class="lead">Once your wallet is set up, these resources help you use it safely and verify information on-chain before interacting with any token or dApp.</p>
+    </div>
+
+    <div class="grid grid-3 reveal">
+      <article class="glass cyan">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Wallet Setup Guide</h3>
+        <p>Our interactive checklist walks you through securing a new wallet — from seed phrase storage to enabling trusted contacts and checking token approvals before connecting to dApps.</p>
+        <a href="/tools/wallet-setup-guide" class="btn btn-cyan btn-sm" style="margin-top:18px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          Open checklist
+        </a>
+      </article>
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>On-Chain Token Checker</h3>
+        <p>Verify any Solana SPL token's supply, mint authority, freeze authority, and holder distribution before interacting with it. Checking these facts yourself is a core part of DYOR.</p>
+        <a href="/tools/" class="btn btn-ghost btn-sm" style="margin-top:18px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          View all tools
+        </a>
+      </article>
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Security &amp; Scam Awareness</h3>
+        <p>A detailed guide to the most common crypto scams — fake presales, seed phrase phishing, impersonation attacks, and malicious smart contract approvals — with specific steps to protect yourself.</p>
+        <a href="/security" class="btn btn-ghost btn-sm" style="margin-top:18px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          Read security guide
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Phantom Wallet — Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq reveal">
+      <details class="faq-item">
+        <summary>Is Phantom wallet safe to use? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Phantom is a widely used, non-custodial wallet with an open-source codebase that has been audited. However, "safe" depends almost entirely on how you handle your seed phrase and which sites you connect your wallet to. Phantom the software cannot protect you if you share your seed phrase with a phishing site or approve a malicious transaction. Security begins and ends with your own behaviour.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What happens if I lose my seed phrase? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>If you lose your seed phrase and lose access to your device (or the app gets deleted, device is broken, etc.), your wallet and all tokens in it are permanently inaccessible. There is no recovery process. No support team, no company, nobody can retrieve it. This is the core risk of self-custody. Creating and safely storing multiple physical copies of your seed phrase is the only protection.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I have multiple wallets in Phantom? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Yes. Phantom allows you to create multiple accounts within a single installation. Each account has its own Solana address but shares the same seed phrase (they are derived from it). You can also import a separate seed phrase to have a fully separate wallet within the same app. Managing separate wallets for different purposes (e.g. one for NFTs, one for DeFi) is a reasonable security practice.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does Phantom charge fees? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Phantom itself does not charge subscription fees. However, when you use the built-in swap feature, Phantom may include a small fee in the swap route. Separately, all Solana transactions require a small SOL fee (typically a fraction of a cent) paid to the network. This is not a Phantom fee — it is a Solana network fee that applies regardless of which wallet you use.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is Phantom available on mobile? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Yes. Phantom has iOS and Android apps available in the Apple App Store and Google Play. The mobile app provides the same core functionality as the browser extension. As with desktop, only install from the official app stores and verify the developer name is "Phantom Labs" before downloading. Do not install from any third-party link.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I know if a site asking me to "connect wallet" is legitimate? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Verify the URL carefully — type it manually rather than clicking a link. Check that it matches the project's official website exactly. When Phantom asks you to approve a connection, read what permissions are being requested. A simple wallet connection only reads your public address — it should not require signing a transaction. If it asks you to sign or approve a transfer immediately on connection, treat that as a red flag. When in doubt, do not connect.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I see TrustTails (TAIL) tokens in my Phantom wallet? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>TrustTails (TAIL) is currently pre-launch and not yet available to purchase or receive. When TAIL becomes available through official channels announced on our <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" style="color:var(--gold)">X account</a> and <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" style="color:var(--gold)">Telegram community</a>, SPL tokens sent to your wallet address will appear automatically in Phantom. Always verify the contract address (4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc) on Solscan against what you see in your wallet. Be cautious of any account claiming to sell TAIL before an official launch announcement.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is the difference between my wallet password and my seed phrase? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Your Phantom password unlocks the app on your specific device — it is a convenience feature. If someone has access to your device, the password is the first barrier. Your seed phrase is fundamentally different: it is the cryptographic master key that can restore your wallet on any device, anywhere, without needing your password. Losing your password but keeping your seed phrase means you can still recover everything. Losing your seed phrase while keeping your password is potentially permanent loss if something happens to your device.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section" style="padding-top:0;padding-bottom:clamp(64px,9vw,128px)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Ready to Learn More About TrustTails?</h2>
+      <p>We are a transparent, pre-launch community token on Solana. Read the facts, verify on-chain, and join the community if it feels right for you. No pressure, no hype, no promises we cannot keep.</p>
+      <p style="font-size:.85rem;margin-top:-10px;margin-bottom:24px">Not financial advice. Crypto is high risk. Only engage with funds you can afford to lose entirely.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="/is-it-legit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Is it legit? Check the facts
+        </a>
+        <a class="btn btn-ghost" href="/tools/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Verify on-chain
+        </a>
+        <a class="btn btn-cyan" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2 2 10.5l7 1m12-9.5L9 11.5m0 0 2 7.5M9 11.5l5.5 5"/></svg>
+          Join the community
+        </a>
+      </div>
+    </div>
+
+    <!-- Final disclaimer -->
+    <div class="glass reveal d2" style="margin-top:32px;padding:24px 28px;border-color:rgba(255,255,255,.08)">
+      <p style="font-size:.83rem;color:var(--faint);line-height:1.75"><strong style="color:var(--muted)">Disclaimer:</strong> This article is for educational purposes only and does not constitute financial, investment, or legal advice. Cryptocurrency investments carry a high level of risk, including the potential loss of all invested capital. TrustTails (TAIL) is a pre-launch community token; nothing in this article implies it is a suitable investment or that its value will increase. Always conduct your own research (DYOR), verify information on-chain, and consult a qualified financial adviser if needed. Be aware of scams — TrustTails will never DM you first, never ask for your seed phrase, and never offer guaranteed returns. All official communication comes through <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" style="color:var(--cyan)">@trusttailscoin</a> and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" style="color:var(--cyan)">t.me/TrustTailsOfficial</a> only.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell. Verify everything on-chain.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Project</h4><a href="/about">About</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/whitepaper">Whitepaper</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">Compare</a><a href="/how-to-buy">How to buy</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calc</a><a href="/tools/rug-pull-checklist">Rug-Pull Check</a><a href="/tools/">All tools</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/">Insights</a><a href="/solana">Why Solana?</a><a href="/faq">FAQ</a><a href="/community">Community</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here is a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

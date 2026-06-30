@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Interactive Rug-Pull Safety Checklist</title>
+<meta name="description" content="Run any crypto project through an interactive safety checklist: authorities, liquidity, transparency, team and more. Educational risk tool.">
+<link rel="canonical" href="https://trusttails.io/tools/rug-pull-checklist">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trusttails.io/tools/rug-pull-checklist">
+<meta property="og:title" content="Interactive Rug-Pull Safety Checklist">
+<meta property="og:description" content="Run any crypto project through an interactive safety checklist: authorities, liquidity, transparency, team and more. Educational risk tool.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Interactive Rug-Pull Safety Checklist">
+<meta name="twitter:description" content="Run any crypto project through an interactive safety checklist: authorities, liquidity, transparency, team and more. Educational risk tool.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://trusttails.io/tools/"},{"@type":"ListItem","position":3,"name":"Rug-pull checklist","item":"https://trusttails.io/tools/rug-pull-checklist"}]}</script>
+<style>
+/* ── Checklist tool-specific styles ── */
+.checklist-tool{display:grid;gap:22px}
+.check-item{
+  display:flex;align-items:flex-start;gap:18px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:22px 24px;
+  transition:border-color .25s,background .25s;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  position:relative;
+}
+.check-item:hover{border-color:var(--border-2);background:var(--surface-2)}
+.check-item.checked{background:rgba(52,211,153,.05);border-color:rgba(52,211,153,.3)}
+.check-item.checked-no{background:rgba(242,183,54,.04);border-color:rgba(242,183,54,.25)}
+.check-cb{
+  flex-shrink:0;width:26px;height:26px;border-radius:8px;
+  border:2px solid var(--border-2);background:var(--bg);
+  display:grid;place-items:center;margin-top:1px;
+  transition:border-color .2s,background .2s;
+}
+.check-item.checked .check-cb{background:var(--green);border-color:var(--green)}
+.check-item.checked .check-cb svg{display:block}
+.check-item.checked-no .check-cb{background:rgba(242,183,54,.15);border-color:var(--gold)}
+.check-item.checked-no .check-cb svg{display:block;color:var(--gold)}
+.check-cb svg{display:none;width:15px;height:15px;color:#fff;stroke-width:3}
+.check-body{flex:1;min-width:0}
+.check-body h4{font-family:var(--font-display);font-size:1rem;font-weight:600;line-height:1.3;margin-bottom:4px;color:var(--text)}
+.check-body p{font-size:.9rem;color:var(--muted);line-height:1.55}
+.check-badge{
+  flex-shrink:0;font-family:var(--font-mono);font-size:.65rem;letter-spacing:.12em;
+  text-transform:uppercase;padding:4px 10px;border-radius:100px;
+  border:1px solid var(--border-2);color:var(--muted);white-space:nowrap;
+  align-self:flex-start;margin-top:1px;
+}
+.check-badge.critical{color:var(--gold);border-color:rgba(242,183,54,.4)}
+.toggle-row{display:flex;gap:10px;margin-top:14px}
+.toggle-btn{
+  flex:1;padding:8px 12px;border-radius:100px;border:1px solid var(--border-2);
+  background:var(--bg);color:var(--muted);font-family:var(--font-display);
+  font-size:.85rem;font-weight:600;cursor:pointer;
+  transition:border-color .2s,color .2s,background .2s;
+  min-height:44px;
+}
+.toggle-btn.active-yes{background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.5);color:var(--green)}
+.toggle-btn.active-no{background:rgba(242,183,54,.1);border-color:rgba(242,183,54,.4);color:var(--gold)}
+/* Score panel */
+.score-panel{
+  background:var(--surface);border:1px solid var(--border-2);
+  border-radius:var(--radius);padding:32px;text-align:center;
+  position:sticky;top:calc(var(--nav-h) + 20px);
+}
+.score-ring{
+  width:128px;height:128px;margin:0 auto 20px;
+  position:relative;display:grid;place-items:center;
+}
+.score-ring svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.score-ring .ring-bg{fill:none;stroke:var(--border-2);stroke-width:10}
+.score-ring .ring-fg{
+  fill:none;stroke:var(--gold);stroke-width:10;
+  stroke-linecap:round;
+  stroke-dasharray:339.292;
+  stroke-dashoffset:339.292;
+  transition:stroke-dashoffset .6s cubic-bezier(.22,.61,.36,1),stroke .4s;
+}
+.score-inner{position:relative;z-index:1;text-align:center}
+.score-num{font-family:var(--font-mono);font-size:2.2rem;font-weight:700;line-height:1;color:var(--text)}
+.score-denom{font-family:var(--font-mono);font-size:.9rem;color:var(--faint)}
+.score-label{margin-top:14px;font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--text)}
+.score-msg{margin-top:8px;font-size:.88rem;color:var(--muted);line-height:1.55}
+.score-bars{display:grid;gap:10px;margin-top:22px;text-align:left}
+.bar-row{display:flex;align-items:center;gap:10px;font-size:.83rem;color:var(--muted)}
+.bar-track{flex:1;height:5px;border-radius:100px;background:var(--border-2);overflow:hidden}
+.bar-fill{height:100%;border-radius:100px;background:var(--grad-gold);transition:width .5s cubic-bezier(.22,.61,.36,1)}
+.bar-row .bval{font-family:var(--font-mono);font-size:.78rem;color:var(--faint);min-width:28px;text-align:right}
+/* term glossary */
+.term-grid{display:grid;gap:18px}
+.term-card{border-left:3px solid var(--gold);padding:14px 18px;background:var(--surface);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.term-card dt{font-family:var(--font-display);font-weight:600;font-size:1rem;color:var(--text);margin-bottom:4px}
+.term-card dd{font-size:.92rem;color:var(--muted);line-height:1.55}
+/* checklist layout */
+.checklist-layout{display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start}
+@media(max-width:900px){.checklist-layout{grid-template-columns:1fr}}
+@media(max-width:900px){.score-panel{position:static}}
+/* warning callout */
+.callout{border-radius:var(--radius-sm);padding:18px 22px;display:flex;gap:14px;align-items:flex-start;font-size:.92rem;line-height:1.55}
+.callout.warn{background:rgba(242,183,54,.07);border:1px solid rgba(242,183,54,.25);color:var(--muted)}
+.callout.warn svg{color:var(--gold);flex-shrink:0;margin-top:2px}
+.callout.info{background:rgba(69,230,255,.05);border:1px solid rgba(69,230,255,.18);color:var(--muted)}
+.callout.info svg{color:var(--cyan);flex-shrink:0;margin-top:2px}
+.callout.danger{background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.22);color:var(--muted)}
+.callout.danger svg{color:#f87171;flex-shrink:0;margin-top:2px}
+.callout b{color:var(--text)}
+/* tools nav strip */
+.tools-strip{display:flex;flex-wrap:wrap;gap:12px}
+.tools-strip a.btn{min-height:44px}
+</style>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Project <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/about"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span><b>About & Story</b><span class="ms">How TrustTails began</span></span></a>
+        <a class="mega-link" href="/tokenomics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 0 1 0 4H9m2-4v8"/></svg></span><span><b>Tokenomics</b><span class="ms">Fixed 1B, revoked authorities</span></span></a>
+        <a class="mega-link" href="/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></span><span><b>Roadmap</b><span class="ms">The honest 3-phase journey</span></span></a>
+        <a class="mega-link" href="/vision"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6Z"/></svg></span><span><b>Vision</b><span class="ms">The long-term north star</span></span></a>
+        <a class="mega-link" href="/tail-network"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg></span><span><b>TAIL Network</b><span class="ms">The technology behind TAIL</span></span></a>
+        <a class="mega-link" href="/solana"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h12l2-2H7Zm0 5h12l2-2H7Zm0 5h12l2-2H7Z"/></svg></span><span><b>Why Solana</b><span class="ms">Speed and low fees</span></span></a>
+        <a class="mega-feature" href="/whitepaper"><span><b>Whitepaper</b><span class="ms">The full vision &amp; tokenomics</span></span><span class="btn btn-gold btn-sm">Read</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Trust <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/is-it-legit"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Is it legit?</b><span class="ms">Verify on-chain in 60s</span></span></a>
+        <a class="mega-link" href="/security"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Security</b><span class="ms">Stay safe from scams</span></span></a>
+        <a class="mega-link" href="/trust-and-transparency"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Transparency</b><span class="ms">How we communicate</span></span></a>
+        <a class="mega-link" href="/compare"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>How we compare</b><span class="ms">vs a typical meme coin</span></span></a>
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token checker</b><span class="ms">Check any Solana token</span></span></a>
+        <a class="mega-feature" href="/is-it-legit"><span><b>Live on-chain proof</b><span class="ms">Supply &amp; authorities, verified</span></span><span class="btn btn-gold btn-sm">Verify</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Tools <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token Checker</b><span class="ms">Verify any SPL token</span></span></a>
+        <a class="mega-link" href="/tools/token-comparison"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>Comparison</b><span class="ms">Compare tokens side by side</span></span></a>
+        <a class="mega-link" href="/tools/market-cap-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M14 10h2v8h-2zM8 18h2"/></svg></span><span><b>Market Cap Calc</b><span class="ms">Hypothetical market cap</span></span></a>
+        <a class="mega-link" href="/tools/holdings-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9l8 4"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Holdings Calc</b><span class="ms">Value your holdings</span></span></a>
+        <a class="mega-link" href="/tools/rug-pull-checklist"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span><b>Rug-Pull Checklist</b><span class="ms">Score safety signals</span></span></a>
+        <a class="mega-link" href="/tools/wallet-setup-guide"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 12h3M3 9h18"/></svg></span><span><b>Wallet Setup</b><span class="ms">Phantom & Solflare</span></span></a>
+        <a class="mega-feature" href="/tools/"><span><b>All free tools</b><span class="ms">No sign-up, no hype</span></span><span class="btn btn-gold btn-sm">Open</span></a>
+      </div>
+    </div>
+    <a class="nav-top-link nav-top" href="/blog/">Insights</a>
+    <a class="nav-top-link nav-top" href="/how-to-buy">How to buy</a>
+    <a class="nav-top-link nav-top" href="/faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+<div class="mobile-menu">
+  <details class="mm-sec"><summary>Project</summary><div class="mm-links"><a href="/about">About &amp; Story</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/tail-network">TAIL Network</a><a href="/solana">Why Solana</a><a href="/whitepaper">Whitepaper</a></div></details>
+  <details class="mm-sec"><summary>Trust</summary><div class="mm-links"><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">How we compare</a></div></details>
+  <details class="mm-sec"><summary>Tools</summary><div class="mm-links"><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calculator</a><a href="/tools/holdings-calculator">Holdings Calculator</a><a href="/tools/rug-pull-checklist">Rug-Pull Checklist</a><a href="/tools/wallet-setup-guide">Wallet Setup</a><a href="/tools/">All tools</a></div></details>
+  <a class="mm-direct" href="/blog/">Insights</a>
+  <a class="mm-direct" href="/how-to-buy">How to buy</a>
+  <a class="mm-direct" href="/faq">FAQ</a>
+  <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+</div>
+
+<!-- HERO -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        Safety Tool — Educational Only
+      </span>
+      <h1>Rug-Pull Safety<br><span class="text-grad">Checklist</span></h1>
+      <p class="lead">Before you interact with any crypto project, run it through these 12 on-chain and off-chain safety signals. A high score is reassuring — but it is <strong style="color:var(--text)">never a guarantee</strong>. Always do your own research.</p>
+    </div>
+
+    <!-- disclaimer callout -->
+    <div class="callout warn reveal d1" style="margin-bottom:36px;max-width:780px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+      <div><b>Not financial advice.</b> This tool is purely educational. It highlights signals that researchers use to assess transparency — it cannot predict whether any project will succeed, fail, or be fraudulent. Cryptocurrency is high risk. Only interact with tokens using funds you can afford to lose entirely. Always verify claims on-chain and DYOR.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN TOOL -->
+<section class="section section--tight" style="background:var(--bg-2);padding-top:0">
+  <div class="container">
+    <div class="checklist-layout">
+
+      <!-- LEFT: checklist items -->
+      <div>
+        <div class="checklist-tool" id="checklist">
+
+          <!-- Item 1 -->
+          <div class="check-item" data-index="0" role="group" aria-label="Mint authority check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>Mint authority is revoked</h4>
+              <p>If a token's mint authority is still active, the team can create unlimited new tokens at any time — instantly diluting every holder's share to near zero. A revoked mint authority means no new supply can ever be created. Verify on <a href="https://solscan.io" target="_blank" rel="noopener" style="color:var(--cyan-2)">Solscan</a> or <a href="https://solana.fm" target="_blank" rel="noopener" style="color:var(--cyan-2)">Solana.fm</a>: look for "Mint Authority: None" or "Revoked".</p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — revoked</button>
+                <button class="toggle-btn" data-answer="no">No / Unknown</button>
+              </div>
+            </div>
+            <span class="check-badge critical">Critical</span>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="check-item" data-index="1" role="group" aria-label="Freeze authority check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>Freeze authority is revoked</h4>
+              <p>A freeze authority allows the token creator to freeze any wallet holding that token — making your tokens immovable. When this authority is revoked, no single party can prevent you from transferring your own tokens. Verify the same way as mint authority on any Solana block explorer.</p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — revoked</button>
+                <button class="toggle-btn" data-answer="no">No / Unknown</button>
+              </div>
+            </div>
+            <span class="check-badge critical">Critical</span>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="check-item" data-index="2" role="group" aria-label="Fixed supply check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>Token supply is fixed and publicly verifiable</h4>
+              <p>The total supply should be declared by the project and match what's shown on-chain. Check that the circulating supply matches the stated supply, and that no large undisclosed reserve exists. On Solana, on-chain supply figures cannot be manipulated retroactively once mint authority is revoked.</p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — matches stated supply</button>
+                <button class="toggle-btn" data-answer="no">No / Unclear</button>
+              </div>
+            </div>
+            <span class="check-badge critical">Critical</span>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="check-item" data-index="3" role="group" aria-label="Liquidity check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>Liquidity is locked or burned (if trading has begun)</h4>
+              <p>In a rug pull, a team provides liquidity to a DEX, drives up the price, then withdraws all liquidity — leaving buyers with worthless tokens. If a project is already trading, check whether LP (liquidity provider) tokens are locked in a time-lock contract or permanently burned. Platforms like Raydium publish LP info. <em style="color:var(--faint)">(If a project is pre-launch and not yet trading, tick Yes and note that this signal applies once live.)</em></p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — locked/burned or pre-launch</button>
+                <button class="toggle-btn" data-answer="no">No / Unknown</button>
+              </div>
+            </div>
+            <span class="check-badge critical">Critical</span>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="check-item" data-index="4" role="group" aria-label="Contract public check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>Contract address is publicly listed on official channels only</h4>
+              <p>Scammers create fake tokens with near-identical names and promote them via DMs, fake announcements, and copycat accounts. The real contract address should appear only in the project's verified Twitter/X bio, official Telegram pinned messages, or verified website. Never trust an address shared in a DM — even if the sender looks official.</p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — on official channels only</button>
+                <button class="toggle-btn" data-answer="no">No / Can't confirm</button>
+              </div>
+            </div>
+            <span class="check-badge critical">Critical</span>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="check-item" data-index="5" role="group" aria-label="Holder concentration check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>No single wallet holds a dangerously large share</h4>
+              <p>On Solscan, view the "Holders" tab for any Solana token. If one or a small number of wallets hold 30%, 50%, or more of the supply, a co-ordinated dump by those wallets could devastate the market. Look for a broadly distributed holder list, or a clearly identified treasury/team wallet that is disclosed and time-locked. There is no universal safe threshold — use your own judgement.</p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — distribution looks reasonable</button>
+                <button class="toggle-btn" data-answer="no">No / Concentrated</button>
+              </div>
+            </div>
+            <span class="check-badge">Important</span>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="check-item" data-index="6" role="group" aria-label="Team transparency check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>Team is transparent (or anonymous by deliberate, stated choice)</h4>
+              <p>Many legitimate crypto projects are anonymous — anonymity alone is not a red flag. The risk is unexplained anonymity combined with false promises. A trustworthy anonymous team should still articulate who they are culturally, why they chose anonymity, and what accountability mechanisms exist. Doxxed teams carry legal accountability; anonymous teams rely on reputational consistency over time.</p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — transparent or honestly anonymous</button>
+                <button class="toggle-btn" data-answer="no">No / Unclear</button>
+              </div>
+            </div>
+            <span class="check-badge">Important</span>
+          </div>
+
+          <!-- Item 8 -->
+          <div class="check-item" data-index="7" role="group" aria-label="Audit check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>Smart contract has been audited by a named, independent firm</h4>
+              <p>A third-party audit means a security firm reviewed the contract code for vulnerabilities, backdoors, and exploits. Note: an audit is not a guarantee of safety — it reflects the state of the code at the time of review. Always check the audit is real (hosted on the auditor's own site), recent, and that no critical issues were left unresolved. <em style="color:var(--faint)">(Many early-stage projects are unaudited — mark No if uncertain, and proceed with extra caution.)</em></p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — audit publicly available</button>
+                <button class="toggle-btn" data-answer="no">No / Unverified</button>
+              </div>
+            </div>
+            <span class="check-badge">Important</span>
+          </div>
+
+          <!-- Item 9 -->
+          <div class="check-item" data-index="8" role="group" aria-label="Claims check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>Project makes realistic claims — no guaranteed returns</h4>
+              <p>Any project promising guaranteed profits, fixed APY returns, or a specific price target is either misinformed or deliberately misleading. Cryptocurrency markets are volatile and unpredictable. Credible projects describe their roadmap, use case, and community without making financial promises. Phrases like "100x guaranteed", "risk-free", or "your money will grow" are serious red flags.</p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — claims are measured and factual</button>
+                <button class="toggle-btn" data-answer="no">No — bold promises present</button>
+              </div>
+            </div>
+            <span class="check-badge">Important</span>
+          </div>
+
+          <!-- Item 10 -->
+          <div class="check-item" data-index="9" role="group" aria-label="Community check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>Community is active, organic, and free of excessive hype</h4>
+              <p>Visit the project's Telegram and Twitter/X. A healthy community discusses ideas, asks critical questions, and receives honest answers. Red flags include: only hype with no substance, questions being deleted or banned, bots dominating the feed, or an unusually fast-growing follower count with low engagement. Healthy scepticism within a community is a positive sign, not a negative one.</p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — looks organic and substantive</button>
+                <button class="toggle-btn" data-answer="no">No / Bot-heavy or hype-only</button>
+              </div>
+            </div>
+            <span class="check-badge">Useful</span>
+          </div>
+
+          <!-- Item 11 -->
+          <div class="check-item" data-index="10" role="group" aria-label="Official links check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>You are using official links from the project's verified accounts</h4>
+              <p>Phishing is rampant in crypto. Scammers clone websites with slightly different domains (e.g. trusttai1s.io instead of trusttails.io), create fake Telegram groups with near-identical names, and impersonate admins. Always navigate to official links from the project's verified Twitter/X bio or a bookmarked URL. Never click links shared in DMs — legitimate projects will never contact you first via DM to offer tokens, whitelist spots, or airdrops.</p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — using verified official links</button>
+                <button class="toggle-btn" data-answer="no">No / Not sure</button>
+              </div>
+            </div>
+            <span class="check-badge critical">Critical</span>
+          </div>
+
+          <!-- Item 12 -->
+          <div class="check-item" data-index="11" role="group" aria-label="Urgency pressure check">
+            <div class="check-cb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="check-body">
+              <h4>No artificial urgency or pressure tactics</h4>
+              <p>Countdown timers, "only X spots left", "buy now before it's gone", or pressure from community members to hurry are classic manipulation techniques designed to bypass your rational thinking. Legitimate projects want long-term, informed holders — not impulsive buyers. If you feel rushed, that itself is a signal to slow down and research more carefully.</p>
+              <div class="toggle-row">
+                <button class="toggle-btn" data-answer="yes">Yes — no pressure tactics observed</button>
+                <button class="toggle-btn" data-answer="no">No — pressure tactics present</button>
+              </div>
+            </div>
+            <span class="check-badge">Important</span>
+          </div>
+
+        </div><!-- /checklist-tool -->
+
+        <!-- reset -->
+        <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn btn-ghost" id="reset-btn" style="min-height:44px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.6"/></svg>
+            Reset checklist
+          </button>
+          <a class="btn btn-ghost" href="/tools/solana-token-checker" style="min-height:44px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Solana Token Checker
+          </a>
+        </div>
+
+      </div><!-- /left col -->
+
+      <!-- RIGHT: score panel -->
+      <div>
+        <div class="score-panel glass reveal d2">
+          <div class="score-ring">
+            <svg viewBox="0 0 120 120">
+              <circle class="ring-bg" cx="60" cy="60" r="54"/>
+              <circle class="ring-fg" id="score-ring-fg" cx="60" cy="60" r="54"/>
+            </svg>
+            <div class="score-inner">
+              <div class="score-num" id="score-num">0</div>
+              <div class="score-denom">/ 12</div>
+            </div>
+          </div>
+          <div class="score-label" id="score-label">Answer to begin</div>
+          <div class="score-msg" id="score-msg">Tick each signal above. Results update live.</div>
+
+          <div class="score-bars" id="score-bars" style="display:none">
+            <div class="bar-row">
+              <span style="font-size:.78rem;min-width:68px">Critical</span>
+              <div class="bar-track"><div class="bar-fill" id="bar-critical" style="width:0%"></div></div>
+              <span class="bval" id="bval-critical">0/5</span>
+            </div>
+            <div class="bar-row">
+              <span style="font-size:.78rem;min-width:68px">Important</span>
+              <div class="bar-track"><div class="bar-fill" id="bar-important" style="width:0%;background:var(--cyan)" ></div></div>
+              <span class="bval" id="bval-important">0/5</span>
+            </div>
+            <div class="bar-row">
+              <span style="font-size:.78rem;min-width:68px">Useful</span>
+              <div class="bar-track"><div class="bar-fill" id="bar-useful" style="width:0%;background:var(--violet)"></div></div>
+              <span class="bval" id="bval-useful">0/2</span>
+            </div>
+          </div>
+
+          <p style="font-size:.75rem;color:var(--faint);margin-top:20px;line-height:1.55">A high score is encouraging but is <strong style="color:var(--muted)">not a safety guarantee</strong>. Do your own research before interacting with any token.</p>
+        </div>
+
+        <!-- scam warning card -->
+        <div class="glass reveal d3" style="margin-top:22px">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3>Common scam patterns</h3>
+          <ul style="list-style:none;display:grid;gap:10px;margin-top:4px">
+            <li style="display:flex;gap:10px;font-size:.88rem;color:var(--muted)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;color:#f87171;flex-shrink:0;margin-top:3px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Unsolicited DMs offering tokens or whitelist spots
+            </li>
+            <li style="display:flex;gap:10px;font-size:.88rem;color:var(--muted)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;color:#f87171;flex-shrink:0;margin-top:3px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              "Send X SOL to receive 2X back" — always a scam
+            </li>
+            <li style="display:flex;gap:10px;font-size:.88rem;color:var(--muted)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;color:#f87171;flex-shrink:0;margin-top:3px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Fake "presale" links not listed on the official site
+            </li>
+            <li style="display:flex;gap:10px;font-size:.88rem;color:var(--muted)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;color:#f87171;flex-shrink:0;margin-top:3px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Impersonation of admins or team members in Telegram
+            </li>
+            <li style="display:flex;gap:10px;font-size:.88rem;color:var(--muted)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;color:#f87171;flex-shrink:0;margin-top:3px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Lookalike token contract addresses with 1 character changed
+            </li>
+          </ul>
+        </div>
+
+        <!-- quick links -->
+        <div class="glass cyan reveal d4" style="margin-top:22px">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <h3>Verify TrustTails on-chain</h3>
+          <p style="font-size:.88rem;margin-bottom:16px">TrustTails (TAIL) — all critical signals confirmed at launch.</p>
+          <div class="contract-pill" style="max-width:100%;border-radius:var(--radius-sm);padding:12px 14px">
+            <span class="lbl">Contract</span>
+            <code style="font-size:.72rem">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+            <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span class="copy-label">Copy</span>
+            </button>
+          </div>
+          <a class="btn btn-cyan btn-sm" href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" style="margin-top:14px;min-height:44px">
+            View on Solscan
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div><!-- /right col -->
+
+    </div><!-- /checklist-layout -->
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Methodology</span>
+      <h2>How the checklist works</h2>
+      <p class="lead">Each signal is drawn from publicly documented rug-pull patterns and on-chain forensics research. Here is what each category means and how to interpret your score.</p>
+    </div>
+
+    <div class="grid grid-3" style="margin-bottom:48px">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Critical signals <span class="text-gold">(5 items)</span></h3>
+        <p>These are the highest-risk factors. A "No" on any Critical signal should make you deeply cautious. They include mint authority, freeze authority, fixed supply, liquidity status, and link verification — all things that can be checked on-chain in under two minutes.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Important signals <span class="text-gold">(5 items)</span></h3>
+        <p>These require more interpretation. Holder concentration, team transparency, audits, realistic claims, and absence of pressure tactics are context-dependent — but each "No" meaningfully increases risk. Together they paint a picture of the project's culture and intentions.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Useful signals <span class="text-gold">(2 items)</span></h3>
+        <p>Community quality and the absence of artificial urgency are softer signals, but still meaningful. An organic community that tolerates critical questions is one of the best long-term indicators of a project worth following — even if it is not a financial guarantee.</p>
+      </article>
+    </div>
+
+    <!-- Score interpretation -->
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Higher scores suggest transparency
+        </h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>All 5 Critical signals confirmed on-chain</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Team communicates honestly without hype</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Audit available from a named firm</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Questions welcomed in community</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>No financial promises made anywhere</li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Lower scores suggest elevated risk
+        </h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Mint or freeze authority still active</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Contract address circulating via DMs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>One wallet holds a majority of supply</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Returns guaranteed or price targets promised</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Community deletes critical questions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout warn reveal" style="margin-top:32px;max-width:780px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+      <div><b>A perfect score is not a guarantee of safety.</b> Rug pulls and scams are constantly evolving. A project can pass every signal on this checklist and still be risky due to factors not captured here: market conditions, team decisions, protocol risks, or plain misfortune. This tool helps you ask the right questions — it does not answer them on your behalf.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSARY OF TERMS -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Glossary</span>
+      <h2>Key terms defined</h2>
+      <p class="lead">Understanding the vocabulary is the first step to protecting yourself. These are the terms used throughout this tool and across on-chain research.</p>
+    </div>
+
+    <dl class="term-grid">
+      <div class="term-card reveal d1">
+        <dt>Rug pull</dt>
+        <dd>A type of cryptocurrency exit scam in which a project's creators abandon it and run off with investor funds — often by withdrawing all liquidity from a trading pool. The term comes from the phrase "pulling the rug out from under" investors. Rug pulls can be immediate (a single wallet drains everything in minutes) or slow (gradual sell-offs over weeks).</dd>
+      </div>
+      <div class="term-card reveal d2">
+        <dt>Mint authority</dt>
+        <dd>The ability to create new tokens and add them to the total supply. On Solana, this is a permission that can be permanently revoked. When revoked, the supply is provably fixed forever — no one, including the original creators, can ever mint additional tokens. This is verifiable on any block explorer by checking the token's metadata.</dd>
+      </div>
+      <div class="term-card reveal d3">
+        <dt>Freeze authority</dt>
+        <dd>The ability to freeze specific token accounts, preventing the holder from transferring or selling their tokens. This is a standard Solana SPL token permission that should be revoked by any project serious about holder autonomy. Like mint authority, revocation is permanent and publicly verifiable on-chain.</dd>
+      </div>
+      <div class="term-card reveal d1">
+        <dt>Liquidity pool (LP)</dt>
+        <dd>A smart contract holding a pair of tokens (e.g. TAIL/SOL) that allows trading without a traditional order book. Anyone can add liquidity and receive LP tokens representing their share. In a rug pull, founders who added the initial liquidity withdraw it all at once, leaving other traders with tokens they cannot sell at any meaningful price.</dd>
+      </div>
+      <div class="term-card reveal d2">
+        <dt>LP token lock</dt>
+        <dd>A mechanism where LP tokens are deposited into a time-lock contract — they cannot be withdrawn until a set future date. This prevents the liquidity provider from immediately rugging the pool. Burned LP tokens go further: they are sent to a dead wallet and can never be retrieved by anyone.</dd>
+      </div>
+      <div class="term-card reveal d3">
+        <dt>Smart contract audit</dt>
+        <dd>A structured review of a smart contract's code by an independent security firm. Auditors look for vulnerabilities, backdoors, logic errors, and exploitable functions. Audit reports should be publicly hosted on the auditing firm's own website. A self-published "audit" without a named firm carries little weight.</dd>
+      </div>
+      <div class="term-card reveal d1">
+        <dt>DYOR (Do Your Own Research)</dt>
+        <dd>A widely used phrase in crypto communities reminding participants that no external source — not influencers, not communities, not checklists — can substitute for your own due diligence. Research the team, the code, the tokenomics, the on-chain data, and the broader market context before making any decision.</dd>
+      </div>
+      <div class="term-card reveal d2">
+        <dt>Holder concentration</dt>
+        <dd>A measure of how the total token supply is distributed across wallets. High concentration means a small number of wallets hold a disproportionate share. This creates risk because co-ordinated selling by those wallets can severely impact the market. Block explorers like Solscan show the full holder distribution for any token.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- TrustTails EXAMPLE -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Worked Example</span>
+      <h2>How does TrustTails score?</h2>
+      <p class="lead">As an example of how to apply this checklist, here is what the publicly verifiable on-chain facts about TrustTails (TAIL) show at the time of writing. We present this factually — not as an investment recommendation.</p>
+    </div>
+
+    <div class="grid grid-2" style="margin-bottom:32px">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3>Confirmed on-chain signals</h3>
+        <ul style="list-style:none;display:grid;gap:10px;margin-top:8px">
+          <li style="display:flex;gap:10px;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:17px;height:17px;color:var(--green);flex-shrink:0;margin-top:3px"><polyline points="20 6 9 17 4 12"/></svg>Mint authority: <span style="color:var(--green);font-weight:600">REVOKED</span></li>
+          <li style="display:flex;gap:10px;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:17px;height:17px;color:var(--green);flex-shrink:0;margin-top:3px"><polyline points="20 6 9 17 4 12"/></svg>Freeze authority: <span style="color:var(--green);font-weight:600">REVOKED</span></li>
+          <li style="display:flex;gap:10px;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:17px;height:17px;color:var(--green);flex-shrink:0;margin-top:3px"><polyline points="20 6 9 17 4 12"/></svg>Fixed supply: <span style="color:var(--text);font-weight:600">1,000,000,000 TAIL</span></li>
+          <li style="display:flex;gap:10px;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:17px;height:17px;color:var(--green);flex-shrink:0;margin-top:3px"><polyline points="20 6 9 17 4 12"/></svg>Contract publicly listed on official channels</li>
+          <li style="display:flex;gap:10px;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:17px;height:17px;color:var(--green);flex-shrink:0;margin-top:3px"><polyline points="20 6 9 17 4 12"/></svg>No guaranteed returns claimed anywhere</li>
+          <li style="display:flex;gap:10px;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:17px;height:17px;color:var(--green);flex-shrink:0;margin-top:3px"><polyline points="20 6 9 17 4 12"/></svg>Official links confirmed in verified bios</li>
+        </ul>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Signals to be verified as project matures</h3>
+        <ul style="list-style:none;display:grid;gap:10px;margin-top:8px">
+          <li style="display:flex;gap:10px;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:17px;height:17px;color:var(--gold);flex-shrink:0;margin-top:3px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Liquidity lock — applicable once trading begins</li>
+          <li style="display:flex;gap:10px;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:17px;height:17px;color:var(--gold);flex-shrink:0;margin-top:3px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Smart contract audit — planned, not yet published</li>
+          <li style="display:flex;gap:10px;font-size:.9rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:17px;height:17px;color:var(--gold);flex-shrink:0;margin-top:3px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Holder distribution — visible once tokens distribute</li>
+        </ul>
+        <div class="callout info" style="margin-top:18px;padding:13px 15px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span style="font-size:.83rem">TrustTails is pre-launch. We present this example transparently so you can apply the same methodology to any project you research.</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="callout danger reveal" style="max-width:780px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div><b>This is not a recommendation to buy TAIL or any other token.</b> TrustTails is a small, pre-launch, community-first project. Cryptocurrency carries significant risk, including the risk of losing everything you invest. We share the above facts because transparency is a core value — not because we are asking you to invest.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Frequently asked questions</h2>
+      <p class="lead">Common questions about rug pulls, safety signals, and how to verify crypto projects independently.</p>
+    </div>
+
+    <div class="faq reveal">
+
+      <details class="faq-item">
+        <summary>What is a rug pull and how does it happen?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>A rug pull is a type of crypto exit scam. The most common form involves a team creating a token, building hype, then withdrawing all liquidity from a trading pool — making the token instantly unsellable. Slower variants involve gradual large wallet dumps or abandoned projects where development simply stops. Rug pulls range from brazen theft to quiet abandonment; the on-chain signals in this checklist address the most common attack vectors.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does a high score on this checklist mean a project is safe?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>No. A high score means the project passes the transparency signals we have identified — it does not mean the project will succeed, remain legitimate over time, or be free of risks we have not captured. Market conditions, team decisions, smart contract bugs, protocol-level exploits, and regulatory changes can all affect a project independently of these signals. Treat a high score as a starting point for further research, not a conclusion.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I verify mint and freeze authority on Solana?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Visit <a href="https://solscan.io" target="_blank" rel="noopener" style="color:var(--cyan-2)">solscan.io</a> and search the token's contract address. On the token overview page, look for the "Mint Authority" and "Freeze Authority" fields. If they show "None" or display an empty address, the authority is revoked. You can also check <a href="https://solana.fm" target="_blank" rel="noopener" style="color:var(--cyan-2)">solana.fm</a> or <a href="https://explorer.solana.com" target="_blank" rel="noopener" style="color:var(--cyan-2)">explorer.solana.com</a> for the same information. This takes under 60 seconds and is the single most important on-chain check you can do.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is an anonymous team automatically a red flag?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Not automatically. Many legitimate and successful crypto projects were built by anonymous teams. The risk is when anonymity is combined with false promises, no verifiable history, and no accountability mechanism. A team that is honest about being anonymous, consistent over a long period, and transparent about their decisions can still demonstrate trustworthiness through behaviour rather than identity. Judge the pattern of actions, not the absence of a name.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What does "liquidity locked" mean and how do I check it?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>When a project provides liquidity to a DEX like Raydium, the liquidity pool issues LP tokens back to the provider. If those LP tokens are sent to a time-lock contract, the provider cannot withdraw the liquidity until the lock expires — this protects buyers. If LP tokens are burned (sent to a dead wallet), the liquidity is permanently locked. You can check on tools like <a href="https://birdeye.so" target="_blank" rel="noopener" style="color:var(--cyan-2)">Birdeye</a> or the DEX's own pool information page. For pre-launch projects, this signal applies once the token is tradable.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I trust a project that says it was audited?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Only if the audit report is publicly hosted on the auditing firm's own official website and matches the contract address you are reviewing. Fake or low-quality "audits" do exist — some are self-produced, some are paid for from non-credible firms, and some are outdated (the contract may have changed since). Always verify the audit exists on the firm's domain, that it was recent, and that no critical or high-severity issues were left unaddressed.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I spot a fake presale or phishing link?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Always navigate from the project's verified Twitter/X bio link or a URL you have previously bookmarked from a verified source. Check the domain character by character — scammers use look-alike characters (l vs I, 0 vs O, adding hyphens or swapping TLDs). Legitimate projects will never DM you first with a presale link. If you receive an unsolicited message about a token, presale, airdrop, or whitelist — treat it as a scam until proven otherwise. When in doubt, ask in the official community channel (not the DM) and check against the official website.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does this checklist apply to tokens on networks other than Solana?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Most signals apply across networks, but the specific tools and terminology differ. On Ethereum, mint authority may be called "owner" with a mint function; liquidity lock tools include Unicrypt or Team Finance. The core concepts — fixed supply, revoked permissions, locked liquidity, transparent team, realistic claims — are universal to evaluating any token on any chain. Always use the appropriate block explorer and DEX for the network you are researching.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- RELATED TOOLS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">More Tools</span>
+      <h2>Related safety tools</h2>
+      <p class="lead">Continue your research with these companion tools and educational resources.</p>
+    </div>
+
+    <div class="grid grid-3" style="margin-bottom:40px">
+      <article class="glass reveal d1">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Solana Token Checker</h3>
+        <p>Look up any Solana SPL token by contract address and see mint authority, freeze authority, supply, and holder distribution at a glance.</p>
+        <a class="btn btn-ghost" href="/tools/solana-token-checker" style="margin-top:18px;min-height:44px">Open tool</a>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <h3>How to spot a rug pull</h3>
+        <p>A deeper educational guide to the mechanics of rug pulls, historic examples, the anatomy of a coordinated pump-and-dump, and how to protect yourself.</p>
+        <a class="btn btn-ghost" href="/blog/how-to-spot-a-rug-pull" style="margin-top:18px;min-height:44px">Read article</a>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Is TrustTails legit?</h3>
+        <p>A dedicated page explaining TrustTails' on-chain verifiable facts — mint revoked, freeze revoked, fixed supply — with links to block explorer evidence.</p>
+        <a class="btn btn-ghost" href="/is-it-legit" style="margin-top:18px;min-height:44px">Read more</a>
+      </article>
+    </div>
+
+    <div class="tools-strip reveal">
+      <a class="btn btn-ghost" href="/tools/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        All tools
+      </a>
+      <a class="btn btn-ghost" href="/faq">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Full FAQ
+      </a>
+      <a class="btn btn-ghost" href="/tokenomics">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Tokenomics
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow" style="margin-bottom:20px">TrustTails (TAIL)</span>
+      <h2>A token built to pass its own checklist</h2>
+      <p>Mint revoked. Freeze revoked. Fixed supply. No hype. No price promises. TrustTails is pre-launch and not currently available to buy — but you can follow the project and ask us anything in the community.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Join the community
+        </a>
+        <a class="btn btn-ghost" href="https://x.com/trusttailscoin" target="_blank" rel="noopener">
+          Follow on X
+        </a>
+        <a class="btn btn-ghost" href="/is-it-legit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Is it legit?
+        </a>
+      </div>
+      <p style="margin-top:20px;font-size:.82rem;color:var(--faint)">Not financial advice. TAIL is a high-risk, pre-launch community token. Only use funds you can afford to lose entirely.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell. Verify everything on-chain.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Project</h4><a href="/about">About</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/whitepaper">Whitepaper</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">Compare</a><a href="/how-to-buy">How to buy</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calc</a><a href="/tools/rug-pull-checklist">Rug-Pull Check</a><a href="/tools/">All tools</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/">Insights</a><a href="/solana">Why Solana?</a><a href="/faq">FAQ</a><a href="/community">Community</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here is a promise of future performance, adoption, or returns.</p>
+</div></footer>
+
+<script src="/assets/js/app.js" defer></script>
+<script>
+(function(){
+  // ── Checklist data ──
+  // weights: critical=3, important=2, useful=1 (for the ring; raw count shown in label)
+  var ITEMS = [
+    {cat:'critical'}, {cat:'critical'}, {cat:'critical'},
+    {cat:'critical'}, {cat:'critical'},
+    {cat:'important'}, {cat:'important'}, {cat:'important'},
+    {cat:'important'}, {cat:'useful'},
+    {cat:'critical'}, {cat:'important'}
+  ];
+  // state: null = unanswered, 'yes', 'no'
+  var state = ITEMS.map(function(){ return null; });
+
+  var CIRCUMFERENCE = 2 * Math.PI * 54; // ~339.29
+
+  function getScore(){
+    var yes = 0;
+    state.forEach(function(s){ if(s === 'yes') yes++; });
+    return yes;
+  }
+
+  function getCatScore(cat){
+    var yes = 0, total = 0;
+    ITEMS.forEach(function(item, i){
+      if(item.cat === cat){ total++; if(state[i]==='yes') yes++; }
+    });
+    return {yes:yes,total:total};
+  }
+
+  function getLabel(score, answered){
+    if(answered === 0) return {label:'Answer to begin', msg:'Tick each signal above. Results update live.'};
+    var pct = score / 12;
+    if(pct === 1)       return {label:'All signals confirmed', msg:'Every signal was answered Yes. This is the most transparent outcome — but remember, it is still not a guarantee of safety. Keep verifying and researching.'};
+    if(pct >= 0.833)    return {label:'Strong transparency', msg:'Nearly all signals are present. Review the remaining items carefully, especially any Critical signals that were answered No.'};
+    if(pct >= 0.583)    return {label:'Moderate signals', msg:'Several signals are positive, but some gaps remain. Pay close attention to any Critical items answered No before making any decision.'};
+    if(pct >= 0.333)    return {label:'Significant gaps', msg:'Multiple signals are missing or unverified. Proceed with strong caution and do substantial additional research before interacting with this token.'};
+    return {label:'High risk indicators', msg:'Most signals are absent or unknown. This pattern warrants serious caution. Ensure you have independently verified every claim before taking any action.'};
+  }
+
+  function getRingColor(score){
+    if(score >= 10) return 'var(--green)';
+    if(score >= 7)  return 'var(--gold)';
+    if(score >= 4)  return 'var(--violet)';
+    return '#f87171';
+  }
+
+  function updateUI(){
+    var score    = getScore();
+    var answered = state.filter(function(s){ return s !== null; }).length;
+    var info     = getLabel(score, answered);
+
+    // ring
+    var fg = document.getElementById('score-ring-fg');
+    var dashOff = CIRCUMFERENCE - (CIRCUMFERENCE * (score / 12));
+    fg.style.strokeDashoffset = dashOff;
+    fg.style.stroke = getRingColor(score);
+
+    document.getElementById('score-num').textContent   = score;
+    document.getElementById('score-label').textContent = info.label;
+    document.getElementById('score-msg').textContent   = info.msg;
+
+    // category bars
+    var bars = document.getElementById('score-bars');
+    if(answered > 0) bars.style.display = 'grid';
+
+    ['critical','important','useful'].forEach(function(cat){
+      var cs = getCatScore(cat);
+      var bar  = document.getElementById('bar-'+cat);
+      var bval = document.getElementById('bval-'+cat);
+      if(bar){
+        bar.style.width = (cs.total > 0 ? (cs.yes / cs.total * 100) : 0) + '%';
+        bval.textContent = cs.yes + '/' + cs.total;
+      }
+    });
+  }
+
+  function handleAnswer(itemEl, index, answer){
+    state[index] = (state[index] === answer) ? null : answer; // toggle off if same
+
+    // update button states
+    var btns = itemEl.querySelectorAll('.toggle-btn');
+    btns.forEach(function(btn){
+      btn.classList.remove('active-yes','active-no');
+      if(state[index] === 'yes' && btn.dataset.answer === 'yes') btn.classList.add('active-yes');
+      if(state[index] === 'no'  && btn.dataset.answer === 'no')  btn.classList.add('active-no');
+    });
+
+    // update card appearance
+    itemEl.classList.remove('checked','checked-no');
+    if(state[index] === 'yes') itemEl.classList.add('checked');
+    if(state[index] === 'no')  itemEl.classList.add('checked-no');
+
+    // checkbox icon
+    var cb = itemEl.querySelector('.check-cb');
+    if(state[index] === 'yes'){
+      cb.querySelector('svg').style.display = 'block';
+      cb.querySelector('svg').style.color   = '#fff';
+    } else if(state[index] === 'no'){
+      cb.querySelector('svg').style.display = 'block';
+      cb.querySelector('svg').style.color   = 'var(--gold)';
+    } else {
+      cb.querySelector('svg').style.display = 'none';
+    }
+
+    updateUI();
+  }
+
+  // wire up buttons
+  var items = document.querySelectorAll('.check-item');
+  items.forEach(function(item, index){
+    item.querySelectorAll('.toggle-btn').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        handleAnswer(item, index, btn.dataset.answer);
+      });
+    });
+    // also allow clicking the card body (not buttons) to toggle yes
+    item.addEventListener('click', function(e){
+      if(e.target.closest('.toggle-btn')) return;
+      handleAnswer(item, index, 'yes');
+    });
+  });
+
+  // reset
+  document.getElementById('reset-btn').addEventListener('click', function(){
+    state = ITEMS.map(function(){ return null; });
+    items.forEach(function(item){
+      item.classList.remove('checked','checked-no');
+      item.querySelectorAll('.toggle-btn').forEach(function(b){ b.classList.remove('active-yes','active-no'); });
+      var svg = item.querySelector('.check-cb svg');
+      if(svg) svg.style.display = 'none';
+    });
+    document.getElementById('score-bars').style.display = 'none';
+    updateUI();
+  });
+
+  // copy buttons
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.dataset.copy;
+      if(navigator.clipboard){ navigator.clipboard.writeText(text); }
+      else { var t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t); }
+      var lbl = btn.querySelector('.copy-label');
+      btn.classList.add('copied');
+      if(lbl) lbl.textContent = 'Copied!';
+      setTimeout(function(){ btn.classList.remove('copied'); if(lbl) lbl.textContent = 'Copy'; }, 2000);
+    });
+  });
+
+  // initial render
+  updateUI();
+})();
+</script>
+</body>
+</html>

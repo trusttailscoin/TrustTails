@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Long-Term vs Short-Term: Thinking About Crypto Time Horizons</title>
+<meta name="description" content="An honest look at long-term holding versus short-term trading in crypto — the trade-offs, the psychology, and the risks. Not financial advice.">
+<link rel="canonical" href="https://trusttails.io/blog/long-term-vs-short-term-crypto">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trusttails.io/blog/long-term-vs-short-term-crypto">
+<meta property="og:title" content="Long-Term vs Short-Term: Thinking About Crypto Time Horizons">
+<meta property="og:description" content="An honest look at long-term holding versus short-term trading in crypto — the trade-offs, the psychology, and the risks. Not financial advice.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Long-Term vs Short-Term: Thinking About Crypto Time Horizons">
+<meta name="twitter:description" content="An honest look at long-term holding versus short-term trading in crypto — the trade-offs, the psychology, and the risks. Not financial advice.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://trusttails.io/blog/"},{"@type":"ListItem","position":3,"name":"Long vs short term","item":"https://trusttails.io/blog/long-term-vs-short-term-crypto"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Project <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/about"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span><b>About & Story</b><span class="ms">How TrustTails began</span></span></a>
+        <a class="mega-link" href="/tokenomics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 0 1 0 4H9m2-4v8"/></svg></span><span><b>Tokenomics</b><span class="ms">Fixed 1B, revoked authorities</span></span></a>
+        <a class="mega-link" href="/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></span><span><b>Roadmap</b><span class="ms">The honest 3-phase journey</span></span></a>
+        <a class="mega-link" href="/vision"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6Z"/></svg></span><span><b>Vision</b><span class="ms">The long-term north star</span></span></a>
+        <a class="mega-link" href="/tail-network"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg></span><span><b>TAIL Network</b><span class="ms">The technology behind TAIL</span></span></a>
+        <a class="mega-link" href="/solana"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h12l2-2H7Zm0 5h12l2-2H7Zm0 5h12l2-2H7Z"/></svg></span><span><b>Why Solana</b><span class="ms">Speed and low fees</span></span></a>
+        <a class="mega-feature" href="/whitepaper"><span><b>Whitepaper</b><span class="ms">The full vision &amp; tokenomics</span></span><span class="btn btn-gold btn-sm">Read</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Trust <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/is-it-legit"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Is it legit?</b><span class="ms">Verify on-chain in 60s</span></span></a>
+        <a class="mega-link" href="/security"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Security</b><span class="ms">Stay safe from scams</span></span></a>
+        <a class="mega-link" href="/trust-and-transparency"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Transparency</b><span class="ms">How we communicate</span></span></a>
+        <a class="mega-link" href="/compare"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>How we compare</b><span class="ms">vs a typical meme coin</span></span></a>
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token checker</b><span class="ms">Check any Solana token</span></span></a>
+        <a class="mega-feature" href="/is-it-legit"><span><b>Live on-chain proof</b><span class="ms">Supply &amp; authorities, verified</span></span><span class="btn btn-gold btn-sm">Verify</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Tools <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token Checker</b><span class="ms">Verify any SPL token</span></span></a>
+        <a class="mega-link" href="/tools/token-comparison"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>Comparison</b><span class="ms">Compare tokens side by side</span></span></a>
+        <a class="mega-link" href="/tools/market-cap-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M14 10h2v8h-2zM8 18h2"/></svg></span><span><b>Market Cap Calc</b><span class="ms">Hypothetical market cap</span></span></a>
+        <a class="mega-link" href="/tools/holdings-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9l8 4"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Holdings Calc</b><span class="ms">Value your holdings</span></span></a>
+        <a class="mega-link" href="/tools/rug-pull-checklist"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span><b>Rug-Pull Checklist</b><span class="ms">Score safety signals</span></span></a>
+        <a class="mega-link" href="/tools/wallet-setup-guide"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 12h3M3 9h18"/></svg></span><span><b>Wallet Setup</b><span class="ms">Phantom & Solflare</span></span></a>
+        <a class="mega-feature" href="/tools/"><span><b>All free tools</b><span class="ms">No sign-up, no hype</span></span><span class="btn btn-gold btn-sm">Open</span></a>
+      </div>
+    </div>
+    <a class="nav-top-link nav-top" href="/blog/">Insights</a>
+    <a class="nav-top-link nav-top" href="/how-to-buy">How to buy</a>
+    <a class="nav-top-link nav-top" href="/faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+<div class="mobile-menu">
+  <details class="mm-sec"><summary>Project</summary><div class="mm-links"><a href="/about">About &amp; Story</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/tail-network">TAIL Network</a><a href="/solana">Why Solana</a><a href="/whitepaper">Whitepaper</a></div></details>
+  <details class="mm-sec"><summary>Trust</summary><div class="mm-links"><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">How we compare</a></div></details>
+  <details class="mm-sec"><summary>Tools</summary><div class="mm-links"><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calculator</a><a href="/tools/holdings-calculator">Holdings Calculator</a><a href="/tools/rug-pull-checklist">Rug-Pull Checklist</a><a href="/tools/wallet-setup-guide">Wallet Setup</a><a href="/tools/">All tools</a></div></details>
+  <a class="mm-direct" href="/blog/">Insights</a>
+  <a class="mm-direct" href="/how-to-buy">How to buy</a>
+  <a class="mm-direct" href="/faq">FAQ</a>
+  <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+</div>
+
+<!-- ARTICLE JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Long-Term vs Short-Term: Thinking About Crypto Time Horizons",
+  "datePublished": "2026-06-18",
+  "author": {
+    "@type": "Organization",
+    "name": "TrustTails"
+  },
+  "image": "https://trusttails.io/assets/img/og-cover.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TrustTails",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://trusttails.io/assets/img/logo-nav.png"
+    }
+  },
+  "description": "An honest look at long-term holding versus short-term trading in crypto — the trade-offs, the psychology, and the risks. Not financial advice."
+}
+</script>
+
+<!-- HERO SECTION -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Educational · Not Financial Advice</span>
+      <h1>Long-Term vs Short-Term: Thinking About Crypto Time Horizons</h1>
+      <p class="lead">Whether you hold for years or trade for weeks, your time horizon is one of the most consequential decisions you will make in crypto — and most people never consciously make it at all.</p>
+    </div>
+
+    <!-- Disclaimer banner -->
+    <div class="glass reveal d1" style="border-color:rgba(242,183,54,.35);background:rgba(242,183,54,.06);margin-bottom:48px">
+      <div style="display:flex;gap:14px;align-items:flex-start">
+        <span style="flex-shrink:0;margin-top:2px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </span>
+        <p style="margin:0;font-size:.94rem;color:var(--muted)"><strong style="color:var(--gold)">Not financial advice.</strong> This article is for educational purposes only. Cryptocurrency involves significant risk including total loss of capital. Nothing here is a recommendation to buy, sell, or hold any asset. Always do your own research (DYOR) and consult a licensed financial adviser before making any investment decisions. Past behaviour of any asset does not predict future results.</p>
+      </div>
+    </div>
+
+    <!-- Article body -->
+    <article style="max-width:780px">
+
+      <h2 class="reveal" style="margin-bottom:18px">Why Your Time Horizon Is the Starting Point</h2>
+      <p class="reveal d1">Before deciding which token to research, which blockchain to learn about, or which wallet to set up, there is a simpler and more important question to answer: <em>over what period am I comfortable having this capital at risk?</em></p>
+      <p class="reveal d2">Time horizon is not just a preference — it changes which risks are relevant, which strategies are even plausible, and what emotional experience you should expect. A trader watching hourly candles and a long-term holder checking their portfolio quarterly are, in a meaningful sense, participating in two different activities that happen to share the same underlying assets.</p>
+      <p class="reveal d3">Neither approach is automatically superior. Each comes with trade-offs in effort, tax complexity, emotional cost, and probability distribution of outcomes. This article examines those trade-offs honestly, without telling you which path to take.</p>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:44px 0">
+
+      <h2 class="reveal" style="margin-bottom:18px">What "Long-Term Holding" Actually Means</h2>
+      <p class="reveal d1">In traditional finance, long-term typically refers to holding an asset for more than one year. In crypto, the same rough boundary applies for tax purposes in many jurisdictions, though the definition varies by country. Culturally, the term "HODL" — originally a typo that became a meme — describes holding through volatility rather than selling in response to price drops.</p>
+      <p class="reveal d2">A long-term approach generally involves:</p>
+      <ul class="reveal d3" style="list-style:none;display:grid;gap:12px;margin:18px 0 28px">
+        <li style="display:flex;gap:12px;color:var(--muted);font-size:.97rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><polyline points="20 6 9 17 4 12"/></svg><span>Buying a position and holding it for months or years regardless of short-term price movement</span></li>
+        <li style="display:flex;gap:12px;color:var(--muted);font-size:.97rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><polyline points="20 6 9 17 4 12"/></svg><span>Periodic additions via a disciplined schedule (sometimes called dollar-cost averaging, or DCA — see our <a href="/tools/dca-calculator" class="text-gold" style="text-decoration:underline;text-underline-offset:3px">DCA calculator</a>)</span></li>
+        <li style="display:flex;gap:12px;color:var(--muted);font-size:.97rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><polyline points="20 6 9 17 4 12"/></svg><span>Relatively low transaction count, which typically simplifies tax reporting</span></li>
+        <li style="display:flex;gap:12px;color:var(--muted);font-size:.97rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><polyline points="20 6 9 17 4 12"/></svg><span>A thesis tied to the longer-term adoption or use case of the network or project, rather than near-term price catalysts</span></li>
+      </ul>
+      <p class="reveal d4">The core assumption behind long-term holding is that short-term price volatility is largely noise, and that if the underlying technology or network genuinely grows in utility or adoption over years, that may eventually be reflected in price. This is an assumption, not a guarantee — and it has been wrong for many tokens that have declined to near zero over multi-year periods.</p>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:44px 0">
+
+      <h2 class="reveal" style="margin-bottom:18px">What "Short-Term Trading" Actually Means</h2>
+      <p class="reveal d1">Short-term trading in crypto covers a wide spectrum: swing trading (days to weeks), day trading (intraday), and scalping (minutes to hours). Each requires progressively more time, more technical skill, and more emotional discipline.</p>
+      <p class="reveal d2">Traders typically rely on one or more of the following:</p>
+      <ul class="reveal d3" style="list-style:none;display:grid;gap:12px;margin:18px 0 28px">
+        <li style="display:flex;gap:12px;color:var(--muted);font-size:.97rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span><strong style="color:var(--text)">Technical analysis (TA)</strong> — reading price charts, volume, support/resistance levels, moving averages, and momentum indicators</span></li>
+        <li style="display:flex;gap:12px;color:var(--muted);font-size:.97rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span><strong style="color:var(--text)">Fundamental catalysts</strong> — trading around anticipated events like protocol upgrades, listings, or macroeconomic data releases</span></li>
+        <li style="display:flex;gap:12px;color:var(--muted);font-size:.97rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span><strong style="color:var(--text)">Sentiment and on-chain data</strong> — tracking social volume, funding rates, open interest, and wallet flows</span></li>
+        <li style="display:flex;gap:12px;color:var(--muted);font-size:.97rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span><strong style="color:var(--text)">Arbitrage</strong> — exploiting temporary price differences across exchanges, often automated</span></li>
+      </ul>
+      <p class="reveal d4">An important, frequently underappreciated fact: the research literature on retail day trading across various asset classes consistently finds that the majority of active short-term traders underperform simply buying and holding an index. Crypto is different enough from equities that direct comparisons are imperfect, but the general finding — that frequent trading is hard to execute profitably after fees, spreads, and taxes — applies with equal or greater force in a 24/7, highly volatile market where professional and algorithmic participants are extremely active.</p>
+      <p class="reveal" style="margin-top:14px">This is not a reason to avoid short-term trading entirely. It is a reason to take it seriously as a skill that requires substantial learning, a risk management framework, and honest record-keeping.</p>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:44px 0">
+
+      <h2 class="reveal" style="margin-bottom:18px">The Trade-Off Table: A Balanced Look</h2>
+      <p class="reveal d1">Neither approach is right for everyone. The table below summarises the key differences across several dimensions — not to steer you in either direction, but to help you think clearly about what each entails.</p>
+
+      <div class="grid grid-2 reveal d2" style="margin:28px 0 36px;gap:20px">
+        <div class="glass">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Long-Term Holding</h3>
+          <ul style="list-style:none;display:grid;gap:10px;margin-top:10px">
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--green);margin-right:8px">+</span>Lower time commitment once position is established</li>
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--green);margin-right:8px">+</span>Fewer taxable events in many jurisdictions</li>
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--green);margin-right:8px">+</span>Less exposed to short-term manipulation and noise</li>
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--faint);margin-right:8px">−</span>Capital is locked in and illiquid (psychologically and practically)</li>
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--faint);margin-right:8px">−</span>Can endure 70–90 % drawdowns before any potential recovery</li>
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--faint);margin-right:8px">−</span>Project or network may fundamentally fail — no recovery possible</li>
+          </ul>
+        </div>
+        <div class="glass cyan">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <h3>Short-Term Trading</h3>
+          <ul style="list-style:none;display:grid;gap:10px;margin-top:10px">
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--green);margin-right:8px">+</span>Can exit quickly when a thesis proves wrong</li>
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--green);margin-right:8px">+</span>Does not require a multi-year thesis about a project's future</li>
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--green);margin-right:8px">+</span>Profit opportunities in both rising and falling markets (with appropriate tools)</li>
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--faint);margin-right:8px">−</span>Significant time and attention required</li>
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--faint);margin-right:8px">−</span>Trading fees, spreads, and slippage compound quickly</li>
+            <li style="font-size:.9rem;color:var(--muted)"><span style="color:var(--faint);margin-right:8px">−</span>Each trade may be a taxable event; record-keeping is complex</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:44px 0">
+
+      <h2 class="reveal" style="margin-bottom:18px">The Psychology Problem: FOMO, Panic, and Recency Bias</h2>
+      <p class="reveal d1">Of all the factors that erode returns for crypto participants, psychology is arguably the most consistent and the most underestimated. Understanding the cognitive patterns that operate in volatile markets is relevant regardless of your time horizon — but they manifest differently depending on whether you are holding or trading.</p>
+
+      <h3 class="reveal d2" style="margin:28px 0 12px">FOMO (Fear of Missing Out)</h3>
+      <p class="reveal d3">When a token rises sharply over a short period, it attracts attention and social commentary. The natural human response is to want to participate in that move — often just as it is ending. FOMO-driven entries tend to occur near local price peaks, leaving the buyer exposed to the subsequent correction. This is not unique to crypto: the same pattern has been documented in equities, real estate, and collectibles. In crypto it is amplified by 24/7 markets, social media, and the sheer frequency and magnitude of price swings.</p>
+
+      <h3 class="reveal d2" style="margin:28px 0 12px">Panic Selling</h3>
+      <p class="reveal d3">The mirror image of FOMO is panic selling: exiting a position during a sharp decline because the emotional discomfort of watching a loss grow becomes unbearable. Panic selling locks in losses and means the seller is no longer in a position to benefit if the price recovers. Long-term holders face this risk during deep multi-month bear markets; short-term traders face it on shorter timescales. Having a pre-defined plan — whether that is a stop-loss order or a personal rule about maximum acceptable drawdown — is one of the few tools that can interrupt this pattern.</p>
+
+      <h3 class="reveal d2" style="margin:28px 0 12px">Recency Bias</h3>
+      <p class="reveal d3">Humans tend to assign disproportionate weight to recent events when forming expectations about the future. After an extended bull run, many participants assume continued appreciation. After a prolonged decline, many assume continued decline. Neither assumption is reliably correct. Crypto markets have historically been cyclical in a way that repeatedly punishes both forms of recency bias — though past cycles are not a guarantee of future behaviour.</p>
+
+      <h3 class="reveal d2" style="margin:28px 0 12px">Sunk Cost Thinking</h3>
+      <p class="reveal d3">Holding a losing position long past the point where the original thesis remains valid — because selling would "make the loss real" — is a well-documented cognitive error. Whether you are a long-term holder or a trader, it is worth asking periodically: <em>if I did not already own this asset, would I buy it today at the current price for my current reasons?</em> If the answer is no, that is important information.</p>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:44px 0">
+
+      <h2 class="reveal" style="margin-bottom:18px">The Do's and Don'ts: Common Sense Risk Management</h2>
+      <p class="reveal d1" style="margin-bottom:28px">Regardless of time horizon, the following principles appear consistently in how experienced participants approach risk. These are general observations, not advice tailored to your situation.</p>
+
+      <div class="proof-split reveal d2" style="margin-bottom:44px">
+        <div class="do-dont is-do">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Worth considering
+          </h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Only allocate capital you can afford to lose entirely — this is not a cliché, it is a description of the actual risk level of many tokens</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Decide your exit conditions before you enter a position, not after the price moves</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Verify what you are buying on-chain before committing capital — contract addresses, supply, and authority status can all be checked publicly</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Keep accurate records of every transaction — tax obligations exist in most jurisdictions regardless of where you trade</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Consider spreading entries over time rather than committing everything at once — try our <a href="/tools/dca-calculator" style="color:var(--green);text-decoration:underline;text-underline-offset:3px">DCA calculator</a> to model this</span></li>
+          </ul>
+        </div>
+        <div class="do-dont is-dont">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Red flags to recognise
+          </h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Anyone promising guaranteed returns or specific price targets — these claims are a warning sign, not an opportunity</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Private messages from strangers offering to help you "get in early" on something — this is the most common form of crypto scam</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Tokens with undisclosed mint authority — the ability to print new supply can dilute holders without warning; always verify on-chain</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Using leverage or borrowed funds on highly volatile assets without a clear risk management plan — amplified gains come with amplified losses</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Making large position changes purely in response to social media sentiment or influencer commentary without independent verification</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:44px 0">
+
+      <h2 class="reveal" style="margin-bottom:18px">A Brief, Factual Look at Different Token Types</h2>
+      <p class="reveal d1">Time horizon thinking looks different depending on the type of asset. The following is a factual, non-promotional overview of several categories. This is not a ranking or a recommendation — it is context.</p>
+      <p class="reveal d2" style="margin-bottom:8px;font-size:.85rem;color:var(--faint);font-style:italic">Educational overview only. Not advice. All crypto assets carry significant risk. Do your own research.</p>
+
+      <div class="grid grid-3 reveal d2" style="margin:24px 0 16px">
+        <article class="glass">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3>Bitcoin (BTC)</h3>
+          <p>The first and largest by market cap. Fixed supply of 21 million coins. No issuing authority. Primarily used as a store-of-value and as collateral. High liquidity; available on virtually every exchange. Subject to significant volatility despite its relative maturity within crypto.</p>
+        </article>
+        <article class="glass">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/></svg>
+          </div>
+          <h3>Ethereum (ETH)</h3>
+          <p>The largest smart-contract platform. Hosts a large share of DeFi and NFT activity. Transitioned to proof-of-stake in 2022. Has an active developer ecosystem. Network fees can be high during congestion. Has undergone significant protocol changes and may do so again.</p>
+        </article>
+        <article class="glass cyan">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3>Solana (SOL)</h3>
+          <p>A high-throughput layer-1 blockchain known for low transaction fees and fast confirmation times. Has experienced network outages in the past. Hosts an active ecosystem of DeFi, NFT, and token projects. TrustTails (TAIL) is built as a Solana SPL token.</p>
+        </article>
+      </div>
+      <div class="grid grid-3 reveal d3" style="margin:0 0 28px">
+        <article class="glass">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Layer-2 Networks</h3>
+          <p>Projects such as Arbitrum, Optimism, and Base extend Ethereum's capacity. They process transactions off the main chain and settle on it. They have their own tokens and ecosystems. Technical and adoption risks differ from the base layer.</p>
+        </article>
+        <article class="glass">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Stablecoins</h3>
+          <p>Tokens designed to maintain a stable value relative to a fiat currency (usually the US dollar). Used for liquidity, DeFi participation, and reducing exposure to volatility. Not risk-free: peg failures and issuer risk exist. Not investments in the traditional sense.</p>
+        </article>
+        <article class="glass">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Community Tokens</h3>
+          <p>Small or pre-launch tokens built around a community or concept rather than a protocol or platform. Extremely high risk. Most lose the majority of their value. A small number develop active communities and use cases over time. Require more caution, not less.</p>
+        </article>
+      </div>
+
+      <!-- TrustTails honest placement -->
+      <div class="glass reveal d4" style="border-color:rgba(69,230,255,.28);background:rgba(69,230,255,.04);margin:36px 0">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <span style="flex-shrink:0;margin-top:2px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </span>
+          <div>
+            <p style="margin:0 0 10px;font-weight:600;color:var(--text)">Where TrustTails fits in this picture</p>
+            <p style="margin:0;font-size:.94rem;color:var(--muted)">TrustTails (TAIL) is a small, <strong style="color:var(--text)">pre-launch community token</strong> on Solana. It is in the highest-risk category described above. Its mint authority and freeze authority are both revoked (verifiable on-chain at contract <code style="font-family:var(--font-mono);font-size:.8rem;color:var(--cyan-2)">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>), which means no new supply can be created and wallets cannot be frozen — two meaningful but not exhaustive transparency measures. It is not yet buyable. We do not claim it is a good investment or predict any particular price outcome. We present it factually as a community-first project with verifiable on-chain properties.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:44px 0">
+
+      <h2 class="reveal" style="margin-bottom:18px">How to Actually Define Your Time Horizon</h2>
+      <p class="reveal d1">Rather than choosing between "long-term" and "short-term" as abstract camps, it is more useful to work through a few concrete questions:</p>
+
+      <div class="timeline reveal d2" style="margin:28px 0 40px">
+        <div class="tl-item">
+          <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-status live">Step 1</div>
+            <h3>How long can this capital be unavailable?</h3>
+            <p style="color:var(--muted);font-size:.95rem;margin-top:8px">If you might need this money in six months — for rent, medical costs, or any other essential — it should probably not be in crypto at all. Crypto markets have spent extended periods well below prior peaks. "I'll sell if I need it" is not a reliable plan when markets can be illiquid or deeply down precisely when you need liquidity.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-status live">Step 2</div>
+            <h3>What is your honest emotional tolerance for drawdown?</h3>
+            <p style="color:var(--muted);font-size:.95rem;margin-top:8px">It is easy to say "I can handle a 50% drop" in the abstract. It is much harder to remain calm when it actually happens to capital you have assigned real-world meaning to. Consider how you have reacted to losses in other financial contexts — that is more predictive than a theoretical statement.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-status live">Step 3</div>
+            <h3>How much time can you genuinely dedicate to monitoring?</h3>
+            <p style="color:var(--muted);font-size:.95rem;margin-top:8px">Active trading is a time-consuming activity. If you have a full-time job and limited screen time, a strategy that requires monitoring intraday charts is likely to go wrong the moment something happens while you are unavailable. Match the strategy to your actual available attention, not your aspirational attention.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-status live">Step 4</div>
+            <h3>What does your exit look like?</h3>
+            <p style="color:var(--muted);font-size:.95rem;margin-top:8px">Define this before you enter. At what price or condition would you take profit? At what point would you acknowledge the thesis has failed and exit? Written answers to these questions — made when you are calm — are far more reliable than in-the-moment decisions made under emotional pressure. Our <a href="/tools/dca-calculator" class="text-gold" style="text-decoration:underline;text-underline-offset:3px">DCA calculator</a> can help model gradual entry and exit strategies.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:44px 0">
+
+      <h2 class="reveal" style="margin-bottom:18px">Scam Awareness: A Non-Negotiable Addition</h2>
+      <p class="reveal d1">Any article about crypto risk must include an honest section on scams, because they are endemic to the space and specifically exploit the psychological vulnerabilities discussed above.</p>
+      <div class="glass reveal d2" style="border-color:rgba(235,87,87,.3);background:rgba(235,87,87,.05);margin:18px 0 28px">
+        <h3 style="margin-bottom:14px;color:#f87171">Common scam patterns to recognise</h3>
+        <ul style="list-style:none;display:grid;gap:14px">
+          <li style="display:flex;gap:12px;color:var(--muted);font-size:.95rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong style="color:var(--text)">Fake presales</strong> — anyone claiming to offer TrustTails or any other token before a public launch, via direct message, is running a scam. There is no presale for TAIL. Do not send funds to unknown addresses.</span></li>
+          <li style="display:flex;gap:12px;color:var(--muted);font-size:.95rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong style="color:var(--text)">Impersonation</strong> — scammers create accounts mimicking official project handles with minor spelling differences. Always verify official channels: <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan" style="text-decoration:underline;text-underline-offset:3px">X @trusttailscoin</a>, Telegram <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-cyan" style="text-decoration:underline;text-underline-offset:3px">@TrustTailsCommunity</a>, <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan" style="text-decoration:underline;text-underline-offset:3px">@TrustTailsOfficial</a>.</span></li>
+          <li style="display:flex;gap:12px;color:var(--muted);font-size:.95rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong style="color:var(--text)">Pump and dump</strong> — coordinated buying to inflate a token's price, followed by the orchestrators selling into the artificial demand. Characterised by sudden, unexplained price spikes and high-pressure urgency. FOMO is the mechanism these schemes rely on.</span></li>
+          <li style="display:flex;gap:12px;color:var(--muted);font-size:.95rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong style="color:var(--text)">Rug pulls</strong> — developers retain control of a significant token supply or liquidity, build apparent community momentum, then drain the liquidity pool and disappear. Always verify authority status and token distribution on-chain before participating in any project.</span></li>
+          <li style="display:flex;gap:12px;color:var(--muted);font-size:.95rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong style="color:var(--text)">"Recovery" scams</strong> — if you have already lost funds to a scam, be extremely wary of anyone offering to recover them for a fee. This is almost always a second scam targeting the same victims.</span></li>
+        </ul>
+      </div>
+
+      <!-- Contract verify -->
+      <div class="glass reveal d3" style="margin-bottom:44px">
+        <p style="margin:0 0 14px;font-size:.9rem;color:var(--muted)">Always verify the TrustTails contract address on-chain before any interaction. The official contract is:</p>
+        <div class="contract-pill" style="max-width:100%">
+          <span class="lbl">Contract</span>
+          <code>4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+          <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="copy-label">Copy</span>
+          </button>
+        </div>
+        <p style="margin:14px 0 0;font-size:.84rem;color:var(--faint)">Verify at <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" style="color:var(--cyan-2);text-decoration:underline;text-underline-offset:3px">solscan.io</a> — confirm mint authority revoked, freeze authority revoked, fixed supply 1,000,000,000 TAIL.</p>
+      </div>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:44px 0">
+
+      <!-- FAQ -->
+      <h2 class="reveal" style="margin-bottom:28px;text-align:center">Frequently Asked Questions</h2>
+      <div class="faq reveal d1">
+        <details class="faq-item">
+          <summary>Is long-term holding always safer than trading?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq-a">Not necessarily. Long-term holding eliminates trading-related costs and reduces emotional decision points, but it does not eliminate the risk of an asset declining to near zero or staying far below your entry price for many years. Safety depends heavily on which asset you hold and how much capital is at risk relative to your overall financial situation. There is no universally safe strategy in crypto.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Does dollar-cost averaging (DCA) guarantee better outcomes?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq-a">No. DCA is a structured approach to entering a position gradually, which can reduce the impact of buying entirely at a local peak. However, it does not protect against a sustained long-term decline — in that scenario, each subsequent purchase adds to losses. Our <a href="/tools/dca-calculator" class="text-gold" style="text-decoration:underline;text-underline-offset:3px">DCA calculator</a> lets you model different scenarios, but results in any model are illustrative and not predictive of real outcomes.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How do taxes work for short-term trading versus long-term holding?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq-a">Tax treatment varies significantly by jurisdiction. In many countries (including the US, UK, and Australia), short-term capital gains — on assets held less than one year — are taxed at a higher rate than long-term gains. Each trade is typically a taxable event. Keeping accurate records of every transaction, including fees, is essential. This article does not constitute tax advice; consult a qualified tax professional in your jurisdiction.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I trade TrustTails (TAIL) now?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq-a">No. TrustTails is pre-launch and not yet available to buy or trade. Anyone claiming to sell TAIL privately or offer a presale is almost certainly running a scam. Follow official channels — <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan" style="text-decoration:underline;text-underline-offset:3px">X @trusttailscoin</a> and <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-cyan" style="text-decoration:underline;text-underline-offset:3px">Telegram</a> — for announcements about the public launch.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What does "mint authority revoked" mean and why does it matter?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq-a">On Solana, a token's mint authority controls the ability to create new supply. If mint authority is revoked, no additional tokens can ever be minted — the supply is permanently fixed. For TrustTails, this means the supply is capped at 1,000,000,000 TAIL. This is verifiable on-chain via Solscan. It removes one common risk vector (supply dilution), but does not remove other risks inherent to small community tokens.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Should I split my approach — some long-term, some short-term?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq-a">Some people do allocate separate "buckets" — one for long-term holds and a separate, smaller amount for active participation. This is not inherently right or wrong. The key requirement is that each bucket has its own defined rules, risk limits, and expectations — otherwise the psychological accounting becomes blurred and the boundaries tend to dissolve during stressful periods. This is not advice about what you should do; it is a description of how some people structure their approach.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Where can I learn more about crypto risk in an honest way?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq-a">We have a dedicated guide at <a href="/blog/crypto-risk-honest-guide" class="text-gold" style="text-decoration:underline;text-underline-offset:3px">An Honest Guide to Crypto Risk</a> that covers volatility, liquidity risk, smart contract risk, counterparty risk, and regulatory risk in plain language. You can also explore our <a href="/tools/">tools</a> to model scenarios and verify on-chain data without relying on third-party claims.</div>
+        </details>
+      </div>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:44px 0">
+
+      <!-- Closing thoughts -->
+      <h2 class="reveal" style="margin-bottom:18px">Closing Thoughts</h2>
+      <p class="reveal d1">There is no universally correct time horizon for crypto participation. Long-term holding demands conviction, patience, and the ability to withstand severe drawdowns without exiting. Short-term trading demands skill, time, discipline, and rigorous cost accounting. Both can result in significant losses. Neither comes with a guarantee.</p>
+      <p class="reveal d2">What tends to produce the worst outcomes is the absence of any defined approach — buying because something is moving up, holding because selling would be painful, or switching strategy reactively as conditions change. The most useful thing you can do before committing any capital is to decide, in writing, what your thesis is, what your risk limit is, and under what conditions you will exit.</p>
+      <p class="reveal d3">For more, read our companion guide on <a href="/blog/crypto-risk-honest-guide" class="text-gold" style="text-decoration:underline;text-underline-offset:3px">understanding crypto risk honestly</a>, or try the <a href="/tools/dca-calculator" class="text-gold" style="text-decoration:underline;text-underline-offset:3px">DCA calculator</a> to model gradual entry scenarios. And as always: verify everything on-chain, be wary of anyone promising certainty, and only participate with capital you can genuinely afford to lose.</p>
+
+      <!-- Final disclaimer -->
+      <div class="glass reveal d4" style="border-color:rgba(242,183,54,.25);background:rgba(242,183,54,.04);margin-top:40px">
+        <p style="margin:0;font-size:.87rem;color:var(--faint);line-height:1.75"><strong style="color:var(--muted)">Disclaimer:</strong> This article is published for educational purposes only and does not constitute financial, investment, or legal advice. TrustTails is not a financial adviser. All cryptocurrency investments involve significant risk, including the potential for total loss of capital. Past performance of any asset is not indicative of future results. Nothing in this article should be construed as a recommendation to buy, sell, or hold any cryptocurrency or other financial instrument. Always conduct your own independent research (DYOR) and consult a licensed financial professional before making any financial decisions. Scam warning: TrustTails will never contact you via private message to offer tokens, presales, or investment opportunities. Any such contact is a scam.</p>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Stay grounded. Stay informed.</h2>
+      <p>Join the TrustTails community for transparent updates, educational content, and on-chain verified information — no hype, no guarantees.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Join Telegram Community
+        </a>
+        <a class="btn btn-ghost" href="/tools/dca-calculator">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          DCA Calculator
+        </a>
+        <a class="btn btn-ghost" href="/blog/crypto-risk-honest-guide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Honest Risk Guide
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell. Verify everything on-chain.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Project</h4><a href="/about">About</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/whitepaper">Whitepaper</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">Compare</a><a href="/how-to-buy">How to buy</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calc</a><a href="/tools/rug-pull-checklist">Rug-Pull Check</a><a href="/tools/">All tools</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/">Insights</a><a href="/solana">Why Solana?</a><a href="/faq">FAQ</a><a href="/community">Community</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here is a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

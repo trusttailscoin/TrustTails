@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Understanding Token Supply: Fixed, Inflationary &amp; Deflationary</title>
+<meta name="description" content="What fixed, inflationary and deflationary token supplies mean, how they affect you, and how to verify a token's real supply on-chain.">
+<link rel="canonical" href="https://trusttails.io/blog/understanding-token-supply">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trusttails.io/blog/understanding-token-supply">
+<meta property="og:title" content="Understanding Token Supply: Fixed, Inflationary &amp; Deflationary">
+<meta property="og:description" content="What fixed, inflationary and deflationary token supplies mean, how they affect you, and how to verify a token's real supply on-chain.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Understanding Token Supply: Fixed, Inflationary &amp; Deflationary">
+<meta name="twitter:description" content="What fixed, inflationary and deflationary token supplies mean, how they affect you, and how to verify a token's real supply on-chain.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://trusttails.io/blog/"},{"@type":"ListItem","position":3,"name":"Understanding token supply","item":"https://trusttails.io/blog/understanding-token-supply"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Project <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/about"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span><b>About & Story</b><span class="ms">How TrustTails began</span></span></a>
+        <a class="mega-link" href="/tokenomics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 0 1 0 4H9m2-4v8"/></svg></span><span><b>Tokenomics</b><span class="ms">Fixed 1B, revoked authorities</span></span></a>
+        <a class="mega-link" href="/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></span><span><b>Roadmap</b><span class="ms">The honest 3-phase journey</span></span></a>
+        <a class="mega-link" href="/vision"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6Z"/></svg></span><span><b>Vision</b><span class="ms">The long-term north star</span></span></a>
+        <a class="mega-link" href="/tail-network"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg></span><span><b>TAIL Network</b><span class="ms">The technology behind TAIL</span></span></a>
+        <a class="mega-link" href="/solana"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h12l2-2H7Zm0 5h12l2-2H7Zm0 5h12l2-2H7Z"/></svg></span><span><b>Why Solana</b><span class="ms">Speed and low fees</span></span></a>
+        <a class="mega-feature" href="/whitepaper"><span><b>Whitepaper</b><span class="ms">The full vision &amp; tokenomics</span></span><span class="btn btn-gold btn-sm">Read</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Trust <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/is-it-legit"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Is it legit?</b><span class="ms">Verify on-chain in 60s</span></span></a>
+        <a class="mega-link" href="/security"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Security</b><span class="ms">Stay safe from scams</span></span></a>
+        <a class="mega-link" href="/trust-and-transparency"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Transparency</b><span class="ms">How we communicate</span></span></a>
+        <a class="mega-link" href="/compare"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>How we compare</b><span class="ms">vs a typical meme coin</span></span></a>
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token checker</b><span class="ms">Check any Solana token</span></span></a>
+        <a class="mega-feature" href="/is-it-legit"><span><b>Live on-chain proof</b><span class="ms">Supply &amp; authorities, verified</span></span><span class="btn btn-gold btn-sm">Verify</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Tools <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token Checker</b><span class="ms">Verify any SPL token</span></span></a>
+        <a class="mega-link" href="/tools/token-comparison"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>Comparison</b><span class="ms">Compare tokens side by side</span></span></a>
+        <a class="mega-link" href="/tools/market-cap-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M14 10h2v8h-2zM8 18h2"/></svg></span><span><b>Market Cap Calc</b><span class="ms">Hypothetical market cap</span></span></a>
+        <a class="mega-link" href="/tools/holdings-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9l8 4"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Holdings Calc</b><span class="ms">Value your holdings</span></span></a>
+        <a class="mega-link" href="/tools/rug-pull-checklist"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span><b>Rug-Pull Checklist</b><span class="ms">Score safety signals</span></span></a>
+        <a class="mega-link" href="/tools/wallet-setup-guide"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 12h3M3 9h18"/></svg></span><span><b>Wallet Setup</b><span class="ms">Phantom & Solflare</span></span></a>
+        <a class="mega-feature" href="/tools/"><span><b>All free tools</b><span class="ms">No sign-up, no hype</span></span><span class="btn btn-gold btn-sm">Open</span></a>
+      </div>
+    </div>
+    <a class="nav-top-link nav-top" href="/blog/">Insights</a>
+    <a class="nav-top-link nav-top" href="/how-to-buy">How to buy</a>
+    <a class="nav-top-link nav-top" href="/faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+<div class="mobile-menu">
+  <details class="mm-sec"><summary>Project</summary><div class="mm-links"><a href="/about">About &amp; Story</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/tail-network">TAIL Network</a><a href="/solana">Why Solana</a><a href="/whitepaper">Whitepaper</a></div></details>
+  <details class="mm-sec"><summary>Trust</summary><div class="mm-links"><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">How we compare</a></div></details>
+  <details class="mm-sec"><summary>Tools</summary><div class="mm-links"><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calculator</a><a href="/tools/holdings-calculator">Holdings Calculator</a><a href="/tools/rug-pull-checklist">Rug-Pull Checklist</a><a href="/tools/wallet-setup-guide">Wallet Setup</a><a href="/tools/">All tools</a></div></details>
+  <a class="mm-direct" href="/blog/">Insights</a>
+  <a class="mm-direct" href="/how-to-buy">How to buy</a>
+  <a class="mm-direct" href="/faq">FAQ</a>
+  <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Insights · Education</span>
+      <h1>Understanding Token Supply:<br><span class="text-grad">Fixed, Inflationary &amp; Deflationary</span></h1>
+      <p class="lead">Token supply is one of the most consequential — and most misunderstood — properties of any cryptocurrency. This guide explains each supply model clearly, explains how to verify supply claims on-chain, and shows where TrustTails (TAIL) sits honestly in that picture.</p>
+    </div>
+    <div class="reveal d2" style="display:flex;align-items:center;gap:12px;margin-top:8px;font-size:.85rem;color:var(--muted);flex-wrap:wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      <span>Published 18 June 2026</span>
+      <span style="margin:0 6px">·</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span>9 min read</span>
+      <span style="margin:0 6px">·</span>
+      <span style="color:var(--faint)">Educational — not financial advice</span>
+    </div>
+
+    <!-- Article JSON-LD -->
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Understanding Token Supply: Fixed, Inflationary & Deflationary",
+      "description": "What fixed, inflationary and deflationary token supplies mean, how they affect you, and how to verify a token's real supply on-chain.",
+      "url": "https://trusttails.io/blog/understanding-token-supply",
+      "datePublished": "2026-06-18",
+      "author": {"@type": "Organization", "name": "TrustTails"},
+      "publisher": {"@type": "Organization", "name": "TrustTails", "url": "https://trusttails.io"},
+      "image": "https://trusttails.io/assets/img/og-cover.png",
+      "about": [
+        {"@type": "Thing", "name": "Token supply"},
+        {"@type": "Thing", "name": "Cryptocurrency economics"},
+        {"@type": "Thing", "name": "Solana SPL token"},
+        {"@type": "Thing", "name": "Mint authority"},
+        {"@type": "Thing", "name": "Tokenomics"}
+      ]
+    }</script>
+  </div>
+</section>
+
+<!-- DISCLAIMER BANNER -->
+<section class="section--tight" style="background:var(--bg-2);padding-top:0;padding-bottom:0">
+  <div class="container">
+    <div class="glass reveal" style="border-color:rgba(242,183,54,.28);background:rgba(242,183,54,.04);padding:20px 28px">
+      <p style="font-size:.9rem;color:var(--muted);margin:0"><strong class="text-gold">Educational content only.</strong> Nothing on this page is financial advice. Cryptocurrency markets are highly speculative and volatile. You can lose all money you put in. Do your own research (DYOR), consult a qualified financial adviser before making any investment decision, and never put in more than you can afford to lose entirely. This article describes supply mechanics for educational purposes only.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO: WHY SUPPLY MATTERS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Foundation</span>
+      <h2>Why token supply deserves careful attention</h2>
+      <p>When you hold a unit of any currency — crypto or fiat — its relationship to the total supply matters. Not because supply alone determines value, but because supply changes can affect every other holder without their input or consent.</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="reveal d1" style="padding:0 8px">
+        <p>Consider an ordinary share of stock. If a company issues new shares to raise funds, each existing share represents a smaller fraction of the company. Existing shareholders are diluted — they own the same number of shares, but each share now represents less. This is a standard, legal practice. But it is also something shareholders are informed about through regulated filings.</p>
+        <p style="margin-top:16px">Token projects do not always operate with equivalent transparency. Supply expansion — sometimes called "minting" — can happen quietly, governed only by the willingness of whoever holds the mint authority. In the worst cases, teams have minted enormous quantities of tokens to dump them on the market, devastating early holders.</p>
+        <p style="margin-top:16px">Understanding what supply model a token uses, and whether that model is enforced at the code level or merely promised in a document, is one of the first things any thoughtful person should check. Our <a href="/tools/supply-percentage-calculator" class="text-gold">supply percentage calculator</a> can help you think through what share of a token's total supply a given wallet holds.</p>
+      </div>
+      <div class="reveal d2" style="padding:0 8px">
+        <p>This guide covers three broad supply models you will encounter across the crypto landscape: fixed, inflationary, and deflationary. Each has legitimate uses. Each also has ways it can be misrepresented. The goal here is to help you read the difference between a well-structured supply policy and a marketing claim that needs more scrutiny.</p>
+        <p style="margin-top:16px">We also look at how to verify supply claims directly on-chain — without trusting any website, including this one. On a public blockchain, the actual state of a token's supply is readable by anyone. You do not need to trust a team's word; you can check the data yourself.</p>
+        <p style="margin-top:16px">At the end, we discuss where TrustTails (TAIL) sits in this picture. We will be straightforward about it: TAIL is a small, pre-launch community token on Solana. Its supply is fixed at 1,000,000,000, with both mint and freeze authorities permanently revoked. That is a verifiable on-chain fact — not a prediction about what the token will be worth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREE SUPPLY MODELS -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Supply Models</span>
+      <h2>The three main supply structures</h2>
+      <p>Most tokens fit into one of these categories — or a hybrid. None is inherently better; what matters is how honestly the model is implemented and communicated.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Fixed supply</h3>
+        <p>A fixed-supply token has a total number of tokens set at launch that can never increase. Every unit that will ever exist already exists. No new tokens can be minted, and the mechanism to create more has been disabled at the protocol level. Bitcoin's 21 million cap is the most cited example of this model, though the enforcement mechanism differs across blockchains.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <h3>Inflationary supply</h3>
+        <p>An inflationary token has a supply that grows over time, either continuously or on a schedule. New tokens are minted and distributed — often as staking rewards, to validators, or to fund a project treasury. Ethereum, Solana, and many proof-of-stake networks issue new tokens to validators. This is not hidden; it is a designed feature. The key question is always the rate and who controls it.</p>
+      </article>
+      <article class="glass cyan reveal d3">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <h3>Deflationary supply</h3>
+        <p>A deflationary token has mechanisms that reduce total supply over time — usually by "burning" tokens (sending them to an address from which they can never be recovered). Some projects burn a percentage of transaction fees. Others do scheduled burns. The intent is to reduce the number of tokens in circulation, though the actual economic effect depends on many factors beyond the burn rate alone.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FIXED SUPPLY DEEP DIVE -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Deep Dive</span>
+      <h2>Fixed supply: what it actually requires</h2>
+      <p>Claiming "fixed supply" in a whitepaper is straightforward. Enforcing it in a way that cannot be reversed by anyone — including the founding team — is a different matter entirely.</p>
+    </div>
+    <div class="grid grid-2" style="margin-bottom:40px">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Bitcoin's model: protocol-level scarcity</h3>
+        <p>Bitcoin enforces its 21 million cap through the consensus rules of the network itself. Changing the cap would require convincing a majority of miners, nodes, and developers to accept a protocol change — a practically insurmountable coordination problem given the network's current size and the ideological commitment of its participants to the cap. The limit is not enforced by a single authority but by distributed agreement on the rules.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+        </div>
+        <h3>Solana SPL tokens: authority revocation</h3>
+        <p>On Solana, SPL tokens are governed by a mint account that has two key authority fields: mint authority (who can create new tokens) and freeze authority (who can lock token accounts). When either authority is revoked — set to <code>null</code> via the <code>setAuthority</code> instruction — it is permanent. The Solana runtime will reject any future attempt to use that authority. No upgrade, no governance vote, and no amount of private keys can restore it.</p>
+      </article>
+    </div>
+    <div class="glass reveal" style="border-color:rgba(69,230,255,.2);background:rgba(69,230,255,.03)">
+      <h3 class="text-cyan" style="margin-bottom:12px">The critical difference: promise vs. protocol</h3>
+      <p>Many tokens claim fixed supply but retain active mint authorities. The team may intend never to use them — and may be entirely honest about that intention. But as long as the authority exists, the possibility of future minting exists. The supply is fixed by trust, not by code.</p>
+      <p style="margin-top:14px">When authorities are revoked, the supply is fixed by the protocol. No trust is required beyond trusting that the blockchain itself functions as documented — which is the same trust you extend to every transaction you make on that chain. This distinction matters enormously when evaluating a token's actual supply guarantee.</p>
+      <p style="margin-top:14px">For a focused explanation of why revocation is the key indicator to check, see our companion article: <a href="/blog/fixed-supply-explained" class="text-gold">Fixed Supply Explained: Why 1 Billion TAIL Never Changes</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INFLATIONARY DEEP DIVE -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Deep Dive</span>
+      <h2>Inflationary supply: legitimate design, not inherently a red flag</h2>
+      <p>Inflation in token supply is widely misunderstood. Here is a clear-eyed look at how it actually works across different projects.</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="reveal d1" style="padding:0 8px">
+        <h3 style="font-size:1.15rem;margin-bottom:12px;color:var(--text)">When inflation serves a purpose</h3>
+        <p>Proof-of-stake blockchains like Solana and Ethereum issue new tokens as rewards to validators who secure the network. This is a designed economic incentive — validators are paid in newly issued tokens for the work of keeping the chain running. Without this issuance, securing the network would rely on transaction fees alone, which may be insufficient at early adoption stages.</p>
+        <p style="margin-top:14px">Solana currently targets a declining inflation rate, starting higher and reducing toward a long-term floor. The schedule is public, documented, and governed by the network's validators. Ethereum's issuance rate fluctuates with network activity and is partially offset by EIP-1559 fee burning. These are not secret; they are core to how the networks function.</p>
+        <p style="margin-top:14px">Many application-layer tokens also use inflationary models for specific purposes: governance participation rewards, liquidity mining incentives, or contributor grants. When implemented with transparent schedules and clear caps, inflation can be a rational design choice rather than a warning sign.</p>
+      </div>
+      <div class="reveal d2" style="padding:0 8px">
+        <h3 style="font-size:1.15rem;margin-bottom:12px;color:var(--text)">When to be cautious</h3>
+        <p>The concern arises when an inflationary token's supply expansion is controlled by a small number of wallets with no published schedule, no cap, and no community governance. In those cases, holders are exposed to dilution at any time, with no way to predict or protect against it.</p>
+        <p style="margin-top:14px">Red flags to watch for with inflationary tokens:</p>
+        <ul style="list-style:none;margin-top:12px;display:grid;gap:10px">
+          <li style="display:flex;gap:10px;font-size:.95rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" style="flex-shrink:0;margin-top:2px;color:var(--faint)"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>No published inflation rate or schedule</li>
+          <li style="display:flex;gap:10px;font-size:.95rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" style="flex-shrink:0;margin-top:2px;color:var(--faint)"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Mint authority held by a single wallet with no multisig or time-lock</li>
+          <li style="display:flex;gap:10px;font-size:.95rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" style="flex-shrink:0;margin-top:2px;color:var(--faint)"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>No maximum supply cap — inflation can continue indefinitely</li>
+          <li style="display:flex;gap:10px;font-size:.95rem;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" style="flex-shrink:0;margin-top:2px;color:var(--faint)"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>On-chain history showing large, unexplained mint events</li>
+        </ul>
+        <p style="margin-top:16px">The supply history of any Solana token is publicly readable on-chain. Checking the mint transaction history is one of the most useful steps in evaluating a project.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEFLATIONARY DEEP DIVE -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Deep Dive</span>
+      <h2>Deflationary supply: burns, buybacks, and honest expectations</h2>
+      <p>Deflationary mechanics are often marketed as a price catalyst. The reality is more nuanced.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c0 6-8 10-8 16a8 8 0 0 0 16 0c0-6-8-10-8-16z"/><path d="M12 12c0 3-3 5-3 7a3 3 0 0 0 6 0c0-2-3-4-3-7z"/></svg>
+        </div>
+        <h3>How token burns actually work</h3>
+        <p>A token burn is the act of sending tokens to a wallet address from which they can never be retrieved — typically an address with no known private key, often called a "null address" or "burn address." On Solana, a common approach is to send tokens to an address that demonstrably has no controlling keypair, making recovery impossible. Once burned, those tokens reduce the total circulating supply permanently.</p>
+        <p style="margin-top:12px">Burns can happen in several ways: a percentage of every transaction, scheduled team burns, or buyback-and-burn programs where project revenue is used to purchase tokens from the market and destroy them. Each approach has different economic implications and different levels of predictability.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+        </div>
+        <h3>What deflation does not guarantee</h3>
+        <p>Reducing supply does not automatically increase the value of remaining tokens. Price is set by supply and demand together. If demand falls faster than supply is reduced, the price still falls. Many projects have promoted aggressive burn mechanics while the token declined in value — because burns alone do not create demand.</p>
+        <p style="margin-top:12px">Additionally, some burn claims are difficult to verify independently, or the burned amount is small relative to the total supply, making the practical effect minimal. Before placing weight on a deflationary model, it is worth calculating: at the current burn rate, how many years until supply is meaningfully reduced? The <a href="/tools/supply-percentage-calculator" class="text-gold">supply percentage calculator</a> can help you work through this kind of question.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO VERIFY ON-CHAIN -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Verify Yourself</span>
+      <h2>How to check a token's real supply on-chain</h2>
+      <p>You do not need to trust any website — including this one. All of this information is on the blockchain and readable directly. Here is how to do it for any Solana token.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 1</span>
+          <h3>Find the contract address</h3>
+          <p style="color:var(--muted);font-size:.95rem">Every token on Solana has a unique mint address — a string of letters and numbers that identifies it on-chain. Find it on the project's official website (be careful of fakes), official social channels, or a reputable aggregator like CoinGecko or CoinMarketCap. Never trust a contract address sent to you in a DM.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 2</span>
+          <h3>Open a Solana block explorer</h3>
+          <p style="color:var(--muted);font-size:.95rem">Go to <strong>solscan.io</strong> or <strong>explorer.solana.com</strong> — both are free and require no account. Paste the mint address into the search bar and press enter. You will land on the token's mint account page, which shows live on-chain data.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 3</span>
+          <h3>Read the supply fields</h3>
+          <p style="color:var(--muted);font-size:.95rem">Look for three key fields on the token page: <strong class="text-gold">Total Supply</strong> — the current total number of tokens in existence; <strong class="text-gold">Mint Authority</strong> — the wallet or program that can create new tokens, or <code>null</code> if revoked; <strong class="text-gold">Freeze Authority</strong> — the wallet or program that can lock token accounts, or <code>null</code> if revoked. If both authorities show <code>null</code>, no new tokens can be minted and no accounts can be frozen by a team wallet.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 4</span>
+          <h3>Check the transaction history</h3>
+          <p style="color:var(--muted);font-size:.95rem">Even with authorities revoked today, it is worth checking whether large minting events happened in the past. On Solscan, navigate to the token's transaction history and filter for mint instructions. A token that was minted in stages, or had irregular large mints early on, tells a different story than one where the full supply was minted in a single genesis transaction and authorities then revoked immediately.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 5</span>
+          <h3>Check holder distribution</h3>
+          <p style="color:var(--muted);font-size:.95rem">On Solscan, the "Holders" tab shows the top wallets holding the token and what percentage each controls. Heavy concentration in a small number of wallets — especially those linked to the team — means a few holders could dramatically affect the market. This is a separate risk from supply mechanics, but it is part of the same due diligence picture. Compare wallet sizes, check whether large holders are labeled (exchange, liquidity pool, lock contract) and look at whether distribution has broadened or narrowed over time.</p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:36px">
+      <p style="color:var(--muted);margin-bottom:16px">For a full walkthrough of how to verify any Solana token — not just supply — see our dedicated guide: <a href="/blog/how-to-verify-a-solana-token" class="text-gold">How to Verify a Solana Token</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPLY MODEL STATS GRID -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Context</span>
+      <h2>A factual overview of supply models in practice</h2>
+      <p>These are observable facts about how well-known networks handle supply — presented for educational context, not as endorsements or investment recommendations. Every asset carries risk.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="glass stat reveal d1">
+        <div class="num gold">21M</div>
+        <div class="lbl">Bitcoin hard cap (BTC) — enforced by network consensus rules, not a single authority</div>
+      </div>
+      <div class="glass stat reveal d2">
+        <div class="num" style="color:var(--cyan-2)">~4.5%</div>
+        <div class="lbl">Solana annual inflation rate (SOL) — declining on a published schedule toward ~1.5%</div>
+      </div>
+      <div class="glass stat reveal d3">
+        <div class="num" style="color:var(--text)">Variable</div>
+        <div class="lbl">Ethereum (ETH) — net issuance depends on validator count and EIP-1559 burn; can be net deflationary</div>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:28px;font-size:.85rem;color:var(--faint);max-width:700px;margin-left:auto;margin-right:auto">Figures are approximate and change over time. Always verify current data from official network documentation. This is not a recommendation to hold any of these assets. All carry significant risk, including total loss of value.</p>
+  </div>
+</section>
+
+<!-- DO / DON'T -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Research Checklist</span>
+      <h2>What to check — and what to ignore</h2>
+      <p>When evaluating any token's supply claims, some information is genuinely useful. Other common signals are less reliable than they appear.</p>
+    </div>
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M20 6L9 17l-5-5"/></svg>
+          Check these directly
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
+            Mint authority status on a block explorer (null = revoked = cannot mint more)
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
+            Freeze authority status (null = revoked = team cannot lock your account)
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
+            Mint transaction history — did the full supply appear at genesis or in stages?
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
+            Top holder distribution — are team wallets holding disproportionate amounts?
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
+            Whether inflation (if any) is documented on a public, fixed schedule
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          Be cautious about
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            "Fixed supply" claims in whitepapers when mint authority is still active on-chain
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Burn mechanics presented as price guarantees — supply and demand are independent
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            "Low supply" as a standalone bullish argument — a token with 1,000 supply and no buyers is worth nothing
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Unverified burn claims — always check the burn address balance on-chain yourself
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Anyone who DMs you with supply information, contract addresses, or presale access — verify everything independently
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE TAIL FITS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">TrustTails · TAIL</span>
+      <h2>Where TAIL fits in this picture — honestly</h2>
+      <p>We will be direct about what TAIL is and what it is not. Supply mechanics are one part of a larger picture.</p>
+    </div>
+    <div class="grid grid-2" style="margin-bottom:40px">
+      <div class="reveal d1" style="padding:0 8px">
+        <p>TrustTails (TAIL) is a pre-launch, community-first token on the Solana blockchain. It is small, it has not launched on any exchange yet, and it carries every risk that small cryptocurrency projects carry. We are not claiming otherwise.</p>
+        <p style="margin-top:16px">What we can state as verifiable on-chain facts: TAIL has a fixed supply of exactly 1,000,000,000 tokens. Both the mint authority and freeze authority have been permanently revoked. This means no new TAIL can ever be created, and no team wallet can freeze any holder's account. These are not promises — they are the current on-chain state, readable by anyone on Solscan right now.</p>
+        <p style="margin-top:16px">Verify it yourself using the contract address below. Look for "Mint Authority: null" and "Freeze Authority: null" in the token details.</p>
+      </div>
+      <div class="reveal d2" style="padding:0 8px">
+        <p>Beyond supply mechanics, there is much that supply alone cannot tell you about a project. We encourage reading our research guides, checking our <a href="/is-it-legit" class="text-gold">Is It Legit?</a> page where we address common questions transparently, and doing your own independent research through sources that are not affiliated with TrustTails.</p>
+        <p style="margin-top:16px">TAIL is pre-launch. It is not currently available to buy. No legitimate presale or early-access sale is being run by the team. If anyone contacts you claiming to offer early TAIL access, treat it as a scam and do not engage. Legitimate announcements will only come through our verified channels.</p>
+        <p style="margin-top:16px">We have also published a full breakdown of how the 1,000,000,000 TAIL supply is allocated across categories — community, liquidity, and development — on the <a href="/tokenomics" class="text-gold">Tokenomics page</a>. We recommend reading it alongside this article.</p>
+      </div>
+    </div>
+
+    <!-- Contract verification block -->
+    <div class="glass reveal" style="border-color:rgba(69,230,255,.2)">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:28px;justify-content:space-between">
+        <div style="flex:1;min-width:240px">
+          <h3 style="margin-bottom:8px">TAIL on-chain facts</h3>
+          <p style="font-size:.92rem">Fixed supply · Mint revoked · Freeze revoked · Solana SPL</p>
+        </div>
+        <div style="flex:2;min-width:260px">
+          <p style="font-size:.8rem;color:var(--faint);margin-bottom:10px;letter-spacing:.08em;text-transform:uppercase;font-family:var(--font-mono)">Contract address</p>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <code style="color:var(--cyan-2);font-size:.82rem;background:var(--bg-3);padding:8px 14px;border-radius:8px;word-break:break-all">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+            <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span class="copy-label">Copy</span>
+            </button>
+          </div>
+          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn btn-ghost btn-sm" href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener">Verify on Solscan ↗</a>
+            <a class="btn btn-ghost btn-sm" href="/blog/fixed-supply-explained">Deep dive: fixed supply</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key stats -->
+    <div class="grid grid-4" style="margin-top:28px">
+      <div class="glass stat reveal d1">
+        <div class="num gold">1B</div>
+        <div class="lbl">Total TAIL supply, fixed forever</div>
+      </div>
+      <div class="glass stat reveal d2">
+        <div class="num gold">NULL</div>
+        <div class="lbl">Mint authority — permanently revoked</div>
+      </div>
+      <div class="glass stat reveal d3">
+        <div class="num gold">NULL</div>
+        <div class="lbl">Freeze authority — permanently revoked</div>
+      </div>
+      <div class="glass stat reveal d4">
+        <div class="num" style="color:var(--cyan-2)">PRE</div>
+        <div class="lbl">Launch status — not yet available to buy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCAM WARNING -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Stay Safe</span>
+      <h2>Supply claims are a common vector for scams</h2>
+      <p>Understanding supply mechanics also means understanding how they are abused. These patterns appear repeatedly in the crypto space.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+        </div>
+        <h3>The fake burn</h3>
+        <p>A team claims to burn tokens but sends them to a wallet they secretly control, not an actual burn address. The "burned" supply reappears later. Always verify: paste the alleged burn address into a block explorer and check whether any outgoing transactions have occurred. A genuine burn address should have received tokens and sent nothing back.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3>The hidden mint</h3>
+        <p>A project advertises "fixed supply" in its documentation but retains an active mint authority. After gaining community trust, the team mints a large additional supply — often into a wallet connected to an exchange — and sells at a profit. This is commonly called a rug pull. The protection against it is simple: check whether the mint authority is null on-chain before forming any view.</p>
+      </article>
+      <article class="glass cyan reveal d3">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3>The DM presale</h3>
+        <p>Someone contacts you on Telegram, Discord, or X claiming to offer early access, presale tokens, or a "whitelist" before public launch. They may send you a contract address that looks similar to a real one, but is a different token they have minted. Never click links or paste contract addresses from DMs. Always start from the project's official, verified channels and verify the address on a block explorer yourself.</p>
+      </article>
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:28px;color:var(--muted);font-size:.92rem;max-width:680px;margin-left:auto;margin-right:auto">TrustTails is pre-launch. No presale is currently live. The team will never DM you first with contract addresses, purchase links, or access offers. If you receive such a message from any account claiming to be TrustTails, it is not us.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="faq reveal">
+      <details class="faq-item">
+        <summary>What is the difference between total supply and circulating supply?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Total supply is every token that exists on-chain, including any that are locked, vesting, or held in smart contracts. Circulating supply is the subset of those tokens that are currently freely tradeable in the market. For tokens with vesting schedules, total and circulating supply can differ significantly — and the gap matters, because vesting tokens entering circulation represents a potential source of selling pressure. Always check both figures, and check where locked tokens are actually locked (a smart contract with a time-lock? a team wallet with a voluntary promise?).</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Can a fixed-supply token become inflationary later?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>On Solana, if the mint authority has been revoked (set to null), no — it cannot. The revocation is enforced by the Solana runtime at the protocol level and is not reversible. However, if the mint authority is still active, then yes: the team could mint more tokens at any time. This is why checking the on-chain state of the mint authority — not just reading the project's documentation — is the only reliable method. Words in a whitepaper are not enforced by code. The state on-chain is.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Does a lower token price mean more "room to grow" than a higher-priced token?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>This is a common misconception. A token priced at $0.001 is not automatically "cheaper" or has more growth potential than one priced at $1.00. What matters is market capitalisation (price × circulating supply) and the fundamental demand drivers behind the token. A token with 1 trillion supply at $0.001 has a market cap of $1 billion. A token with 1 million supply at $1.00 has a market cap of $1 million. The per-unit price tells you very little in isolation. Always look at market cap and fully diluted valuation alongside price.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Why does TAIL have 1 billion tokens rather than a smaller number?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Supply choices at token launch are design decisions, not predictions about value. A larger total supply makes it easier for many holders to participate without fractional-unit complexity, and makes per-unit prices more psychologically accessible for wider community distribution. The supply figure itself does not determine the token's worth — that is a function of demand, utility, community size, and many other factors. The 1,000,000,000 TAIL supply is fixed and cannot change; how it is distributed matters more than the number itself. See the <a href="/tokenomics" class="text-gold">Tokenomics page</a> for the full distribution breakdown.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How is TAIL different from other small Solana tokens?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>We will be honest: in many structural ways, it is not. TAIL is a small, pre-launch community token. It carries the same fundamental risks as other tokens of its type: it may never gain significant adoption, it could lose all value, and it is in an early stage where outcomes are highly uncertain. The properties that are different — both authorities permanently revoked, transparent supply allocation, a commitment to not making return promises — are meaningful to us, but they are not guarantees of any outcome. If you are looking at TAIL, we encourage you to read the <a href="/is-it-legit" class="text-gold">Is It Legit?</a> page where we address sceptical questions directly, and to reach your own conclusions.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Is this page financial advice?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>No. Nothing on this page, this website, or any TrustTails communication is financial advice. This article is educational content about how token supply mechanics work. It does not constitute a recommendation to buy, hold, or sell any cryptocurrency. Cryptocurrency markets are highly speculative, and the vast majority of tokens — including small community tokens like TAIL — may lose all of their value. Do your own research, speak to a qualified financial adviser if you need guidance, and never invest more than you can afford to lose entirely.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS CALLOUT -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Free Tools</span>
+      <h2>Put this knowledge to work</h2>
+      <p>These tools let you apply what you have learned directly — no account required, no data stored.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Supply Percentage Calculator</h3>
+        <p>Enter a wallet's token balance and the total supply to instantly see what percentage of a token that wallet controls. Useful for evaluating whether a project is heavily concentrated in a few hands — one of the key distribution checks discussed in this article.</p>
+        <a href="/tools/supply-percentage-calculator" class="btn btn-ghost btn-sm" style="margin-top:18px;display:inline-flex">Open calculator</a>
+      </article>
+      <article class="glass cyan reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>More tools</h3>
+        <p>The TrustTails tools section covers additional on-chain research aids. Each tool is designed to help you verify information independently — consistent with the principle that you should always check things for yourself rather than relying on any project's own claims.</p>
+        <a href="/tools/" class="btn btn-cyan btn-sm" style="margin-top:18px;display:inline-flex">Browse all tools</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FURTHER READING -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Further Reading</span>
+      <h2>Related articles</h2>
+      <p>These articles go deeper on topics introduced here. Read them in any order.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3><a href="/blog/fixed-supply-explained" class="text-gold" style="text-decoration:none">Fixed Supply Explained</a></h3>
+        <p>A focused deep-dive into how fixed supply works at the Solana protocol level, with a step-by-step guide to reading mint authority status on a block explorer.</p>
+        <a href="/blog/fixed-supply-explained" class="btn btn-ghost btn-sm" style="margin-top:18px;display:inline-flex">Read article</a>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+        </div>
+        <h3><a href="/blog/why-revoked-authorities-matter" class="text-gold" style="text-decoration:none">Why Revoked Authorities Matter</a></h3>
+        <p>Why the revocation of mint and freeze authority is one of the most verifiable and meaningful on-chain signals — and how to check it in under a minute.</p>
+        <a href="/blog/why-revoked-authorities-matter" class="btn btn-ghost btn-sm" style="margin-top:18px;display:inline-flex">Read article</a>
+      </article>
+      <article class="glass cyan reveal d3">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+        </div>
+        <h3><a href="/blog/how-to-verify-a-solana-token" class="text-gold" style="text-decoration:none">How to Verify a Solana Token</a></h3>
+        <p>A complete walkthrough of everything you can check on a block explorer — supply, holders, transaction history, liquidity locks, and contract audit status.</p>
+        <a href="/blog/how-to-verify-a-solana-token" class="btn btn-ghost btn-sm" style="margin-top:18px;display:inline-flex">Read article</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section--tight">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow" style="margin-bottom:20px;display:inline-flex">Community</span>
+      <h2>Follow the project — and verify everything yourself</h2>
+      <p>TrustTails is pre-launch. Follow official channels for updates, and always double-check anything you see against the on-chain data before making any decision.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 2L11 13M21 2L14 22 11 13 2 9l19-7z"/></svg>
+          Join Telegram community
+        </a>
+        <a class="btn btn-ghost" href="https://x.com/trusttailscoin" target="_blank" rel="noopener">Follow on X</a>
+        <a class="btn btn-ghost" href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener">Verify on Solscan ↗</a>
+      </div>
+      <p style="margin-top:24px;font-size:.82rem;color:var(--faint);max-width:560px;margin-left:auto;margin-right:auto">This is not financial advice. TAIL is a small, pre-launch community token. Cryptocurrency involves significant risk. Never invest more than you can afford to lose entirely. DYOR.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell. Verify everything on-chain.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Project</h4><a href="/about">About</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/whitepaper">Whitepaper</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">Compare</a><a href="/how-to-buy">How to buy</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calc</a><a href="/tools/rug-pull-checklist">Rug-Pull Check</a><a href="/tools/">All tools</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/">Insights</a><a href="/solana">Why Solana?</a><a href="/faq">FAQ</a><a href="/community">Community</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here is a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

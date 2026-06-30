@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Solana Transaction Fee Estimator</title>
+<meta name="description" content="Estimate how cheap Solana transactions are and why low fees matter for everyday holders. Educational tool.">
+<link rel="canonical" href="https://trusttails.io/tools/solana-fee-estimator">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trusttails.io/tools/solana-fee-estimator">
+<meta property="og:title" content="Solana Transaction Fee Estimator">
+<meta property="og:description" content="Estimate how cheap Solana transactions are and why low fees matter for everyday holders. Educational tool.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Solana Transaction Fee Estimator">
+<meta name="twitter:description" content="Estimate how cheap Solana transactions are and why low fees matter for everyday holders. Educational tool.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://trusttails.io/tools/"},{"@type":"ListItem","position":3,"name":"Solana fee estimator","item":"https://trusttails.io/tools/solana-fee-estimator"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Solana Transaction Fee Estimator","url":"https://trusttails.io/tools/solana-fee-estimator","applicationCategory":"FinanceApplication","operatingSystem":"All","description":"Estimate the total SOL and USD cost of multiple Solana transactions. Educational tool showing how cheap Solana fees are compared to other networks.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Project <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/about"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span><b>About & Story</b><span class="ms">How TrustTails began</span></span></a>
+        <a class="mega-link" href="/tokenomics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 0 1 0 4H9m2-4v8"/></svg></span><span><b>Tokenomics</b><span class="ms">Fixed 1B, revoked authorities</span></span></a>
+        <a class="mega-link" href="/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></span><span><b>Roadmap</b><span class="ms">The honest 3-phase journey</span></span></a>
+        <a class="mega-link" href="/vision"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6Z"/></svg></span><span><b>Vision</b><span class="ms">The long-term north star</span></span></a>
+        <a class="mega-link" href="/tail-network"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg></span><span><b>TAIL Network</b><span class="ms">The technology behind TAIL</span></span></a>
+        <a class="mega-link" href="/solana"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h12l2-2H7Zm0 5h12l2-2H7Zm0 5h12l2-2H7Z"/></svg></span><span><b>Why Solana</b><span class="ms">Speed and low fees</span></span></a>
+        <a class="mega-feature" href="/whitepaper"><span><b>Whitepaper</b><span class="ms">The full vision &amp; tokenomics</span></span><span class="btn btn-gold btn-sm">Read</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Trust <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/is-it-legit"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Is it legit?</b><span class="ms">Verify on-chain in 60s</span></span></a>
+        <a class="mega-link" href="/security"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Security</b><span class="ms">Stay safe from scams</span></span></a>
+        <a class="mega-link" href="/trust-and-transparency"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Transparency</b><span class="ms">How we communicate</span></span></a>
+        <a class="mega-link" href="/compare"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>How we compare</b><span class="ms">vs a typical meme coin</span></span></a>
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token checker</b><span class="ms">Check any Solana token</span></span></a>
+        <a class="mega-feature" href="/is-it-legit"><span><b>Live on-chain proof</b><span class="ms">Supply &amp; authorities, verified</span></span><span class="btn btn-gold btn-sm">Verify</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Tools <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token Checker</b><span class="ms">Verify any SPL token</span></span></a>
+        <a class="mega-link" href="/tools/token-comparison"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>Comparison</b><span class="ms">Compare tokens side by side</span></span></a>
+        <a class="mega-link" href="/tools/market-cap-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M14 10h2v8h-2zM8 18h2"/></svg></span><span><b>Market Cap Calc</b><span class="ms">Hypothetical market cap</span></span></a>
+        <a class="mega-link" href="/tools/holdings-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9l8 4"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Holdings Calc</b><span class="ms">Value your holdings</span></span></a>
+        <a class="mega-link" href="/tools/rug-pull-checklist"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span><b>Rug-Pull Checklist</b><span class="ms">Score safety signals</span></span></a>
+        <a class="mega-link" href="/tools/wallet-setup-guide"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 12h3M3 9h18"/></svg></span><span><b>Wallet Setup</b><span class="ms">Phantom & Solflare</span></span></a>
+        <a class="mega-feature" href="/tools/"><span><b>All free tools</b><span class="ms">No sign-up, no hype</span></span><span class="btn btn-gold btn-sm">Open</span></a>
+      </div>
+    </div>
+    <a class="nav-top-link nav-top" href="/blog/">Insights</a>
+    <a class="nav-top-link nav-top" href="/how-to-buy">How to buy</a>
+    <a class="nav-top-link nav-top" href="/faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+<div class="mobile-menu">
+  <details class="mm-sec"><summary>Project</summary><div class="mm-links"><a href="/about">About &amp; Story</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/tail-network">TAIL Network</a><a href="/solana">Why Solana</a><a href="/whitepaper">Whitepaper</a></div></details>
+  <details class="mm-sec"><summary>Trust</summary><div class="mm-links"><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">How we compare</a></div></details>
+  <details class="mm-sec"><summary>Tools</summary><div class="mm-links"><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calculator</a><a href="/tools/holdings-calculator">Holdings Calculator</a><a href="/tools/rug-pull-checklist">Rug-Pull Checklist</a><a href="/tools/wallet-setup-guide">Wallet Setup</a><a href="/tools/">All tools</a></div></details>
+  <a class="mm-direct" href="/blog/">Insights</a>
+  <a class="mm-direct" href="/how-to-buy">How to buy</a>
+  <a class="mm-direct" href="/faq">FAQ</a>
+  <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+</div>
+
+<!-- HERO -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px);background:var(--bg)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Free Tool
+      </span>
+      <h1>Solana Transaction<br><span class="text-grad">Fee Estimator</span></h1>
+      <p class="lead">Solana is known for its remarkably low transaction fees — often a fraction of a cent. Use this tool to understand what those fees add up to across many transactions. Purely educational and approximate.</p>
+    </div>
+
+    <!-- STAT STRIP -->
+    <div class="grid grid-4 reveal d1" style="margin-bottom:48px">
+      <article class="glass stat">
+        <div class="num gold" style="font-size:clamp(1.4rem,2.4vw,2rem)">~5,000</div>
+        <div class="lbl">Lamports — typical base fee</div>
+      </article>
+      <article class="glass stat">
+        <div class="num" style="font-size:clamp(1.4rem,2.4vw,2rem)">0.000005</div>
+        <div class="lbl">SOL per transaction</div>
+      </article>
+      <article class="glass stat">
+        <div class="num gold" style="font-size:clamp(1.4rem,2.4vw,2rem)">&lt;$0.001</div>
+        <div class="lbl">USD at most SOL prices</div>
+      </article>
+      <article class="glass stat">
+        <div class="num" style="font-size:clamp(1.4rem,2.4vw,2rem)">1B</div>
+        <div class="lbl">Lamports = 1 SOL</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL -->
+<section class="section" style="background:var(--bg-2);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(40px,5vw,72px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Interactive Estimator</span>
+      <h2>Calculate Your Fee Estimate</h2>
+      <p>Adjust the inputs below and see results instantly. All values are <strong style="color:var(--gold)">approximate</strong> — actual fees depend on network conditions and priority fees.</p>
+    </div>
+
+    <style>
+      /* tool-specific micro styles */
+      .fee-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+      @media(max-width:700px){.fee-tool-grid{grid-template-columns:1fr}}
+      .fee-label{font-size:.86rem;color:var(--muted);font-weight:500;margin-bottom:8px;display:block;letter-spacing:.01em}
+      .fee-input{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border-2);color:var(--text);border-radius:10px;padding:13px 16px;font-family:var(--font-body);font-size:1rem;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+      .fee-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(242,183,54,.14)}
+      .fee-result-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border)}
+      .fee-result-row:last-child{border-bottom:none}
+      .fee-result-label{font-size:.92rem;color:var(--muted)}
+      .fee-result-value{font-family:var(--font-mono);font-weight:700;font-size:1.08rem;color:var(--text)}
+      .fee-result-value.gold{color:var(--gold)}
+      .fee-result-value.cyan{color:var(--cyan)}
+      .fee-note{font-size:.8rem;color:var(--faint);margin-top:14px;line-height:1.6;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.02)}
+      .range-wrapper{position:relative}
+      .range-wrapper input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;background:var(--border-2);border-radius:100px;outline:none;cursor:pointer}
+      .range-wrapper input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--grad-gold);border:2px solid rgba(255,255,255,.2);cursor:pointer;box-shadow:0 2px 8px rgba(242,183,54,.35)}
+      .range-wrapper input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--grad-gold);border:2px solid rgba(255,255,255,.2);cursor:pointer}
+      .range-ticks{display:flex;justify-content:space-between;font-size:.72rem;color:var(--faint);margin-top:6px;font-family:var(--font-mono)}
+      .input-group{margin-bottom:20px}
+      .field-hint{font-size:.77rem;color:var(--faint);margin-top:5px}
+      .comparison-bar{height:8px;border-radius:100px;background:var(--border);position:relative;overflow:hidden;margin:6px 0 3px}
+      .comparison-bar-fill{height:100%;border-radius:100px;background:var(--grad-gold);transition:width .4s var(--ease)}
+      .comparison-label-row{display:flex;justify-content:space-between;font-size:.75rem;color:var(--faint)}
+    </style>
+
+    <div class="fee-tool-grid">
+      <!-- INPUTS -->
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Your Inputs</h3>
+        <p style="margin-bottom:24px;font-size:.9rem">Enter your scenario and the results update live below.</p>
+
+        <div class="input-group">
+          <label class="fee-label" for="tx-count">Number of transactions</label>
+          <input class="fee-input" type="number" id="tx-count" min="1" max="1000000" value="100" step="1" inputmode="numeric">
+          <p class="field-hint">E.g. 100 token transfers over a month</p>
+        </div>
+
+        <div class="input-group">
+          <label class="fee-label" for="lamports-per-tx">Fee per transaction (lamports)</label>
+          <input class="fee-input" type="number" id="lamports-per-tx" min="1" max="2000000" value="5000" step="1000" inputmode="numeric">
+          <p class="field-hint">1 lamport = 0.000000001 SOL. Typical base fee: 5,000 lamports. Priority fees can add more during peak load.</p>
+        </div>
+
+        <div class="input-group">
+          <label class="fee-label" for="sol-price">SOL price in USD (optional)</label>
+          <input class="fee-input" type="number" id="sol-price" min="0" max="100000" value="150" step="1" inputmode="decimal" placeholder="e.g. 150">
+          <p class="field-hint">Enter any SOL price to see a USD estimate. This is <strong style="color:var(--gold)">not</strong> a prediction — use your own research. <a href="https://solscan.io" target="_blank" rel="noopener" style="color:var(--cyan)">Solscan</a> shows the current price.</p>
+        </div>
+
+        <div class="input-group" style="margin-bottom:0">
+          <label class="fee-label" for="compare-chain">Compare with (illustrative — fees vary widely)</label>
+          <select class="fee-input" id="compare-chain">
+            <option value="0">— No comparison —</option>
+            <option value="1500000">Ethereum (est. ~$1.50 base, ~1,500,000 gwei equivalent)</option>
+            <option value="150000">Layer-2 rollup (est. ~$0.15 per tx)</option>
+            <option value="25000">Other fast L1 (est. ~$0.025 per tx)</option>
+          </select>
+          <p class="field-hint">Shown in lamport-equivalent only. Fees on other chains fluctuate hugely — always verify current rates on those networks before drawing conclusions.</p>
+        </div>
+      </article>
+
+      <!-- RESULTS -->
+      <div>
+        <article class="glass reveal d2" style="margin-bottom:22px">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Estimated Total Fees</h3>
+
+          <div class="fee-result-row">
+            <span class="fee-result-label">Total lamports</span>
+            <span class="fee-result-value gold" id="res-lamports">500,000</span>
+          </div>
+          <div class="fee-result-row">
+            <span class="fee-result-label">Total SOL</span>
+            <span class="fee-result-value" id="res-sol">0.0005 SOL</span>
+          </div>
+          <div class="fee-result-row">
+            <span class="fee-result-label">Per transaction (SOL)</span>
+            <span class="fee-result-value cyan" id="res-sol-each">0.000005 SOL</span>
+          </div>
+          <div class="fee-result-row" id="usd-row">
+            <span class="fee-result-label">Estimated USD total</span>
+            <span class="fee-result-value gold" id="res-usd">$0.075</span>
+          </div>
+          <div class="fee-result-row" id="usd-each-row">
+            <span class="fee-result-label">Estimated USD per tx</span>
+            <span class="fee-result-value" id="res-usd-each">$0.00075</span>
+          </div>
+
+          <p class="fee-note">Educational only — hypothetical math, not a price prediction or financial advice. Actual Solana fees depend on network conditions, priority fee markets, and the type of transaction. Always verify on-chain.</p>
+        </article>
+
+        <!-- COMPARISON -->
+        <article class="glass reveal d3" id="compare-card" style="display:none">
+          <div class="icon cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Network Fee Comparison</h3>
+          <p style="font-size:.88rem;margin-bottom:18px">Illustrative only — comparison values are rough approximations and fluctuate constantly. Do your own research before drawing conclusions about any blockchain.</p>
+
+          <div style="margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;font-size:.84rem;margin-bottom:4px">
+              <span style="color:var(--cyan)">Solana (your estimate)</span>
+              <span id="cmp-sol-val" style="font-family:var(--font-mono);font-size:.82rem;color:var(--gold)">—</span>
+            </div>
+            <div class="comparison-bar"><div class="comparison-bar-fill" id="cmp-sol-bar" style="width:0%;background:linear-gradient(90deg,var(--cyan),var(--gold))"></div></div>
+          </div>
+
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.84rem;margin-bottom:4px">
+              <span id="cmp-other-label" style="color:var(--muted)">Other chain</span>
+              <span id="cmp-other-val" style="font-family:var(--font-mono);font-size:.82rem;color:var(--muted)">—</span>
+            </div>
+            <div class="comparison-bar"><div class="comparison-bar-fill" id="cmp-other-bar" style="width:0%;background:var(--border-2)"></div></div>
+          </div>
+
+          <p style="font-size:.76rem;color:var(--faint);margin-top:14px">Comparison in lamport-equivalent units. Higher bars = higher fees. Never take a single comparison as a reason to trade — research each chain independently.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS A LAMPORT -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Definitions</span>
+      <h2>What Is a <span class="text-grad">Lamport</span>?</h2>
+      <p>Understanding the smallest unit of SOL — and why Solana's fee structure was designed this way.</p>
+    </div>
+
+    <div class="grid grid-3 reveal d1">
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>The Lamport Defined</h3>
+        <p>A <strong style="color:var(--text)">lamport</strong> is the smallest indivisible unit of SOL — similar to how a cent relates to a dollar, except far smaller. One SOL equals exactly <strong style="color:var(--gold)">1,000,000,000 lamports</strong> (one billion). The name honours Leslie Lamport, a computer scientist whose work on distributed systems underpins much of modern blockchain design.</p>
+      </article>
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Why Fees Are So Small</h3>
+        <p>Solana was engineered for high throughput — targeting thousands of transactions per second. Low, predictable fees are a deliberate design goal. The base fee for most simple transactions is <strong style="color:var(--gold)">5,000 lamports (0.000005 SOL)</strong>. Networks with lower throughput or proof-of-work consensus typically have far higher fees, especially during demand spikes.</p>
+      </article>
+      <article class="glass">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14l-4-4 1.41-1.41L12 13.17l4.59-4.58L18 10l-6 6z"/></svg>
+        </div>
+        <h3>Priority Fees</h3>
+        <p>During periods of high network demand, users can attach <strong style="color:var(--text)">priority fees</strong> (also in lamports) to have their transaction processed faster. These are optional and user-set. This estimator lets you adjust the per-transaction fee to reflect different scenarios. Always check current network conditions before submitting a time-sensitive transaction.</p>
+      </article>
+    </div>
+
+    <div class="grid grid-2 reveal d2" style="margin-top:22px">
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3>The Lamport Maths</h3>
+        <p style="margin-bottom:14px">A quick reference so the numbers make intuitive sense:</p>
+        <div class="fee-result-row"><span class="fee-result-label">1 SOL</span><span class="fee-result-value gold">1,000,000,000 lamports</span></div>
+        <div class="fee-result-row"><span class="fee-result-label">1 lamport</span><span class="fee-result-value" style="font-size:.9rem">0.000000001 SOL</span></div>
+        <div class="fee-result-row"><span class="fee-result-label">Typical base fee</span><span class="fee-result-value cyan">5,000 lamports</span></div>
+        <div class="fee-result-row"><span class="fee-result-label">5,000 lamports in SOL</span><span class="fee-result-value">0.000005 SOL</span></div>
+        <div class="fee-result-row" style="border-bottom:none"><span class="fee-result-label">1,000 transactions at base</span><span class="fee-result-value gold">0.005 SOL</span></div>
+      </article>
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+        </div>
+        <h3>How Fees Are Distributed</h3>
+        <p style="margin-bottom:14px">Understanding where fees go helps you appreciate the network's economic design:</p>
+        <div class="fee-result-row"><span class="fee-result-label">50% of base fee</span><span class="fee-result-value gold">Burned (destroyed)</span></div>
+        <div class="fee-result-row"><span class="fee-result-label">50% of base fee</span><span class="fee-result-value cyan">Validator reward</span></div>
+        <div class="fee-result-row"><span class="fee-result-label">Priority fee (if set)</span><span class="fee-result-value">Goes to validator</span></div>
+        <div class="fee-result-row" style="border-bottom:none"><span class="fee-result-label">Account rent</span><span class="fee-result-value" style="font-size:.88rem">Separate from tx fees</span></div>
+        <p style="font-size:.82rem;color:var(--faint);margin-top:14px">This split is a Solana protocol rule, not a TrustTails decision. Verify current mechanics via the <a href="https://docs.solana.com" target="_blank" rel="noopener" style="color:var(--cyan)">official Solana docs</a>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal center">
+      <span class="eyebrow">How It Works</span>
+      <h2>How This Estimator Calculates Fees</h2>
+      <p>The maths is transparent and simple. No hidden assumptions, no price predictions.</p>
+    </div>
+
+    <div class="timeline reveal d1" style="max-width:720px;margin-inline:auto">
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 1</span>
+          <h3>Enter your transaction count</h3>
+          <p>How many Solana transactions are you estimating? This could be token transfers, NFT mints, swaps, or any on-chain interaction. Each costs at least one base fee.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 2</span>
+          <h3>Set the fee per transaction in lamports</h3>
+          <p>The default is 5,000 lamports — Solana's typical base fee for a simple transfer. Complex transactions or priority fees can raise this. The field accepts any positive integer so you can explore different scenarios.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 3</span>
+          <h3>Lamports converted to SOL</h3>
+          <p>The estimator divides total lamports by 1,000,000,000 to give you the SOL amount. Formula: <strong style="color:var(--gold)">Total SOL = (transactions × lamports per tx) ÷ 1,000,000,000</strong></p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status">Step 4 (optional)</span>
+          <h3>SOL converted to USD at your price</h3>
+          <p>If you enter a SOL price, the estimator multiplies: <strong style="color:var(--gold)">USD = Total SOL × SOL price</strong>. This is illustrative only. SOL price fluctuates continuously. Use live data from a reputable source for any real financial decision.</p>
+        </div>
+      </div>
+      <div class="tl-item future">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status">Note</span>
+          <h3>What this does NOT account for</h3>
+          <p>Account creation rent, smart contract execution costs that vary by compute units, failed transaction fees (Solana charges base fee even for failed txs), and network-side fee changes. Always verify on-chain before acting on any estimate.</p>
+        </div>
+      </div>
+      <div class="tl-item future" style="padding-bottom:0">
+        <div class="tl-rail"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <span class="tl-status">Verify</span>
+          <h3>Confirm real fees on Solscan</h3>
+          <p>Every real Solana transaction shows its exact fee in lamports on <a href="https://solscan.io" target="_blank" rel="noopener" style="color:var(--cyan)">Solscan</a>. After sending a transaction, check the "Transaction Fee" field to see what was actually charged. That is the ground truth — not this tool.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY FEES MATTER FOR TAIL -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why It Matters</span>
+      <h2>Why Low Fees Matter for <span class="text-grad">TAIL Holders</span></h2>
+      <p>TrustTails (TAIL) is a Solana SPL token. Understanding Solana's fee structure helps you understand the practical experience of holding and transacting TAIL tokens.</p>
+    </div>
+
+    <div class="proof-split reveal d1">
+      <div class="do-dont is-do">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Low fees enable
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Sending TAIL tokens without fees eating into the transaction amount
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Frequent small transfers that would be uneconomical on high-fee networks
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Community members with smaller holdings to participate fully
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Wallets to verify and interact with the TAIL contract on-chain
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Future on-chain utility features to run cheaply at scale
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Do not assume
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            That low fees guarantee TAIL will increase in value — they do not
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            That Solana fees will always remain this low — they can increase with priority fees
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            That this tool's estimates are exact — treat them as rough guides only
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            That any SOL price you enter here reflects current or future market prices
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            That cheap fees are unique to Solana — verify other networks independently
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TAIL FACT STRIP -->
+    <div class="glass reveal d2" style="margin-top:32px;padding:28px 30px">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px">
+        <span class="eyebrow" style="font-size:.68rem">TAIL — On-Chain Facts</span>
+        <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="btn btn-cyan btn-sm">Verify on Solscan</a>
+      </div>
+      <div class="grid grid-4" style="gap:16px">
+        <div class="glass stat" style="padding:18px 14px">
+          <div class="num gold" style="font-size:1.3rem">1,000,000,000</div>
+          <div class="lbl">Fixed supply — TAIL</div>
+        </div>
+        <div class="glass stat" style="padding:18px 14px">
+          <div class="num" style="font-size:1.1rem;color:var(--green)">REVOKED</div>
+          <div class="lbl">Mint authority</div>
+        </div>
+        <div class="glass stat" style="padding:18px 14px">
+          <div class="num" style="font-size:1.1rem;color:var(--green)">REVOKED</div>
+          <div class="lbl">Freeze authority</div>
+        </div>
+        <div class="glass stat" style="padding:18px 14px">
+          <div class="num cyan" style="font-size:.85rem;letter-spacing:-.02em">PRE-LAUNCH</div>
+          <div class="lbl">Not buyable yet</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:rgba(0,0,0,.2)">
+        <span style="font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-family:var(--font-mono);flex-shrink:0">Contract</span>
+        <code style="font-family:var(--font-mono);font-size:.8rem;color:var(--cyan-2);word-break:break-all">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+        <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCAM WARNING -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <article class="glass reveal" style="border-color:rgba(139,92,246,.35);background:rgba(139,92,246,.05)">
+      <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.3)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" width="22" height="22"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div style="flex:1;min-width:220px">
+          <h3 style="color:var(--violet);margin-bottom:10px">Scam Warning — Read This</h3>
+          <p>TrustTails is <strong style="color:var(--text)">pre-launch and not for sale</strong>. If anyone DMs you offering to sell TAIL tokens, claiming a presale, or sharing a "special" contract address, that is a scam. The only official contract address is <code style="color:var(--cyan-2);font-size:.85em">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. Verify it on Solscan. Never share your seed phrase with anyone. All official announcements come only from the channels listed in our footer.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- MORE TOOLS -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-head reveal center">
+      <span class="eyebrow">Explore More</span>
+      <h2>Related Tools &amp; Guides</h2>
+      <p>Deepen your understanding of Solana and TrustTails with these free resources.</p>
+    </div>
+
+    <div class="grid grid-3 reveal d1">
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Why Solana?</h3>
+        <p>Understand why TrustTails chose Solana — speed, cost, ecosystem, and developer momentum. A factual, neutral overview.</p>
+        <a href="/solana" class="btn btn-ghost btn-sm" style="margin-top:18px">Read the guide</a>
+      </article>
+      <article class="glass cyan">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>All Crypto Tools</h3>
+        <p>Browse our full suite of free educational tools — token supply calculators, wallet checkers, and network comparisons.</p>
+        <a href="/tools/" class="btn btn-cyan btn-sm" style="margin-top:18px">View all tools</a>
+      </article>
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h3>Solana for Beginners</h3>
+        <p>New to Solana? Our beginner guide explains validators, wallets, accounts, and fees — without jargon.</p>
+        <a href="/blog/solana-for-beginners" class="btn btn-ghost btn-sm" style="margin-top:18px">Read the post</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+      <p>Straight answers about Solana fees and this tool.</p>
+    </div>
+
+    <div class="faq reveal d1">
+      <details class="faq-item">
+        <summary>What is a lamport and how does it relate to SOL? <span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>A lamport is the smallest unit of SOL, Solana's native cryptocurrency. The relationship is: <strong>1 SOL = 1,000,000,000 lamports</strong>. So one lamport is 0.000000001 SOL. The name honours Leslie Lamport, whose work on distributed systems (including the Paxos algorithm) influenced modern consensus mechanisms. Because fees are measured in lamports, even a 5,000 lamport fee is only 0.000005 SOL — well under a cent at most realistic SOL prices.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How accurate is this fee estimator? <span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>It is a rough educational guide, not a precise billing tool. Real Solana fees depend on: (1) the type of transaction and number of instructions, (2) whether you add a priority fee, (3) current network congestion, and (4) the compute units consumed. Simple token transfers are typically around 5,000 lamports. Complex smart contract calls or NFT minting can be higher. Always check Solscan for the actual fee charged on any real transaction you submit.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Why did I pay more than 5,000 lamports in real life? <span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Several reasons: (1) You or your wallet app may have added a <strong>priority fee</strong> to jump the queue during busy periods — this is common during token launches or NFT mints. (2) The transaction involved multiple instructions (e.g., a DEX swap), each consuming compute units. (3) Some wallets bundle fees. The base fee of 5,000 lamports is a floor, not a ceiling. Adjust the "fee per transaction" slider in our tool to match whatever you actually paid.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does Solana charge a fee even for failed transactions? <span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Yes. Solana charges the base transaction fee even when a transaction fails. This is a deliberate design choice to prevent spam (attackers cannot flood the network with free failed transactions). Priority fees, however, are only charged on successful transactions. This estimator does not model failed transaction fees — worth keeping in mind if you send many transactions in volatile conditions where some may fail.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is the SOL price used in this tool? <span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>The SOL price you enter is whatever <strong>you choose to type</strong>. It is not fetched from any live source, it does not represent current market price, and it is certainly not a prediction of future price. The USD estimates produced are hypothetical illustrations only. For the current SOL market price, check a reputable exchange or aggregator such as <a href="https://solscan.io" target="_blank" rel="noopener" style="color:var(--cyan)">Solscan</a> or CoinGecko. This is not financial advice.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I use this to estimate fees for TAIL token transfers? <span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Yes, as a rough guide. TAIL is a Solana SPL token. Transferring SPL tokens involves one transaction with a few instructions, typically costing around 5,000–20,000 lamports depending on wallet and network conditions. You will also need a small amount of SOL in your wallet to pay fees — TAIL holders cannot pay fees in TAIL. Note that TrustTails is currently pre-launch and TAIL is not yet available to buy or transfer. Once live, always verify actual fees on Solscan.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is account rent on Solana? Is that included here? <span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Account rent is a separate concept from transaction fees. On Solana, storing data on-chain (including creating a new token account to hold a particular SPL token) requires a small SOL deposit to keep the account "rent-exempt." This is a one-time deposit per account and is refundable if the account is closed. This estimator covers transaction fees only — account creation rent is not included. When you first receive a new SPL token, your wallet may prompt you to pay a small rent deposit (typically around 0.002 SOL) for the new token account.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is TrustTails (TAIL) a good investment? <span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>We cannot and do not say that. TrustTails is a small, pre-launch, community-first Solana token. Cryptocurrency carries significant risk, including the possibility of total loss of value. Nothing on this website is financial advice. We present factual on-chain data and educational content only. Always do your own research (DYOR), consult a qualified financial adviser if needed, and only risk what you can afford to lose entirely.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section--tight" style="background:var(--bg)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow" style="display:inline-flex;margin-bottom:20px">Join the Community</span>
+      <h2>Stay Informed as <span class="text-grad">TAIL Launches</span></h2>
+      <p>TrustTails is pre-launch. Follow our official channels for verified updates — and nothing else. We never DM first, never ask for funds, and never run "presales."</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21.5 2.5L2 9.5l7.5 2L12 21l3-6 6.5-12.5z"/></svg>
+          Telegram community
+        </a>
+        <a class="btn btn-ghost" href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener">Official announcements</a>
+        <a class="btn btn-ghost" href="https://x.com/trusttailscoin" target="_blank" rel="noopener">Follow on X</a>
+        <a class="btn btn-cyan" href="/tools/">Explore all tools</a>
+      </div>
+      <p style="font-size:.8rem;color:var(--faint);margin-top:24px;max-width:560px;margin-inline:auto">Not financial advice. Cryptocurrency is high risk. DYOR. Verify all information on-chain. Only engage with official channels listed above.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell. Verify everything on-chain.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Project</h4><a href="/about">About</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/whitepaper">Whitepaper</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">Compare</a><a href="/how-to-buy">How to buy</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calc</a><a href="/tools/rug-pull-checklist">Rug-Pull Check</a><a href="/tools/">All tools</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/">Insights</a><a href="/solana">Why Solana?</a><a href="/faq">FAQ</a><a href="/community">Community</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here is a promise of future performance, adoption, or returns.</p>
+</div></footer>
+
+<script src="/assets/js/app.js" defer></script>
+<script>
+(function(){
+  // ---- DOM refs ----
+  var txCount   = document.getElementById('tx-count');
+  var lamperTx  = document.getElementById('lamports-per-tx');
+  var solPrice  = document.getElementById('sol-price');
+  var cmpChain  = document.getElementById('compare-chain');
+
+  var resLamports = document.getElementById('res-lamports');
+  var resSol      = document.getElementById('res-sol');
+  var resSolEach  = document.getElementById('res-sol-each');
+  var resUsd      = document.getElementById('res-usd');
+  var resUsdEach  = document.getElementById('res-usd-each');
+  var usdRow      = document.getElementById('usd-row');
+  var usdEachRow  = document.getElementById('usd-each-row');
+
+  var compareCard   = document.getElementById('compare-card');
+  var cmpSolBar     = document.getElementById('cmp-sol-bar');
+  var cmpOtherBar   = document.getElementById('cmp-other-bar');
+  var cmpSolVal     = document.getElementById('cmp-sol-val');
+  var cmpOtherVal   = document.getElementById('cmp-other-val');
+  var cmpOtherLabel = document.getElementById('cmp-other-label');
+
+  // chain labels matching option values
+  var chainLabels = {
+    '1500000': 'Ethereum (illustrative)',
+    '150000':  'Layer-2 rollup (illustrative)',
+    '25000':   'Other fast L1 (illustrative)'
+  };
+
+  function fmt(n, dec){
+    if(dec === undefined) dec = 6;
+    return n.toLocaleString('en-US', {minimumFractionDigits: dec, maximumFractionDigits: dec});
+  }
+  function fmtInt(n){
+    return Math.round(n).toLocaleString('en-US');
+  }
+
+  function calc(){
+    var txs      = Math.max(1, parseInt(txCount.value)   || 0);
+    var lams     = Math.max(1, parseInt(lamperTx.value)  || 5000);
+    var price    = parseFloat(solPrice.value) || 0;
+    var cmpVal   = parseFloat(cmpChain.value) || 0;
+
+    // core maths
+    var totalLamports = txs * lams;
+    var totalSol      = totalLamports / 1e9;
+    var solEach       = lams / 1e9;
+
+    // display
+    resLamports.textContent = fmtInt(totalLamports);
+    resSol.textContent      = totalSol.toFixed(9) + ' SOL';
+    resSolEach.textContent  = solEach.toFixed(9) + ' SOL';
+
+    if(price > 0){
+      var totalUsd = totalSol * price;
+      var usdEach  = solEach  * price;
+      resUsd.textContent     = '$' + (totalUsd < 0.0001 ? totalUsd.toExponential(2) : totalUsd.toFixed(totalUsd < 0.01 ? 6 : totalUsd < 1 ? 4 : 2));
+      resUsdEach.textContent = '$' + (usdEach  < 0.0001 ? usdEach.toExponential(2)  : usdEach.toFixed(usdEach  < 0.01 ? 6 : usdEach < 1 ? 4 : 2));
+      usdRow.style.display    = '';
+      usdEachRow.style.display = '';
+    } else {
+      usdRow.style.display    = 'none';
+      usdEachRow.style.display = 'none';
+    }
+
+    // comparison bars
+    if(cmpVal > 0){
+      compareCard.style.display = '';
+      var cmpTotalLamports = txs * cmpVal;
+      var maxLam = Math.max(totalLamports, cmpTotalLamports);
+      var solPct   = maxLam > 0 ? (totalLamports / maxLam * 100) : 0;
+      var otherPct = maxLam > 0 ? (cmpTotalLamports / maxLam * 100) : 0;
+
+      cmpSolBar.style.width   = Math.min(100, solPct).toFixed(1) + '%';
+      cmpOtherBar.style.width = Math.min(100, otherPct).toFixed(1) + '%';
+
+      cmpSolVal.textContent   = fmtInt(totalLamports) + ' lam';
+      cmpOtherVal.textContent = fmtInt(cmpTotalLamports) + ' lam-equiv';
+
+      var cv = cmpChain.value;
+      cmpOtherLabel.textContent = chainLabels[cv] || 'Other chain';
+    } else {
+      compareCard.style.display = 'none';
+    }
+  }
+
+  // bind
+  txCount.addEventListener('input', calc);
+  lamperTx.addEventListener('input', calc);
+  solPrice.addEventListener('input', calc);
+  cmpChain.addEventListener('change', calc);
+
+  // init
+  calc();
+
+  // copy buttons
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var txt = btn.getAttribute('data-copy');
+      if(!txt) return;
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(function(){
+          btn.classList.add('copied');
+          var lbl = btn.querySelector('.copy-label');
+          if(lbl){ var orig = lbl.textContent; lbl.textContent = 'Copied!'; setTimeout(function(){ lbl.textContent = orig; btn.classList.remove('copied'); }, 2000); }
+        });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = txt; ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        try{ document.execCommand('copy'); } catch(e){}
+        document.body.removeChild(ta);
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.classList.remove('copied'); }, 2000);
+      }
+    });
+  });
+
+  // year
+  document.querySelectorAll('[data-year]').forEach(function(el){
+    el.textContent = new Date().getFullYear();
+  });
+})();
+</script>
+</body>
+</html>

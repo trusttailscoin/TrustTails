@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Solana Token Checker — Verify Any SPL Token On-Chain</title>
+<meta name="description" content="Paste any Solana token mint address to instantly check its supply, mint authority and freeze authority live on-chain. Free, no wallet connection.">
+<link rel="canonical" href="https://trusttails.io/tools/solana-token-checker">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trusttails.io/tools/solana-token-checker">
+<meta property="og:title" content="Solana Token Checker — Verify Any SPL Token On-Chain">
+<meta property="og:description" content="Paste any Solana token mint address to instantly check its supply, mint authority and freeze authority live on-chain. Free, no wallet connection.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Solana Token Checker — Verify Any SPL Token On-Chain">
+<meta name="twitter:description" content="Paste any Solana token mint address to instantly check its supply, mint authority and freeze authority live on-chain. Free, no wallet connection.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://trusttails.io/tools/"},{"@type":"ListItem","position":3,"name":"Solana token checker","item":"https://trusttails.io/tools/solana-token-checker"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Solana Token Checker","url":"https://trusttails.io/tools/solana-token-checker","description":"Free on-chain tool to verify any Solana SPL token mint address — check supply, mint authority, freeze authority, and decimals without connecting a wallet.","applicationCategory":"FinanceTool","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Project <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/about"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span><b>About & Story</b><span class="ms">How TrustTails began</span></span></a>
+        <a class="mega-link" href="/tokenomics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 0 1 0 4H9m2-4v8"/></svg></span><span><b>Tokenomics</b><span class="ms">Fixed 1B, revoked authorities</span></span></a>
+        <a class="mega-link" href="/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></span><span><b>Roadmap</b><span class="ms">The honest 3-phase journey</span></span></a>
+        <a class="mega-link" href="/vision"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6Z"/></svg></span><span><b>Vision</b><span class="ms">The long-term north star</span></span></a>
+        <a class="mega-link" href="/tail-network"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg></span><span><b>TAIL Network</b><span class="ms">The technology behind TAIL</span></span></a>
+        <a class="mega-link" href="/solana"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h12l2-2H7Zm0 5h12l2-2H7Zm0 5h12l2-2H7Z"/></svg></span><span><b>Why Solana</b><span class="ms">Speed and low fees</span></span></a>
+        <a class="mega-feature" href="/whitepaper"><span><b>Whitepaper</b><span class="ms">The full vision &amp; tokenomics</span></span><span class="btn btn-gold btn-sm">Read</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Trust <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/is-it-legit"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Is it legit?</b><span class="ms">Verify on-chain in 60s</span></span></a>
+        <a class="mega-link" href="/security"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Security</b><span class="ms">Stay safe from scams</span></span></a>
+        <a class="mega-link" href="/trust-and-transparency"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Transparency</b><span class="ms">How we communicate</span></span></a>
+        <a class="mega-link" href="/compare"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>How we compare</b><span class="ms">vs a typical meme coin</span></span></a>
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token checker</b><span class="ms">Check any Solana token</span></span></a>
+        <a class="mega-feature" href="/is-it-legit"><span><b>Live on-chain proof</b><span class="ms">Supply &amp; authorities, verified</span></span><span class="btn btn-gold btn-sm">Verify</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Tools <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token Checker</b><span class="ms">Verify any SPL token</span></span></a>
+        <a class="mega-link" href="/tools/token-comparison"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>Comparison</b><span class="ms">Compare tokens side by side</span></span></a>
+        <a class="mega-link" href="/tools/market-cap-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M14 10h2v8h-2zM8 18h2"/></svg></span><span><b>Market Cap Calc</b><span class="ms">Hypothetical market cap</span></span></a>
+        <a class="mega-link" href="/tools/holdings-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9l8 4"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Holdings Calc</b><span class="ms">Value your holdings</span></span></a>
+        <a class="mega-link" href="/tools/rug-pull-checklist"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span><b>Rug-Pull Checklist</b><span class="ms">Score safety signals</span></span></a>
+        <a class="mega-link" href="/tools/wallet-setup-guide"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 12h3M3 9h18"/></svg></span><span><b>Wallet Setup</b><span class="ms">Phantom & Solflare</span></span></a>
+        <a class="mega-feature" href="/tools/"><span><b>All free tools</b><span class="ms">No sign-up, no hype</span></span><span class="btn btn-gold btn-sm">Open</span></a>
+      </div>
+    </div>
+    <a class="nav-top-link nav-top" href="/blog/">Insights</a>
+    <a class="nav-top-link nav-top" href="/how-to-buy">How to buy</a>
+    <a class="nav-top-link nav-top" href="/faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+<div class="mobile-menu">
+  <details class="mm-sec"><summary>Project</summary><div class="mm-links"><a href="/about">About &amp; Story</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/tail-network">TAIL Network</a><a href="/solana">Why Solana</a><a href="/whitepaper">Whitepaper</a></div></details>
+  <details class="mm-sec"><summary>Trust</summary><div class="mm-links"><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">How we compare</a></div></details>
+  <details class="mm-sec"><summary>Tools</summary><div class="mm-links"><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calculator</a><a href="/tools/holdings-calculator">Holdings Calculator</a><a href="/tools/rug-pull-checklist">Rug-Pull Checklist</a><a href="/tools/wallet-setup-guide">Wallet Setup</a><a href="/tools/">All tools</a></div></details>
+  <a class="mm-direct" href="/blog/">Insights</a>
+  <a class="mm-direct" href="/how-to-buy">How to buy</a>
+  <a class="mm-direct" href="/faq">FAQ</a>
+  <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+</div>
+
+<!-- ============================================================
+     HERO / INTRO
+     ============================================================ -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Free On-Chain Tool
+      </span>
+      <h1>Solana Token Checker</h1>
+      <p class="lead">Paste any Solana SPL token mint address and see its on-chain facts in seconds — total supply, mint authority status, freeze authority status, and decimal precision. No wallet connection. No fees. No sign-up.</p>
+    </div>
+
+    <!-- Fact chips -->
+    <div class="fact-chips reveal d1">
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Live on-chain data</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>No wallet needed</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Works on any SPL token</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Reads raw mint account bytes</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Completely free</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     THE TOOL
+     ============================================================ -->
+<section class="section section--tight" style="background:var(--bg-2);padding-top:0">
+  <div class="container">
+
+    <!-- Input card -->
+    <div class="glass reveal" style="max-width:780px;margin-inline:auto;border-color:rgba(69,230,255,.22)">
+      <div class="icon" style="background:rgba(69,230,255,.08);border-color:rgba(69,230,255,.25)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </div>
+      <h2 style="font-size:1.4rem;margin-bottom:8px">Enter a Mint Address</h2>
+      <p style="font-size:.92rem;margin-bottom:22px">Default is the <span class="text-gold">TrustTails (TAIL)</span> mint. Paste any Solana SPL mint address to check it.</p>
+
+      <style>
+        #checker-input{
+          width:100%;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12);
+          border-radius:var(--radius-sm);padding:14px 18px;color:var(--text);
+          font-family:var(--font-mono);font-size:.82rem;letter-spacing:.03em;
+          outline:none;transition:border-color .2s;
+        }
+        #checker-input:focus{border-color:rgba(69,230,255,.45);}
+        #checker-input::placeholder{color:var(--faint);}
+        #check-btn{margin-top:14px;min-width:160px;min-height:44px;}
+        .result-row{display:flex;align-items:center;justify-content:space-between;gap:12px;
+          padding:16px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .result-row:last-child{border-bottom:none;padding-bottom:0;}
+        .result-label{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--faint);min-width:160px;}
+        .result-value{font-family:var(--font-display);font-weight:600;font-size:.97rem;
+          color:var(--text);text-align:right;flex:1;word-break:break-all;}
+        .result-value.is-good{color:var(--green);}
+        .result-value.is-warn{color:#F2B736;}
+        .result-value.is-bad{color:#F87171;}
+        .badge{display:inline-flex;align-items:center;gap:6px;
+          padding:5px 12px;border-radius:100px;font-size:.8rem;font-weight:600;}
+        .badge.green{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.35);color:var(--green);}
+        .badge.amber{background:rgba(242,183,54,.1);border:1px solid rgba(242,183,54,.35);color:var(--gold);}
+        .badge.red{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.3);color:#F87171;}
+        .badge svg{width:13px;height:13px;}
+        #checker-error{color:#F87171;font-size:.9rem;margin-top:12px;display:none;}
+        #checker-loading{color:var(--cyan-2);font-size:.9rem;margin-top:12px;display:none;align-items:center;gap:8px;}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .spin-icon{animation:spin 1s linear infinite;display:inline-block;}
+        #results-panel{margin-top:26px;display:none;}
+        .solscan-link{color:var(--cyan-2);text-decoration:underline;font-size:.85rem;margin-top:18px;display:inline-flex;align-items:center;gap:6px;}
+        .solscan-link:hover{color:var(--cyan);}
+        .checker-disclaimer{margin-top:20px;padding:14px 18px;border-radius:var(--radius-sm);
+          background:rgba(242,183,54,.06);border:1px solid rgba(242,183,54,.18);
+          font-size:.83rem;color:var(--faint);line-height:1.65;}
+        .checker-disclaimer strong{color:var(--gold);}
+      </style>
+
+      <input
+        id="checker-input"
+        type="text"
+        spellcheck="false"
+        autocomplete="off"
+        placeholder="e.g. 4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc"
+        value="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc"
+        aria-label="Solana mint address"
+      >
+
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:14px">
+        <button id="check-btn" class="btn btn-cyan" onclick="runChecker()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Check On-Chain
+        </button>
+        <button class="btn btn-ghost btn-sm" onclick="loadTail()" style="min-height:44px">Load TAIL</button>
+      </div>
+
+      <div id="checker-loading">
+        <svg class="spin-icon" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" style="width:18px;height:18px"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+        Fetching on-chain data…
+      </div>
+      <div id="checker-error" role="alert"></div>
+
+      <!-- Results -->
+      <div id="results-panel" aria-live="polite">
+        <div class="result-row">
+          <span class="result-label">Total Supply</span>
+          <span class="result-value" id="r-supply">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Decimals</span>
+          <span class="result-value" id="r-decimals">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Mint Authority</span>
+          <span class="result-value" id="r-mint-auth">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Freeze Authority</span>
+          <span class="result-value" id="r-freeze-auth">—</span>
+        </div>
+        <div style="margin-top:14px">
+          <a id="solscan-link" class="solscan-link" href="#" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View on Solscan
+          </a>
+        </div>
+      </div>
+
+      <div class="checker-disclaimer">
+        <strong>Educational tool only.</strong> This checker reads publicly available on-chain data from the Solana blockchain. Results are informational and do not constitute financial advice. Always verify independently. Do not invest based on tool output alone.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     WHAT THE RESULTS MEAN
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Understanding Your Results</span>
+      <h2>What Each Field Means</h2>
+      <p class="lead">The checker reads the raw 82-byte SPL mint account directly from the Solana blockchain. Here is what each field tells you about a token's trustworthiness.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Total Supply</h3>
+        <p>The human-readable total number of tokens that exist on-chain. This is calculated from the raw 64-bit integer stored in the mint account, divided by 10 raised to the power of the token's decimals. A fixed supply that matches the project's stated figure is a positive transparency signal. Any discrepancy between the on-chain supply and a project's claims deserves scrutiny.</p>
+      </article>
+
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Mint Authority</h3>
+        <p>This determines whether new tokens can be created. When the mint authority is <strong style="color:var(--green)">Revoked</strong>, no one — not the team, not the deployer, not anyone — can ever mint additional tokens. The supply is mathematically fixed. When it is <strong style="color:#F87171">Active</strong>, the controlling wallet can inflate the supply at any time, diluting all holders. Revoked is the gold standard for supply integrity.</p>
+      </article>
+
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Freeze Authority</h3>
+        <p>This determines whether individual token accounts (wallets holding the token) can be frozen, preventing transfers. When <strong style="color:var(--green)">Revoked</strong>, no one can freeze your tokens — your ability to transfer is fully sovereign. When <strong style="color:#F87171">Active</strong>, a central party can lock anyone's balance. Many stablecoins intentionally keep this for compliance. For community tokens, revoked is the expected state.</p>
+      </article>
+
+      <article class="glass reveal d4">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="12" x2="2" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+        </div>
+        <h3>Decimals</h3>
+        <p>The number of decimal places the token supports. Most fungible Solana tokens use 6 or 9 decimals. This value is used to convert the raw integer supply stored on-chain into the human-readable figure you see. It is set at token creation and cannot be changed. For reference, SOL itself uses 9 decimals (lamports).</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHAT REVOKED MEANS — WHY IT MATTERS
+     ============================================================ -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Supply Security</span>
+      <h2>Why Revoked Authorities Matter</h2>
+      <p class="lead">When a Solana token's mint authority and freeze authority are revoked, specific promises become mathematically enforceable on-chain — no trust in the team required.</p>
+    </div>
+
+    <div class="proof-split">
+      <div class="do-dont is-do reveal d1">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Both Authorities Revoked
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Supply is <strong>permanently fixed</strong> — no inflation possible, ever</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>No entity can freeze your wallet's token balance</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>The enforcement is on-chain, not a promise or whitepaper claim</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Anyone can independently verify this state using tools like this one</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Consistent with a project that prioritises holder transparency</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="do-dont is-dont reveal d2">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Active Authorities — Additional Risk
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Active mint authority: team can print new tokens at will, diluting holders</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Active freeze authority: your balance can be blocked without notice</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Supply figures stated in a whitepaper are not binding on-chain</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Requires trusting the team's good intentions rather than code</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Note: some projects (e.g. stablecoins) keep freeze authority intentionally for compliance</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:28px;font-size:.88rem;max-width:680px;color:var(--faint);line-height:1.75">
+      <strong style="color:var(--gold)">Context matters.</strong> Active authorities are not automatically fraudulent — many legitimate stablecoins and institutional tokens keep them for regulatory or operational reasons. The checker's job is to surface facts so you can make informed decisions. Always read a project's documentation and understand <em>why</em> a given state exists before drawing conclusions. This is not financial advice.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW THE TOOL WORKS (Technical)
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Technical Explainer</span>
+      <h2>How the Checker Works</h2>
+      <p class="lead">No magic, no middlemen. The tool reads the raw account data directly from a public Solana RPC node and decodes the 82-byte SPL mint layout.</p>
+    </div>
+
+    <div class="timeline reveal d1" style="max-width:700px">
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 1</span>
+          <h3>Send a JSON-RPC request</h3>
+          <p style="font-size:.93rem">Your browser sends a <code style="color:var(--cyan-2);font-size:.82rem">getAccountInfo</code> request to a public Solana RPC endpoint (no API key required). The request asks for the account data at the mint address you provided, encoded as base64.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 2</span>
+          <h3>Receive and decode the raw bytes</h3>
+          <p style="font-size:.93rem">The RPC returns a base64-encoded string. This is decoded into an 82-byte <code style="color:var(--cyan-2);font-size:.82rem">Uint8Array</code> — the exact binary layout of an SPL Mint account as defined in the Solana Program Library source code.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 3</span>
+          <h3>Parse the mint layout (offset by offset)</h3>
+          <p style="font-size:.93rem">The 82-byte buffer is parsed at known offsets using the <a href="https://docs.solana.com/developing/programming-model/accounts" target="_blank" rel="noopener" style="color:var(--cyan-2)">SPL Token mint layout</a>:</p>
+          <ul>
+            <li>Bytes 0–3: <code style="color:var(--cyan-2);font-size:.8rem">mintAuthorityOption</code> (uint32 LE — 0 means revoked)</li>
+            <li>Bytes 4–35: optional mint authority pubkey (32 bytes)</li>
+            <li>Bytes 36–43: <code style="color:var(--cyan-2);font-size:.8rem">supply</code> (uint64 LE — raw token units)</li>
+            <li>Byte 44: <code style="color:var(--cyan-2);font-size:.8rem">decimals</code> (uint8)</li>
+            <li>Byte 45: <code style="color:var(--cyan-2);font-size:.8rem">isInitialized</code> (bool)</li>
+            <li>Bytes 46–49: <code style="color:var(--cyan-2);font-size:.8rem">freezeAuthorityOption</code> (uint32 LE — 0 means revoked)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 4</span>
+          <h3>Display human-readable results</h3>
+          <p style="font-size:.93rem">Supply is divided by <code style="color:var(--cyan-2);font-size:.82rem">10 ** decimals</code> and formatted with locale-aware commas. Authorities are shown as <span style="color:var(--green)">Revoked</span> or <span style="color:#F87171">Active</span> based on the option flag. A direct Solscan link is generated so you can cross-verify independently.</p>
+        </div>
+      </div>
+
+      <div class="tl-item future">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status">Note</span>
+          <h3>RPC fallback</h3>
+          <p style="font-size:.93rem">The tool tries <code style="color:var(--cyan-2);font-size:.82rem">solana-rpc.publicnode.com</code> first, then falls back to <code style="color:var(--cyan-2);font-size:.82rem">api.mainnet-beta.solana.com</code> if the first request fails. Both are public endpoints requiring no authentication. Rate limits apply — if you see errors, wait a moment and try again.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TAIL ON-CHAIN — TRANSPARENCY STATS
+     ============================================================ -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">TrustTails (TAIL) — On-Chain Facts</span>
+      <h2>What the Checker Shows for TAIL</h2>
+      <p class="lead">These are the verifiable on-chain facts for the TrustTails token. Run the checker above with the TAIL mint to confirm them yourself — no claims, only code.</p>
+    </div>
+
+    <div class="grid grid-4 reveal d1">
+      <div class="glass stat">
+        <div class="num gold">1,000,000,000</div>
+        <div class="lbl">Fixed Total Supply</div>
+      </div>
+      <div class="glass stat">
+        <div class="num" style="color:var(--green)">Revoked</div>
+        <div class="lbl">Mint Authority</div>
+      </div>
+      <div class="glass stat">
+        <div class="num" style="color:var(--green)">Revoked</div>
+        <div class="lbl">Freeze Authority</div>
+      </div>
+      <div class="glass stat">
+        <div class="num">6</div>
+        <div class="lbl">Decimal Places</div>
+      </div>
+    </div>
+
+    <div class="glass reveal d2" style="margin-top:28px;max-width:680px;margin-inline:auto;text-align:center">
+      <p style="font-size:.9rem;margin-bottom:18px">TAIL mint address — verify on Solscan or with this tool</p>
+      <div class="contract-pill" style="margin-inline:auto;justify-content:center">
+        <span class="lbl">Contract</span>
+        <code>4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+        <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+      </div>
+      <p style="margin-top:18px;font-size:.82rem">
+        <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener noreferrer" style="color:var(--cyan-2);text-decoration:underline">
+          Verify independently on Solscan →
+        </a>
+      </p>
+    </div>
+
+    <p style="margin-top:24px;text-align:center;font-size:.82rem;color:var(--faint);max-width:560px;margin-inline:auto">
+      TrustTails is a pre-launch community token. These on-chain facts are verifiable by anyone. They are not a guarantee of future value, adoption, or returns. Cryptocurrency is high-risk. Only interact with what you can afford to lose entirely.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCAM WARNINGS
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Scam Awareness
+      </span>
+      <h2>Stay Safe: Common Crypto Scams</h2>
+      <p class="lead">The on-chain checker helps you verify a token's technical facts. But understanding common scam patterns is equally important before interacting with any project.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Fake DMs and Presales</h3>
+        <p>No legitimate crypto project will DM you with "exclusive presale" access. Be extremely sceptical of any unsolicited messages offering early token access, whitelist spots, or "insider" prices. Verify all official links only through the project's public social profiles and website.</p>
+      </article>
+
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <h3>Token Impersonation</h3>
+        <p>Many scam tokens use similar names, tickers, or logos to impersonate real projects. Always verify the exact mint address against the official contract published on the project's official website. A matching name and logo is not enough — only the mint address is authoritative.</p>
+      </article>
+
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Wallet Drainer Links</h3>
+        <p>Never connect your wallet to an unfamiliar site because someone told you to. Wallet connection prompts that request broad permissions ("Approve all transactions") are a major red flag. This checker requires no wallet connection whatsoever — always prefer tools that work without one where possible.</p>
+      </article>
+
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>False "Verified" Claims</h3>
+        <p>Scam projects frequently claim to be "audited," "KYC verified," or partnered with major companies without evidence. Always ask for verifiable proof — published audit reports with a reputable firm's name, not just a badge on a website. Check if the audit firm can confirm the report exists.</p>
+      </article>
+
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </div>
+        <h3>Unrealistic Return Promises</h3>
+        <p>Promises of guaranteed returns, fixed APY percentages, or "100x" price projections are hallmarks of high-risk or outright fraudulent schemes. No one can guarantee cryptocurrency returns. Be especially sceptical of projects that lean on price predictions as their primary selling point.</p>
+      </article>
+
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Urgency and FOMO Tactics</h3>
+        <p>Pressure phrases like "only 2 hours left," "last chance," or "buy before it lists" are designed to prevent you from doing due diligence. Legitimate projects give you time to research. If you feel rushed, that is a signal to slow down, not speed up.</p>
+      </article>
+    </div>
+
+    <div class="glass reveal" style="margin-top:32px;border-color:rgba(242,183,54,.22);max-width:700px">
+      <p style="font-size:.92rem;line-height:1.8"><strong class="text-gold">TrustTails official channels only:</strong> X (Twitter) at <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" style="color:var(--cyan-2)">@trusttailscoin</a>, Telegram community at <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" style="color:var(--cyan-2)">t.me/TrustTailsCommunity</a>, and official announcements at <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" style="color:var(--cyan-2)">t.me/TrustTailsOfficial</a>. Any other accounts claiming to be TrustTails are not affiliated with this project. No team member will ever DM you first asking you to send tokens or connect your wallet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RELATED TOOLS LINKS
+     ============================================================ -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">More Tools</span>
+      <h2>Continue Your Research</h2>
+      <p class="lead">Use these tools and pages alongside the on-chain checker to build a complete picture of any project before making decisions.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <a href="/is-it-legit" class="glass reveal d1" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Is TrustTails Legit?</h3>
+        <p>A structured due-diligence walkthrough covering team transparency, on-chain facts, community, and red-flag checklist. Apply the same framework to any project.</p>
+        <span style="color:var(--gold);font-size:.87rem;margin-top:14px;display:inline-block">Read the review →</span>
+      </a>
+
+      <a href="/tools/" class="glass reveal d2" style="display:block;cursor:pointer">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <h3>All Tools</h3>
+        <p>Browse the full toolkit — token checkers, supply calculators, and educational resources for verifying Solana projects on-chain.</p>
+        <span style="color:var(--cyan-2);font-size:.87rem;margin-top:14px;display:inline-block">View all tools →</span>
+      </a>
+
+      <a href="/blog/why-revoked-authorities-matter" class="glass reveal d3" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Why Revoked Authorities Matter</h3>
+        <p>An in-depth explainer on SPL token authorities, what revocation actually means at the protocol level, and how to read mint account data yourself.</p>
+        <span style="color:var(--gold);font-size:.87rem;margin-top:14px;display:inline-block">Read the article →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Frequently Asked Questions</span>
+      <h2>Token Checker FAQ</h2>
+    </div>
+
+    <div class="faq reveal d1">
+      <details class="faq-item">
+        <summary>Does the checker store my queries or require an account?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">No. The tool runs entirely in your browser. Requests go directly from your browser to a public Solana RPC endpoint. No query is logged by TrustTails, no account is required, and no data is stored on our servers.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do I need to connect my wallet?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">Absolutely not. Solana mint account data is fully public — anyone can read it by querying the network with a mint address. No private keys, no signatures, and no wallet connection are needed or requested. Be very cautious of any tool that asks you to connect a wallet just to view token information.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is an SPL token?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">SPL stands for Solana Program Library. The SPL Token program is the standard smart contract on Solana that handles fungible and non-fungible tokens. Most Solana tokens — including memecoins, DeFi tokens, stablecoins, and project tokens — are SPL tokens. Each SPL token has a "mint account" that stores core metadata: total supply, decimal precision, and authority settings. This checker reads that mint account directly.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What does "revoked" mean technically?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">In the SPL Token mint account layout, the mint authority and freeze authority each have an "option" flag stored as a 4-byte little-endian integer at a fixed offset. When this flag is 0 (the <code style="color:var(--cyan-2);font-size:.88rem">COption::None</code> variant in Rust), the authority is considered absent — it was never set, or was revoked by sending a transaction to the SPL Token program's <code style="color:var(--cyan-2);font-size:.88rem">SetAuthority</code> instruction with a <code style="color:var(--cyan-2);font-size:.88rem">None</code> new authority. Once set to None, it cannot be restored, because doing so would require the old authority to sign — and it no longer exists in the account.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>The checker returned an error — what should I do?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">First, double-check that the address is a valid Solana base58 mint address (44 characters, no spaces). If the address looks correct, the public RPC endpoint may be temporarily rate-limiting or unavailable — wait 30 seconds and try again. If the error says "account not found," the address either does not exist on mainnet or is not an SPL token mint account. You can also verify directly on <a href="https://solscan.io" target="_blank" rel="noopener" style="color:var(--cyan-2)">Solscan</a>.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I use this to check any Solana token, not just TAIL?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">Yes. The checker works with any valid SPL token mint address on Solana mainnet. Paste the mint address of any token you want to research. This is exactly the kind of due diligence you should do before interacting with any new project. We encourage you to use it broadly.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does a revoked mint authority mean the token is a good investment?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">No. A revoked mint authority is one positive transparency signal among many factors. It means the supply cannot be inflated by the deploying wallet — nothing more. It says nothing about a token's utility, community, team quality, liquidity, or any other factor relevant to assessing risk. Cryptocurrency carries significant risk including total loss. This tool is for informational and educational purposes only and is not financial advice. Do your own research (DYOR) and only interact with assets you can afford to lose entirely.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What RPC endpoints does the checker use?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">The checker tries <code style="color:var(--cyan-2);font-size:.88rem">https://solana-rpc.publicnode.com</code> first, then falls back to <code style="color:var(--cyan-2);font-size:.88rem">https://api.mainnet-beta.solana.com</code>. Both are public endpoints operated by third parties — PublicNode and Solana Labs respectively. Neither requires authentication. Public endpoints have rate limits, so heavy usage may occasionally result in temporary errors.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Where can I learn more about TrustTails (TAIL)?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">TrustTails is a pre-launch, community-first Solana token. You can read about the project on the <a href="/about" style="color:var(--cyan-2)">About page</a>, review the <a href="/tokenomics" style="color:var(--cyan-2)">Tokenomics</a>, or join the community on <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" style="color:var(--cyan-2)">Telegram</a>. TrustTails is not currently available to purchase. Nothing on this website constitutes financial advice or a solicitation to invest.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA BAND
+     ============================================================ -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Join the <span class="text-grad">TrustTails</span> Community</h2>
+      <p>TrustTails is pre-launch. Follow along on official channels for verified updates — no DMs, no fake presales, no hype. Just transparent, on-chain facts.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Telegram Community
+        </a>
+        <a class="btn btn-ghost" href="https://x.com/trusttailscoin" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M4 20L20 4"/></svg>
+          Follow on X
+        </a>
+        <a class="btn btn-cyan" href="/is-it-legit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Do Your Due Diligence
+        </a>
+      </div>
+      <p style="margin-top:20px;margin-bottom:0;font-size:.82rem;color:var(--faint)">Not financial advice. Crypto is high risk. DYOR. Only invest what you can afford to lose.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INLINE SCRIPT — TOKEN CHECKER LOGIC
+     ============================================================ -->
+<script>
+(function(){
+  var RPCS = [
+    "https://solana-rpc.publicnode.com",
+    "https://api.mainnet-beta.solana.com"
+  ];
+
+  var TAIL_MINT = "4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc";
+
+  function loadTail(){
+    document.getElementById("checker-input").value = TAIL_MINT;
+    runChecker();
+  }
+
+  function setLoading(state){
+    document.getElementById("checker-loading").style.display = state ? "flex" : "none";
+    document.getElementById("check-btn").disabled = state;
+  }
+
+  function setError(msg){
+    var el = document.getElementById("checker-error");
+    el.textContent = msg;
+    el.style.display = msg ? "block" : "none";
+  }
+
+  function setResults(data){
+    document.getElementById("results-panel").style.display = "block";
+
+    // Supply
+    var supplyEl = document.getElementById("r-supply");
+    supplyEl.textContent = data.supply.toLocaleString("en-AU", {maximumFractionDigits: data.decimals});
+    supplyEl.className = "result-value";
+
+    // Decimals
+    var decEl = document.getElementById("r-decimals");
+    decEl.textContent = String(data.decimals);
+    decEl.className = "result-value";
+
+    // Mint authority
+    var mintEl = document.getElementById("r-mint-auth");
+    mintEl.innerHTML = data.mintRevoked
+      ? '<span class="badge green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Revoked</span>'
+      : '<span class="badge amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Active</span>';
+
+    // Freeze authority
+    var freezeEl = document.getElementById("r-freeze-auth");
+    freezeEl.innerHTML = data.freezeRevoked
+      ? '<span class="badge green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Revoked</span>'
+      : '<span class="badge amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Active</span>';
+
+    // Solscan link
+    var link = document.getElementById("solscan-link");
+    link.href = "https://solscan.io/token/" + data.mint;
+    link.style.display = "inline-flex";
+  }
+
+  function hideResults(){
+    document.getElementById("results-panel").style.display = "none";
+  }
+
+  // Decode base64 to Uint8Array
+  function b64ToBytes(b64){
+    var bin = atob(b64);
+    var bytes = new Uint8Array(bin.length);
+    for(var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return bytes;
+  }
+
+  // Read uint32 little-endian
+  function readU32LE(buf, offset){
+    return buf[offset] | (buf[offset+1]<<8) | (buf[offset+2]<<16) | (buf[offset+3]<<24);
+  }
+
+  // Read uint64 little-endian (JS number — safe up to 2^53)
+  function readU64LE(buf, offset){
+    var lo = (buf[offset] | (buf[offset+1]<<8) | (buf[offset+2]<<16) | (buf[offset+3]<<24)) >>> 0;
+    var hi = (buf[offset+4] | (buf[offset+5]<<8) | (buf[offset+6]<<16) | (buf[offset+7]<<24)) >>> 0;
+    return hi * 4294967296 + lo;
+  }
+
+  function parseMintAccount(base64Data, mint){
+    var bytes = b64ToBytes(base64Data);
+    if(bytes.length < 82){
+      throw new Error("Account data too short — this may not be an SPL mint account.");
+    }
+
+    var mintAuthorityOption = readU32LE(bytes, 0);   // 0 = COption::None = revoked
+    var rawSupply            = readU64LE(bytes, 36);
+    var decimals             = bytes[44];
+    var isInitialized        = bytes[45] === 1;
+    var freezeAuthorityOption= readU32LE(bytes, 46); // 0 = COption::None = revoked
+
+    if(!isInitialized){
+      throw new Error("Mint account is not initialised — invalid mint address.");
+    }
+
+    var humanSupply = rawSupply / Math.pow(10, decimals);
+
+    return {
+      mint: mint,
+      supply: humanSupply,
+      decimals: decimals,
+      mintRevoked: mintAuthorityOption === 0,
+      freezeRevoked: freezeAuthorityOption === 0
+    };
+  }
+
+  async function fetchMintData(mint, rpcUrl){
+    var response = await fetch(rpcUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        id: 1,
+        method: "getAccountInfo",
+        params: [
+          mint,
+          { encoding: "base64" }
+        ]
+      })
+    });
+
+    if(!response.ok){
+      throw new Error("RPC HTTP error: " + response.status);
+    }
+
+    var json = await response.json();
+
+    if(json.error){
+      throw new Error("RPC error: " + (json.error.message || JSON.stringify(json.error)));
+    }
+
+    var result = json.result;
+    if(!result || !result.value){
+      throw new Error("Account not found. Check the mint address and try again.");
+    }
+
+    var accountData = result.value.data;
+    if(!Array.isArray(accountData) || accountData.length < 1){
+      throw new Error("Unexpected data format from RPC.");
+    }
+
+    return parseMintAccount(accountData[0], mint);
+  }
+
+  async function runChecker(){
+    var mint = (document.getElementById("checker-input").value || "").trim();
+
+    if(!mint){
+      setError("Please enter a Solana mint address.");
+      return;
+    }
+
+    // Basic base58 length sanity check (Solana pubkeys are 32 bytes = ~44 chars in base58)
+    if(mint.length < 32 || mint.length > 44){
+      setError("This does not look like a valid Solana address (expected 32–44 characters). Please check and try again.");
+      return;
+    }
+
+    setError("");
+    hideResults();
+    setLoading(true);
+
+    var lastError = null;
+
+    for(var i = 0; i < RPCS.length; i++){
+      try{
+        var data = await fetchMintData(mint, RPCS[i]);
+        setResults(data);
+        setLoading(false);
+        return;
+      } catch(err){
+        lastError = err;
+        // Try next RPC
+      }
+    }
+
+    setLoading(false);
+    setError("Could not fetch data: " + (lastError ? lastError.message : "Unknown error") + ". Try again in a moment.");
+  }
+
+  // Expose to global scope for onclick handlers
+  window.runChecker = runChecker;
+  window.loadTail   = loadTail;
+
+  // Allow pressing Enter in the input
+  document.addEventListener("DOMContentLoaded", function(){
+    var input = document.getElementById("checker-input");
+    if(input){
+      input.addEventListener("keydown", function(e){
+        if(e.key === "Enter") runChecker();
+      });
+    }
+
+    // Copy buttons
+    document.querySelectorAll(".copy-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var text = btn.getAttribute("data-copy");
+        if(!text) return;
+        navigator.clipboard.writeText(text).then(function(){
+          var label = btn.querySelector(".copy-label");
+          if(label){ label.textContent = "Copied!"; }
+          btn.classList.add("copied");
+          setTimeout(function(){
+            if(label){ label.textContent = "Copy"; }
+            btn.classList.remove("copied");
+          }, 2000);
+        }).catch(function(){
+          // Fallback for older browsers
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          var label = btn.querySelector(".copy-label");
+          if(label){ label.textContent = "Copied!"; }
+          btn.classList.add("copied");
+          setTimeout(function(){
+            if(label){ label.textContent = "Copy"; }
+            btn.classList.remove("copied");
+          }, 2000);
+        });
+      });
+    });
+  });
+})();
+</script>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell. Verify everything on-chain.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Project</h4><a href="/about">About</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/whitepaper">Whitepaper</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">Compare</a><a href="/how-to-buy">How to buy</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calc</a><a href="/tools/rug-pull-checklist">Rug-Pull Check</a><a href="/tools/">All tools</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/">Insights</a><a href="/solana">Why Solana?</a><a href="/faq">FAQ</a><a href="/community">Community</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here is a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

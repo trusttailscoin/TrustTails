@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Free Crypto &amp; Solana Tools — TrustTails</title>
+<meta name="description" content="Free, honest crypto tools: a live Solana token checker, comparison, supply and market-cap calculators, a rug-pull checklist and more. No sign-up, no hype.">
+<link rel="canonical" href="https://trusttails.io/tools/index">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trusttails.io/tools/index">
+<meta property="og:title" content="Free Crypto &amp; Solana Tools — TrustTails">
+<meta property="og:description" content="Free, honest crypto tools: a live Solana token checker, comparison, supply and market-cap calculators, a rug-pull checklist and more. No sign-up, no hype.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Free Crypto &amp; Solana Tools — TrustTails">
+<meta name="twitter:description" content="Free, honest crypto tools: a live Solana token checker, comparison, supply and market-cap calculators, a rug-pull checklist and more. No sign-up, no hype.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://trusttails.io/tools/"},{"@type":"ListItem","position":3,"name":"Tools","item":"https://trusttails.io/tools/index"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Project <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/about"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span><b>About & Story</b><span class="ms">How TrustTails began</span></span></a>
+        <a class="mega-link" href="/tokenomics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 0 1 0 4H9m2-4v8"/></svg></span><span><b>Tokenomics</b><span class="ms">Fixed 1B, revoked authorities</span></span></a>
+        <a class="mega-link" href="/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></span><span><b>Roadmap</b><span class="ms">The honest 3-phase journey</span></span></a>
+        <a class="mega-link" href="/vision"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6Z"/></svg></span><span><b>Vision</b><span class="ms">The long-term north star</span></span></a>
+        <a class="mega-link" href="/tail-network"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg></span><span><b>TAIL Network</b><span class="ms">The technology behind TAIL</span></span></a>
+        <a class="mega-link" href="/solana"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h12l2-2H7Zm0 5h12l2-2H7Zm0 5h12l2-2H7Z"/></svg></span><span><b>Why Solana</b><span class="ms">Speed and low fees</span></span></a>
+        <a class="mega-feature" href="/whitepaper"><span><b>Whitepaper</b><span class="ms">The full vision &amp; tokenomics</span></span><span class="btn btn-gold btn-sm">Read</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Trust <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/is-it-legit"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Is it legit?</b><span class="ms">Verify on-chain in 60s</span></span></a>
+        <a class="mega-link" href="/security"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Security</b><span class="ms">Stay safe from scams</span></span></a>
+        <a class="mega-link" href="/trust-and-transparency"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Transparency</b><span class="ms">How we communicate</span></span></a>
+        <a class="mega-link" href="/compare"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>How we compare</b><span class="ms">vs a typical meme coin</span></span></a>
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token checker</b><span class="ms">Check any Solana token</span></span></a>
+        <a class="mega-feature" href="/is-it-legit"><span><b>Live on-chain proof</b><span class="ms">Supply &amp; authorities, verified</span></span><span class="btn btn-gold btn-sm">Verify</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Tools <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token Checker</b><span class="ms">Verify any SPL token</span></span></a>
+        <a class="mega-link" href="/tools/token-comparison"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>Comparison</b><span class="ms">Compare tokens side by side</span></span></a>
+        <a class="mega-link" href="/tools/market-cap-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M14 10h2v8h-2zM8 18h2"/></svg></span><span><b>Market Cap Calc</b><span class="ms">Hypothetical market cap</span></span></a>
+        <a class="mega-link" href="/tools/holdings-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9l8 4"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Holdings Calc</b><span class="ms">Value your holdings</span></span></a>
+        <a class="mega-link" href="/tools/rug-pull-checklist"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span><b>Rug-Pull Checklist</b><span class="ms">Score safety signals</span></span></a>
+        <a class="mega-link" href="/tools/wallet-setup-guide"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 12h3M3 9h18"/></svg></span><span><b>Wallet Setup</b><span class="ms">Phantom & Solflare</span></span></a>
+        <a class="mega-feature" href="/tools/"><span><b>All free tools</b><span class="ms">No sign-up, no hype</span></span><span class="btn btn-gold btn-sm">Open</span></a>
+      </div>
+    </div>
+    <a class="nav-top-link nav-top" href="/blog/">Insights</a>
+    <a class="nav-top-link nav-top" href="/how-to-buy">How to buy</a>
+    <a class="nav-top-link nav-top" href="/faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+<div class="mobile-menu">
+  <details class="mm-sec"><summary>Project</summary><div class="mm-links"><a href="/about">About &amp; Story</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/tail-network">TAIL Network</a><a href="/solana">Why Solana</a><a href="/whitepaper">Whitepaper</a></div></details>
+  <details class="mm-sec"><summary>Trust</summary><div class="mm-links"><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">How we compare</a></div></details>
+  <details class="mm-sec"><summary>Tools</summary><div class="mm-links"><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calculator</a><a href="/tools/holdings-calculator">Holdings Calculator</a><a href="/tools/rug-pull-checklist">Rug-Pull Checklist</a><a href="/tools/wallet-setup-guide">Wallet Setup</a><a href="/tools/">All tools</a></div></details>
+  <a class="mm-direct" href="/blog/">Insights</a>
+  <a class="mm-direct" href="/how-to-buy">How to buy</a>
+  <a class="mm-direct" href="/faq">FAQ</a>
+  <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+</div>
+
+<!-- ── Hero section ── -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Free &amp; Educational</span>
+      <h1>Crypto &amp; Solana <span class="text-grad">Research Tools</span></h1>
+      <p class="lead">Nine free, honest tools to help you research tokens, estimate costs, and build good on-chain habits — no sign-up, no data collection, no hype. All tools are educational only and do not constitute financial advice.</p>
+    </div>
+
+    <!-- stat strip -->
+    <div class="grid grid-4 reveal d1" style="margin-bottom:52px">
+      <article class="glass stat">
+        <div class="num gold">9</div>
+        <div class="lbl">Free Tools</div>
+      </article>
+      <article class="glass stat">
+        <div class="num">100%</div>
+        <div class="lbl">No Sign-up</div>
+      </article>
+      <article class="glass stat">
+        <div class="num">0</div>
+        <div class="lbl">Data Collected</div>
+      </article>
+      <article class="glass stat">
+        <div class="num" style="font-size:1.4rem">DYOR</div>
+        <div class="lbl">Always Verify On-chain</div>
+      </article>
+    </div>
+
+    <!-- tools grid -->
+    <div class="grid grid-3">
+
+      <!-- 1 Token Checker -->
+      <a href="/tools/solana-token-checker" class="glass reveal d1" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+        </div>
+        <h3>Solana Token Checker</h3>
+        <p>Paste any SPL token contract address and instantly review key on-chain facts: supply, mint authority, freeze authority, decimals, and metadata — sourced from the blockchain, not from the project's own claims.</p>
+        <span class="text-gold" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">Open tool →</span>
+      </a>
+
+      <!-- 2 Token Comparison -->
+      <a href="/tools/token-comparison" class="glass reveal d2" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l5.1 5.1M4 4l5 5"/></svg>
+        </div>
+        <h3>Token Comparison</h3>
+        <p>Compare two Solana tokens side-by-side across supply, authority status, and on-chain properties. A structured way to evaluate what each project has actually committed to on the blockchain.</p>
+        <span class="text-gold" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">Open tool →</span>
+      </a>
+
+      <!-- 3 Market Cap Calculator -->
+      <a href="/tools/market-cap-calculator" class="glass reveal d3" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Market Cap Calculator</h3>
+        <p>Enter a token's total supply and a hypothetical price to see what market capitalisation that implies. Useful for understanding scale and context — not a price prediction or investment signal.</p>
+        <span class="text-gold" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">Open tool →</span>
+      </a>
+
+      <!-- 4 Holdings Calculator -->
+      <a href="/tools/holdings-calculator" class="glass reveal d1" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Holdings Calculator</h3>
+        <p>Input a token quantity and a hypothetical price per token to calculate the implied value of a position. Always shows the risk notice: crypto values can fall to zero. Educational only.</p>
+        <span class="text-gold" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">Open tool →</span>
+      </a>
+
+      <!-- 5 Supply Percentage Calculator -->
+      <a href="/tools/supply-percentage-calculator" class="glass reveal d2" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/><path d="M2 12h20"/></svg>
+        </div>
+        <h3>Supply Percentage Calculator</h3>
+        <p>Calculate what percentage of a token's total supply any wallet or allocation holds. Useful for assessing concentration risk and understanding distribution before doing your own research.</p>
+        <span class="text-gold" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">Open tool →</span>
+      </a>
+
+      <!-- 6 Solana Fee Estimator -->
+      <a href="/tools/solana-fee-estimator" class="glass cyan reveal d3" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Solana Fee Estimator</h3>
+        <p>Estimate typical SOL transaction costs for swaps, transfers, and mints on the Solana network. Helps you understand why Solana's low fees are a structural feature, not a promise.</p>
+        <span class="text-cyan" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">Open tool →</span>
+      </a>
+
+      <!-- 7 Rug Pull Checklist -->
+      <a href="/tools/rug-pull-checklist" class="glass reveal d1" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg>
+        </div>
+        <h3>Rug Pull Checklist</h3>
+        <p>A structured, point-by-point checklist of on-chain and off-chain red flags to check before touching any new token. Based on documented patterns from past exploits, not opinion.</p>
+        <span class="text-gold" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">Open tool →</span>
+      </a>
+
+      <!-- 8 Wallet Setup Guide -->
+      <a href="/tools/wallet-setup-guide" class="glass reveal d2" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+        </div>
+        <h3>Wallet Setup Guide</h3>
+        <p>A step-by-step walkthrough for setting up a self-custody Solana wallet safely — covering seed phrase security, hardware wallet options, and common beginner mistakes to avoid.</p>
+        <span class="text-gold" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">Open tool →</span>
+      </a>
+
+      <!-- 9 DCA Calculator -->
+      <a href="/tools/dca-calculator" class="glass reveal d3" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>DCA Calculator</h3>
+        <p>Model dollar-cost averaging across different intervals and amounts. Illustrates how spreading purchases over time affects your average cost — not a prediction of what any token will do.</p>
+        <span class="text-gold" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">Open tool →</span>
+      </a>
+
+    </div><!-- /grid -->
+  </div>
+</section>
+
+<!-- ── What is a Market Cap (educational) ── -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Educational Glossary</span>
+      <h2>Key Terms, Defined Plainly</h2>
+      <p class="lead">Crypto has a lot of jargon. Here are clear, factual definitions for the terms these tools use — so you can research with context.</p>
+    </div>
+    <div class="grid grid-2">
+
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Market Capitalisation</h3>
+        <p>Market cap = price × circulating supply. It expresses the total implied value of all tokens at the current price. A high market cap is not a sign of quality or safety, and a low market cap is not an opportunity — it's simply a mathematical relationship between price and supply at a single moment in time.</p>
+      </article>
+
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Mint Authority</h3>
+        <p>The mint authority is an on-chain permission that controls whether new tokens can be created (minted). When mint authority is <strong style="color:var(--green)">revoked</strong>, no additional tokens can ever be created, fixing the supply permanently. This is verifiable on-chain via Solscan or any Solana explorer — never take a project's word for it.</p>
+      </article>
+
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Freeze Authority</h3>
+        <p>The freeze authority can lock individual wallets, preventing them from sending tokens. When this is <strong style="color:var(--green)">revoked</strong>, no one — including the developers — can freeze your holdings. Revocation of both mint and freeze authority are among the strongest on-chain signals of committed supply and holder rights.</p>
+      </article>
+
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Dollar-Cost Averaging (DCA)</h3>
+        <p>DCA is a strategy of splitting purchases into smaller, regular amounts over time rather than buying a large position at once. It can reduce the impact of short-term volatility on your average entry price. It does not reduce the underlying risk of the asset, and it is not a guarantee of profit.</p>
+      </article>
+
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Rug Pull</h3>
+        <p>A rug pull is when developers abandon a project and drain its liquidity, leaving holders with worthless tokens. Warning signs include: anonymous teams, unlocked liquidity, retained mint authority, no on-chain audit, and aggressive FOMO marketing. Our <a href="/tools/rug-pull-checklist" class="text-gold">checklist tool</a> walks through these systematically.</p>
+      </article>
+
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>SPL Token (Solana)</h3>
+        <p>SPL (Solana Program Library) is the standard for fungible tokens on the Solana blockchain — analogous to ERC-20 on Ethereum. Every SPL token has an on-chain mint address (contract address) that can be looked up on Solscan or any Solana explorer to verify supply, authorities, and holder distribution independently.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Interactive: Quick Supply Context Tool ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Interactive Tool</span>
+      <h2>Supply Context <span class="text-grad">Calculator</span></h2>
+      <p class="lead">Enter any token's total supply and a hypothetical price to see the implied market cap and what percentage of supply common allocation sizes represent. This is hypothetical maths, not a price prediction.</p>
+    </div>
+
+    <div class="grid grid-2 reveal d1">
+
+      <!-- Calculator card -->
+      <div class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="11" y2="14"/></svg>
+        </div>
+        <h3>Token Supply Calculator</h3>
+
+        <style>
+          .scc-label{display:block;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;font-family:var(--font-mono)}
+          .scc-input{width:100%;background:var(--bg-3);border:1px solid var(--border-2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--font-body);font-size:1rem;outline:none;transition:border-color .2s;-webkit-appearance:none}
+          .scc-input:focus{border-color:var(--gold)}
+          .scc-row{margin-bottom:20px}
+          .scc-results{margin-top:24px;display:grid;gap:12px}
+          .scc-result-item{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+          .scc-result-label{font-size:.85rem;color:var(--muted)}
+          .scc-result-value{font-family:var(--font-mono);font-size:1.05rem;color:var(--gold);font-weight:600;text-align:right}
+          .scc-disclaimer{margin-top:20px;padding:14px 16px;background:rgba(242,183,54,.06);border:1px solid rgba(242,183,54,.2);border-radius:10px;font-size:.82rem;color:var(--faint);line-height:1.6}
+          .scc-alloc-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+          .scc-alloc-input{width:90px;background:var(--bg-3);border:1px solid var(--border-2);border-radius:8px;padding:10px 12px;color:var(--text);font-family:var(--font-body);font-size:.95rem;outline:none;transition:border-color .2s;-webkit-appearance:none}
+          .scc-alloc-input:focus{border-color:var(--cyan)}
+          .scc-alloc-label{font-size:.9rem;color:var(--muted)}
+          .scc-alloc-result{font-family:var(--font-mono);font-size:.88rem;color:var(--cyan);margin-left:auto;text-align:right}
+        </style>
+
+        <div class="scc-row">
+          <label class="scc-label" for="scc-supply">Total Token Supply</label>
+          <input class="scc-input" id="scc-supply" type="number" min="1" step="1" placeholder="e.g. 1000000000" value="1000000000" aria-label="Total token supply">
+        </div>
+        <div class="scc-row">
+          <label class="scc-label" for="scc-price">Hypothetical Price per Token (USD)</label>
+          <input class="scc-input" id="scc-price" type="number" min="0" step="any" placeholder="e.g. 0.001" value="" aria-label="Hypothetical price per token in USD">
+        </div>
+
+        <div class="scc-results" id="scc-results" aria-live="polite">
+          <div class="scc-result-item">
+            <span class="scc-result-label">Total Supply</span>
+            <span class="scc-result-value" id="scc-out-supply">1,000,000,000</span>
+          </div>
+          <div class="scc-result-item" id="scc-mcap-row" style="display:none">
+            <span class="scc-result-label">Implied Market Cap</span>
+            <span class="scc-result-value" id="scc-out-mcap">—</span>
+          </div>
+          <div class="scc-result-item" id="scc-fdv-row" style="display:none">
+            <span class="scc-result-label">Fully Diluted Valuation</span>
+            <span class="scc-result-value" id="scc-out-fdv">—</span>
+          </div>
+        </div>
+
+        <div class="scc-disclaimer">
+          <strong style="color:var(--gold)">Educational only.</strong> This is hypothetical arithmetic, not a price prediction, market forecast, or financial advice. Cryptocurrency values can fall to zero. Always do your own research (DYOR) and only allocate what you can afford to lose entirely.
+        </div>
+      </div>
+
+      <!-- Allocation checker card -->
+      <div class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/><path d="M2 12h20"/></svg>
+        </div>
+        <h3>Supply Percentage Checker</h3>
+        <p style="margin-bottom:20px">Enter a wallet's token quantity to see what share of total supply it represents. Uses the supply figure from the calculator on the left.</p>
+
+        <div class="scc-row">
+          <label class="scc-label" for="scc-wallet-a">Wallet A — Token Quantity</label>
+          <div class="scc-alloc-row">
+            <input class="scc-alloc-input" id="scc-wallet-a" type="number" min="0" step="any" placeholder="e.g. 50000000" style="width:100%" aria-label="Wallet A token quantity">
+          </div>
+          <div id="scc-pct-a" class="scc-alloc-result" aria-live="polite" style="font-size:.95rem;margin-top:6px"></div>
+        </div>
+
+        <div class="scc-row">
+          <label class="scc-label" for="scc-wallet-b">Wallet B — Token Quantity</label>
+          <div class="scc-alloc-row">
+            <input class="scc-alloc-input" id="scc-wallet-b" type="number" min="0" step="any" placeholder="e.g. 10000000" style="width:100%" aria-label="Wallet B token quantity">
+          </div>
+          <div id="scc-pct-b" class="scc-alloc-result" aria-live="polite" style="font-size:.95rem;margin-top:6px"></div>
+        </div>
+
+        <div class="scc-row">
+          <label class="scc-label" for="scc-wallet-c">Wallet C — Token Quantity</label>
+          <div class="scc-alloc-row">
+            <input class="scc-alloc-input" id="scc-wallet-c" type="number" min="0" step="any" placeholder="e.g. 5000000" style="width:100%" aria-label="Wallet C token quantity">
+          </div>
+          <div id="scc-pct-c" class="scc-alloc-result" aria-live="polite" style="font-size:.95rem;margin-top:6px"></div>
+        </div>
+
+        <div id="scc-combined" style="margin-top:8px;padding:14px 16px;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;display:none">
+          <div style="font-size:.82rem;color:var(--muted);margin-bottom:6px">Combined A+B+C</div>
+          <div id="scc-combined-val" style="font-family:var(--font-mono);color:var(--gold);font-size:1.1rem;font-weight:600"></div>
+        </div>
+
+        <div class="scc-disclaimer" style="margin-top:20px">
+          High wallet concentration (e.g. a single wallet holding &gt;10% of supply) is a documented risk factor worth considering as part of your own research. It is not on its own conclusive. Always check the actual blockchain explorer — verify, don't trust.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- How it works -->
+    <div class="glass reveal d2" style="margin-top:28px;max-width:820px">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      </div>
+      <h3>How this calculator works</h3>
+      <p style="margin-bottom:10px">The market cap result is simply: <strong style="color:var(--text)">supply × price</strong>. Fully Diluted Valuation (FDV) uses the same formula applied to the <em>total</em> supply, including any not yet in circulation. The percentage checker divides the wallet quantity by total supply and multiplies by 100. All calculations happen entirely in your browser — no data leaves your device.</p>
+      <p>These figures are <strong style="color:var(--gold)">hypothetical illustrations only</strong>. They do not imply any prediction about what a token's price will be, or that a particular market cap is achievable. Always verify supply and authority figures on-chain using <a href="https://solscan.io" target="_blank" rel="noopener" class="text-cyan">Solscan</a> or another independent Solana explorer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Trust / Safe Research Habits ── -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Research Habits</span>
+      <h2>What Good On-Chain Research Looks Like</h2>
+      <p class="lead">No tool replaces sceptical, independent verification. Here is what careful research actually involves, versus the shortcuts people often take.</p>
+    </div>
+    <div class="proof-split reveal d1">
+      <div class="do-dont is-do">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Good research practice
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Verify the contract address on Solscan before interacting with any token
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Check that mint authority and freeze authority are revoked on-chain, not just claimed in a Telegram post
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Review the holder distribution for unusually large concentrations in a small number of wallets
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Check whether liquidity is locked and for how long, using an independent lock contract explorer
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Use our <a href="/tools/rug-pull-checklist" class="text-gold">rug pull checklist</a> as a structured starting point, then go deeper yourself
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Only allocate capital you could afford to lose entirely without affecting your financial stability
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Common shortcuts that increase risk
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Trusting a project's own Telegram, website, or social media as the source of truth for on-chain facts
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Sending funds to any address shared in a DM — legitimate projects do not DM you unsolicited
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Buying into a token because of urgency language — "last chance", "pre-launch only" — without independent verification
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Assuming a low price per token means the token is cheap or undervalued — price per token and value are different things
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Participating in unofficial "presales" or private wallet schemes not announced through verifiable official channels
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Interpreting market-cap calculator outputs as predictions or investment signals — they are illustrative maths only
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Scam Warning ── -->
+<section class="section">
+  <div class="container">
+    <div class="glass reveal d1" style="max-width:820px;margin-inline:auto;border-color:rgba(242,183,54,.3)">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <h3>Scam &amp; Impersonator Warning</h3>
+      <p style="margin-bottom:14px">TrustTails will <strong style="color:var(--text)">never</strong> contact you first via Telegram DM, Twitter DM, or any other private message to offer tokens, presale access, or investment opportunities. All official communications happen publicly through our verified channels only.</p>
+      <p style="margin-bottom:14px">Our only official channels are: <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">@trusttailscoin on X</a>, <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-gold">TrustTails Community on Telegram</a>, and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-gold">TrustTails Official on Telegram</a>. If you receive a DM from an account claiming to be TrustTails, it is a scam — do not send funds, do not connect your wallet, and report the account.</p>
+      <p>The only legitimate contract address for TAIL is <code style="color:var(--cyan-2);font-size:.85rem;word-break:break-all">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code> — always verify it independently on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-gold">Solscan</a> before any interaction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+      <p class="lead">Common questions about these tools and how to use them responsibly.</p>
+    </div>
+    <div class="faq">
+
+      <details class="faq-item reveal d1">
+        <summary>Are these tools free to use?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">Yes, all nine tools are completely free and require no account, sign-up, or email address. They are funded by the TrustTails project as a community resource and educational contribution to the Solana ecosystem.</div>
+      </details>
+
+      <details class="faq-item reveal d2">
+        <summary>Do the tools collect any of my data?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">No. All calculations on this page happen entirely in your browser. No wallet addresses, token quantities, or calculator inputs are transmitted to any server. You can verify this by opening your browser's network inspector while using any tool.</div>
+      </details>
+
+      <details class="faq-item reveal d1">
+        <summary>Can I use the market cap calculator as a price prediction?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">No. The market cap calculator performs simple arithmetic: supply multiplied by a price you enter. It illustrates what a given price implies in market capitalisation terms. It does not predict what any token will trade at, and no number produced by this calculator should be interpreted as an investment signal or forecast. Cryptocurrency prices are volatile and can fall to zero.</div>
+      </details>
+
+      <details class="faq-item reveal d2">
+        <summary>How do I verify a token's mint and freeze authority status myself?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">Go to <a href="https://solscan.io" target="_blank" rel="noopener" class="text-gold">Solscan</a>, paste the token's contract address into the search bar, and open the token's detail page. The "Mint Authority" and "Freeze Authority" fields will show either an address (meaning the authority is active) or "None" or "Revoked" (meaning it has been given up permanently). For TrustTails (TAIL), the contract address is <code style="color:var(--cyan-2)">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. You should always verify this yourself rather than relying on any third party's claim.</div>
+      </details>
+
+      <details class="faq-item reveal d1">
+        <summary>Is TrustTails available to buy right now?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">No. TrustTails (TAIL) is pre-launch and is not currently available to purchase. There is no presale, no private round, and no unofficial distribution. Anyone claiming to sell TAIL before an official public launch announcement is running a scam. Follow our official <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-gold">X account</a> and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-gold">Telegram channel</a> for verified updates only.</div>
+      </details>
+
+      <details class="faq-item reveal d2">
+        <summary>What is the total supply of TAIL and why does it matter?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">The total fixed supply of TrustTails (TAIL) is 1,000,000,000 (one billion) tokens. This figure is set on-chain and cannot be changed because the mint authority has been revoked — verifiable at any time on Solscan. Understanding total supply matters because market capitalisation is directly tied to it: the same price applied to a 100-billion supply creates a very different implied market cap than a 1-billion supply. Understanding supply context is part of doing your own research.</div>
+      </details>
+
+      <details class="faq-item reveal d1">
+        <summary>What should I do if I receive a DM about TrustTails?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">Do not engage. TrustTails will never DM you about token purchases, presales, airdrops, or wallet connections. Any DM claiming to be from the TrustTails team or offering TAIL for sale is an impersonation scam. Block the account, report it on the platform, and do not send any funds or connect your wallet. When in doubt, check our official channels — X and the official Telegram — to see if any announcement was made publicly.</div>
+      </details>
+
+      <details class="faq-item reveal d2">
+        <summary>Are these tools financial advice?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">No. Nothing on this website, including these tools, constitutes financial advice, investment advice, or a recommendation to buy, sell, or hold any cryptocurrency or other asset. These tools are educational resources. Cryptocurrency carries significant risk, including the possibility of total loss of value. Always consult a qualified financial adviser if you need personal financial guidance, and only invest what you can afford to lose entirely.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Related Links ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Related Pages</span>
+      <h2>Explore More</h2>
+      <p class="lead">These tools are part of a broader set of transparent, educational resources built around TrustTails and the Solana ecosystem.</p>
+    </div>
+    <div class="grid grid-3">
+      <a href="/is-it-legit" class="glass reveal d1" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h3>Is TrustTails Legit?</h3>
+        <p>A plain-language walkthrough of what we can and cannot prove on-chain about TrustTails — including the exact Solscan links to verify every claim for yourself.</p>
+        <span class="text-gold" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">Read the transparency page →</span>
+      </a>
+      <a href="/tokenomics" class="glass reveal d2" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/><path d="M2 12h20"/></svg>
+        </div>
+        <h3>Tokenomics</h3>
+        <p>Full breakdown of TrustTails' 1,000,000,000 fixed supply, distribution allocations, and the reasoning behind each decision — presented factually, without hype.</p>
+        <span class="text-gold" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">See the token model →</span>
+      </a>
+      <a href="/faq" class="glass reveal d3" style="display:block;cursor:pointer">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Full FAQ</h3>
+        <p>Comprehensive answers to questions about TrustTails, Solana, how to stay safe, and what this project does and does not claim — honest answers to hard questions.</p>
+        <span class="text-gold" style="font-size:.88rem;font-weight:600;margin-top:14px;display:inline-block">Read the FAQ →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA Band ── -->
+<section class="section" style="padding-block:0 clamp(64px,9vw,128px)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow" style="margin-bottom:16px;display:inline-flex">Pre-launch community</span>
+      <h2>Join the Conversation</h2>
+      <p>TrustTails is pre-launch. The community is the project. Ask questions, share research, flag concerns — the Telegram and X are the right place to do it publicly and transparently.</p>
+      <div class="cta-actions">
+        <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="btn btn-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5 2.3.5 11.8-8.2 13.4C4.3 23.2 1 16.7 1 12c0-4.8 3.2-10.1 10-10.9 3.7-.5 7.2.5 9.4 2.9L21 6"/><path d="m21.2 4 -9 4.5-3-1.5-3 5.5 3 .5 1.5 4 3.5-2 4 3 3-9.5-4-5z"/></svg>
+          Telegram Community
+        </a>
+        <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5 2.3.5 11.8-8.2 13.4C4.3 23.2 1 16.7 1 12c0-4.8 3.2-10.1 10-10.9 3.7-.5 7.2.5 9.4 2.9L21 6"/><path d="m21.2 4 -9 4.5-3-1.5-3 5.5 3 .5 1.5 4 3.5-2 4 3 3-9.5-4-5z"/></svg>
+          Official Channel
+        </a>
+        <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="btn btn-cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M4 20 20 4"/></svg>
+          Follow on X
+        </a>
+      </div>
+      <p style="margin-top:20px;font-size:.82rem;color:var(--faint)">Not financial advice. Pre-launch. Verify everything on-chain. High risk — only participate with funds you can afford to lose entirely.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator script -->
+<script>
+(function(){
+  'use strict';
+
+  function fmtNum(n){
+    if(n>=1e12) return '$'+( n/1e12).toFixed(2)+'T';
+    if(n>=1e9)  return '$'+(n/1e9 ).toFixed(2)+'B';
+    if(n>=1e6)  return '$'+(n/1e6 ).toFixed(2)+'M';
+    if(n>=1e3)  return '$'+(n/1e3 ).toFixed(2)+'K';
+    return '$'+n.toFixed(4);
+  }
+
+  function fmtSupply(n){
+    return n.toLocaleString('en-US');
+  }
+
+  function fmtPct(a,b){
+    if(!b) return '';
+    var p=(a/b)*100;
+    if(p>=1) return p.toFixed(2)+'%';
+    if(p>=0.01) return p.toFixed(4)+'%';
+    return p.toExponential(2)+'%';
+  }
+
+  var supplyInput  = document.getElementById('scc-supply');
+  var priceInput   = document.getElementById('scc-price');
+  var walletA      = document.getElementById('scc-wallet-a');
+  var walletB      = document.getElementById('scc-wallet-b');
+  var walletC      = document.getElementById('scc-wallet-c');
+  var outSupply    = document.getElementById('scc-out-supply');
+  var outMcap      = document.getElementById('scc-out-mcap');
+  var outFdv       = document.getElementById('scc-out-fdv');
+  var mcapRow      = document.getElementById('scc-mcap-row');
+  var fdvRow       = document.getElementById('scc-fdv-row');
+  var pctA         = document.getElementById('scc-pct-a');
+  var pctB         = document.getElementById('scc-pct-b');
+  var pctC         = document.getElementById('scc-pct-c');
+  var combinedBox  = document.getElementById('scc-combined');
+  var combinedVal  = document.getElementById('scc-combined-val');
+
+  function update(){
+    var supply = parseFloat(supplyInput.value) || 0;
+    var price  = parseFloat(priceInput.value);
+    var hasPrice = priceInput.value.trim() !== '' && !isNaN(price) && price > 0;
+
+    outSupply.textContent = supply > 0 ? fmtSupply(supply) : '—';
+
+    if(supply > 0 && hasPrice){
+      var mcap = supply * price;
+      outMcap.textContent = fmtNum(mcap);
+      outFdv.textContent  = fmtNum(mcap); // FDV = mcap when supply is fully fixed
+      mcapRow.style.display = 'flex';
+      fdvRow.style.display  = 'flex';
+    } else {
+      mcapRow.style.display = 'none';
+      fdvRow.style.display  = 'none';
+    }
+
+    // pct checker
+    var wA = parseFloat(walletA.value);
+    var wB = parseFloat(walletB.value);
+    var wC = parseFloat(walletC.value);
+    var anyWallet = false;
+
+    if(walletA.value.trim() !== '' && !isNaN(wA) && wA >= 0 && supply > 0){
+      pctA.textContent = fmtPct(wA, supply) + ' of total supply';
+      anyWallet = true;
+    } else { pctA.textContent = ''; }
+
+    if(walletB.value.trim() !== '' && !isNaN(wB) && wB >= 0 && supply > 0){
+      pctB.textContent = fmtPct(wB, supply) + ' of total supply';
+      anyWallet = true;
+    } else { pctB.textContent = ''; }
+
+    if(walletC.value.trim() !== '' && !isNaN(wC) && wC >= 0 && supply > 0){
+      pctC.textContent = fmtPct(wC, supply) + ' of total supply';
+      anyWallet = true;
+    } else { pctC.textContent = ''; }
+
+    var validA = (walletA.value.trim() !== '' && !isNaN(wA) && wA >= 0);
+    var validB = (walletB.value.trim() !== '' && !isNaN(wB) && wB >= 0);
+    var validC = (walletC.value.trim() !== '' && !isNaN(wC) && wC >= 0);
+
+    if((validA || validB || validC) && supply > 0){
+      var total = (validA ? wA : 0) + (validB ? wB : 0) + (validC ? wC : 0);
+      combinedBox.style.display = 'block';
+      combinedVal.textContent = fmtPct(total, supply) + ' of total supply (' + fmtSupply(total) + ' tokens)';
+    } else {
+      combinedBox.style.display = 'none';
+    }
+  }
+
+  [supplyInput, priceInput, walletA, walletB, walletC].forEach(function(el){
+    el.addEventListener('input', update);
+  });
+
+  update();
+})();
+</script>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell. Verify everything on-chain.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Project</h4><a href="/about">About</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/whitepaper">Whitepaper</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">Compare</a><a href="/how-to-buy">How to buy</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calc</a><a href="/tools/rug-pull-checklist">Rug-Pull Check</a><a href="/tools/">All tools</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/">Insights</a><a href="/solana">Why Solana?</a><a href="/faq">FAQ</a><a href="/community">Community</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here is a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

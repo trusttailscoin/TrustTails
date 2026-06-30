@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Why Trust Is the Real Currency in Crypto</title>
+<meta name="description" content="In a space full of anonymous teams and broken promises, verifiable trust is the scarcest asset. Here is why it matters and how to measure it.">
+<link rel="canonical" href="https://trusttails.io/blog/why-trust-matters-in-crypto">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trusttails.io/blog/why-trust-matters-in-crypto">
+<meta property="og:title" content="Why Trust Is the Real Currency in Crypto">
+<meta property="og:description" content="In a space full of anonymous teams and broken promises, verifiable trust is the scarcest asset. Here is why it matters and how to measure it.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Why Trust Is the Real Currency in Crypto">
+<meta name="twitter:description" content="In a space full of anonymous teams and broken promises, verifiable trust is the scarcest asset. Here is why it matters and how to measure it.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://trusttails.io/blog/"},{"@type":"ListItem","position":3,"name":"Why trust matters","item":"https://trusttails.io/blog/why-trust-matters-in-crypto"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Project <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/about"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span><b>About & Story</b><span class="ms">How TrustTails began</span></span></a>
+        <a class="mega-link" href="/tokenomics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 0 1 0 4H9m2-4v8"/></svg></span><span><b>Tokenomics</b><span class="ms">Fixed 1B, revoked authorities</span></span></a>
+        <a class="mega-link" href="/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></span><span><b>Roadmap</b><span class="ms">The honest 3-phase journey</span></span></a>
+        <a class="mega-link" href="/vision"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6Z"/></svg></span><span><b>Vision</b><span class="ms">The long-term north star</span></span></a>
+        <a class="mega-link" href="/tail-network"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg></span><span><b>TAIL Network</b><span class="ms">The technology behind TAIL</span></span></a>
+        <a class="mega-link" href="/solana"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h12l2-2H7Zm0 5h12l2-2H7Zm0 5h12l2-2H7Z"/></svg></span><span><b>Why Solana</b><span class="ms">Speed and low fees</span></span></a>
+        <a class="mega-feature" href="/whitepaper"><span><b>Whitepaper</b><span class="ms">The full vision &amp; tokenomics</span></span><span class="btn btn-gold btn-sm">Read</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Trust <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/is-it-legit"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Is it legit?</b><span class="ms">Verify on-chain in 60s</span></span></a>
+        <a class="mega-link" href="/security"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Security</b><span class="ms">Stay safe from scams</span></span></a>
+        <a class="mega-link" href="/trust-and-transparency"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Transparency</b><span class="ms">How we communicate</span></span></a>
+        <a class="mega-link" href="/compare"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>How we compare</b><span class="ms">vs a typical meme coin</span></span></a>
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token checker</b><span class="ms">Check any Solana token</span></span></a>
+        <a class="mega-feature" href="/is-it-legit"><span><b>Live on-chain proof</b><span class="ms">Supply &amp; authorities, verified</span></span><span class="btn btn-gold btn-sm">Verify</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Tools <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token Checker</b><span class="ms">Verify any SPL token</span></span></a>
+        <a class="mega-link" href="/tools/token-comparison"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>Comparison</b><span class="ms">Compare tokens side by side</span></span></a>
+        <a class="mega-link" href="/tools/market-cap-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M14 10h2v8h-2zM8 18h2"/></svg></span><span><b>Market Cap Calc</b><span class="ms">Hypothetical market cap</span></span></a>
+        <a class="mega-link" href="/tools/holdings-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9l8 4"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Holdings Calc</b><span class="ms">Value your holdings</span></span></a>
+        <a class="mega-link" href="/tools/rug-pull-checklist"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span><b>Rug-Pull Checklist</b><span class="ms">Score safety signals</span></span></a>
+        <a class="mega-link" href="/tools/wallet-setup-guide"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 12h3M3 9h18"/></svg></span><span><b>Wallet Setup</b><span class="ms">Phantom & Solflare</span></span></a>
+        <a class="mega-feature" href="/tools/"><span><b>All free tools</b><span class="ms">No sign-up, no hype</span></span><span class="btn btn-gold btn-sm">Open</span></a>
+      </div>
+    </div>
+    <a class="nav-top-link nav-top" href="/blog/">Insights</a>
+    <a class="nav-top-link nav-top" href="/how-to-buy">How to buy</a>
+    <a class="nav-top-link nav-top" href="/faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+<div class="mobile-menu">
+  <details class="mm-sec"><summary>Project</summary><div class="mm-links"><a href="/about">About &amp; Story</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/tail-network">TAIL Network</a><a href="/solana">Why Solana</a><a href="/whitepaper">Whitepaper</a></div></details>
+  <details class="mm-sec"><summary>Trust</summary><div class="mm-links"><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">How we compare</a></div></details>
+  <details class="mm-sec"><summary>Tools</summary><div class="mm-links"><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calculator</a><a href="/tools/holdings-calculator">Holdings Calculator</a><a href="/tools/rug-pull-checklist">Rug-Pull Checklist</a><a href="/tools/wallet-setup-guide">Wallet Setup</a><a href="/tools/">All tools</a></div></details>
+  <a class="mm-direct" href="/blog/">Insights</a>
+  <a class="mm-direct" href="/how-to-buy">How to buy</a>
+  <a class="mm-direct" href="/faq">FAQ</a>
+  <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+</div>
+
+<!-- Article JSON-LD -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Why Trust Is the Real Currency in Crypto","datePublished":"2026-06-18","author":{"@type":"Organization","name":"TrustTails","url":"https://trusttails.io"},"publisher":{"@type":"Organization","name":"TrustTails","url":"https://trusttails.io","logo":{"@type":"ImageObject","url":"https://trusttails.io/assets/img/logo-nav.png"}},"image":"https://trusttails.io/assets/img/og-cover.png","description":"In a space full of anonymous teams and broken promises, verifiable trust is the scarcest asset. Here is why it matters and how to measure it.","mainEntityOfPage":{"@type":"WebPage","@id":"https://trusttails.io/blog/why-trust-matters-in-crypto"}}</script>
+
+<!-- PAGE HEADER -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Insights · Trust &amp; Transparency</span>
+      <h1>Why Trust Is the Real Currency in Crypto</h1>
+      <p class="lead">Price charts move in every direction. Narratives come and go. But verifiable trust — the kind you can confirm on-chain, not just in a whitepaper — is the only thing that compounds quietly in the background of every durable project.</p>
+    </div>
+
+    <!-- Reading meta -->
+    <div class="glass reveal d1" style="padding:1.2rem 1.6rem;display:inline-flex;flex-wrap:wrap;align-items:center;gap:20px;margin-bottom:40px">
+      <span style="font-size:.84rem;color:var(--faint)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="display:inline;vertical-align:middle;margin-right:5px"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        8 min read
+      </span>
+      <span style="font-size:.84rem;color:var(--faint)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="display:inline;vertical-align:middle;margin-right:5px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Published 18 June 2026
+      </span>
+      <span style="font-size:.84rem;color:var(--faint)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="display:inline;vertical-align:middle;margin-right:5px"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        TrustTails Editorial
+      </span>
+      <span class="eyebrow" style="font-size:.68rem;padding:5px 12px">Not financial advice</span>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER BANNER -->
+<section class="section section--tight" style="background:var(--bg-2);padding-top:0;padding-bottom:0">
+  <div class="container">
+    <div class="glass reveal" style="border-color:rgba(242,183,54,.3);background:rgba(242,183,54,.06);padding:1.4rem 1.8rem;display:flex;align-items:flex-start;gap:14px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;flex-shrink:0;margin-top:2px;color:var(--gold)"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p style="font-size:.92rem;margin:0"><strong class="text-gold">Educational content only.</strong> Nothing on this page is financial advice. Cryptocurrency is highly speculative. You could lose everything you invest. Always do your own research (DYOR), verify claims on-chain independently, and only participate with funds you can afford to lose entirely. TrustTails is a small, pre-launch community token — not a proven investment vehicle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO: THE TRUST PROBLEM -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The problem</span>
+      <h2>Hype Is Abundant. Trust Is Scarce.</h2>
+    </div>
+    <div class="grid grid-2" style="align-items:start;gap:28px">
+      <div class="glass reveal d1" style="padding:2rem 2.2rem">
+        <p>Spend a few hours in crypto Twitter, and a pattern emerges quickly. Projects announce partnerships before they exist. Teams claim audits without publishing them. Influencers promote tokens they were paid to promote, without disclosing it. Telegram groups fill with excited strangers insisting you act now before it is too late.</p>
+        <p style="margin-top:1rem">None of that is trust. It is noise dressed up in the language of opportunity.</p>
+        <p style="margin-top:1rem">Real trust in a blockchain project is not a feeling. It is not the enthusiasm of a community or the confidence of a founder. It is something colder and more useful: <strong class="text-gold">verifiable on-chain facts</strong> that cannot be changed, combined with honest communication that does not promise more than it can deliver.</p>
+      </div>
+      <div class="glass reveal d2" style="padding:2rem 2.2rem">
+        <p>This distinction matters enormously because blockchain was supposed to solve exactly this problem. In traditional finance, you trust banks and regulators to behave. In crypto, you were promised you would not have to trust anyone — the code would enforce the rules.</p>
+        <p style="margin-top:1rem">That promise has been only partially kept. The underlying blockchains — Bitcoin, Ethereum, Solana and others — do what they say they do, transparently and verifiably. But the projects built on top of them can still betray you the old-fashioned way: through false promises, hidden control, and well-timed exits.</p>
+        <p style="margin-top:1rem">Understanding what verifiable trust actually looks like — versus what it merely feels like — is the most practical skill a participant in this space can develop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW BLOCKCHAIN TRUST ACTUALLY WORKS -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">First principles</span>
+      <h2>What Makes a Blockchain Trustworthy in the First Place</h2>
+      <p class="lead">Before you can evaluate a project, it helps to understand the layer underneath it — the chain itself.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Immutability</h3>
+        <p>Once a transaction is confirmed on a public blockchain, it cannot be altered retroactively. There is no customer service line, no reversal, no edit. This is a feature, not a bug — it means the record stands regardless of what any individual or organisation wants afterward.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3>Public Verifiability</h3>
+        <p>Every wallet balance, every token transfer, and every contract state can be read by anyone with an internet connection. Block explorers like Solscan (for Solana) or Etherscan (for Ethereum) provide this data for free, in real time, for every address and transaction ever recorded.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <h3>Deterministic Rules</h3>
+        <p>Smart contracts and token programmes execute exactly as coded — they do not interpret or improvise. If a mint authority is revoked, no one can mint new tokens. If a freeze authority is revoked, no one can freeze your wallet. The rule is the rule, enforced by mathematics, not by goodwill.</p>
+      </article>
+    </div>
+    <p class="reveal" style="margin-top:28px;max-width:760px;font-size:.97rem">These three properties are why blockchains are described as "trustless" systems — meaning you do not need to trust the people running them, because you can verify the rules yourself. The critical insight is that this trustlessness only applies to the base layer. It does not automatically extend to the <em>projects</em> that launch on top of it.</p>
+  </div>
+</section>
+
+<!-- MEASURING TRUST: ON-CHAIN SIGNALS -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">How to measure it</span>
+      <h2>Verifiable Trust Signals — What to Check On-Chain</h2>
+      <p class="lead">Some trust signals are verifiable by anyone in under two minutes. Use these as a starting checklist, not an endpoint.</p>
+    </div>
+
+    <div class="grid grid-2" style="margin-bottom:36px">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/></svg>
+        </div>
+        <h3>Revoked Mint Authority</h3>
+        <p>This is the most important single check for any token. If a mint authority exists, someone can create more supply at will — diluting everyone who holds. When it is revoked, the total supply is permanently fixed. You can verify this in seconds on any block explorer by looking at the token's account data.</p>
+        <p style="margin-top:.8rem;font-size:.87rem;color:var(--faint)">Look for: "Mint Authority: None" or equivalent on the token's Solscan page.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Revoked Freeze Authority</h3>
+        <p>Freeze authority allows the token creator to prevent specific wallets from transacting — essentially freezing your funds. This power has a legitimate use in regulated stablecoins, but for a community token it is a red flag if left active. Revocation removes that ability permanently.</p>
+        <p style="margin-top:.8rem;font-size:.87rem;color:var(--faint)">Look for: "Freeze Authority: None" or equivalent on the token's account page.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Supply Distribution</h3>
+        <p>Even with a fixed supply, distribution matters. If a single wallet or a handful of wallets hold a dominant percentage of the total supply, they can move markets dramatically or exit all at once. Block explorers show the top holders of any token — studying the percentage spread is worthwhile.</p>
+        <p style="margin-top:.8rem;font-size:.87rem;color:var(--faint)">Use the "Holders" tab on Solscan to see the top addresses and their percentages.</p>
+      </article>
+      <article class="glass reveal d4">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+        </div>
+        <h3>Contract Address Consistency</h3>
+        <p>Scammers routinely deploy copycat tokens with similar names. Before buying any token, confirm the contract address from the official project website, then verify it independently on the block explorer. A single character difference means a completely different token.</p>
+        <p style="margin-top:.8rem;font-size:.87rem;color:var(--faint)">Use our <a href="/tools/" class="text-gold">on-chain tools</a> to verify addresses without leaving this site.</p>
+      </article>
+    </div>
+
+    <!-- Contract callout -->
+    <div class="glass reveal" style="border-color:rgba(69,230,255,.25);background:rgba(69,230,255,.04);padding:1.6rem 2rem">
+      <p style="font-size:.9rem;color:var(--faint);text-transform:uppercase;letter-spacing:.12em;font-family:var(--font-mono);margin-bottom:10px">TrustTails Official Contract (Solana SPL)</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+        <code style="font-family:var(--font-mono);font-size:.9rem;color:var(--cyan-2);word-break:break-all">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+        <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+        <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="btn btn-cyan btn-sm">Verify on Solscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+      </div>
+      <p style="font-size:.82rem;color:var(--faint);margin-top:10px">Mint authority: revoked &nbsp;·&nbsp; Freeze authority: revoked &nbsp;·&nbsp; Fixed supply: 1,000,000,000 TAIL. Verify each claim directly on Solscan — do not rely on any third party's word, including ours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DO / DON'T TRUST SIGNALS -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Signal vs noise</span>
+      <h2>What Trustworthy Communication Actually Looks Like</h2>
+      <p class="lead">On-chain facts are only half the picture. How a team communicates is the other half — and it is harder to fake over time.</p>
+    </div>
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+          Signs of Honest Communication
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+            Admits what is not yet built, rather than presenting roadmap items as already complete
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+            Invites you to verify claims on-chain, with specific links and instructions
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+            Acknowledges risk explicitly — including the possibility of losing your entire investment
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+            Explains the token's limitations honestly alongside its intended purpose
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+            Never predicts a price, promises returns, or creates artificial urgency
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+            Publishes tokenomics with verifiable on-chain breakdowns, not just pie charts in a deck
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          Common Red Flags
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            "This is going to 100x" or any specific price prediction from the project or its promoters
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            Presale or private sale offered by DMs — legitimate projects do not solicit via direct message
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            Partnership announcements that cannot be verified through the alleged partner's own channels
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            Active mint or freeze authority left open on a "community" token with no stated justification
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            Urgency language: "last chance", "filling fast", "whitelist closes tonight"
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            Promises of guaranteed yields, staking rewards, or passive income with specific percentages
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST ACROSS THE LANDSCAPE -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Educational overview</span>
+      <h2>Trust Looks Different Across the Crypto Landscape</h2>
+      <p class="lead">Different types of crypto projects earn trust in different ways. This is an educational overview — not a ranking, not a recommendation, and not advice on what to buy.</p>
+    </div>
+
+    <!-- Educational disclaimer inline -->
+    <div class="glass reveal" style="border-color:rgba(242,183,54,.2);padding:1rem 1.4rem;margin-bottom:28px;display:flex;gap:12px;align-items:flex-start">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;color:var(--gold)"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <p style="font-size:.88rem;margin:0">The following is an educational, factual overview of different categories of crypto projects. It is not an endorsement of any asset. Every project carries risk. None of the below constitutes a recommendation to buy, sell, or hold any cryptocurrency.</p>
+    </div>
+
+    <div class="grid grid-2" style="gap:22px">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Established Layer-1 Chains</h3>
+        <p>Bitcoin and Ethereum are the most widely studied examples of blockchain trust. Bitcoin has the longest uninterrupted operational history. Ethereum has an extensive developer ecosystem, publicly readable smart contracts, and a long track record of handling large transaction volumes. Solana is a more recent Layer-1 with a different performance profile and its own trade-offs. All of these are transparent in their operation, but none are without risk. Their track records are longer, but past performance does not guarantee future results.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>DeFi Protocols</h3>
+        <p>Decentralised finance protocols like lending platforms and automated market makers operate via smart contracts that can, in principle, be verified by anyone. In practice, the code complexity means most users rely on audits. Audits reduce risk but do not eliminate it — some audited projects have still failed or been exploited. The trustworthiness of a DeFi protocol depends heavily on the quality of its code, its audit history, and the transparency of its team.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Community &amp; Meme Tokens</h3>
+        <p>This is the category where TrustTails sits. Community tokens are typically smaller, higher-risk, and dependent on social energy more than on technical utility. Most do not have formal audits, third-party partnerships, or extensive track records. The trust signals for these projects are simpler but still meaningful: revoked authorities, transparent tokenomics, honest communication, and no artificial hype. The absence of on-chain red flags does not make a community token safe — it simply removes one layer of specific risk.</p>
+      </article>
+      <article class="glass reveal d4">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>NFT Projects and Gaming Tokens</h3>
+        <p>These sit in an even more variable trust landscape. Some NFT projects have delivered genuine creative value and consistent communities; many others have not. Trust in this category depends on the team's public track record, delivery history, and the durability of the underlying creative work. Gaming tokens depend additionally on whether the game itself ships and retains players. External factors — platform changes, regulatory shifts, market conditions — can affect these projects independently of their trustworthiness.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTTAILS PHILOSOPHY -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Our approach</span>
+      <h2>Where TrustTails Sits in This Picture</h2>
+    </div>
+    <div class="grid grid-2" style="align-items:start">
+      <div class="glass reveal d1" style="padding:2rem 2.2rem">
+        <p>TrustTails (ticker: <strong class="text-gold">TAIL</strong>) is a small, pre-launch community token on the Solana blockchain. It is not listed for purchase yet. It does not have an audit from a major security firm. It does not have verified institutional partners. It does not make promises about what it will be worth.</p>
+        <p style="margin-top:1rem">What it does have is a set of on-chain facts that are verifiable right now, before a single coin changes hands publicly:</p>
+        <ul style="list-style:none;margin-top:1.2rem;display:grid;gap:12px">
+          <li style="display:flex;align-items:flex-start;gap:12px;font-size:.95rem;color:var(--muted)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;margin-top:4px;color:var(--green)"><path d="M20 6 9 17l-5-5"/></svg>
+            Fixed total supply of exactly 1,000,000,000 TAIL
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:12px;font-size:.95rem;color:var(--muted)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;margin-top:4px;color:var(--green)"><path d="M20 6 9 17l-5-5"/></svg>
+            Mint authority permanently revoked — no new tokens can be created
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:12px;font-size:.95rem;color:var(--muted)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;margin-top:4px;color:var(--green)"><path d="M20 6 9 17l-5-5"/></svg>
+            Freeze authority permanently revoked — no wallet can be frozen
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:12px;font-size:.95rem;color:var(--muted)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;margin-top:4px;color:var(--green)"><path d="M20 6 9 17l-5-5"/></svg>
+            Public contract address, verifiable on Solscan by anyone
+          </li>
+        </ul>
+        <p style="margin-top:1.4rem">Those four things are provable. Everything else — community growth, future listings, any utility that might be built — is an intention, not a guarantee. We say this not to discourage participation but because we believe an honest foundation is more durable than a hyped one. See our full <a href="/trust-and-transparency" class="text-gold">trust and transparency page</a> for the complete picture.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div class="glass stat reveal d2">
+          <div class="num gold">1,000,000,000</div>
+          <div class="lbl">Fixed Total Supply — TAIL</div>
+        </div>
+        <div class="glass stat reveal d3">
+          <div class="num" style="font-size:clamp(1.2rem,2vw,1.6rem);color:var(--green)">REVOKED</div>
+          <div class="lbl">Mint Authority — Verified On-Chain</div>
+        </div>
+        <div class="glass stat reveal d4">
+          <div class="num" style="font-size:clamp(1.2rem,2vw,1.6rem);color:var(--green)">REVOKED</div>
+          <div class="lbl">Freeze Authority — Verified On-Chain</div>
+        </div>
+        <div class="glass reveal" style="padding:1.4rem 1.6rem">
+          <p style="font-size:.88rem;margin-bottom:14px;color:var(--faint)">Status as of June 2026</p>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="width:10px;height:10px;border-radius:50%;background:#F59E0B;display:inline-block;flex-shrink:0"></span>
+            <span style="font-size:.93rem;color:var(--muted)">Pre-launch — not available for purchase yet</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block;flex-shrink:0"></span>
+            <span style="font-size:.93rem;color:var(--muted)">On-chain facts verifiable now via Solscan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCAM WARNING -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Stay safe</span>
+      <h2>Trust Includes Knowing the Scams</h2>
+      <p class="lead">Pre-launch projects attract imitators. Here is what to watch for.</p>
+    </div>
+    <div class="glass reveal" style="border-color:rgba(239,68,68,.25);background:rgba(239,68,68,.04);padding:1.8rem 2rem;margin-bottom:28px">
+      <p style="display:flex;align-items:center;gap:10px;font-weight:600;color:#f87171;margin-bottom:16px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;flex-shrink:0"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Scam Warning — Read Before Participating in Anything
+      </p>
+      <ul style="list-style:none;display:grid;gap:12px">
+        <li style="display:flex;gap:12px;align-items:flex-start;font-size:.94rem;color:var(--muted)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;margin-top:4px;color:#f87171"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          <span>TrustTails will <strong>never</strong> DM you on Telegram, Twitter/X, or any platform offering tokens, presale access, or investment opportunities. Ignore and report anyone who does.</span>
+        </li>
+        <li style="display:flex;gap:12px;align-items:flex-start;font-size:.94rem;color:var(--muted)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;margin-top:4px;color:#f87171"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          <span>There is no presale, no whitelist, and no early-access programme. Any account or person claiming otherwise is running a scam, full stop.</span>
+        </li>
+        <li style="display:flex;gap:12px;align-items:flex-start;font-size:.94rem;color:var(--muted)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;margin-top:4px;color:#f87171"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          <span>Always verify the contract address (<code style="font-family:var(--font-mono);font-size:.85em;color:var(--cyan-2)">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>) directly on Solscan before interacting with any token claiming to be TAIL.</span>
+        </li>
+        <li style="display:flex;gap:12px;align-items:flex-start;font-size:.94rem;color:var(--muted)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;margin-top:4px;color:#f87171"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          <span>Our only official channels are <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-gold">@trusttailscoin on X</a>, <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-gold">Telegram Community</a>, and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-gold">Telegram Official</a>. No others are affiliated.</span>
+        </li>
+      </ul>
+    </div>
+    <p class="reveal" style="font-size:.95rem;max-width:720px">If you want to understand how to independently assess whether any project (including ours) is legitimate, see our dedicated <a href="/is-it-legit" class="text-gold">Is it legit? guide</a> — a step-by-step checklist you can apply to any token.</p>
+  </div>
+</section>
+
+<!-- WHY TRUST COMPOUNDS -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The long view</span>
+      <h2>Why Trust Compounds — and Hype Does Not</h2>
+    </div>
+    <div class="grid grid-2" style="align-items:start">
+      <div class="glass reveal d1" style="padding:2rem 2.2rem">
+        <p>Hype generates attention quickly. That attention can drive token price in the short term, which generates more attention, which is often mistaken for validation. This cycle feels self-reinforcing — until it is not. The mechanism that creates the spike is the same mechanism that makes the reversal fast and often final.</p>
+        <p style="margin-top:1rem">Trust works differently. It accumulates slowly through consistent, verifiable behaviour. A team that does what it says, does not claim what it cannot prove, and communicates setbacks as honestly as progress — that team builds something more durable than engagement metrics. It builds a community that stays informed rather than one that chases price.</p>
+        <p style="margin-top:1rem">This does not mean trust guarantees outcomes. A trustworthy project can still fail because of market conditions, technical limitations, regulatory changes, or simply because a community does not grow to sufficient scale. Trust reduces certain types of risk; it does not eliminate risk altogether.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <article class="glass cyan reveal d2">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          </div>
+          <h3>Hype Timeline</h3>
+          <p>Spike fast &rarr; liquidity exits &rarr; retail left holding &rarr; community disappears. The pattern repeats because it is structurally incentivised for the people who exit at the top.</p>
+        </article>
+        <article class="glass reveal d3">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V12M12 12 7 7M12 12l5-5M2 17l5-5 4 4 5-5 5 5"/></svg>
+          </div>
+          <h3>Trust Timeline</h3>
+          <p>Slow build &rarr; community genuinely informed &rarr; fewer panic-exits on volatility &rarr; more resilient holder base &rarr; foundation for whatever comes next. No guarantees, but a different structural basis.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>Frequently Asked Questions</h2>
+      <p class="lead">Honest answers to the questions we get most often about trust, transparency, and how to evaluate any crypto project.</p>
+    </div>
+    <div class="faq">
+      <details class="faq-item reveal">
+        <summary>How do I verify that TrustTails actually has revoked authorities?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Go to <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-gold">Solscan</a> and look up the contract address <code style="font-family:var(--font-mono);font-size:.88em;color:var(--cyan-2)">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. On the token's overview page, you will see fields for "Mint Authority" and "Freeze Authority." If they both show "None" or similar, the authorities are revoked. You do not need to take our word for it — that is precisely the point. Our <a href="/tools/" class="text-gold">verification tools</a> can also walk you through this step by step.</p>
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Does having revoked authorities mean a token is safe to invest in?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>No. Revoked authorities remove specific risks — the ability to inflate supply or freeze wallets — but they do not make a token safe. A project can still fail because of poor execution, lack of adoption, market conditions, or many other reasons. Revoked authorities are a necessary baseline check, not a sufficient reason to invest. Please read our full <a href="/is-it-legit" class="text-gold">legitimacy guide</a> for a broader checklist, and always do your own research beyond any single data point.</p>
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What is the difference between a rug pull and a project that simply fails?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>A rug pull is an intentional exit: founders or large holders liquidate their positions while retail participants are still buying, leaving latecomers with near-worthless tokens and no recourse. A project that simply fails is different — it ran out of money, the team could not execute, the community did not grow, or market conditions worked against it. Both result in losses for participants, but only the former involves deliberate deception. Revoked authorities, transparent tokenomics, and publicly verifiable on-chain data make rug pulls harder (though not impossible) to execute.</p>
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Can I lose everything with TrustTails or any crypto token?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Yes. Absolutely. This is true of TrustTails and every other cryptocurrency. The value of a token can go to zero. TrustTails is a small, pre-launch community token with no guarantee of any outcome. Please do not put in money you cannot afford to lose. This is not a hedge, not a diversified investment, and not financial advice. We say this as plainly as possible because we think honesty about risk is more important than keeping you engaged.</p>
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Why does TrustTails not promise future listings or price targets?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Because we cannot honestly make those promises. A listing depends on exchange decisions we do not control. A price depends on market forces no one can reliably predict. We choose not to manufacture confidence we do not have. The roadmap on our <a href="/trust-and-transparency" class="text-gold">trust and transparency page</a> describes intentions and plans — not contracted outcomes. When something changes, we will update it honestly.</p>
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Is TrustTails affiliated with any well-known exchange, institution, or brand?<span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>No. TrustTails has no verified partnerships, institutional backers, or affiliations with any exchange, bank, or financial entity at the time of writing (June 2026). If that changes in the future, we will announce it through our official channels and it will be verifiable through the alleged partner's own public communications. Do not believe any claim of partnership or institutional backing that cannot be verified from the partner's side independently.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNAL LINKS / FURTHER READING -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Go deeper</span>
+      <h2>Related Reading</h2>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3><a href="/trust-and-transparency" class="text-gold">Our Trust &amp; Transparency Page</a></h3>
+        <p>The full record of our on-chain verifiable facts, what the team has committed to, and what we have not promised. Updated as things develop.</p>
+        <a href="/trust-and-transparency" class="btn btn-ghost btn-sm" style="margin-top:1.2rem">Read more</a>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 21H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h7M14 3h7a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-7M7 12h10M12 7l5 5-5 5"/></svg>
+        </div>
+        <h3><a href="/is-it-legit" class="text-gold">Is TrustTails Legit?</a></h3>
+        <p>A step-by-step independent checklist — apply it to TrustTails or any other project. Includes instructions for verifying on-chain data yourself without trusting any middleman.</p>
+        <a href="/is-it-legit" class="btn btn-ghost btn-sm" style="margin-top:1.2rem">Run the check</a>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3><a href="/tools/" class="text-gold">On-Chain Verification Tools</a></h3>
+        <p>Free tools for checking token authority status, supply verification, and holder distribution — built to help you verify any project, not just ours.</p>
+        <a href="/tools/" class="btn btn-ghost btn-sm" style="margin-top:1.2rem">Open tools</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow" style="margin-bottom:18px;display:inline-block">Pre-launch community</span>
+      <h2>Follow the Build, Not the Hype</h2>
+      <p>TrustTails is not yet available to buy. If you find the approach interesting, the best thing you can do is join the community, watch what we actually do, and make up your own mind when the time comes. No urgency. No pressure.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          Join Telegram Community
+        </a>
+        <a class="btn btn-ghost" href="https://x.com/trusttailscoin" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 4l16 16M20 4 4 20"/></svg>
+          Follow on X
+        </a>
+        <a class="btn btn-ghost" href="/trust-and-transparency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          View Transparency Page
+        </a>
+      </div>
+      <p style="margin-top:20px;font-size:.82rem;color:var(--faint);max-width:560px;margin-inline:auto">This is not financial advice. TrustTails is a speculative, pre-launch community token. Participation carries significant risk, including total loss of value. Only interact with funds you can afford to lose entirely.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell. Verify everything on-chain.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Project</h4><a href="/about">About</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/whitepaper">Whitepaper</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">Compare</a><a href="/how-to-buy">How to buy</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calc</a><a href="/tools/rug-pull-checklist">Rug-Pull Check</a><a href="/tools/">All tools</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/">Insights</a><a href="/solana">Why Solana?</a><a href="/faq">FAQ</a><a href="/community">Community</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here is a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

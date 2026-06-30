@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>How to Read a DexScreener Chart (Beginner Guide)</title>
+<meta name="description" content="A beginner guide to reading a DexScreener chart — price, liquidity, volume, holders and the metrics that actually matter.">
+<link rel="canonical" href="https://trusttails.io/blog/reading-a-dexscreener-chart">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trusttails.io/blog/reading-a-dexscreener-chart">
+<meta property="og:title" content="How to Read a DexScreener Chart (Beginner Guide)">
+<meta property="og:description" content="A beginner guide to reading a DexScreener chart — price, liquidity, volume, holders and the metrics that actually matter.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="How to Read a DexScreener Chart (Beginner Guide)">
+<meta name="twitter:description" content="A beginner guide to reading a DexScreener chart — price, liquidity, volume, holders and the metrics that actually matter.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://trusttails.io/blog/"},{"@type":"ListItem","position":3,"name":"Reading a DexScreener chart","item":"https://trusttails.io/blog/reading-a-dexscreener-chart"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Project <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/about"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span><b>About & Story</b><span class="ms">How TrustTails began</span></span></a>
+        <a class="mega-link" href="/tokenomics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 0 1 0 4H9m2-4v8"/></svg></span><span><b>Tokenomics</b><span class="ms">Fixed 1B, revoked authorities</span></span></a>
+        <a class="mega-link" href="/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></span><span><b>Roadmap</b><span class="ms">The honest 3-phase journey</span></span></a>
+        <a class="mega-link" href="/vision"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6Z"/></svg></span><span><b>Vision</b><span class="ms">The long-term north star</span></span></a>
+        <a class="mega-link" href="/tail-network"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg></span><span><b>TAIL Network</b><span class="ms">The technology behind TAIL</span></span></a>
+        <a class="mega-link" href="/solana"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h12l2-2H7Zm0 5h12l2-2H7Zm0 5h12l2-2H7Z"/></svg></span><span><b>Why Solana</b><span class="ms">Speed and low fees</span></span></a>
+        <a class="mega-feature" href="/whitepaper"><span><b>Whitepaper</b><span class="ms">The full vision &amp; tokenomics</span></span><span class="btn btn-gold btn-sm">Read</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Trust <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/is-it-legit"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Is it legit?</b><span class="ms">Verify on-chain in 60s</span></span></a>
+        <a class="mega-link" href="/security"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Security</b><span class="ms">Stay safe from scams</span></span></a>
+        <a class="mega-link" href="/trust-and-transparency"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Transparency</b><span class="ms">How we communicate</span></span></a>
+        <a class="mega-link" href="/compare"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>How we compare</b><span class="ms">vs a typical meme coin</span></span></a>
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token checker</b><span class="ms">Check any Solana token</span></span></a>
+        <a class="mega-feature" href="/is-it-legit"><span><b>Live on-chain proof</b><span class="ms">Supply &amp; authorities, verified</span></span><span class="btn btn-gold btn-sm">Verify</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Tools <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token Checker</b><span class="ms">Verify any SPL token</span></span></a>
+        <a class="mega-link" href="/tools/token-comparison"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>Comparison</b><span class="ms">Compare tokens side by side</span></span></a>
+        <a class="mega-link" href="/tools/market-cap-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M14 10h2v8h-2zM8 18h2"/></svg></span><span><b>Market Cap Calc</b><span class="ms">Hypothetical market cap</span></span></a>
+        <a class="mega-link" href="/tools/holdings-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9l8 4"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Holdings Calc</b><span class="ms">Value your holdings</span></span></a>
+        <a class="mega-link" href="/tools/rug-pull-checklist"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span><b>Rug-Pull Checklist</b><span class="ms">Score safety signals</span></span></a>
+        <a class="mega-link" href="/tools/wallet-setup-guide"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 12h3M3 9h18"/></svg></span><span><b>Wallet Setup</b><span class="ms">Phantom & Solflare</span></span></a>
+        <a class="mega-feature" href="/tools/"><span><b>All free tools</b><span class="ms">No sign-up, no hype</span></span><span class="btn btn-gold btn-sm">Open</span></a>
+      </div>
+    </div>
+    <a class="nav-top-link nav-top" href="/blog/">Insights</a>
+    <a class="nav-top-link nav-top" href="/how-to-buy">How to buy</a>
+    <a class="nav-top-link nav-top" href="/faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+<div class="mobile-menu">
+  <details class="mm-sec"><summary>Project</summary><div class="mm-links"><a href="/about">About &amp; Story</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/tail-network">TAIL Network</a><a href="/solana">Why Solana</a><a href="/whitepaper">Whitepaper</a></div></details>
+  <details class="mm-sec"><summary>Trust</summary><div class="mm-links"><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">How we compare</a></div></details>
+  <details class="mm-sec"><summary>Tools</summary><div class="mm-links"><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calculator</a><a href="/tools/holdings-calculator">Holdings Calculator</a><a href="/tools/rug-pull-checklist">Rug-Pull Checklist</a><a href="/tools/wallet-setup-guide">Wallet Setup</a><a href="/tools/">All tools</a></div></details>
+  <a class="mm-direct" href="/blog/">Insights</a>
+  <a class="mm-direct" href="/how-to-buy">How to buy</a>
+  <a class="mm-direct" href="/faq">FAQ</a>
+  <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Insights · Beginner Guide</span>
+      <h1>How to Read a DexScreener Chart<br><span class="text-grad">Every Metric Explained</span></h1>
+      <p class="lead">DexScreener puts an enormous amount of on-chain data in front of you the moment a token launches. But a wall of numbers without context is noise. This guide unpacks each metric — price, liquidity, volume, market cap, holders, and transactions — so you can actually tell a healthy chart from a concerning one.</p>
+    </div>
+    <div class="reveal d2" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:8px;">
+      <span style="color:var(--text-muted);font-size:.85rem;">June 2026 &middot; 8 min read</span>
+      <span style="color:var(--text-muted);font-size:.85rem;">·</span>
+      <a href="/blog/" style="color:var(--gold);font-size:.85rem;text-decoration:none;">← Back to Insights</a>
+    </div>
+    <div class="reveal d3" style="margin-top:1.5rem;padding:1rem 1.25rem;border-left:3px solid var(--gold);background:rgba(255,183,0,.06);border-radius:0 8px 8px 0;max-width:760px;">
+      <p style="margin:0;font-size:.9rem;color:var(--text-muted);"><strong style="color:var(--gold);">Educational content only.</strong> Nothing in this article is financial advice. Charts and metrics are tools for understanding data, not signals to buy or sell. Cryptocurrency carries significant risk, including the total loss of your investment. Always do your own research (DYOR) and only risk what you can afford to lose.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE JSON-LD -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Read a DexScreener Chart (Beginner Guide)","description":"A beginner guide to reading a DexScreener chart — price, liquidity, volume, holders and the metrics that actually matter.","url":"https://trusttails.io/blog/reading-a-dexscreener-chart","datePublished":"2026-06-18","image":"https://trusttails.io/assets/img/og-cover.png","author":{"@type":"Organization","name":"TrustTails"},"publisher":{"@type":"Organization","name":"TrustTails","logo":{"@type":"ImageObject","url":"https://trusttails.io/assets/img/logo-nav.png"}}}</script>
+
+<!-- WHAT IS DEXSCREENER -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Basics</span>
+      <h2>What Is DexScreener?</h2>
+      <p>DexScreener is a free, real-time analytics platform that reads directly from decentralised exchange (DEX) data across multiple blockchains — including Solana, Ethereum, BNB Chain, and many others. When a token is listed on a DEX like Raydium or Orca, DexScreener automatically indexes every on-chain swap and surfaces it in a readable chart interface.</p>
+      <p style="margin-top:1rem">Unlike centralised exchanges that control their own data feeds, DexScreener is simply <strong>reading the public blockchain</strong>. That makes it a valuable neutral reference point — the data it shows is what is actually happening on-chain, not what a project claims is happening. For that reason, it has become the default first-stop tool for anyone researching a Solana token.</p>
+      <p style="margin-top:1rem">Understanding what each number on that screen actually means is a foundational skill. Let's go through every panel systematically.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-4"/></svg>
+        </div>
+        <h3>Multi-chain Coverage</h3>
+        <p>DexScreener indexes Solana, Ethereum, BNB Chain, Base, Avalanche, and dozens of other networks. The chart interface looks identical across chains, so the skills you learn here transfer directly.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Real-Time Data</h3>
+        <p>Every swap that happens on-chain appears within seconds. You are looking at the same feed that more experienced traders use — there is no delayed or filtered version for beginners.</p>
+      </article>
+      <article class="glass reveal d3 cyan">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3>Fully Free</h3>
+        <p>No account, subscription, or wallet connection is needed to view any chart on DexScreener. All data is freely accessible. This is intentional — transparent markets require accessible data.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- THE PRICE CHART -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Metric #1</span>
+      <h2>Price — What It Is and What It Isn't</h2>
+      <p>The most prominent element on any DexScreener page is the candlestick price chart. Each candle represents a time period (you can toggle between 1-minute, 5-minute, 1-hour, 1-day views and others). The body of a candle shows the opening and closing price within that period; the wicks show the highest and lowest price reached.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Green vs Red Candles</h3>
+        <p>A green candle means the price closed <em>higher</em> than it opened during that period. A red candle means it closed <em>lower</em>. On DexScreener, very small tokens often show price in scientific notation (e.g. $0.000001234) — this is normal and says nothing about value or quality.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+        </div>
+        <h3>Price Alone Means Little</h3>
+        <p>A token priced at $0.000001 is not inherently "cheap" and a token at $50 is not inherently "expensive." Price per token only becomes meaningful when you combine it with total supply and circulating supply to get market cap — which we cover below.</p>
+      </article>
+    </div>
+    <div class="reveal d3" style="margin-top:2rem;padding:1.25rem 1.5rem;border-left:3px solid var(--cyan-2);background:rgba(0,200,200,.06);border-radius:0 8px 8px 0;max-width:760px;">
+      <p style="margin:0;font-size:.9rem;color:var(--text-muted);"><strong class="text-cyan">Pattern to recognise:</strong> A price chart that shows a perfectly vertical spike upward followed by an equally vertical crash — with almost no trading activity in between — is often a sign of a coordinated pump. It tells you that liquidity was thin and a relatively small amount of money moved the price dramatically in both directions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LIQUIDITY -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Metric #2</span>
+      <h2>Liquidity — The Most Important Number</h2>
+      <p>Liquidity is the total USD value of both assets sitting inside the trading pool — for example, the combined value of TAIL tokens and SOL in a TAIL/SOL pair. It is the single most consequential number on a DexScreener chart for evaluating whether a token can be traded safely.</p>
+      <p style="margin-top:1rem">If you want a deeper understanding of how liquidity pools actually work, our companion article <a href="/blog/how-liquidity-works" class="text-gold">How Token Liquidity Works</a> covers the mechanics in full, including the AMM formula and slippage calculations.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 0v20M2 12h20"/></svg>
+        </div>
+        <h3>Low Liquidity = High Slippage</h3>
+        <p>When a pool has very little liquidity, even a modest purchase shifts the token ratio significantly, causing you to receive far fewer tokens than the quoted price suggested. This is called slippage. On pools under $5,000 in liquidity, a $200 trade can move the price by several percent.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="10" width="4" height="8"/><rect x="13" y="6" width="4" height="12"/></svg>
+        </div>
+        <h3>High Liquidity = Stable Trading</h3>
+        <p>A pool with $100,000 or more in liquidity can absorb individual trades of a few thousand dollars without a meaningful price impact. This does not make a token "good" — it simply means the mechanics of trading are more predictable.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Is the Liquidity Locked?</h3>
+        <p>DexScreener may show a padlock icon if LP tokens are verifiably locked. This is important: unlocked liquidity can be removed by the pool creator at any time, crashing the price to near zero in seconds — a classic rug pull. Always check lock status independently via the pool address.</p>
+      </article>
+    </div>
+    <div class="reveal d4" style="margin-top:2.5rem;">
+      <div class="glass stat" style="max-width:480px;margin:0 auto;text-align:center;">
+        <div class="num">$5k – $50k</div>
+        <div class="lbl">Typical liquidity range for a newly launched community token in its first days. This is not a benchmark of quality — it is simply what is common at this stage.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUME -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Metric #3</span>
+      <h2>Volume — Real Trading vs Manufactured Activity</h2>
+      <p>Volume is the total USD value of all completed swaps within a given time window. DexScreener shows 5-minute, 1-hour, 6-hour, and 24-hour volume figures. Volume is the heartbeat of a token: it tells you how actively people are actually trading it, not just looking at the chart.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Volume-to-Liquidity Ratio</h3>
+        <p>A useful quick check: divide 24-hour volume by current liquidity. A ratio above 1× means the entire pool has turned over at least once, which suggests genuine trading interest. A ratio near zero on a token that has been live for weeks may indicate limited organic activity.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Wash Trading Warning</h3>
+        <p>Very high volume on a token with very few unique wallets can indicate wash trading — where the same party buys and sells repeatedly to inflate the volume figure. This is not always detectable from volume alone, but unusually round or perfectly regular transaction sizes are a signal worth noting.</p>
+      </article>
+    </div>
+    <div class="reveal d3" style="margin-top:2rem;padding:1.25rem 1.5rem;border-left:3px solid var(--gold);background:rgba(255,183,0,.06);border-radius:0 8px 8px 0;max-width:760px;">
+      <p style="margin:0;font-size:.9rem;color:var(--text-muted);"><strong style="color:var(--gold);">Important context:</strong> Low volume on a pre-launch or newly launched token is completely normal and expected. The absence of volume does not mean a project is failing — it may simply mean trading has not started yet. Judge volume relative to age and context, not against established tokens.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET CAP & FDV -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Metric #4</span>
+      <h2>Market Cap and Fully Diluted Valuation</h2>
+      <p>These two figures are often shown together on DexScreener and are frequently confused — even by experienced traders. Understanding the difference is essential before drawing any conclusions about a token's size or stage.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Market Cap (Circulating)</h3>
+        <p><strong>Current price × circulating supply.</strong> This represents the value of only the tokens that are currently tradeable in the market. If a project has locked team allocations or vesting schedules, those tokens do not count toward circulating supply yet — and therefore are not included in this figure.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3>Fully Diluted Valuation (FDV)</h3>
+        <p><strong>Current price × total maximum supply.</strong> FDV shows what the total project would be valued at if every token that will ever exist were already in circulation. For tokens with a fixed, fully circulating supply — like TrustTails, where all 1,000,000,000 TAIL already exist — market cap and FDV are the same number.</p>
+      </article>
+    </div>
+    <div class="reveal d3" style="margin-top:2rem;padding:1.25rem 1.5rem;border-left:3px solid var(--cyan-2);background:rgba(0,200,200,.06);border-radius:0 8px 8px 0;max-width:760px;">
+      <p style="margin:0;font-size:.9rem;color:var(--text-muted);"><strong class="text-cyan">Why this matters:</strong> A large gap between market cap and FDV means there is significant supply yet to enter circulation. That future supply creates potential sell pressure when it unlocks — which is a legitimate risk factor to understand before any decision. Tokens with mint authorities still active carry an even greater version of this risk, because the total supply itself is theoretically unlimited.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSACTIONS & BUYS VS SELLS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Metric #5</span>
+      <h2>Transactions: Buys, Sells, and What the Ratio Tells You</h2>
+      <p>Below the chart, DexScreener shows a transaction feed — each row is an individual swap with its direction (buy or sell), size in USD, and the wallet address that executed it. There is also a summary strip showing the number of buys versus sells over different time windows.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h3>Buys vs Sells Count</h3>
+        <p>A roughly balanced buy-to-sell ratio over hours or days tends to indicate organic two-sided trading. An extreme imbalance in either direction — such as 95% buys with almost no sells — can indicate coordinated activity designed to move the price in one direction.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Unique Makers</h3>
+        <p>The "Makers" column shows how many unique wallet addresses have traded the token. A token with 10,000 transactions from only 12 wallets is very different from one with 10,000 transactions from 800 unique wallets. More unique participants generally indicates broader, less concentrated activity.</p>
+      </article>
+      <article class="glass reveal d3 cyan">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8L6 7h12l-2-4Z"/></svg>
+        </div>
+        <h3>Transaction Size Patterns</h3>
+        <p>Legitimate organic trading shows varied transaction sizes — $12, $340, $1,200, $50. Suspiciously uniform sizes ($500.00 exactly, repeated dozens of times) or perfectly spaced intervals (every 60 seconds, for hours) warrant extra scrutiny.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOLDERS -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Metric #6</span>
+      <h2>Holders — Concentration Risk in Plain Numbers</h2>
+      <p>DexScreener links to holder distribution data (often via a Solscan or Birdeye integration). This shows you a ranked list of wallets by the percentage of total supply they hold. Understanding holder concentration is one of the clearest, most actionable signals available to a researcher.</p>
+    </div>
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>Healthier Distribution Signals</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Top 10 wallets hold under 30% of supply combined</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Hundreds or thousands of unique holder addresses</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Largest single wallet holds under 5% (excluding locked pools)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Liquidity pool contract is among the top holders (expected)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Token burn wallet (null address) visible if any burns have occurred</li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>Concentration Warning Signs</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>Single wallet holds 20%+ of supply outside of a locked contract</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>Top 5 wallets collectively hold over 50% with no explanation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>Holder count has been declining even as price stays flat</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>Fewer than 50 unique holders on a token claiming wide community</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>Multiple large wallets funded from the same source wallet (cluster)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="reveal d3" style="margin-top:2rem;text-align:center;">
+      <p style="color:var(--text-muted);max-width:680px;margin:0 auto;font-size:.9rem;">Use our <a href="/tools/solana-token-checker" class="text-cyan">Solana Token Checker tool</a> to pull holder data, check authority status, and review supply distribution for any Solana SPL token — all from one place, reading directly from on-chain data.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WARNING SIGNS SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Advanced Reading</span>
+      <h2>Putting It Together: What a Suspicious Chart Looks Like</h2>
+      <p>No single metric tells a complete story. The value of DexScreener comes from reading several metrics together and looking for patterns that don't add up. Here are five composite warning signs that appear repeatedly in tokens that later collapse.</p>
+    </div>
+    <div class="timeline reveal">
+      <div>
+        <h3>1. Instant spike, zero holders, then silence</h3>
+        <p>The price chart shows a vertical move upward in the first few minutes after launch, then a crash to near-zero, with the entire sequence completed in under an hour. Holder count never reached above double digits. This is the signature of a simple rug pull: the creator added minimal liquidity, pumped the token with a few buys, then removed the liquidity.</p>
+      </div>
+      <div>
+        <h3>2. High volume, low liquidity, few unique wallets</h3>
+        <p>A 24-hour volume of $500,000 sounds impressive until you notice the liquidity is $3,000 and there have only been 8 unique makers. This arithmetic doesn't hold up without wash trading — the same wallets moving tokens back and forth to inflate the volume figure seen by casual observers.</p>
+      </div>
+      <div>
+        <h3>3. Market cap far exceeds FDV — or neither is shown</h3>
+        <p>If circulating supply is claimed to be 100% but the FDV is dramatically higher than market cap, there is likely unlocked or unvested supply not properly disclosed. If either figure is missing entirely, it may be because the team prefers you not calculate it.</p>
+      </div>
+      <div>
+        <h3>4. Steadily rising price with only buy transactions</h3>
+        <p>A chart showing hundreds of sequential green candles with almost no red — and a transaction feed of nearly all buys — is unusual. Organic markets always include sellers. This pattern can indicate a coordinated effort to show steady upward momentum to attract outside buyers.</p>
+      </div>
+      <div>
+        <h3>5. Liquidity that shrinks faster than price</h3>
+        <p>When you watch a token over multiple sessions and notice the liquidity number is declining while the price looks stable or even rising, liquidity providers are quietly withdrawing. This reduces the depth of the pool and means any significant sell order will have an outsized downward price impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE TAIL FITS -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Where TrustTails Fits</span>
+      <h2>TrustTails (TAIL) — Pre-Launch Context</h2>
+      <p>TrustTails (TAIL) is a Solana SPL token that does not yet have a DexScreener profile. There is no pool, no price chart, and no trading data to read — because it has not launched yet. That is not a problem to hide; it is simply the current status.</p>
+      <p style="margin-top:1rem">The token exists on-chain and can be verified independently right now. When a pool opens, it will appear on DexScreener automatically — typically within minutes of the first trade. At that point, the same framework laid out in this article applies directly to reading the TAIL chart.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Verifiable Right Now</h3>
+        <p>Contract address, fixed supply of 1,000,000,000 TAIL, and both mint and freeze authorities already revoked — all publicly visible on-chain before a single trade. Contract: <code class="text-cyan" style="font-size:.8rem;word-break:break-all;">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code></p>
+        <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap;">
+          <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:.8rem;padding:.4rem .9rem;">View on Solscan</a>
+          <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">Copy</span></button>
+        </div>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>No Hidden Presale</h3>
+        <p>There is no presale, private sale, whitelist, or early access round. Anyone claiming to sell TAIL before the public pool opens is running a scam. The TrustTails team will never DM you first requesting payment. Report and block any such contact immediately.</p>
+      </article>
+      <article class="glass reveal d3 cyan">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.38a16 16 0 0 0 5.92 5.92l.96-1.04a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 15.52l-.58 1.4Z"/></svg>
+        </div>
+        <h3>Official Channels Only</h3>
+        <p>When a pool address is published, it will come only from <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">@trusttailscoin</a> on X or <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">TrustTailsOfficial</a> on Telegram. Cross-reference any pool address against the token contract on Solscan before interacting with it.</p>
+      </article>
+    </div>
+    <div class="reveal d4" style="margin-top:2rem;padding:1.25rem 1.5rem;border-left:3px solid var(--gold);background:rgba(255,183,0,.06);border-radius:0 8px 8px 0;max-width:760px;">
+      <p style="margin:0;font-size:.9rem;color:var(--text-muted);"><strong style="color:var(--gold);">Important:</strong> TrustTails is a small, pre-launch, community-first token. It is not affiliated with any financial institution, exchange, or investment product. This is not a recommendation to buy, hold, or speculate. Like all crypto assets, TAIL carries significant risk and there are no guarantees of any kind regarding price, adoption, or returns. Only ever risk what you can afford to lose entirely.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Common Questions</span>
+      <h2>DexScreener FAQ</h2>
+    </div>
+    <div class="faq reveal d1" style="max-width:760px;margin:0 auto;">
+      <details class="faq-item">
+        <summary class="plus">Is DexScreener data accurate and trustworthy?</summary>
+        <div class="faq-a">
+          <p>DexScreener reads directly from on-chain swap events — it does not create or modify data, it simply indexes what has happened on the blockchain. That makes it highly reliable for the data it shows. The main caveat is that DexScreener cannot verify whether a project is legitimate, or whether trading activity is organic. It shows you numbers; interpreting those numbers is your responsibility.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">What does "RAYDIUM" or "ORCA" mean on the DexScreener page?</summary>
+        <div class="faq-a">
+          <p>This is the name of the DEX (decentralised exchange) where the pool lives. Raydium and Orca are the two largest Solana DEXes. A single token can have pools on multiple DEXes simultaneously — DexScreener will show each pool separately and usually consolidates the most liquid one as the "primary" chart view. The DEX name tells you which protocol's smart contract is holding the liquidity.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">What does it mean if liquidity shows a padlock icon?</summary>
+        <div class="faq-a">
+          <p>A padlock icon indicates that some or all LP (liquidity provider) tokens have been verifiably locked in a third-party locking contract — meaning the liquidity cannot be withdrawn until the lock period expires. DexScreener typically links to the lock service (such as Streamflow or Raydium's native lock). You should always click through and verify the lock yourself: check the amount locked, the expiry date, and the wallet that owns the lock. Do not assume the lock covers 100% of liquidity unless verified.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">What is the difference between "Price" and "Price USD"?</summary>
+        <div class="faq-a">
+          <p>DexScreener shows the price in two ways: expressed in the paired asset (e.g. how many SOL one token costs) and expressed in USD equivalent. The USD figure is calculated by multiplying the SOL price by the current SOL/USD rate. Because SOL itself moves in price against USD, a token's "price in USD" can change even if no trades have occurred in the token's own pool — simply because SOL's dollar value shifted.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">How do I find a token on DexScreener?</summary>
+        <div class="faq-a">
+          <p>Go to dexscreener.com and paste the token's contract address into the search bar. Using the contract address rather than the token name is safer — token names can be impersonated by scammers, but contract addresses are unique on-chain identifiers. For TrustTails, that address is <code class="text-cyan">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. A DexScreener profile will appear automatically once a trading pool exists.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">Can I use DexScreener to spot rug pulls before they happen?</summary>
+        <div class="faq-a">
+          <p>DexScreener data can surface warning signs, but it cannot guarantee detection of a rug pull in advance. The most effective pre-launch checks happen before you ever look at a chart: verify that mint and freeze authorities are revoked on Solscan, check whether liquidity is locked (and for how long), review the holder distribution for dangerous concentration, and assess whether the team communicates transparently. Our <a href="/blog/how-to-spot-a-rug-pull" class="text-gold">rug pull guide</a> covers these checks in detail. You can also use our <a href="/tools/solana-token-checker" class="text-cyan">Solana Token Checker tool</a> to run several of these checks automatically.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">When will TAIL appear on DexScreener?</summary>
+        <div class="faq-a">
+          <p>TrustTails (TAIL) is pre-launch and does not yet have a trading pool. A DexScreener profile will be created automatically the moment the first trade occurs after pool creation. The pool address will be announced through our official channels only: <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">@trusttailscoin</a> on X and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">TrustTailsOfficial</a> on Telegram.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNAL LINKS / FURTHER READING -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Go Deeper</span>
+      <h2>Related Reading &amp; Tools</h2>
+      <p>A DexScreener chart is one layer of research. These resources cover the concepts that sit underneath the numbers.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 0v20M2 12h20"/></svg>
+        </div>
+        <h3><a href="/blog/how-liquidity-works" class="text-gold" style="text-decoration:none;">How Token Liquidity Works</a></h3>
+        <p>Understand the AMM formula that sets every price you see on DexScreener, what slippage actually is, and how pool depth affects your trades. This article explains the mechanics behind the numbers.</p>
+        <a href="/blog/how-liquidity-works" class="btn btn-ghost" style="margin-top:1rem;font-size:.85rem;">Read article →</a>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3><a href="/tools/solana-token-checker" class="text-cyan" style="text-decoration:none;">Solana Token Checker Tool</a></h3>
+        <p>Paste any Solana token address and instantly see authority status, supply breakdown, holder concentration, and on-chain metadata — all pulled directly from the blockchain. Use it alongside a DexScreener chart for a complete picture.</p>
+        <a href="/tools/solana-token-checker" class="btn btn-cyan" style="margin-top:1rem;font-size:.85rem;">Open tool →</a>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3><a href="/blog/how-to-spot-a-rug-pull" class="text-gold" style="text-decoration:none;">How to Spot a Rug Pull</a></h3>
+        <p>The red flags that consistently appear before a token collapses — covering everything from unlocked liquidity and active mint authority to anonymous teams and suspicious transaction patterns.</p>
+        <a href="/blog/how-to-spot-a-rug-pull" class="btn btn-ghost" style="margin-top:1rem;font-size:.85rem;">Read article →</a>
+      </article>
+      <article class="glass reveal d4">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3><a href="/blog/how-to-verify-a-solana-token" class="text-cyan" style="text-decoration:none;">How to Verify a Solana Token</a></h3>
+        <p>A step-by-step walkthrough for reading a Solscan token page — checking authority status, total supply, holder distribution, and metadata — so you can verify anything you see on DexScreener from the primary source.</p>
+        <a href="/blog/how-to-verify-a-solana-token" class="btn btn-ghost" style="margin-top:1rem;font-size:.85rem;">Read article →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">What's Next</span>
+      <h2>Read the Chart. Verify the Contract. Decide for Yourself.</h2>
+      <p class="lead">The tools exist to research any Solana token completely independently — without relying on what a project claims about itself. That is how informed research actually works.</p>
+    </div>
+    <div class="reveal d2" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
+      <a class="btn btn-gold" href="/tools/solana-token-checker">Check any token</a>
+      <a class="btn btn-ghost" href="/blog/how-liquidity-works">How liquidity works</a>
+      <a class="btn btn-cyan" href="/is-it-legit">Is TrustTails legit?</a>
+    </div>
+    <p class="reveal d3" style="text-align:center;color:var(--text-muted);font-size:.82rem;margin-top:2rem;max-width:640px;margin-left:auto;margin-right:auto;">Nothing on this page is financial advice. Cryptocurrency carries significant risk, including the total loss of value. Always do your own research and only risk what you can afford to lose.</p>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell. Verify everything on-chain.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Project</h4><a href="/about">About</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/whitepaper">Whitepaper</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">Compare</a><a href="/how-to-buy">How to buy</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calc</a><a href="/tools/rug-pull-checklist">Rug-Pull Check</a><a href="/tools/">All tools</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/">Insights</a><a href="/solana">Why Solana?</a><a href="/faq">FAQ</a><a href="/community">Community</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here is a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

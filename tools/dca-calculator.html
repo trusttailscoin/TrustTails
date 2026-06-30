@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Dollar-Cost Averaging (DCA) Calculator</title>
+<meta name="description" content="Model a dollar-cost-averaging schedule and understand the strategy. Educational tool — not financial advice.">
+<link rel="canonical" href="https://trusttails.io/tools/dca-calculator">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trusttails.io/tools/dca-calculator">
+<meta property="og:title" content="Dollar-Cost Averaging (DCA) Calculator">
+<meta property="og:description" content="Model a dollar-cost-averaging schedule and understand the strategy. Educational tool — not financial advice.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Dollar-Cost Averaging (DCA) Calculator">
+<meta name="twitter:description" content="Model a dollar-cost-averaging schedule and understand the strategy. Educational tool — not financial advice.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://trusttails.io/tools/"},{"@type":"ListItem","position":3,"name":"DCA calculator","item":"https://trusttails.io/tools/dca-calculator"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"DCA Calculator","url":"https://trusttails.io/tools/dca-calculator","description":"Educational dollar-cost averaging schedule calculator. Shows total invested and number of purchases over a chosen period.","applicationCategory":"FinancialApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+/* DCA tool–specific layout only — no overrides to base system */
+.dca-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.dca-inputs{display:grid;gap:18px}
+.field-group{display:grid;gap:8px}
+.field-group label{font-family:var(--font-display);font-weight:600;font-size:.9rem;color:var(--text)}
+.field-group .field-hint{font-size:.8rem;color:var(--faint);margin-top:2px}
+.dca-input{
+  width:100%;padding:14px 16px;border-radius:var(--radius-sm);
+  background:var(--bg-3);border:1px solid var(--border-2);color:var(--text);
+  font-family:var(--font-body);font-size:1rem;
+  transition:border-color .2s var(--ease),box-shadow .2s;
+  appearance:none;-webkit-appearance:none;
+}
+.dca-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(242,183,54,.12)}
+.dca-input::placeholder{color:var(--faint)}
+.dca-select{
+  width:100%;padding:14px 40px 14px 16px;border-radius:var(--radius-sm);
+  background:var(--bg-3) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239DB0CC' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/18px;
+  border:1px solid var(--border-2);color:var(--text);
+  font-family:var(--font-body);font-size:1rem;cursor:pointer;
+  transition:border-color .2s,box-shadow .2s;
+}
+.dca-select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(242,183,54,.12)}
+.results-panel{display:grid;gap:16px}
+.result-stat{text-align:center;padding:24px 18px}
+.result-stat .r-num{font-family:var(--font-mono);font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;color:var(--gold);line-height:1;display:block}
+.result-stat .r-lbl{margin-top:10px;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.edu-note{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:16px 18px;border-radius:var(--radius-sm);
+  background:rgba(242,183,54,.06);border:1px solid rgba(242,183,54,.2);
+  font-size:.88rem;color:var(--muted);line-height:1.55;
+}
+.edu-note svg{flex-shrink:0;width:18px;height:18px;color:var(--gold);margin-top:1px}
+.warn-note{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:16px 18px;border-radius:var(--radius-sm);
+  background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);
+  font-size:.86rem;color:var(--muted);line-height:1.55;
+}
+.warn-note svg{flex-shrink:0;width:18px;height:18px;color:var(--violet);margin-top:1px}
+.schedule-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:8px}
+.schedule-table th{text-align:left;padding:10px 14px;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--border)}
+.schedule-table td{padding:10px 14px;color:var(--muted);border-bottom:1px solid var(--border)}
+.schedule-table tr:last-child td{border-bottom:none}
+.schedule-table td.gold{color:var(--gold);font-family:var(--font-mono);font-weight:600}
+.toggle-schedule{background:none;border:1px solid var(--border-2);border-radius:var(--radius-sm);padding:10px 18px;color:var(--muted);font-size:.86rem;cursor:pointer;width:100%;font-family:var(--font-body);transition:border-color .2s,color .2s}
+.toggle-schedule:hover{border-color:var(--gold);color:var(--gold)}
+.schedule-wrap{display:none;max-height:320px;overflow-y:auto;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-3)}
+.schedule-wrap.visible{display:block}
+.def-term{font-weight:600;color:var(--text)}
+.intro-breadcrumb{display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--faint);margin-bottom:20px}
+.intro-breadcrumb a{color:var(--muted);transition:color .2s}
+.intro-breadcrumb a:hover{color:var(--gold)}
+.intro-breadcrumb svg{width:14px;height:14px;flex-shrink:0}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.tools-link-card{display:block;padding:20px 22px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border);transition:transform .25s var(--ease),border-color .25s}
+.tools-link-card:hover{transform:translateY(-3px);border-color:var(--border-2)}
+.tools-link-card h4{font-size:.97rem;margin-bottom:6px;color:var(--text)}
+.tools-link-card p{font-size:.84rem}
+@media(max-width:768px){
+  .dca-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .result-stat{padding:18px 12px}
+}
+</style>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Project <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/about"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span><b>About & Story</b><span class="ms">How TrustTails began</span></span></a>
+        <a class="mega-link" href="/tokenomics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 0 1 0 4H9m2-4v8"/></svg></span><span><b>Tokenomics</b><span class="ms">Fixed 1B, revoked authorities</span></span></a>
+        <a class="mega-link" href="/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></span><span><b>Roadmap</b><span class="ms">The honest 3-phase journey</span></span></a>
+        <a class="mega-link" href="/vision"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6Z"/></svg></span><span><b>Vision</b><span class="ms">The long-term north star</span></span></a>
+        <a class="mega-link" href="/tail-network"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg></span><span><b>TAIL Network</b><span class="ms">The technology behind TAIL</span></span></a>
+        <a class="mega-link" href="/solana"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h12l2-2H7Zm0 5h12l2-2H7Zm0 5h12l2-2H7Z"/></svg></span><span><b>Why Solana</b><span class="ms">Speed and low fees</span></span></a>
+        <a class="mega-feature" href="/whitepaper"><span><b>Whitepaper</b><span class="ms">The full vision &amp; tokenomics</span></span><span class="btn btn-gold btn-sm">Read</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Trust <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/is-it-legit"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Is it legit?</b><span class="ms">Verify on-chain in 60s</span></span></a>
+        <a class="mega-link" href="/security"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Security</b><span class="ms">Stay safe from scams</span></span></a>
+        <a class="mega-link" href="/trust-and-transparency"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Transparency</b><span class="ms">How we communicate</span></span></a>
+        <a class="mega-link" href="/compare"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>How we compare</b><span class="ms">vs a typical meme coin</span></span></a>
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token checker</b><span class="ms">Check any Solana token</span></span></a>
+        <a class="mega-feature" href="/is-it-legit"><span><b>Live on-chain proof</b><span class="ms">Supply &amp; authorities, verified</span></span><span class="btn btn-gold btn-sm">Verify</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Tools <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token Checker</b><span class="ms">Verify any SPL token</span></span></a>
+        <a class="mega-link" href="/tools/token-comparison"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>Comparison</b><span class="ms">Compare tokens side by side</span></span></a>
+        <a class="mega-link" href="/tools/market-cap-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M14 10h2v8h-2zM8 18h2"/></svg></span><span><b>Market Cap Calc</b><span class="ms">Hypothetical market cap</span></span></a>
+        <a class="mega-link" href="/tools/holdings-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9l8 4"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Holdings Calc</b><span class="ms">Value your holdings</span></span></a>
+        <a class="mega-link" href="/tools/rug-pull-checklist"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span><b>Rug-Pull Checklist</b><span class="ms">Score safety signals</span></span></a>
+        <a class="mega-link" href="/tools/wallet-setup-guide"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 12h3M3 9h18"/></svg></span><span><b>Wallet Setup</b><span class="ms">Phantom & Solflare</span></span></a>
+        <a class="mega-feature" href="/tools/"><span><b>All free tools</b><span class="ms">No sign-up, no hype</span></span><span class="btn btn-gold btn-sm">Open</span></a>
+      </div>
+    </div>
+    <a class="nav-top-link nav-top" href="/blog/">Insights</a>
+    <a class="nav-top-link nav-top" href="/how-to-buy">How to buy</a>
+    <a class="nav-top-link nav-top" href="/faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+<div class="mobile-menu">
+  <details class="mm-sec"><summary>Project</summary><div class="mm-links"><a href="/about">About &amp; Story</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/tail-network">TAIL Network</a><a href="/solana">Why Solana</a><a href="/whitepaper">Whitepaper</a></div></details>
+  <details class="mm-sec"><summary>Trust</summary><div class="mm-links"><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">How we compare</a></div></details>
+  <details class="mm-sec"><summary>Tools</summary><div class="mm-links"><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calculator</a><a href="/tools/holdings-calculator">Holdings Calculator</a><a href="/tools/rug-pull-checklist">Rug-Pull Checklist</a><a href="/tools/wallet-setup-guide">Wallet Setup</a><a href="/tools/">All tools</a></div></details>
+  <a class="mm-direct" href="/blog/">Insights</a>
+  <a class="mm-direct" href="/how-to-buy">How to buy</a>
+  <a class="mm-direct" href="/faq">FAQ</a>
+  <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+</div>
+
+<!-- HERO -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="intro-breadcrumb">
+      <a href="/">Home</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      <a href="/tools/">Tools</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      <span>DCA Calculator</span>
+    </div>
+    <div class="section-head reveal">
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="width:14px;height:14px"><path d="M3 3v18h18"/><path d="m7 16 4-4 4 4 4-4"/></svg>
+        Educational Tool
+      </span>
+      <h1>Dollar-Cost Averaging <span class="text-grad">DCA Calculator</span></h1>
+      <p class="lead">Model a recurring purchase schedule and understand how DCA spreads your commitment over time. This tool does pure arithmetic — it shows you <strong style="color:var(--text)">how much you would spend</strong>, not how much you would earn. No prices. No predictions. No financial advice.</p>
+    </div>
+
+    <!-- DISCLAIMER BANNER -->
+    <div class="warn-note reveal d1" style="margin-bottom:40px;max-width:860px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span><strong style="color:var(--text)">Not financial advice.</strong> This calculator is purely educational and performs arithmetic only. It does not predict prices, returns, or profits. Cryptocurrency investments carry significant risk including total loss of capital. Always do your own research (DYOR) and only commit funds you can afford to lose entirely. TrustTails (TAIL) is currently pre-launch and not yet purchasable.</span>
+    </div>
+
+    <!-- TOOL -->
+    <div class="dca-grid reveal d2">
+      <!-- Inputs -->
+      <div class="glass" style="padding:32px">
+        <div class="icon" style="margin-bottom:22px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3 style="margin-bottom:22px">Your DCA schedule</h3>
+        <div class="dca-inputs">
+
+          <div class="field-group">
+            <label for="dca-amount">Amount per purchase ($)</label>
+            <input id="dca-amount" class="dca-input" type="number" min="1" step="1" value="50" placeholder="e.g. 50" aria-describedby="amount-hint">
+            <span id="amount-hint" class="field-hint">How much you plan to spend each time you buy</span>
+          </div>
+
+          <div class="field-group">
+            <label for="dca-freq">Purchase frequency</label>
+            <select id="dca-freq" class="dca-select" aria-describedby="freq-hint">
+              <option value="daily">Daily</option>
+              <option value="weekly" selected>Weekly</option>
+              <option value="biweekly">Every two weeks (fortnightly)</option>
+              <option value="monthly">Monthly</option>
+            </select>
+            <span id="freq-hint" class="field-hint">How often you make each purchase</span>
+          </div>
+
+          <div class="field-group">
+            <label for="dca-periods">Number of periods</label>
+            <input id="dca-periods" class="dca-input" type="number" min="1" max="520" step="1" value="52" placeholder="e.g. 52" aria-describedby="periods-hint">
+            <span id="periods-hint" class="field-hint">How many purchases total (e.g. 52 weekly buys = 1 year)</span>
+          </div>
+
+          <div class="edu-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span><strong style="color:var(--gold)">Educational only — hypothetical math, not a price prediction or financial advice.</strong> These figures show only what you would invest over time, assuming you stick to the schedule. Actual outcomes depend on prices and factors entirely outside this tool.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="results-panel">
+        <div class="glass" style="padding:10px">
+          <div class="grid grid-2" style="gap:0">
+            <div class="result-stat glass" style="background:transparent;border:none;border-right:1px solid var(--border)">
+              <span class="r-num" id="res-total">$2,600</span>
+              <span class="r-lbl">Total invested</span>
+            </div>
+            <div class="result-stat glass" style="background:transparent;border:none">
+              <span class="r-num" id="res-buys" style="color:var(--cyan)">52</span>
+              <span class="r-lbl">Total purchases</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass">
+          <div class="grid grid-2" style="gap:12px">
+            <div class="result-stat" style="padding:16px 12px">
+              <span class="r-num" id="res-permonth" style="color:var(--text);font-size:clamp(1.1rem,2vw,1.5rem)">$216.67</span>
+              <span class="r-lbl">Avg per month</span>
+            </div>
+            <div class="result-stat" style="padding:16px 12px">
+              <span class="r-num" id="res-duration" style="color:var(--text);font-size:clamp(1.1rem,2vw,1.5rem)">~12 months</span>
+              <span class="r-lbl">Duration</span>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
+            <p style="font-size:.83rem;text-align:center" id="res-summary">52 weekly purchases of $50 &mdash; $2,600 total over approximately 12 months.</p>
+          </div>
+        </div>
+
+        <button class="toggle-schedule" id="toggle-btn" aria-expanded="false" aria-controls="schedule-wrap">
+          Show purchase schedule
+        </button>
+        <div class="schedule-wrap" id="schedule-wrap" role="region" aria-label="Purchase schedule">
+          <table class="schedule-table" id="schedule-table">
+            <thead><tr><th>#</th><th>Period label</th><th>Amount</th><th>Running total</th></tr></thead>
+            <tbody id="schedule-body"></tbody>
+          </table>
+        </div>
+
+        <div class="warn-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>Past crypto market conditions do not guarantee future results. DCA reduces the timing risk of a single large purchase but does not eliminate losses. You may still lose money if the asset's price falls over your entire schedule. Never invest borrowed money.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS DCA -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Strategy explained</span>
+      <h2>What is <span class="text-gold">Dollar-Cost Averaging</span>?</h2>
+      <p class="lead">DCA is a disciplined purchase strategy where you invest a fixed amount at regular intervals — regardless of the current price — rather than committing everything at once.</p>
+    </div>
+
+    <div class="grid grid-3 reveal d1">
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Consistent timing</h3>
+        <p>You buy on a fixed schedule — daily, weekly, or monthly — rather than trying to pick the "right" moment. Because timing markets reliably is extremely difficult even for professionals, removing that decision removes one source of costly mistakes.</p>
+      </article>
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Fixed amounts</h3>
+        <p>You spend the same dollar amount each period. When prices are lower, your fixed amount buys more units; when prices are higher, it buys fewer. Over time this can produce a lower <em>average cost per unit</em> than a single lump-sum purchase made at an unfavourable price.</p>
+      </article>
+
+      <article class="glass cyan">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        </div>
+        <h3>Spreading risk over time</h3>
+        <p>By spreading purchases across many periods, you avoid the scenario where a single large buy happens on the worst possible day. Your effective entry price becomes the average across all your purchase dates. This is the core risk-reduction mechanism of DCA.</p>
+      </article>
+
+    </div>
+
+    <!-- How it works step-by-step -->
+    <div class="glass reveal d2" style="margin-top:40px;max-width:780px">
+      <h3 style="margin-bottom:24px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;color:var(--gold);vertical-align:middle;margin-right:8px" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        How this calculator works
+      </h3>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <span class="tl-status live">Step 1</span>
+            <h3>Enter your purchase amount</h3>
+            <p style="font-size:.93rem;color:var(--muted)">Set the fixed dollar amount you plan to spend each time you buy. This stays constant regardless of price — that consistency is the point of DCA.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <span class="tl-status live">Step 2</span>
+            <h3>Choose your frequency</h3>
+            <p style="font-size:.93rem;color:var(--muted)">Select how often you make each purchase: daily, weekly, fortnightly, or monthly. Higher frequency means more individual data points and smoother averaging, but also more transaction fees to consider on your platform.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <span class="tl-status live">Step 3</span>
+            <h3>Set your number of periods</h3>
+            <p style="font-size:.93rem;color:var(--muted)">Enter how many purchases you plan to make. 52 weekly = 1 year. 24 monthly = 2 years. The calculator converts this into a total duration and shows you the complete schedule on request.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-rail"><div class="tl-dot"></div></div>
+          <div class="tl-body">
+            <span class="tl-status live">Step 4</span>
+            <h3>Read the results — and think critically</h3>
+            <p style="font-size:.93rem;color:var(--muted)">The tool shows total invested, number of purchases, and average monthly spend. These are <strong style="color:var(--text)">commitment figures only</strong>. Whether that commitment is right for you depends on your financial situation, your understanding of the asset, and your risk tolerance — not a calculator.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROS & CONS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Balanced view</span>
+      <h2>Honest pros <span class="text-gold">&amp;</span> cons of DCA</h2>
+      <p class="lead">DCA is a disciplined tool, not a magic one. Understanding both sides helps you decide whether it suits your situation.</p>
+    </div>
+
+    <div class="proof-split reveal d1">
+      <div class="do-dont is-do">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Potential advantages
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><span class="def-term">Reduces timing risk.</span> Spreading purchases avoids the scenario where you put everything in at a peak price.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><span class="def-term">Removes emotion.</span> A fixed schedule helps prevent panic-selling on dips or over-buying on euphoric peaks.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><span class="def-term">Accessible entry.</span> Small recurring amounts are easier to budget than a large lump sum, making participation achievable for more people.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><span class="def-term">Predictable commitment.</span> You know exactly how much you will spend in total — no surprises, easy to plan around.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><span class="def-term">Natural discipline.</span> Sticking to a routine is a habit many investors find easier to maintain than timing decisions.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="do-dont is-dont">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Honest limitations
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span><span class="def-term">Does not prevent losses.</span> If the asset trends downward over your entire schedule, DCA will not save you — you still lose money.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span><span class="def-term">Not optimal in rising markets.</span> In a consistently rising market, a lump sum at the start would have outperformed DCA over the same period.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span><span class="def-term">Transaction fees add up.</span> More purchases mean more fees on many platforms. This matters at small amounts — check your exchange's fee structure.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span><span class="def-term">Requires discipline.</span> DCA only works if you stick to the schedule — stopping early because prices fall defeats the purpose.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span><span class="def-term">Strategy, not research.</span> DCA says nothing about <em>whether</em> an asset is worth buying at all. Do your own research on the project first.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY TERMS -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Glossary</span>
+      <h2>Key terms <span class="text-cyan">defined</span></h2>
+      <p class="lead">Plain-language definitions for the concepts behind DCA and crypto investing generally.</p>
+    </div>
+
+    <div class="grid grid-2 reveal d1">
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h3>Dollar-Cost Averaging (DCA)</h3>
+        <p>Investing a fixed dollar amount at regular intervals regardless of price. The idea is that sometimes you will buy at a high price, sometimes at a low price, and the average cost will be somewhere in between — potentially lower than a single large purchase at the wrong time.</p>
+      </article>
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Average cost basis</h3>
+        <p>The weighted average price you paid across all your purchases. If you buy $50 worth when the price is $1, then $50 worth when it is $0.50, your average cost basis is $0.667 — lower than the first purchase but higher than the second. This figure matters for calculating gains or losses.</p>
+      </article>
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Volatility</h3>
+        <p>How much and how fast an asset's price moves. Cryptocurrencies are generally considered high-volatility assets — prices can rise or fall by large percentages in short periods. High volatility is precisely why some investors prefer DCA over lump-sum entry: spreading purchases means no single day's volatility determines your entire cost.</p>
+      </article>
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Lump-sum investing</h3>
+        <p>The alternative to DCA: committing your full intended investment amount all at once. Research in traditional markets suggests lump-sum often outperforms DCA in rising markets, because capital is deployed earlier. However, it also means full exposure to timing risk — if the market drops right after you invest, the impact is immediate and total.</p>
+      </article>
+
+      <article class="glass cyan">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Timing risk</h3>
+        <p>The risk of making a large commitment at an inopportune moment — for example, just before a significant price decline. DCA does not eliminate this risk but distributes it across many moments, which statistically reduces the chance that all of your capital entered at the worst possible price.</p>
+      </article>
+
+      <article class="glass cyan">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>DYOR — Do Your Own Research</h3>
+        <p>A reminder that no tool, community, or commentator can substitute for your own investigation of an asset before investing. For any crypto asset, this means reading the whitepaper, checking on-chain data (supply, authority, holders), understanding the team, and forming your own independent view — never acting solely on others' recommendations.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT TAIL & DCA -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">TrustTails context</span>
+      <h2>DCA and <span class="text-gold">TAIL</span> — what you should know</h2>
+      <p class="lead">We believe in full transparency. Here are the facts about TrustTails relevant to anyone considering it as part of a DCA plan in future.</p>
+    </div>
+
+    <div class="grid grid-3 reveal d1">
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h3>Fixed supply, verified on-chain</h3>
+        <p>TAIL has a fixed total supply of 1,000,000,000 tokens. Mint authority has been revoked — meaning no new tokens can ever be created. Freeze authority has also been revoked. These are verifiable on-chain facts, not promises.</p>
+        <p style="margin-top:12px">
+          <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan" style="font-size:.9rem;display:inline-flex;align-items:center;gap:6px">
+            Verify on Solscan
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </p>
+      </article>
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Pre-launch — not yet purchasable</h3>
+        <p>TrustTails is currently pre-launch. There is no official sale, no presale, and no way to buy TAIL at this time. Anyone claiming to sell TAIL now is a scammer. Do not send funds to any address based on a DM, social post, or unofficial link claiming early access.</p>
+        <p style="margin-top:12px"><a href="/is-it-legit" class="text-gold" style="font-size:.9rem">Read our scam-awareness guide &rarr;</a></p>
+      </article>
+
+      <article class="glass">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Community-first, no hype</h3>
+        <p>Our community gathers on Telegram. We do not make price predictions, promise returns, or recommend DCA or any other strategy for TAIL specifically. Join to stay informed about the actual launch timeline through official channels only.</p>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+          <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Community chat</a>
+          <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Official channel</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Contract address -->
+    <div class="glass reveal d2" style="margin-top:40px;max-width:680px">
+      <p style="font-size:.85rem;color:var(--faint);font-family:var(--font-mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">Verified contract address</p>
+      <div class="contract-pill" style="border-radius:var(--radius-sm);max-width:100%">
+        <span class="lbl">TAIL</span>
+        <code id="contract-addr">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+        <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" aria-label="Copy contract address">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+      </div>
+      <p style="font-size:.82rem;margin-top:14px">Always verify this address on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a> before interacting with any TAIL token. The only official token is the one at this address on the Solana network.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Questions answered</span>
+      <h2>DCA <span class="text-gold">FAQ</span></h2>
+      <p class="lead">Common questions about dollar-cost averaging, answered honestly.</p>
+    </div>
+
+    <div class="faq reveal d1">
+
+      <details class="faq-item">
+        <summary>Is DCA a guaranteed way to make money? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>No. DCA is a <strong>risk-management strategy</strong>, not a profit guarantee. It spreads your entry over time to reduce the impact of buying at a single bad price. If the asset you are buying declines over the entire period of your DCA plan, you will still lose money — you will simply have lost it gradually rather than all at once. Never interpret DCA as a path to guaranteed returns. Crypto markets are highly volatile and losses are entirely possible.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I choose between daily, weekly, and monthly DCA? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>There is no universally correct answer — it depends on your circumstances. More frequent purchases mean more averaging data points, which can smooth entry price, but they also mean more transaction fees and more administrative effort. Monthly DCA is simpler to track and usually lower in fees. Many people choose a frequency that aligns with their pay schedule so each purchase comes out of regular income. The most important thing is consistency, not frequency.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What happens if I miss a scheduled purchase? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Missing one or two periods is unlikely to significantly change your average cost over a long schedule, but it does undermine the discipline that makes DCA effective. If you find yourself frequently missing periods, consider whether the amount per purchase is too large for your budget, or whether a less frequent schedule would be more sustainable. Do not try to "make up" for missed buys with a larger one — that reintroduces timing risk.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Should I DCA into TrustTails (TAIL)? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>This is not a question we can answer for you — and we will not try. TrustTails is a small, pre-launch, community-first Solana token. It is not yet purchasable. We present factual information about the project so that you can make your own informed decision. Crypto investments carry significant risk including total loss of capital. Do your own research, understand the risks, and only commit what you can afford to lose. This is not financial advice.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What does this calculator actually calculate? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>It calculates your total dollar commitment and number of purchases based on your inputs. That is all. It does not estimate returns, token quantities, future prices, or profits of any kind. There are no price inputs because we deliberately do not want to create the impression that outcomes can be predicted. Any tool that promises price-based return projections should be treated with extreme scepticism.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is DCA better than lump-sum investing? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>It depends on market conditions and your personal risk tolerance. Academic research in traditional markets (e.g. equities) generally shows that lump-sum investing outperforms DCA about two-thirds of the time in rising markets, simply because money is deployed sooner. However, DCA can significantly reduce losses if you happen to invest at a local price peak. For highly volatile assets like cryptocurrencies, where timing uncertainty is extreme, the risk-reduction argument for DCA is stronger. Neither approach eliminates risk.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I watch out for DCA-related scams? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Be cautious of anyone promoting "automated DCA bots", "DCA pools", or "DCA vaults" for any token — especially new or pre-launch ones. These can be mechanisms to collect funds under a familiar, legitimate-sounding strategy name. Always verify where your funds go before using any external service. TrustTails does not operate, endorse, or recommend any third-party DCA service. Our only official channels are <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-cyan">Telegram</a> and <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">X (Twitter)</a>. Never send funds to someone who DMs you first.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is the TAIL token contract address and how do I verify it? <span class="plus" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>The TrustTails token contract on Solana is: <code style="color:var(--cyan-2);word-break:break-all">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. You can verify this directly on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a>. Check that mint authority shows "Revoked" and freeze authority shows "Revoked" — these are verifiable on-chain. Do not trust any other contract address, even if it appears in a social post or message that looks official.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- RELATED TOOLS & LINKS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Explore more</span>
+      <h2>Related <span class="text-gold">tools &amp; guides</span></h2>
+      <p class="lead">Other educational resources on TrustTails that pair well with the DCA calculator.</p>
+    </div>
+
+    <div class="tools-grid reveal d1">
+
+      <a href="/tools/" class="tools-link-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(242,183,54,.1);border:1px solid rgba(242,183,54,.2);display:grid;place-items:center;margin-bottom:14px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;color:var(--gold)" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h4>All Tools</h4>
+        <p>Browse every educational tool on TrustTails — supply calculators, wallet checkers, and more.</p>
+      </a>
+
+      <a href="/how-to-buy" class="tools-link-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(69,230,255,.08);border:1px solid rgba(69,230,255,.2);display:grid;place-items:center;margin-bottom:14px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;color:var(--cyan)" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <h4>How to Buy (when live)</h4>
+        <p>Step-by-step guide on acquiring TAIL when the official launch happens — wallet setup, exchange process, and safety tips.</p>
+      </a>
+
+      <a href="/is-it-legit" class="tools-link-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.2);display:grid;place-items:center;margin-bottom:14px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;color:var(--green)" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h4>Is TrustTails Legit?</h4>
+        <p>On-chain verification guide — how to confirm revoked authorities, check the real contract, and spot fakes.</p>
+      </a>
+
+      <a href="/tokenomics" class="tools-link-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,.07);border:1px solid rgba(139,92,246,.2);display:grid;place-items:center;margin-bottom:14px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;color:var(--violet)" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        </div>
+        <h4>Tokenomics</h4>
+        <p>Understand TAIL's fixed supply of 1,000,000,000 tokens, distribution, and what revoked authorities mean in practice.</p>
+      </a>
+
+      <a href="/blog/" class="tools-link-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(242,183,54,.1);border:1px solid rgba(242,183,54,.2);display:grid;place-items:center;margin-bottom:14px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;color:var(--gold)" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h4>Insights Blog</h4>
+        <p>Educational articles on crypto investing concepts, risk management, and Solana ecosystem basics.</p>
+      </a>
+
+      <a href="/faq" class="tools-link-card">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(69,230,255,.08);border:1px solid rgba(69,230,255,.2);display:grid;place-items:center;margin-bottom:14px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;color:var(--cyan)" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h4>Full FAQ</h4>
+        <p>Comprehensive answers to the most common questions about TrustTails, Solana tokens, and the project's roadmap.</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section--tight">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow" style="margin-bottom:18px;display:inline-flex">Pre-launch community</span>
+      <h2>Stay informed, <span class="text-grad">not misled</span></h2>
+      <p>Join the TrustTails community on Telegram and X to receive accurate, timely information about the project — no hype, no guarantees, no pressure. When the official launch date is confirmed, community members will hear it first through verified channels.</p>
+      <p style="margin-top:-16px;font-size:.84rem"><strong style="color:var(--gold)">Scam warning:</strong> TrustTails will NEVER DM you first or ask for funds. Only trust announcements from the official X and Telegram links below.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Join Telegram community
+        </a>
+        <a class="btn btn-ghost" href="https://x.com/trusttailscoin" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4l16 16M4 20 20 4"/></svg>
+          Follow on X
+        </a>
+        <a class="btn btn-cyan" href="/tools/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          More tools
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell. Verify everything on-chain.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Project</h4><a href="/about">About</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/whitepaper">Whitepaper</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">Compare</a><a href="/how-to-buy">How to buy</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calc</a><a href="/tools/rug-pull-checklist">Rug-Pull Check</a><a href="/tools/">All tools</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/">Insights</a><a href="/solana">Why Solana?</a><a href="/faq">FAQ</a><a href="/community">Community</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here is a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="/assets/js/app.js" defer></script>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---- Utility ---- */
+  function fmt(n){
+    return '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+  }
+
+  function freqLabel(f){
+    return {daily:'day',weekly:'week',biweekly:'fortnight',monthly:'month'}[f] || f;
+  }
+
+  function durationLabel(periods, freq){
+    var days = {daily:1,weekly:7,biweekly:14,monthly:30.44}[freq] || 7;
+    var totalDays = periods * days;
+    if(totalDays < 60) return 'approx. ' + Math.round(totalDays) + ' days';
+    if(totalDays < 365) return 'approx. ' + Math.round(totalDays / 7) + ' weeks';
+    var months = totalDays / 30.44;
+    if(months < 24) return 'approx. ' + Math.round(months) + ' months';
+    return 'approx. ' + (months / 12).toFixed(1) + ' years';
+  }
+
+  function periodTitle(i, freq, startRef){
+    var d = new Date(startRef);
+    var days = {daily:1,weekly:7,biweekly:14,monthly:30}[freq] || 7;
+    d.setDate(d.getDate() + (i - 1) * days);
+    var opts = {month:'short', day:'numeric', year:'numeric'};
+    var prefix = {daily:'Day',weekly:'Week',biweekly:'Fortnight',monthly:'Month'}[freq] || 'Period';
+    return prefix + ' ' + i + ' — ' + d.toLocaleDateString('en-AU', opts);
+  }
+
+  /* ---- DOM refs ---- */
+  var amtEl     = document.getElementById('dca-amount');
+  var freqEl    = document.getElementById('dca-freq');
+  var periodsEl = document.getElementById('dca-periods');
+  var resTotal  = document.getElementById('res-total');
+  var resBuys   = document.getElementById('res-buys');
+  var resPM     = document.getElementById('res-permonth');
+  var resDur    = document.getElementById('res-duration');
+  var resSumm   = document.getElementById('res-summary');
+  var toggleBtn = document.getElementById('toggle-btn');
+  var schedWrap = document.getElementById('schedule-wrap');
+  var schedBody = document.getElementById('schedule-body');
+  var scheduleVisible = false;
+
+  /* ---- Calculate ---- */
+  function calc(){
+    var amt     = parseFloat(amtEl.value) || 0;
+    var freq    = freqEl.value;
+    var periods = Math.max(1, Math.min(520, parseInt(periodsEl.value) || 0));
+
+    if(amt <= 0 || periods <= 0){
+      resTotal.textContent = '$—';
+      resBuys.textContent  = '—';
+      resPM.textContent    = '$—';
+      resDur.textContent   = '—';
+      resSumm.textContent  = 'Enter values above to see results.';
+      return;
+    }
+
+    var total = amt * periods;
+
+    // Average monthly spend
+    var days = {daily:1,weekly:7,biweekly:14,monthly:30.44}[freq] || 7;
+    var totalDays = periods * days;
+    var totalMonths = totalDays / 30.44;
+    var perMonth = totalMonths > 0 ? total / totalMonths : 0;
+
+    resTotal.textContent = fmt(total);
+    resBuys.textContent  = periods;
+    resPM.textContent    = fmt(perMonth);
+    resDur.textContent   = durationLabel(periods, freq);
+
+    var fl = freqLabel(freq);
+    resSumm.innerHTML = periods + ' ' + freq + ' purchase' + (periods !== 1 ? 's' : '') +
+      ' of ' + fmt(amt) + ' &mdash; <strong style="color:var(--text)">' + fmt(total) + ' total</strong> over ' + durationLabel(periods, freq) + '.';
+
+    // Rebuild schedule table if visible
+    if(scheduleVisible){
+      buildSchedule(amt, periods, freq);
+    }
+  }
+
+  function buildSchedule(amt, periods, freq){
+    var now = new Date();
+    var html = '';
+    var running = 0;
+    var maxRows = Math.min(periods, 100); // cap render at 100 rows for performance
+    for(var i = 1; i <= maxRows; i++){
+      running += amt;
+      html += '<tr>' +
+        '<td>' + i + '</td>' +
+        '<td>' + periodTitle(i, freq, now) + '</td>' +
+        '<td class="gold">' + fmt(amt) + '</td>' +
+        '<td class="gold">' + fmt(running) + '</td>' +
+        '</tr>';
+    }
+    if(periods > 100){
+      html += '<tr><td colspan="4" style="text-align:center;color:var(--faint);font-style:italic;padding:14px">… and ' + (periods - 100) + ' more periods. Total: ' + fmt(amt * periods) + '</td></tr>';
+    }
+    schedBody.innerHTML = html;
+  }
+
+  /* ---- Toggle schedule ---- */
+  toggleBtn.addEventListener('click', function(){
+    scheduleVisible = !scheduleVisible;
+    if(scheduleVisible){
+      var amt     = parseFloat(amtEl.value) || 0;
+      var freq    = freqEl.value;
+      var periods = Math.max(1, Math.min(520, parseInt(periodsEl.value) || 0));
+      if(amt > 0 && periods > 0) buildSchedule(amt, periods, freq);
+      schedWrap.classList.add('visible');
+      toggleBtn.textContent = 'Hide purchase schedule';
+      toggleBtn.setAttribute('aria-expanded','true');
+    } else {
+      schedWrap.classList.remove('visible');
+      toggleBtn.textContent = 'Show purchase schedule';
+      toggleBtn.setAttribute('aria-expanded','false');
+    }
+  });
+
+  /* ---- Live inputs ---- */
+  [amtEl, freqEl, periodsEl].forEach(function(el){
+    el.addEventListener('input', calc);
+    el.addEventListener('change', calc);
+  });
+
+  /* ---- Copy buttons (works with or without app.js) ---- */
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var txt = btn.getAttribute('data-copy');
+      if(!txt) return;
+      navigator.clipboard.writeText(txt).then(function(){
+        btn.classList.add('copied');
+        var lbl = btn.querySelector('.copy-label');
+        if(lbl){ lbl.textContent = 'Copied!'; }
+        setTimeout(function(){
+          btn.classList.remove('copied');
+          if(lbl){ lbl.textContent = 'Copy'; }
+        }, 2000);
+      }).catch(function(){
+        // Fallback for older browsers
+        var ta = document.createElement('textarea');
+        ta.value = txt;
+        ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try{ document.execCommand('copy'); } catch(e){}
+        document.body.removeChild(ta);
+        btn.classList.add('copied');
+        var lbl = btn.querySelector('.copy-label');
+        if(lbl){ lbl.textContent = 'Copied!'; }
+        setTimeout(function(){
+          btn.classList.remove('copied');
+          if(lbl){ lbl.textContent = 'Copy'; }
+        }, 2000);
+      });
+    });
+  });
+
+  /* ---- Init ---- */
+  calc();
+})();
+</script>
+</body>
+</html>

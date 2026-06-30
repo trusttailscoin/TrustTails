@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Jupiter vs Raydium: Swapping on Solana Explained</title>
+<meta name="description" content="What Jupiter and Raydium are, how they differ, and how to use each safely to swap Solana tokens. Beginner-friendly.">
+<link rel="canonical" href="https://trusttails.io/blog/jupiter-vs-raydium">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trusttails.io/blog/jupiter-vs-raydium">
+<meta property="og:title" content="Jupiter vs Raydium: Swapping on Solana Explained">
+<meta property="og:description" content="What Jupiter and Raydium are, how they differ, and how to use each safely to swap Solana tokens. Beginner-friendly.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Jupiter vs Raydium: Swapping on Solana Explained">
+<meta name="twitter:description" content="What Jupiter and Raydium are, how they differ, and how to use each safely to swap Solana tokens. Beginner-friendly.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://trusttails.io/blog/"},{"@type":"ListItem","position":3,"name":"Jupiter vs Raydium","item":"https://trusttails.io/blog/jupiter-vs-raydium"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Project <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/about"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span><b>About & Story</b><span class="ms">How TrustTails began</span></span></a>
+        <a class="mega-link" href="/tokenomics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 0 1 0 4H9m2-4v8"/></svg></span><span><b>Tokenomics</b><span class="ms">Fixed 1B, revoked authorities</span></span></a>
+        <a class="mega-link" href="/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></span><span><b>Roadmap</b><span class="ms">The honest 3-phase journey</span></span></a>
+        <a class="mega-link" href="/vision"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6Z"/></svg></span><span><b>Vision</b><span class="ms">The long-term north star</span></span></a>
+        <a class="mega-link" href="/tail-network"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11 6 17M12 11l6 6"/></svg></span><span><b>TAIL Network</b><span class="ms">The technology behind TAIL</span></span></a>
+        <a class="mega-link" href="/solana"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h12l2-2H7Zm0 5h12l2-2H7Zm0 5h12l2-2H7Z"/></svg></span><span><b>Why Solana</b><span class="ms">Speed and low fees</span></span></a>
+        <a class="mega-feature" href="/whitepaper"><span><b>Whitepaper</b><span class="ms">The full vision &amp; tokenomics</span></span><span class="btn btn-gold btn-sm">Read</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Trust <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/is-it-legit"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Is it legit?</b><span class="ms">Verify on-chain in 60s</span></span></a>
+        <a class="mega-link" href="/security"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Security</b><span class="ms">Stay safe from scams</span></span></a>
+        <a class="mega-link" href="/trust-and-transparency"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Transparency</b><span class="ms">How we communicate</span></span></a>
+        <a class="mega-link" href="/compare"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>How we compare</b><span class="ms">vs a typical meme coin</span></span></a>
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token checker</b><span class="ms">Check any Solana token</span></span></a>
+        <a class="mega-feature" href="/is-it-legit"><span><b>Live on-chain proof</b><span class="ms">Supply &amp; authorities, verified</span></span><span class="btn btn-gold btn-sm">Verify</span></a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-top" aria-expanded="false">Tools <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="mega">
+        <a class="mega-link" href="/tools/solana-token-checker"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span><b>Token Checker</b><span class="ms">Verify any SPL token</span></span></a>
+        <a class="mega-link" href="/tools/token-comparison"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0ZM17 7l-3 7a3 3 0 0 0 6 0Z"/></svg></span><span><b>Comparison</b><span class="ms">Compare tokens side by side</span></span></a>
+        <a class="mega-link" href="/tools/market-cap-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M14 10h2v8h-2zM8 18h2"/></svg></span><span><b>Market Cap Calc</b><span class="ms">Hypothetical market cap</span></span></a>
+        <a class="mega-link" href="/tools/holdings-calculator"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9l8 4"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Holdings Calc</b><span class="ms">Value your holdings</span></span></a>
+        <a class="mega-link" href="/tools/rug-pull-checklist"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span><b>Rug-Pull Checklist</b><span class="ms">Score safety signals</span></span></a>
+        <a class="mega-link" href="/tools/wallet-setup-guide"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 12h3M3 9h18"/></svg></span><span><b>Wallet Setup</b><span class="ms">Phantom & Solflare</span></span></a>
+        <a class="mega-feature" href="/tools/"><span><b>All free tools</b><span class="ms">No sign-up, no hype</span></span><span class="btn btn-gold btn-sm">Open</span></a>
+      </div>
+    </div>
+    <a class="nav-top-link nav-top" href="/blog/">Insights</a>
+    <a class="nav-top-link nav-top" href="/how-to-buy">How to buy</a>
+    <a class="nav-top-link nav-top" href="/faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+    <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+<div class="mobile-menu">
+  <details class="mm-sec"><summary>Project</summary><div class="mm-links"><a href="/about">About &amp; Story</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/tail-network">TAIL Network</a><a href="/solana">Why Solana</a><a href="/whitepaper">Whitepaper</a></div></details>
+  <details class="mm-sec"><summary>Trust</summary><div class="mm-links"><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">How we compare</a></div></details>
+  <details class="mm-sec"><summary>Tools</summary><div class="mm-links"><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calculator</a><a href="/tools/holdings-calculator">Holdings Calculator</a><a href="/tools/rug-pull-checklist">Rug-Pull Checklist</a><a href="/tools/wallet-setup-guide">Wallet Setup</a><a href="/tools/">All tools</a></div></details>
+  <a class="mm-direct" href="/blog/">Insights</a>
+  <a class="mm-direct" href="/how-to-buy">How to buy</a>
+  <a class="mm-direct" href="/faq">FAQ</a>
+  <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+</div>
+
+<!-- Article JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Jupiter vs Raydium: Swapping on Solana Explained",
+  "datePublished": "2026-06-18",
+  "author": {
+    "@type": "Organization",
+    "name": "TrustTails"
+  },
+  "image": "https://trusttails.io/assets/img/og-cover.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TrustTails",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://trusttails.io/assets/img/logo-nav.png"
+    }
+  },
+  "description": "A clear, educational comparison of Jupiter (aggregator) and Raydium (AMM/liquidity pool DEX) on Solana — when to use each, how swaps work, slippage settings, and safety steps before any swap."
+}
+</script>
+
+<!-- HERO -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Solana Education &middot; DEX Guide</span>
+      <h1>Jupiter vs Raydium: Swapping on Solana Explained</h1>
+      <p class="lead">Two of the most widely used platforms for swapping tokens on Solana — one is a DEX with its own liquidity pools, the other is an aggregator that searches across dozens of DEXes to find you the best available price. Here is what each one actually does, when to use which, and the safety steps you should never skip.</p>
+    </div>
+
+    <!-- Risk disclaimer -->
+    <article class="glass reveal" style="border-color:rgba(242,183,54,.35);margin-bottom:40px">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <h3 class="text-gold">Educational Content — Not Financial Advice</h3>
+      <p>This article explains how decentralised exchanges and swap aggregators work. It is <strong>not financial advice</strong> and does not recommend buying, selling, or holding any token. Cryptocurrency carries significant risk, including the risk of losing your entire investment. Always do your own research (DYOR), verify contract addresses on-chain, and only use money you can afford to lose entirely.</p>
+    </article>
+
+    <!-- Quick stats bar -->
+    <div class="grid grid-2 reveal d1" style="margin-bottom:0">
+      <div class="glass stat">
+        <div class="num text-cyan">Raydium</div>
+        <div class="lbl">Automated Market Maker (AMM) — liquidity pools directly on Solana</div>
+      </div>
+      <div class="glass stat">
+        <div class="num text-gold">Jupiter</div>
+        <div class="lbl">Swap aggregator — routes your trade across many DEXes for best price</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS A DEX? -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Foundations</span>
+      <h2>What Is a Decentralised Exchange (DEX)?</h2>
+      <p class="lead">Before comparing Jupiter and Raydium specifically, it helps to understand what a DEX is and how it differs from the centralised exchanges (CEXes) most beginners encounter first.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3>Centralised Exchange (CEX)</h3>
+        <p>Platforms like Coinbase, Binance, or Kraken hold your funds in their custody. You log in with an email and password. They act as the middleman between buyers and sellers using an order book. You do not need a personal wallet to use them, but you are trusting the company with your assets.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Decentralised Exchange (DEX)</h3>
+        <p>A DEX runs as smart contracts on a blockchain — in the case of Raydium, on Solana. There is no company holding your funds. You connect your own wallet (like Phantom or Solflare), approve a transaction, and the swap happens directly on-chain. You retain custody throughout.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+        </div>
+        <h3>Aggregator</h3>
+        <p>An aggregator like Jupiter does not hold its own liquidity pools in the same way. Instead it queries multiple DEXes simultaneously — including Raydium — and splits or routes your trade to achieve the best net price. Think of it as a price-comparison engine that executes automatically.</p>
+      </article>
+    </div>
+
+    <p class="reveal" style="margin-top:32px;max-width:720px">The key practical difference: when you use Raydium directly, your trade executes against Raydium's own liquidity pools. When you use Jupiter, it may route your trade through Raydium, Orca, Meteora, OpenBook, or a combination — whichever combination gives you the most output tokens at that moment.</p>
+  </div>
+</section>
+
+<!-- RAYDIUM DEEP DIVE -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Platform Deep Dive</span>
+      <h2>Raydium: The AMM With Its Own Liquidity</h2>
+    </div>
+
+    <div class="grid grid-2">
+      <div>
+        <article class="glass reveal d1">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+          </div>
+          <h3>How Raydium's AMM Works</h3>
+          <p>Raydium uses an Automated Market Maker model. Instead of matching individual buyers with individual sellers, it uses liquidity pools — reserves of two tokens locked in a smart contract. The price at any given moment is determined by the ratio of those two tokens in the pool, governed by a constant-product formula.</p>
+          <p style="margin-top:12px">When you swap SOL for a token on Raydium, you are trading against that pool. You send SOL in, and the pool releases the corresponding amount of the other token based on the current ratio, minus a small fee that goes to liquidity providers.</p>
+        </article>
+
+        <article class="glass reveal d2" style="margin-top:24px">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Liquidity Pools and Liquidity Providers</h3>
+          <p>Anyone can add funds to a Raydium liquidity pool by depositing equal value of both tokens in a pair. In return they receive LP tokens representing their share of the pool, and they earn a portion of trading fees. This is called providing liquidity. It carries its own risks — notably impermanent loss — and is a separate, more advanced topic from simply swapping.</p>
+        </article>
+      </div>
+
+      <div>
+        <article class="glass cyan reveal d1">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>When New Tokens Launch on Raydium</h3>
+          <p>Many new Solana tokens create their first liquidity pool on Raydium's CLMM (Concentrated Liquidity Market Maker) or standard AMM pools. This is why, for very newly launched tokens, Raydium is often the only place the pool exists at all — the token simply has not been indexed by aggregators yet, or the pool is so new that aggregator routing has not caught up.</p>
+          <p style="margin-top:12px">However, this is also where most scam tokens are found. A token having a Raydium pool tells you nothing about its legitimacy. Anyone can create a pool. Always verify the contract address independently before any swap. See our guide: <a href="/blog/how-to-verify-a-solana-token" class="text-cyan">How to Verify a Solana Token</a>.</p>
+        </article>
+
+        <article class="glass reveal d2" style="margin-top:24px">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Raydium's Native Token (RAY)</h3>
+          <p>Raydium has its own governance and staking token called RAY. Holding RAY is separate from using the swap interface. This article does not assess RAY as an investment — that would require its own analysis and is not advice we are positioned to offer. Treat any mention of native DEX tokens the same as any other cryptocurrency: research carefully and understand the risks.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JUPITER DEEP DIVE -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Platform Deep Dive</span>
+      <h2>Jupiter: The Aggregator That Routes for Best Price</h2>
+    </div>
+
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <h3>How Jupiter Routing Works</h3>
+        <p>When you enter a swap on Jupiter, the platform queries liquidity across Raydium, Orca, Meteora, Lifinity, OpenBook, and other Solana DEX protocols simultaneously. It calculates the optimal route — which might be a single pool, or might split your order across multiple pools — to maximise the tokens you receive after fees.</p>
+        <p style="margin-top:12px">All of this happens in under a second, on-chain. You see a quoted output amount and a route breakdown before you confirm. The swap itself is a single wallet transaction that you sign once.</p>
+      </article>
+
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
+        </div>
+        <h3>Split Routes and Multi-Hop Swaps</h3>
+        <p>Jupiter sometimes uses multi-hop routing: to swap Token A for Token C, it might first swap A for SOL, then SOL for C, if that path offers a better net output than a direct A-to-C pool. It can also split a single trade — sending 40% through Raydium and 60% through Orca, for example — when that produces a better price than using one pool alone.</p>
+        <p style="margin-top:12px">You do not need to manage any of this manually. Jupiter displays the route it has chosen in the swap interface before you confirm.</p>
+      </article>
+
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Jupiter's Limit Orders and DCA</h3>
+        <p>Beyond instant swaps, Jupiter also offers limit orders (execute a swap only when a token reaches a specified price) and Dollar-Cost Averaging (DCA — spread purchases over time automatically). These are more advanced features. Limit orders and DCA do not guarantee profit or protect against loss; they are execution tools, not investment strategies.</p>
+      </article>
+
+      <article class="glass cyan reveal d4">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Jupiter's Native Token (JUP)</h3>
+        <p>Jupiter has a governance token called JUP used for voting on protocol decisions. As with Raydium's RAY, holding JUP is entirely separate from using the Jupiter swap interface. The existence of a governance token is common in DeFi protocols and does not in itself make the platform more or less trustworthy. Research JUP independently if you are curious about it.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HEAD TO HEAD COMPARISON -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Side by Side</span>
+      <h2>Jupiter vs Raydium: Key Differences at a Glance</h2>
+    </div>
+
+    <div class="grid grid-2 reveal">
+      <div class="glass stat">
+        <div class="num" style="font-size:1.1rem;color:var(--cyan-2)">Raydium</div>
+        <div class="lbl" style="text-align:left;margin-top:16px">
+          <ul style="list-style:none;padding:0;margin:0;line-height:2">
+            <li><span class="text-cyan">&#9654;</span> Own AMM liquidity pools on Solana</li>
+            <li><span class="text-cyan">&#9654;</span> Good for tokens with a Raydium-only pool</li>
+            <li><span class="text-cyan">&#9654;</span> You can provide liquidity and earn fees</li>
+            <li><span class="text-cyan">&#9654;</span> Direct pool = predictable routing</li>
+            <li><span class="text-cyan">&#9654;</span> Sometimes first to list brand-new tokens</li>
+            <li><span class="text-cyan">&#9654;</span> Integrated farm/staking for LP tokens</li>
+          </ul>
+        </div>
+      </div>
+      <div class="glass stat">
+        <div class="num" style="font-size:1.1rem;color:var(--gold)">Jupiter</div>
+        <div class="lbl" style="text-align:left;margin-top:16px">
+          <ul style="list-style:none;padding:0;margin:0;line-height:2">
+            <li><span class="text-gold">&#9654;</span> Aggregates Raydium, Orca, Meteora, and more</li>
+            <li><span class="text-gold">&#9654;</span> Usually better price for established tokens</li>
+            <li><span class="text-gold">&#9654;</span> Split routing reduces price impact on large trades</li>
+            <li><span class="text-gold">&#9654;</span> Limit orders and DCA built in</li>
+            <li><span class="text-gold">&#9654;</span> Broader token discovery across all indexed pools</li>
+            <li><span class="text-gold">&#9654;</span> Preferred starting point for most casual swaps</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <article class="glass reveal" style="margin-top:32px;border-color:rgba(0,200,180,.25)">
+      <h3 class="text-cyan">The practical rule of thumb</h3>
+      <p>For the vast majority of swaps on Solana — where a token has been live for more than a few hours and has liquidity on multiple DEXes — <strong>Jupiter will find you an equal or better price than going directly to Raydium</strong>, because it includes Raydium as one of the sources it routes through. The main reason to go directly to Raydium is if a token has just launched and only has a Raydium pool, or if you specifically want to provide liquidity to a Raydium pool.</p>
+    </article>
+  </div>
+</section>
+
+<!-- SLIPPAGE -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Critical Concept</span>
+      <h2>Slippage: What It Is and How to Set It</h2>
+    </div>
+
+    <p class="reveal" style="max-width:720px;margin:0 auto 40px">Slippage is one of the most misunderstood settings in DeFi. Getting it wrong either causes your transaction to fail or causes you to receive far less than expected. Both Jupiter and Raydium let you configure it.</p>
+
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        </div>
+        <h3>What Slippage Means</h3>
+        <p>Between the moment you see a quoted price and the moment your transaction is confirmed on-chain, the pool ratio can shift — because other trades are happening simultaneously. Slippage tolerance is the maximum percentage difference from the quoted price you are willing to accept. If the actual price moves more than your tolerance, the transaction reverts and you get your tokens back (minus the network fee).</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Recommended Slippage Settings</h3>
+        <p><strong>Major tokens (SOL, USDC, established coins):</strong> 0.1% to 0.5% is usually sufficient. <br><strong>Mid-cap tokens with decent liquidity:</strong> 0.5% to 1% is typical.<br><strong>New or low-liquidity tokens:</strong> Sometimes 3%–10%+ is needed for the transaction to land, due to thin pools. Be aware that high slippage also means you may receive significantly fewer tokens than quoted.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg>
+        </div>
+        <h3>The Sandwich Attack Risk</h3>
+        <p>Setting very high slippage on public transactions can expose you to MEV sandwich attacks — where bots front-run your transaction, move the price against you, and profit from your slippage allowance. For new meme tokens where you feel pressured to set 10%+ slippage, this risk is particularly real. Jupiter has MEV protection settings; review them before large trades.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY: VERIFY BEFORE SWAP -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Safety First</span>
+      <h2>The Safety Steps You Must Do Before Any Swap</h2>
+      <p class="lead">Neither Jupiter nor Raydium filters out scam tokens. Any Solana address can launch a pool. The platforms display what exists on-chain — legitimate projects and fraudulent ones alike. The verification responsibility is entirely yours.</p>
+    </div>
+
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" style="vertical-align:middle;margin-right:6px"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Do These Before Every Swap
+        </h3>
+        <ul>
+          <li><strong>Copy the contract address from the official source only</strong> — the project's official website, pinned announcement in the official Telegram, or the official X (Twitter) account. Never from a DM, a comment, or a search result.</li>
+          <li><strong>Verify the address on Solscan</strong> — go to <a href="https://solscan.io" target="_blank" rel="noopener" class="text-cyan">solscan.io</a>, paste the address, and confirm it matches what you copied. Check the mint authority and freeze authority status.</li>
+          <li><strong>Paste the address manually into the swap interface</strong> — do not search by token name. Dozens of fake tokens can share the same display name. The contract address is the only identifier that cannot be faked.</li>
+          <li><strong>Check pool liquidity depth</strong> — extremely thin pools (under a few thousand dollars) mean even small trades will cause large price impact. This is common in very new or very small tokens.</li>
+          <li><strong>Start with a small test amount</strong> — before committing a significant sum, swap a small test amount to verify the transaction works as expected.</li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" style="vertical-align:middle;margin-right:6px"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Warning Signs to Take Seriously
+        </h3>
+        <ul>
+          <li><strong>Someone in a DM sent you a contract address.</strong> Legitimate projects never DM you with a contract or invite you to a "pre-sale." This is the most common scam vector in Solana DeFi.</li>
+          <li><strong>The token name or ticker matches a known coin exactly</strong> but the address is different. Impersonation tokens are abundant on Solana. The contract address is ground truth, not the name.</li>
+          <li><strong>A social media post urgently says "buy now before listing"</strong> or promises guaranteed returns. No one can promise a token will rise in value. Ever.</li>
+          <li><strong>The liquidity pool was created and then removed quickly</strong> — this is a classic rug pull pattern. You can check pool creation and LP token lock status on Solscan or DEX Screener.</li>
+          <li><strong>The mint authority has not been revoked.</strong> An active mint authority means the team can create unlimited new tokens at any time, which can dilute your holdings to near zero. Always check this. Use our <a href="/tools/" class="text-gold">token verification tools</a>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TrustTails callout -->
+    <article class="glass cyan reveal" style="margin-top:40px">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Verifying TrustTails (TAIL) as an Example</h3>
+      <p>TrustTails is a small, pre-launch community token on Solana. Its contract address is <code style="color:var(--cyan-2);font-size:.85em">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+      <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" style="margin-left:8px;vertical-align:middle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        <span class="copy-label">Copy</span>
+      </button>. Both the mint authority and freeze authority are revoked, which you can verify independently on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a>. TAIL is pre-launch and not yet buyable — we mention it here only as a practical example of what to look for when you verify any token, not as a recommendation to buy it. This is not financial advice.</p>
+    </article>
+  </div>
+</section>
+
+<!-- HOW TO SWAP: STEP BY STEP -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Step by Step</span>
+      <h2>How to Actually Execute a Swap</h2>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="tl-rail"><div class="tl-line"></div></div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>Step 1 — Have a funded Solana wallet</h3>
+          <p>You need a self-custody wallet (Phantom and Solflare are the two most commonly used) with SOL in it. You need SOL both as the token you may be swapping from, and to pay the network transaction fee (typically a fraction of a cent on Solana). If you are starting from scratch, see our full guide: <a href="/blog/how-to-buy-solana-tokens" class="text-cyan">How to Buy Solana Tokens</a>.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>Step 2 — Find and verify the contract address</h3>
+          <p>Before opening any swap interface, go to the project's official website or pinned official social media post and copy the contract address. Verify it on <a href="https://solscan.io" target="_blank" rel="noopener" class="text-cyan">Solscan</a>. Confirm the token name, supply, and authority status match what the project claims. Do not skip this step.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>Step 3 — Open Jupiter or Raydium and connect your wallet</h3>
+          <p>Navigate to <strong>jup.ag</strong> (Jupiter) or <strong>raydium.io</strong> (Raydium) — type the URL directly, do not click links in emails or DMs. Click "Connect Wallet" and select your wallet application. Approve the connection request in your wallet. This read-only connection does not spend any funds.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>Step 4 — Paste the contract address to select the token</h3>
+          <p>In the token selector field, paste the contract address you verified in Step 2. Do not search by name. Confirm the token that loads matches the one you intend to buy. On Jupiter you will see a warning if a token is unverified — this is normal for new tokens, but it reinforces the importance of having independently verified the address yourself.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>Step 5 — Set slippage appropriately</h3>
+          <p>Open the swap settings (usually a gear icon) and set your slippage tolerance. For established tokens with deep liquidity, 0.5% is usually fine. For new or thinly traded tokens, you may need to go higher — but understand that higher slippage means a larger potential gap between the quoted price and the price you actually get. Jupiter shows you the price impact before you confirm.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>Step 6 — Enter your amount and review the quote</h3>
+          <p>Type the amount of SOL (or other input token) you want to swap. Review the output amount, the route, the price impact percentage, and the minimum received figure. The minimum received tells you the worst-case output if prices move by your full slippage tolerance. If the price impact is above 2–3%, your trade size is large relative to the pool's liquidity — consider splitting the trade across multiple transactions.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>Step 7 — Confirm and sign the transaction</h3>
+          <p>Click Swap. Your wallet will open a confirmation dialog showing the transaction details and the network fee. Review it, then approve. The transaction is submitted to the Solana network. Most Solana transactions confirm within 1–2 seconds. If it fails (usually due to slippage or network congestion), you only lose the small network fee — your tokens are not spent.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>Step 8 — Verify on Solscan</h3>
+          <p>After the swap, the interface will show a transaction signature. You can paste this into Solscan to see the confirmed on-chain record of your swap, including exactly how many tokens were sent and received. Your new token balance should appear in your wallet within seconds.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px" class="reveal">
+      <a href="/how-to-buy" class="btn btn-gold">Full how-to-buy guide</a>
+      <a href="/blog/how-to-buy-solana-tokens" class="btn btn-ghost" style="margin-left:12px">Solana token buying guide</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHICH SHOULD YOU USE -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Decision Guide</span>
+      <h2>Which Platform Should You Use?</h2>
+    </div>
+
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Use Jupiter when&hellip;</h3>
+        <ul style="line-height:2;margin-top:8px">
+          <li>You are swapping any token that has been live for more than a day or two</li>
+          <li>You want the aggregator to find the best available price automatically</li>
+          <li>You are making a larger trade where split routing can reduce price impact</li>
+          <li>You want limit orders or DCA features</li>
+          <li>You are unsure which DEX has the best pool — Jupiter checks them all</li>
+        </ul>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Use Raydium directly when&hellip;</h3>
+        <ul style="line-height:2;margin-top:8px">
+          <li>A brand-new token has just launched and only has a Raydium pool (not yet indexed elsewhere)</li>
+          <li>You want to provide liquidity to a Raydium pool specifically</li>
+          <li>You want to farm LP token rewards through Raydium's farms</li>
+          <li>Jupiter cannot find a route for a specific token but Raydium shows a pool</li>
+        </ul>
+      </article>
+    </div>
+
+    <article class="glass reveal" style="margin-top:32px">
+      <h3>Can you use both?</h3>
+      <p>Yes. Many experienced Solana users check both interfaces when swapping a specific token — they enter the same trade on each and compare the output amount before confirming. In practice, for established tokens, Jupiter's aggregation usually matches or beats Raydium's direct price. For tokens with a single Raydium pool, Raydium and Jupiter will show the same price because Jupiter is routing through that same pool. The exercise of checking both is harmless and occasionally saves a meaningful amount.</p>
+    </article>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq reveal">
+
+      <details class="faq-item">
+        <summary><span class="plus">+</span> Is Jupiter or Raydium safer to use?</summary>
+        <div class="faq-a">
+          <p>Neither platform is inherently safer than the other in terms of which tokens they let you swap. Both display any token that has a pool on Solana, without filtering scams. The safety of any swap depends almost entirely on the token you are buying — not the platform you use to buy it. Verify the contract address independently before any swap, on any platform. The only meaningful platform-level risk is smart contract risk — the risk that a bug in the DEX's own contracts could be exploited. Both Raydium and Jupiter have been audited and have significant usage history, though no smart contract can be guaranteed bug-free.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="plus">+</span> What fees do Jupiter and Raydium charge?</summary>
+        <div class="faq-a">
+          <p>Raydium charges a small swap fee on each trade that goes to liquidity providers (the fee rate depends on the pool type — standard AMM pools typically charge 0.25%, with a portion going to LP providers and a portion to the protocol). Jupiter as an aggregator does not charge a separate Jupiter fee on top of the underlying DEX fees — you pay whatever fee the DEX pool charges. Jupiter does earn revenue through other mechanisms. Always check the current fee structure on each platform's documentation, as these can change. The Solana network transaction fee is separate and is typically a fraction of a cent.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="plus">+</span> Why did my swap transaction fail?</summary>
+        <div class="faq-a">
+          <p>Most Solana swap failures happen for one of three reasons: (1) the price moved more than your slippage tolerance between when you saw the quote and when the transaction confirmed — try increasing slippage slightly; (2) insufficient SOL for the network fee — make sure you have at least a small reserve of SOL (even 0.01 SOL) beyond the amount you are swapping; (3) network congestion — occasionally the Solana network experiences periods of high load; retry after a minute. Failed transactions on Solana still consume a tiny network fee (usually under $0.01), but your tokens are not lost.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="plus">+</span> Can I use Jupiter to buy TrustTails (TAIL)?</summary>
+        <div class="faq-a">
+          <p>TrustTails (TAIL) is currently pre-launch — there is no public liquidity pool yet, so it cannot be purchased on Jupiter, Raydium, or anywhere else at this time. If you encounter anyone claiming to sell TAIL tokens now, treat it as a scam. The only official TrustTails channels are <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">@trusttailscoin on X</a>, <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-cyan">the community Telegram</a>, and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">the official announcements channel</a>. Any launch announcement will come through those channels only. This is not an invitation to buy — crypto carries significant risk and TAIL may not be suitable for you.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="plus">+</span> What is price impact and why does it matter?</summary>
+        <div class="faq-a">
+          <p>Price impact is how much your specific trade moves the pool price due to its size relative to the pool's total liquidity. If a pool holds $10,000 of liquidity and you are trying to buy $5,000 worth of the token, your trade is so large relative to the pool that you will push the price significantly against yourself — you might see 20%+ price impact, meaning you get substantially fewer tokens than the "midpoint" price would suggest. Jupiter shows your price impact before you confirm. High price impact is a sign either that you are trading too large a size for the pool, or that the pool is very thinly funded (common in small or new tokens).</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="plus">+</span> Is Jupiter an aggregator or a DEX?</summary>
+        <div class="faq-a">
+          <p>Jupiter is primarily a swap aggregator — it routes trades through other DEXes' liquidity rather than holding its own liquidity pools in the same way Raydium does. However, Jupiter has expanded over time and does have some native liquidity mechanisms. The key distinction for most users: when you swap on Jupiter, your trade may be executed across Raydium, Orca, Meteora, and other protocols simultaneously, in whatever combination produces the best output. You are using Jupiter as the interface and routing layer, not as a liquidity source itself.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span class="plus">+</span> Do I need to create an account on Jupiter or Raydium?</summary>
+        <div class="faq-a">
+          <p>No. Neither platform requires an account, email address, or password. You simply connect your Solana wallet (Phantom, Solflare, etc.) to the platform's interface, and that wallet connection is all the "authentication" needed. Your wallet address is your identity on-chain. This is one of the fundamental differences between DeFi and traditional financial platforms — there is no sign-up process. The trade-off is that if you make a mistake (wrong address, scam token), there is no customer support to reverse it.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER + CTA -->
+<section class="section">
+  <div class="container">
+    <article class="glass reveal" style="border-color:rgba(242,183,54,.3);margin-bottom:40px">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3 class="text-gold">Important Disclaimers</h3>
+      <ul style="line-height:2">
+        <li>This article is <strong>educational only and is not financial or investment advice</strong>.</li>
+        <li>Nothing here constitutes a recommendation to buy or sell any cryptocurrency or token.</li>
+        <li>Cryptocurrency carries <strong>significant risk, including total loss of value</strong>. Prices can fall to zero.</li>
+        <li>Always do your own research (DYOR) and verify information on-chain before making any decision.</li>
+        <li>Never invest money you cannot afford to lose entirely.</li>
+        <li>TrustTails (TAIL) is a small, pre-launch community token. It is not for sale and has not launched publicly. Treat any unsolicited offer to sell TAIL as a scam.</li>
+        <li>Smart contract interactions carry technical risk. Use test amounts before large transactions.</li>
+        <li>Platform fees, slippage settings, and protocol mechanics change over time. Verify current details on each platform's official documentation.</li>
+      </ul>
+    </article>
+
+    <div class="cta-band reveal">
+      <div>
+        <h2>Learn more about trading on Solana</h2>
+        <p>Explore our beginner guides covering wallets, verification, liquidity, and how to research a crypto project safely.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/how-to-buy" class="btn btn-gold">How to buy guide</a>
+        <a href="/blog/how-to-verify-a-solana-token" class="btn btn-ghost">Verify a token</a>
+        <a href="/blog/how-to-research-a-crypto-project" class="btn btn-ghost">Research a project</a>
+      </div>
+    </div>
+
+    <div class="grid grid-3 reveal" style="margin-top:40px">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <h3>Understand Fixed Supply</h3>
+        <p>Why a token's fixed supply matters and what revoked mint authority actually means for holders.</p>
+        <a href="/blog/fixed-supply-explained" class="text-cyan" style="display:inline-block;margin-top:8px">Read guide &rarr;</a>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>How to Spot a Rug Pull</h3>
+        <p>The on-chain signals that experienced Solana users look for before touching a new token.</p>
+        <a href="/blog/how-to-spot-a-rug-pull" class="text-cyan" style="display:inline-block;margin-top:8px">Read guide &rarr;</a>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Self-Custody 101</h3>
+        <p>Why holding your own private keys matters, and how to set up a Solana wallet safely.</p>
+        <a href="/blog/self-custody-101" class="text-cyan" style="display:inline-block;margin-top:8px">Read guide &rarr;</a>
+      </article>
+    </div>
+
+    <div style="text-align:center;margin-top:48px" class="reveal">
+      <a href="/tools/" class="btn btn-cyan" style="margin-right:12px">Token verification tools</a>
+      <a href="/blog/" class="btn btn-ghost">All Insights</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell. Verify everything on-chain.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Project</h4><a href="/about">About</a><a href="/tokenomics">Tokenomics</a><a href="/roadmap">Roadmap</a><a href="/vision">Vision</a><a href="/whitepaper">Whitepaper</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit">Is it legit?</a><a href="/security">Security</a><a href="/trust-and-transparency">Transparency</a><a href="/compare">Compare</a><a href="/how-to-buy">How to buy</a></div>
+    <div class="footer-col"><h4>Tools</h4><a href="/tools/solana-token-checker">Token Checker</a><a href="/tools/token-comparison">Comparison</a><a href="/tools/market-cap-calculator">Market Cap Calc</a><a href="/tools/rug-pull-checklist">Rug-Pull Check</a><a href="/tools/">All tools</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/">Insights</a><a href="/solana">Why Solana?</a><a href="/faq">FAQ</a><a href="/community">Community</a><a href="/contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here is a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>
