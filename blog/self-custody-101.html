@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Self-Custody 101: Protect Your Solana Wallet</title>
+<meta name="description" content="A beginner guide to self-custody on Solana: seed phrases, hardware wallets, approvals, and the habits that keep your crypto safe.">
+<link rel="canonical" href="https://trusttails.io/blog/self-custody-101.html">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trusttails.io/blog/self-custody-101.html">
+<meta property="og:title" content="Self-Custody 101: Protect Your Solana Wallet">
+<meta property="og:description" content="A beginner guide to self-custody on Solana: seed phrases, hardware wallets, approvals, and the habits that keep your crypto safe.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Self-Custody 101: Protect Your Solana Wallet">
+<meta name="twitter:description" content="A beginner guide to self-custody on Solana: seed phrases, hardware wallets, approvals, and the habits that keep your crypto safe.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://trusttails.io/blog/index.html"},{"@type":"ListItem","position":3,"name":"Self-custody 101","item":"https://trusttails.io/blog/self-custody-101.html"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/index.html" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a></nav>
+  <div class="nav-cta"><a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+  <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div>
+</div></header>
+<div class="mobile-menu"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/how-to-buy.html">How to buy</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a><a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a></div>
+
+<!-- Hero / intro -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Insights &middot; Safety</span>
+      <h1>Self-Custody 101: <span class="text-grad">Protect Your Solana Wallet</span></h1>
+      <p class="lead">On-chain ownership means no one else holds your assets — and no one else can recover them either. This guide covers the practical habits that keep a self-custody wallet safe, from seed phrases to token approvals.</p>
+    </div>
+
+    <!-- Article JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Self-Custody 101: Protect Your Solana Wallet",
+      "datePublished": "2026-06-15",
+      "author": {
+        "@type": "Organization",
+        "name": "TrustTails"
+      },
+      "image": "https://trusttails.io/assets/img/og-cover.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "TrustTails",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://trusttails.io/assets/img/logo-nav.png"
+        }
+      },
+      "description": "A beginner guide to self-custody on Solana: seed phrases, hardware wallets, approvals, and the habits that keep your crypto safe.",
+      "url": "https://trusttails.io/blog/self-custody-101.html"
+    }
+    </script>
+
+    <!-- Stat strip -->
+    <div class="grid grid-4" style="margin-bottom:0">
+      <div class="glass stat reveal d1">
+        <div class="num gold">12</div>
+        <div class="lbl">Words in your seed phrase — guard every one</div>
+      </div>
+      <div class="glass stat reveal d2">
+        <div class="num gold">0</div>
+        <div class="lbl">Legitimate projects that will ever ask for your seed phrase</div>
+      </div>
+      <div class="glass stat reveal d3">
+        <div class="num gold">&#8734;</div>
+        <div class="lbl">Your responsibility as sole key-holder</div>
+      </div>
+      <div class="glass stat reveal d4">
+        <div class="num gold">1</div>
+        <div class="lbl">Official source to verify any token — Solscan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What self-custody actually means -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Foundations</span>
+      <h2>What Self-Custody Actually Means</h2>
+      <p class="lead">When you hold crypto on a centralised exchange, the exchange controls the private keys. Self-custody means your wallet generates a private key locally and you — and only you — keep a copy.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>You control the keys</h3>
+        <p>Your private key (derived from your seed phrase) signs every transaction. Whoever possesses it can move all funds in that wallet — no password reset, no support ticket, no reversal.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>No third-party risk</h3>
+        <p>Exchange hacks, insolvencies, and withdrawal freezes cannot affect a self-custody wallet. The trade-off is that security responsibility sits entirely with you — there is no safety net.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Ownership on-chain</h3>
+        <p>On Solana, every wallet is a public address. Anyone can verify balances on <a href="https://solscan.io" target="_blank" rel="noopener" class="text-gold">Solscan</a>. Transparency is built in — use it. When in doubt about any token, look it up on-chain before interacting.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Seed phrase safety -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Priority One</span>
+      <h2>Seed Phrase Safety: The Non-Negotiable Rules</h2>
+      <p class="lead">Your 12- or 24-word seed phrase is the master key to every account derived from it. These words, in the right order, give complete and permanent access to all funds in that wallet.</p>
+    </div>
+
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Habits that protect you
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Write the phrase on paper (or metal) and store it somewhere physically secure — a fireproof safe or safety deposit box.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Keep at least two copies in separate locations. If one copy is lost in a fire or flood, you still have access.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Verify the phrase yourself when you first set up a wallet — test a restore on a second device before loading funds.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Treat any request for your seed phrase — from any source — as a definite scam attempt, and stop the interaction immediately.
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          What to avoid entirely
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Never screenshot your seed phrase. Screenshots sync to cloud storage, and cloud accounts are a common attack target.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Never type it into any website, form, or app that is not your own wallet software — including "recovery" sites and "support" portals.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Never share it in a DM, a support ticket, a Telegram group, or a Discord channel — regardless of who is asking.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Never store it in a notes app, email draft, or password manager that runs in the cloud, unless the manager uses end-to-end encryption you fully control.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Hardware wallets -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Next Level</span>
+      <h2>Hardware Wallets: When and Why</h2>
+      <p class="lead">A hardware wallet (sometimes called a "cold wallet") keeps your private key on a dedicated device that is never directly connected to the internet. For holdings you do not need frequent access to, it is the most practical security upgrade available.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 12h8M8 16h5"/></svg>
+        </div>
+        <h3>How it works</h3>
+        <p>When you sign a transaction, the signing happens inside the hardware device — the private key is never exposed to your computer or phone. Even if your computer is infected with malware, it cannot extract the key.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Who should consider one</h3>
+        <p>If the value of what you hold would meaningfully hurt you to lose, a hardware wallet is worth the investment. Most people using a software wallet for everyday small transactions find it sufficient — but should still follow the seed phrase rules above.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <h3>Buy directly from manufacturers</h3>
+        <p>Only purchase hardware wallets from the manufacturer's official website. Devices bought from third-party marketplaces may have been pre-seeded with a compromised phrase. Verify the packaging seal before use.</p>
+      </article>
+      <article class="glass reveal d4">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <h3>The seed phrase rule still applies</h3>
+        <p>A hardware wallet generates its own seed phrase during setup. The same physical storage rules apply — write it down, store it securely offline, and never enter it into any website or app.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Token approvals -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Ongoing Hygiene</span>
+      <h2>Revoking Token Approvals</h2>
+      <p class="lead">On Solana, when you interact with a dApp — a swap, an NFT mint, a staking protocol — you often grant that program a "token approval": permission to move a specific token on your behalf. These approvals persist indefinitely unless you revoke them.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <h3>Why old approvals are risky</h3>
+        <p>If a dApp you approved is later exploited or turns malicious, any open approval gives the attacker an existing path to your tokens. Revoking approvals closes that path.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+        </div>
+        <h3>How to check and revoke</h3>
+        <p>Tools like Revoke.cash (verify the URL carefully) let you connect your wallet, see all active approvals, and revoke any you no longer recognise or need. Make it a habit to audit approvals every few months — particularly after using a new dApp.</p>
+      </article>
+      <article class="glass cyan reveal d3">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Verify on-chain, always</h3>
+        <p>Before interacting with any token contract — including TAIL — verify it independently on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a>. The TrustTails contract address is <code style="color:var(--cyan-2);font-size:.85em;word-break:break-all">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. Check that the mint authority and freeze authority are both shown as revoked.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Phishing & drainers -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Threat Awareness</span>
+      <h2>Phishing, Drainers, and Fake Presales</h2>
+      <p class="lead">The most common way people lose crypto is not a technical exploit — it is a social one. Understanding the patterns is the most effective defence.</p>
+    </div>
+
+    <div class="grid grid-2" style="margin-bottom:32px">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        </div>
+        <h3>Phishing sites and fake portals</h3>
+        <p>Attackers clone legitimate websites — wallets, exchanges, project pages — and buy ads or send DMs directing people there. The fake site looks identical but captures your seed phrase when you "restore" your wallet, or asks you to sign a transaction that drains your balance.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+        </div>
+        <h3>Wallet drainers</h3>
+        <p>A drainer is malicious code embedded in a dApp that prompts you to sign what appears to be a routine transaction — but the actual instruction transfers all your tokens to an attacker's address. Always read what you are signing before approving. If the transaction looks unfamiliar, reject it.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <h3>Fake presales and impersonators</h3>
+        <p>Scammers create fake presale pages, impersonate project accounts, and send DMs claiming "exclusive early access." TrustTails is pre-launch. We have <strong style="color:var(--text)">no presale, no private sale, and no early-access portal</strong>. Any account or site claiming otherwise is not affiliated with us — report it and do not interact.</p>
+      </article>
+      <article class="glass reveal d4">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>DM scams</h3>
+        <p>No legitimate project team — including TrustTails — will DM you first to offer tokens, request funds, or ask you to verify your wallet. If you receive such a message, even from an account that looks official, it is a scam. Our only verified accounts are linked in the footer of this site.</p>
+      </article>
+    </div>
+
+    <div class="glass reveal" style="border-color:rgba(242,183,54,.25);background:rgba(242,183,54,.05);padding:28px 32px">
+      <p style="color:var(--text);font-size:1rem;line-height:1.7"><strong class="text-gold">Scam warning:</strong> Beware of fake TrustTails accounts, fake Telegram groups, and sites not linked from <code style="color:var(--cyan-2)">trusttails.io</code>. Always verify URLs before connecting your wallet. Our official community channels are <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-gold">t.me/TrustTailsCommunity</a> and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-gold">t.me/TrustTailsOfficial</a>. Our official X account is <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-gold">@trusttailscoin</a>. Nothing outside these links is endorsed by us.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Official-links discipline -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Good Habits</span>
+      <h2>Official-Links Discipline</h2>
+      <p class="lead">One of the simplest and most effective security habits is controlling where you get links from. Most phishing attacks rely on you clicking a link you should not have trusted.</p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 1</span>
+          <h3>Bookmark, do not search</h3>
+          <p>Bookmark the official websites for your wallet app, the exchanges you use, and any project pages you return to regularly. Do not Google "Phantom wallet" each time — search results can be paid ad slots pointing to clone sites. Navigate from your bookmarks.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 2</span>
+          <h3>Verify the URL before connecting</h3>
+          <p>Before you click "Connect Wallet" on any dApp, check the full domain in the address bar. A single character difference — <code style="color:var(--cyan-2)">phantorn.app</code> vs <code style="color:var(--cyan-2)">phantom.app</code> — can mean the difference between a safe interaction and losing everything.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 3</span>
+          <h3>Read what you are signing</h3>
+          <p>Modern wallets like Phantom and Backpack display human-readable transaction previews. Before approving any transaction, read what it will actually do. If the preview says it will transfer tokens you did not intend to move, reject it — even if the site "looks fine."</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 4</span>
+          <h3>Use a dedicated browser profile for crypto</h3>
+          <p>A separate browser profile — with only your wallet extension installed — reduces the surface area for malicious browser extensions to interact with your wallet. Keep it separate from your everyday browsing session.</p>
+        </div>
+      </div>
+      <div class="tl-item future">
+        <div class="tl-rail"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <span class="tl-status">Ongoing</span>
+          <h3>Stay informed, stay sceptical</h3>
+          <p>Security threats evolve. Staying in a community where warnings are shared quickly helps you avoid new vectors before they reach you. It is also fine to say no to a transaction you do not fully understand — the opportunity will still be there after you have done your research.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq">
+      <details class="faq-item reveal d1">
+        <summary>Is a software wallet (like Phantom) safe enough?<span class="plus"></span></summary>
+        <div class="faq-a">For amounts you interact with regularly, a well-maintained software wallet is a reasonable choice — provided you follow seed phrase discipline, keep the app updated, and use a dedicated browser profile. For larger holdings you want to set aside long-term, a hardware wallet adds a meaningful layer of protection because the private key never touches an internet-connected device.</div>
+      </details>
+      <details class="faq-item reveal d2">
+        <summary>What happens if I lose my seed phrase?<span class="plus"></span></summary>
+        <div class="faq-a">Without the seed phrase, there is no recovery path. Unlike a bank account or an exchange, no company holds a backup. This is why physical backup copies in separate secure locations are essential before you load any meaningful funds into a self-custody wallet. It is not paranoia — it is basic asset management.</div>
+      </details>
+      <details class="faq-item reveal d3">
+        <summary>Can I tell which token is the real TrustTails (TAIL)?<span class="plus"></span></summary>
+        <div class="faq-a">Yes — by the contract address. The only real TAIL token is at contract <code style="color:var(--cyan-2);font-size:.85em;word-break:break-all">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code> on the Solana mainnet. Verify it directly on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-gold">Solscan</a>. A token with the same name but a different address is not TAIL. Never interact with an unverified address.</div>
+      </details>
+      <details class="faq-item reveal d4">
+        <summary>How do I know if a Telegram account is really TrustTails?<span class="plus"></span></summary>
+        <div class="faq-a">Our two official Telegram channels are <strong>t.me/TrustTailsCommunity</strong> and <strong>t.me/TrustTailsOfficial</strong>. We will never send unsolicited DMs offering tokens, presale access, or asking you to verify your wallet. If you receive such a message — even from an account that looks like ours — it is a scam. Report it and do not engage.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Is this financial advice?<span class="plus"></span></summary>
+        <div class="faq-a">No. Nothing on this page or anywhere on trusttails.io constitutes financial or investment advice. Cryptocurrency markets are highly volatile. You can lose the entire value of any holding, including TAIL tokens. Please conduct your own research and consider your own risk tolerance before making any financial decisions.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Internal links / CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Keep Learning</h2>
+      <p>Self-custody knowledge is the foundation. Read our related guides on how to verify a token before you buy, and what on-chain red flags to look for in any project.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="/security.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Security Overview
+        </a>
+        <a class="btn btn-ghost" href="/blog/how-to-spot-a-rug-pull.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          How to Spot a Rug Pull
+        </a>
+        <a class="btn btn-cyan" href="/how-to-buy.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          How to Buy TAIL
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-3" style="margin-top:48px">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+        </div>
+        <h3><a href="/is-it-legit.html" class="text-gold">Is TrustTails legit?</a></h3>
+        <p>See every verifiable fact about TAIL — fixed supply, revoked authorities, on-chain contract — with direct links to Solscan so you can check independently.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3><a href="/trust-and-transparency.html" class="text-gold">Trust &amp; Transparency</a></h3>
+        <p>Our commitment to honest communication — what we know, what we do not know, and what we will never claim without proof.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3><a href="/community.html" class="text-cyan">Join the Community</a></h3>
+        <p>Ask questions, share what you have learned, and get updates from our official channels. The community is where legitimate discussions happen.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/index.html"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Project</h4><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/roadmap.html">Roadmap</a><a href="/whitepaper.html">Whitepaper</a><a href="/vision.html">Vision</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit.html">Is it legit?</a><a href="/security.html">Security</a><a href="/trust-and-transparency.html">Transparency</a><a href="/how-to-buy.html">How to buy</a><a href="/compare.html">How we compare</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/index.html">Insights</a><a href="/solana.html">Why Solana?</a><a href="/faq.html">FAQ</a><a href="/community.html">Community</a><a href="/contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here should be construed as a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>How Token Liquidity Works (and Why It Matters at Launch)</title>
+<meta name="description" content="A clear explanation of liquidity pools, slippage, and why healthy liquidity matters when a Solana token launches on a DEX like Raydium.">
+<link rel="canonical" href="https://trusttails.io/blog/how-liquidity-works.html">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trusttails.io/blog/how-liquidity-works.html">
+<meta property="og:title" content="How Token Liquidity Works (and Why It Matters at Launch)">
+<meta property="og:description" content="A clear explanation of liquidity pools, slippage, and why healthy liquidity matters when a Solana token launches on a DEX like Raydium.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="How Token Liquidity Works (and Why It Matters at Launch)">
+<meta name="twitter:description" content="A clear explanation of liquidity pools, slippage, and why healthy liquidity matters when a Solana token launches on a DEX like Raydium.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://trusttails.io/blog/index.html"},{"@type":"ListItem","position":3,"name":"How liquidity works","item":"https://trusttails.io/blog/how-liquidity-works.html"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/index.html" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a></nav>
+  <div class="nav-cta"><a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+  <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div>
+</div></header>
+<div class="mobile-menu"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/how-to-buy.html">How to buy</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a><a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a></div>
+
+<!-- PAGE HEADER -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Insights · How-to</span>
+      <h1>How Token Liquidity Works<br><span class="text-grad">and Why It Matters at Launch</span></h1>
+      <p class="lead">Before a token has a price you can trust, it needs liquidity someone can trade against. This guide explains what a liquidity pool actually is, how prices move inside one, what slippage costs you, and why the depth of that pool shapes your entire experience as a holder.</p>
+    </div>
+    <div class="reveal d2" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:8px;">
+      <span style="color:var(--text-muted);font-size:.85rem;">June 2026 &middot; 6 min read</span>
+      <span style="color:var(--text-muted);font-size:.85rem;">·</span>
+      <a href="/blog/index.html" style="color:var(--gold);font-size:.85rem;text-decoration:none;">← Back to Insights</a>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE JSON-LD -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How Token Liquidity Works (and Why It Matters at Launch)","description":"A clear explanation of liquidity pools, slippage, and why healthy liquidity matters when a Solana token launches on a DEX like Raydium.","url":"https://trusttails.io/blog/how-liquidity-works.html","datePublished":"2026-06-15","image":"https://trusttails.io/assets/img/og-cover.png","author":{"@type":"Organization","name":"TrustTails"},"publisher":{"@type":"Organization","name":"TrustTails","logo":{"@type":"ImageObject","url":"https://trusttails.io/assets/img/logo-nav.png"}}}</script>
+
+<!-- WHAT IS A LIQUIDITY POOL -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Basics</span>
+      <h2>What Is a Liquidity Pool?</h2>
+      <p>On a centralised exchange like Coinbase, a price exists because thousands of buyers and sellers post limit orders. A decentralised exchange (DEX) like Raydium works differently — there are no order books. Instead, trades happen against a <strong>liquidity pool</strong>: a smart contract that holds two assets at the same time and lets anyone swap one for the other.</p>
+      <p style="margin-top:1rem">For a Solana SPL token, the most common pool is a <strong>TAIL/SOL pair</strong>. The pool holds some amount of TAIL and some amount of SOL. When you buy TAIL, you send SOL into the pool and receive TAIL out. When you sell, the reverse happens. No counterparty needed — the contract does the maths.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Always Available</h3>
+        <p>A liquidity pool never sleeps. Trades settle against the contract at any hour without needing a matching human seller on the other side.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8L6 7h12l-2-4Z"/></svg>
+        </div>
+        <h3>Two Assets, One Contract</h3>
+        <p>Every swap pool holds exactly two tokens. A TAIL/SOL pool holds TAIL on one side and SOL on the other — buying TAIL decreases TAIL reserves and increases SOL reserves.</p>
+      </article>
+      <article class="glass reveal d3 cyan">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Price Is Automatic</h3>
+        <p>There is no human setting the price. It moves continuously based on the ratio of the two assets inside the pool — a formula called the AMM curve.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW THE AMM FORMULA WORKS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Under the Hood</span>
+      <h2>The AMM: Constant Product Formula</h2>
+      <p>Raydium's standard pools — and most Solana DEX pools — use an Automated Market Maker (AMM) based on one rule: <span class="text-cyan"><strong>x × y = k</strong></span>. The product of the two reserves must remain constant after every trade (minus a small fee).</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-4"/></svg>
+        </div>
+        <h3>How the Price Moves</h3>
+        <p>Imagine a pool with 1,000,000 TAIL and 10 SOL. The ratio gives the starting price. If someone buys 100,000 TAIL (10% of supply), the pool now has 900,000 TAIL and roughly 11.1 SOL. The ratio shifted — so the price of TAIL in SOL terms went <em>up</em>. No announcement needed. The maths moves the price automatically with every swap.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3>The Curve Matters</h3>
+        <p>As you buy more of one asset, each additional unit costs progressively more — the curve is not linear. This is intentional: the AMM cannot be drained completely. Large purchases simply become increasingly expensive, which creates a natural deterrent to single-transaction price manipulation.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SLIPPAGE -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">What It Costs You</span>
+      <h2>Slippage — and Why Pool Depth Changes Everything</h2>
+      <p>Slippage is the gap between the price you expected and the price you actually got. It is not a bug or a scam — it is a mathematical consequence of moving the pool's ratio with your trade. Understanding it helps you make informed decisions about trade size and timing.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>
+        </div>
+        <h3>Shallow Pool = High Slippage</h3>
+        <p>A pool with $5,000 total liquidity will move significantly on a $500 trade. Your 10% purchase shifts the ratio sharply, so you receive fewer tokens than the displayed price implied. Slippage can be brutal in thin pools.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3>Deep Pool = Stable Trades</h3>
+        <p>A pool with $200,000 total liquidity barely flinches on a $500 trade. Your purchase represents a tiny fraction of the reserves, so the price ratio barely moves. Deep liquidity means tighter, more predictable execution.</p>
+      </article>
+      <article class="glass reveal d3 cyan">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V12M12 12 7 7M12 12l5-5M2 12h4M18 12h4"/></svg>
+        </div>
+        <h3>Setting Slippage Tolerance</h3>
+        <p>DEX interfaces let you set a slippage tolerance — the maximum % deviation you accept. If the price moves more than that during the transaction, the swap fails rather than filling at a bad price. A common starting point is 1–3% for established pools; newly launched pools with thin liquidity may require higher tolerances.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LIQUIDITY DEPTH & LOCKED LIQUIDITY -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Safety Signals</span>
+      <h2>What "Locked Liquidity" Actually Means</h2>
+      <p>When a team seeds a liquidity pool, they receive <strong>LP tokens</strong> — proof of their share in the pool. Those LP tokens can be used to withdraw the underlying funds at any time. That is where the risk lives: a team that holds their own LP tokens could withdraw everything, collapsing the price to zero in one transaction. This is called a <a href="/blog/how-to-spot-a-rug-pull.html" class="text-cyan">liquidity rug pull</a>.</p>
+      <p style="margin-top:1rem"><strong>Locked liquidity</strong> means the LP tokens have been deposited into a time-lock smart contract — typically for a defined period. During the lock, no one can withdraw the underlying pool assets. A longer lock, with the lock address verifiable on-chain, is a meaningful trust signal. It is not a guarantee of anything, but it does remove the fastest exit route.</p>
+    </div>
+    <div class="proof-split reveal d1">
+      <div class="do-dont is-do">
+        <h3>Stronger Trust Signals</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>LP tokens locked in a verifiable on-chain contract</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Lock address published and scannable on Solscan</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Lock duration and unlock date stated upfront</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Mint authority revoked — no new tokens can be minted</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Freeze authority revoked — wallets cannot be frozen</li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>Weaker or Missing Signals</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>Team claims lock but provides no verifiable address</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>LP tokens held by a team wallet with no lock</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>Mint authority still active after launch</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>Very short lock period (e.g. 24–72 hours)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>No public pool address or DexScreener listing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEXSCREENER -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Reading the Data</span>
+      <h2>How DexScreener Tracks a Pool</h2>
+      <p>DexScreener is a free, real-time analytics tool that reads directly from on-chain swap data. Once a pool exists, DexScreener indexes every trade and surfaces the numbers you need to assess a token's trading environment. Here is what each metric actually tells you.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Liquidity ($)</h3>
+        <p>The total USD value of both sides of the pool combined. This is the single most important number for slippage: the higher it is, the more a trade has to move the pool before the price shifts materially. A newly launched token often starts with very low liquidity and builds over time as more providers add funds.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="10" width="4" height="8"/><rect x="13" y="6" width="4" height="12"/></svg>
+        </div>
+        <h3>Volume (24h)</h3>
+        <p>The total USD value of all swaps in the past 24 hours. Higher volume relative to liquidity indicates active trading interest. Very low volume on a new token is normal — it simply means few people have traded yet, not that anything is wrong.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Price Impact</h3>
+        <p>Some interfaces show an estimated price impact for your specific trade size before you confirm. This number is derived from the AMM formula and tells you exactly how much the pool's ratio will shift on your purchase. If price impact is above 5%, reconsider your trade size.</p>
+      </article>
+      <article class="glass reveal d4">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Holders & Transactions</h3>
+        <p>DexScreener also shows recent transactions and the number of unique wallets. A healthy spread of holders reduces concentration risk. Concentrated supply — where a handful of wallets hold a large share — warrants extra scrutiny regardless of other metrics.</p>
+      </article>
+    </div>
+    <div class="reveal d2" style="margin-top:2.5rem;text-align:center;">
+      <p style="color:var(--text-muted);max-width:680px;margin:0 auto;">Always verify what you read on DexScreener directly on-chain. The pool address, LP lock address, and token contract should all be independently confirmable via <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a>. DexScreener indexes fast but on-chain data is always the authoritative source.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTTAILS PRE-LAUNCH CONTEXT -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Where TrustTails Stands</span>
+      <h2>TAIL Is Pre-Launch — What That Means for Liquidity</h2>
+      <p>TrustTails (TAIL) does not yet have a public trading pool. The token exists on Solana with a <a href="/tokenomics.html" class="text-gold">fixed supply of 1,000,000,000 TAIL</a>, and both mint authority and freeze authority have been revoked — <a href="/blog/how-to-verify-a-solana-token.html" class="text-cyan">verifiable on-chain right now</a>. But no liquidity has been added and no trading pool has been opened.</p>
+      <p style="margin-top:1rem">The plan — as stated in our <a href="/roadmap.html" class="text-gold">roadmap</a> — is to launch initially on <strong>Raydium</strong>, Solana's largest AMM DEX. Raydium uses the constant-product model described above. We are not announcing dates, prices, or pool sizes here because none of those are confirmed. We will communicate specifics through our <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">official Telegram</a> and <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">X account</a> when they are.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Authorities Already Revoked</h3>
+        <p>Mint and freeze authorities are gone now — before a single trade has happened. This is the most important time to revoke them. <a href="/is-it-legit.html" class="text-cyan">Verify the contract</a> on Solscan independently.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>No Hidden Presale</h3>
+        <p>There is no presale, no private sale, and no whitelist. Anyone claiming to sell TAIL before the public pool opens is running a scam. Do not send SOL or any asset to unknown wallets.</p>
+      </article>
+      <article class="glass reveal d3 cyan">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+        </div>
+        <h3>Raydium First</h3>
+        <p>When a pool is opened, it will be on Raydium and the pool address will be published publicly. Bookmark our official channels only. Never trust a pool address from a DM, Discord server, or unofficial group.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SCAM WARNING -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Stay Safe</span>
+      <h2>A Note on Scams Around Launch</h2>
+      <p>The period before and immediately after a token launch is when scam activity peaks. Bad actors watch on-chain data, see a new token with revoked authorities and a visible community, and move fast. These are the most common attacks and how to avoid them.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.38a16 16 0 0 0 5.92 5.92l.96-1.04a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 15.52l-.58 1.4Z"/></svg>
+        </div>
+        <h3>Fake Presale DMs</h3>
+        <p>Scammers impersonate team members and offer "early access" via direct message. The TrustTails team will <strong>never</strong> DM you first asking for SOL or any payment. Any such message is fraudulent — report and block immediately.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Fake Pool Addresses</h3>
+        <p>Scammers post lookalike pool addresses in Telegram groups and Discord servers. Only trust pool addresses published from the <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">@trusttailscoin</a> X account or <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">TrustTailsOfficial Telegram</a>. Cross-reference against the token contract on Solscan.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Liquidity FAQ</h2>
+    </div>
+    <div class="faq reveal d1" style="max-width:760px;margin:0 auto;">
+      <details class="faq-item">
+        <summary class="plus">Can I provide liquidity to the TAIL/SOL pool myself?</summary>
+        <div class="faq-a">
+          <p>Once the pool exists on Raydium, anyone can add liquidity as a liquidity provider (LP). You deposit an equal value of both tokens and receive LP tokens in return. As trades happen, you earn a share of the swap fees. Note: providing liquidity also exposes you to impermanent loss — a concept worth researching before you commit funds. This is not financial advice and carries risk.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">What happens to the price if nobody trades for a while?</summary>
+        <div class="faq-a">
+          <p>Nothing — a pool is passive. If no trades occur, the reserves do not change and the on-chain price stays exactly where it was. The price only moves when someone executes a swap against the pool.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">Is a higher liquidity number always better?</summary>
+        <div class="faq-a">
+          <p>Generally yes from a slippage and stability perspective. More liquidity means each trade moves the price less. However, liquidity number alone does not tell you anything about the project's quality, long-term utility, or community — it is one metric in a broader picture.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">If TAIL is pre-launch, where can I see the contract right now?</summary>
+        <div class="faq-a">
+          <p>The token already exists on Solana. You can verify the contract, supply, and revoked authorities at any time: <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">solscan.io/token/4NoNV3j…uk6Rc</a>. Our <a href="/blog/how-to-verify-a-solana-token.html" class="text-gold">verification guide</a> walks through exactly what to check.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">When will TAIL be buyable?</summary>
+        <div class="faq-a">
+          <p>We have not announced a date. Check our <a href="/roadmap.html" class="text-gold">roadmap</a> for the current plan. Official announcements will come from <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">@trusttailscoin</a> and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">TrustTailsOfficial</a> — not from DMs.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">What's Next</span>
+      <h2>Stay Informed, Not Hyped</h2>
+      <p class="lead">When the pool opens, you will want to know the address, the pool depth, and how to verify everything on-chain before acting. That knowledge starts now.</p>
+    </div>
+    <div class="reveal d2" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
+      <a class="btn btn-gold" href="/how-to-buy.html">How to buy when live</a>
+      <a class="btn btn-ghost" href="/roadmap.html">See the roadmap</a>
+      <a class="btn btn-cyan" href="/blog/how-to-verify-a-solana-token.html">Verify the contract</a>
+    </div>
+    <p class="reveal d3" style="text-align:center;color:var(--text-muted);font-size:.82rem;margin-top:2rem;max-width:640px;margin-left:auto;margin-right:auto;">Nothing on this page is financial advice. Cryptocurrency carries significant risk, including the total loss of value. Always do your own research and only risk what you can afford to lose.</p>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/index.html"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Project</h4><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/roadmap.html">Roadmap</a><a href="/whitepaper.html">Whitepaper</a><a href="/vision.html">Vision</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit.html">Is it legit?</a><a href="/security.html">Security</a><a href="/trust-and-transparency.html">Transparency</a><a href="/how-to-buy.html">How to buy</a><a href="/compare.html">How we compare</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/index.html">Insights</a><a href="/solana.html">Why Solana?</a><a href="/faq.html">FAQ</a><a href="/community.html">Community</a><a href="/contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here should be construed as a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

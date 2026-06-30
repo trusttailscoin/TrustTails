@@ -1,785 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TAIL Network — TrustTails Blockchain</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:        #050d18;
-      --bg2:       #0a1628;
-      --bg3:       #0f1e35;
-      --card:      #0d1a2e;
-      --border:    rgba(0, 220, 255, 0.15);
-      --cyan:      #00dcff;
-      --cyan-dim:  #00aac7;
-      --cyan-glow: rgba(0, 220, 255, 0.18);
-      --white:     #f0f6ff;
-      --muted:     #7a96b8;
-      --font-head: 'Space Grotesk', sans-serif;
-      --font-body: 'Inter', sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: var(--font-body);
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-
-    /* ── NAV ── */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 2.5rem;
-      border-bottom: 1px solid var(--border);
-      background: rgba(5, 13, 24, 0.92);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-logo {
-      font-family: var(--font-head);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--cyan);
-      text-decoration: none;
-      letter-spacing: 0.03em;
-    }
-    .nav-links { display: flex; gap: 1.8rem; align-items: center; }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--cyan); }
-    .nav-btn {
-      background: transparent;
-      border: 1.5px solid var(--cyan);
-      color: var(--cyan);
-      padding: 0.45rem 1.1rem;
-      border-radius: 6px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-    .nav-btn:hover { background: var(--cyan); color: var(--bg); }
-
-    /* ── HERO ── */
-    .hero {
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -120px; left: 50%;
-      transform: translateX(-50%);
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(0,220,255,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      border: 1px solid var(--border);
-      padding: 0.35rem 1rem;
-      border-radius: 100px;
-      margin-bottom: 1.6rem;
-      background: var(--cyan-glow);
-    }
-    .hero h1 {
-      font-family: var(--font-head);
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.15;
-      color: var(--white);
-      margin-bottom: 1.2rem;
-    }
-    .hero h1 span { color: var(--cyan); }
-    .hero p {
-      font-size: 1.12rem;
-      color: var(--muted);
-      max-width: 640px;
-      margin: 0 auto 2.5rem;
-    }
-    .hero-badges {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
-    .badge {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 0.5rem 1.2rem;
-      border-radius: 8px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--cyan);
-    }
-    .badge span { color: var(--muted); margin-right: 0.4rem; }
-    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--cyan);
-      color: var(--bg);
-      border: none;
-      padding: 0.75rem 2rem;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .btn-primary:hover { opacity: 0.88; }
-    .btn-outline {
-      background: transparent;
-      color: var(--cyan);
-      border: 1.5px solid var(--cyan);
-      padding: 0.75rem 2rem;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-outline:hover { background: var(--cyan); color: var(--bg); }
-
-    /* ── SECTION WRAPPER ── */
-    section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 0.7rem;
-    }
-    h2 {
-      font-family: var(--font-head);
-      font-size: clamp(1.6rem, 3vw, 2.3rem);
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 1rem;
-      line-height: 1.25;
-    }
-    h2 span { color: var(--cyan); }
-    .section-intro {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 700px;
-      margin-bottom: 3rem;
-    }
-    hr.divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0;
-    }
-
-    /* ── PROBLEM SECTION ── */
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .problem-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.8rem;
-    }
-    .problem-card .icon {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-    .problem-card h3 {
-      font-family: var(--font-head);
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.6rem;
-    }
-    .problem-card p { color: var(--muted); font-size: 0.92rem; }
-
-    /* ── SOLUTION ── */
-    .solution-wrap {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 3rem;
-    }
-    .solution-wrap p {
-      color: var(--muted);
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-    .solution-wrap p:last-child { margin-bottom: 0; }
-    .solution-wrap strong { color: var(--white); }
-
-    /* ── TECH STACK ── */
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-    .tech-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.8rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .tech-card:hover {
-      border-color: var(--cyan-dim);
-      box-shadow: 0 0 24px var(--cyan-glow);
-    }
-    .tech-card .tech-tag {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 0.6rem;
-    }
-    .tech-card h3 {
-      font-family: var(--font-head);
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-    .tech-card p { color: var(--muted); font-size: 0.88rem; }
-
-    /* ── TOKENOMICS ── */
-    .token-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .token-stat {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .token-stat .value {
-      font-family: var(--font-head);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--cyan);
-      margin-bottom: 0.3rem;
-    }
-    .token-stat .label { color: var(--muted); font-size: 0.85rem; }
-    .token-note {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--cyan);
-      border-radius: 10px;
-      padding: 1.2rem 1.5rem;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-    .token-note strong { color: var(--white); }
-
-    /* ── ROADMAP ── */
-    .roadmap-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-    .roadmap-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.8rem;
-      position: relative;
-    }
-    .roadmap-card.done { border-color: var(--cyan-dim); }
-    .phase-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 0.5rem;
-    }
-    .roadmap-card h3 {
-      font-family: var(--font-head);
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 1rem;
-    }
-    .roadmap-card ul { list-style: none; }
-    .roadmap-card ul li {
-      color: var(--muted);
-      font-size: 0.88rem;
-      padding: 0.3rem 0;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-    .roadmap-card ul li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--cyan);
-      font-size: 0.75rem;
-    }
-    .roadmap-card.done ul li::before { content: '✓'; }
-    .status-chip {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 0.2rem 0.7rem;
-      border-radius: 100px;
-      margin-bottom: 0.8rem;
-    }
-    .status-chip.live { background: rgba(0,220,100,0.15); color: #00dc64; }
-    .status-chip.active { background: rgba(0,220,255,0.15); color: var(--cyan); }
-    .status-chip.soon { background: rgba(180,100,255,0.15); color: #c084fc; }
-    .status-chip.future { background: rgba(120,120,120,0.15); color: var(--muted); }
-
-    /* ── WHY INVEST ── */
-    .invest-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    .invest-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 2rem;
-    }
-    .invest-card .num {
-      font-family: var(--font-head);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--cyan);
-      opacity: 0.4;
-      margin-bottom: 0.5rem;
-    }
-    .invest-card h3 {
-      font-family: var(--font-head);
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.6rem;
-    }
-    .invest-card p { color: var(--muted); font-size: 0.9rem; }
-
-    /* ── DUAL LAYER ── */
-    .dual-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    @media (max-width: 640px) { .dual-wrap { grid-template-columns: 1fr; } }
-    .dual-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-    }
-    .dual-card .layer-tag {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 0.6rem;
-    }
-    .dual-card h3 {
-      font-family: var(--font-head);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.8rem;
-    }
-    .dual-card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 0.6rem; }
-    .dual-card ul { list-style: none; margin-top: 0.5rem; }
-    .dual-card ul li {
-      color: var(--muted);
-      font-size: 0.88rem;
-      padding: 0.25rem 0;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-    .dual-card ul li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--cyan);
-      font-size: 0.75rem;
-    }
-
-    /* ── DISCLAIMER ── */
-    .disclaimer {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem 2rem;
-      color: var(--muted);
-      font-size: 0.82rem;
-      max-width: 1100px;
-      margin: 0 auto 2rem;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 2rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-    footer a { color: var(--cyan); text-decoration: none; }
-    footer .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap; }
-
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.2rem; }
-      .nav-links { display: none; }
-      .hero { padding: 4rem 1.2rem 3rem; }
-      section { padding: 3.5rem 1.2rem; }
-      .solution-wrap { padding: 2rem 1.5rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>The TAIL Network — Solana Technology Behind TrustTails</title>
+<meta name="description" content="How the TAIL token works on Solana: the SPL standard, revoked authorities, fast low-cost transactions, and the technology behind TrustTails.">
+<link rel="canonical" href="https://trusttails.io/tail-network.html">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trusttails.io/tail-network.html">
+<meta property="og:title" content="The TAIL Network — Solana Technology Behind TrustTails">
+<meta property="og:description" content="How the TAIL token works on Solana: the SPL standard, revoked authorities, fast low-cost transactions, and the technology behind TrustTails.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="The TAIL Network — Solana Technology Behind TrustTails">
+<meta name="twitter:description" content="How the TAIL token works on Solana: the SPL standard, revoked authorities, fast low-cost transactions, and the technology behind TrustTails.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"TAIL Network","item":"https://trusttails.io/tail-network.html"}]}</script>
 </head>
 <body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/index.html" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a></nav>
+  <div class="nav-cta"><a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+  <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div>
+</div></header>
+<div class="mobile-menu"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/how-to-buy.html">How to buy</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a><a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a></div>
 
-<!-- NAV -->
-<nav>
-  <a href="https://trusttails.io" class="nav-logo">TrustTails (TAIL)</a>
-  <div class="nav-links">
-    <a href="https://trusttails.io">Home</a>
-    <a href="#about">About</a>
-    <a href="#technology">Technology</a>
-    <a href="#tokenomics">Tokenomics</a>
-    <a href="#roadmap">Roadmap</a>
-    <a href="#invest">Why Invest</a>
-    <a href="https://trusttails.io" class="nav-btn">Buy TAIL</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-eyebrow">TAIL Network Whitepaper v1.0</div>
-  <h1>The <span>TAIL Network</span><br/>A New Independent Blockchain</h1>
-  <p>TrustTails is building its own sovereign blockchain — combining the community strength of a Solana token with the infrastructure power of a custom Cosmos SDK chain.</p>
-  <div class="hero-badges">
-    <div class="badge"><span>Network</span>TAIL Chain</div>
-    <div class="badge"><span>Framework</span>Cosmos SDK v0.53.6</div>
-    <div class="badge"><span>Supply</span>1,000,000,000 TAIL</div>
-    <div class="badge"><span>Status</span>Blockchain Live ✓</div>
-  </div>
-  <div class="hero-cta">
-    <a href="#about" class="btn-primary">Read the Vision</a>
-    <a href="https://trusttails.io" class="btn-outline">Back to Home</a>
-  </div>
-</div>
-
-<hr class="divider"/>
-
-<!-- ABOUT / PROBLEM -->
-<section id="about">
-  <div class="section-label">The Problem</div>
-  <h2>Why the crypto world needed <span>something different</span></h2>
-  <p class="section-intro">The majority of crypto projects today share the same fundamental weakness — they're built on someone else's infrastructure. TrustTails was created to change that.</p>
-  <div class="problem-grid">
-    <div class="problem-card">
-      <div class="icon">🏠</div>
-      <h3>Paying Rent Forever</h3>
-      <p>Tokens built on Ethereum, Solana, or BNB Chain pay fees to those networks forever. They're tenants, not owners — subject to congestion, price spikes, and rule changes outside their control.</p>
+<!-- Hero -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Technology</span>
+      <h1>The <span class="text-grad">TAIL Network</span></h1>
+      <p class="lead">TAIL is a Solana SPL token — 1,000,000,000 fixed supply, mint authority revoked, freeze authority revoked. No new tokens can ever be created. No wallet can ever be frozen. That is not a marketing claim; it is verifiable on-chain, right now.</p>
     </div>
-    <div class="problem-card">
-      <div class="icon">🔒</div>
-      <h3>No True Sovereignty</h3>
-      <p>Most tokens can't set their own rules, fee structures, or governance models. They inherit the limitations of whatever chain they live on — limiting what they can ever become.</p>
-    </div>
-    <div class="problem-card">
-      <div class="icon">🌐</div>
-      <h3>Isolated Ecosystems</h3>
-      <p>Without native cross-chain communication, tokens are trapped on one network. Moving assets between chains requires risky bridges — which are among the most frequently exploited vulnerabilities in crypto.</p>
-    </div>
-    <div class="problem-card">
-      <div class="icon">🎭</div>
-      <h3>The Meme Coin Trap</h3>
-      <p>Community-driven tokens without real infrastructure are dismissed as meme coins — even when the team, vision, and community are genuine. Credibility requires more than a token. It requires infrastructure.</p>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </div>
+        <h3>SPL Token Standard</h3>
+        <p>TAIL follows Solana's native token program — the same standard used by every serious project on the chain. No custom contracts, no proprietary wrappers: just the audited, battle-tested SPL spec.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Both Authorities Revoked</h3>
+        <p>Mint authority and freeze authority have both been permanently revoked. The supply is fixed at one billion. No team wallet, no future multisig, no upgrade path exists to undo this. Verify the contract yourself on Solscan.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Solana Speed &amp; Cost</h3>
+        <p>Solana processes thousands of transactions per second with sub-second finality and near-zero fees. Holding or moving TAIL costs a fraction of a cent — not because we designed it that way, but because Solana does.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<hr class="divider"/>
-
-<!-- SOLUTION -->
-<section id="solution">
-  <div class="section-label">Our Answer</div>
-  <h2>TrustTails: <span>Built different, from the ground up</span></h2>
-  <p class="section-intro">TrustTails isn't just a token. It's a two-layer project — a live Solana token building community today, and a sovereign blockchain being built for the long term.</p>
-  <div class="solution-wrap">
-    <p>The TAIL Network is an <strong>independent, sovereign blockchain</strong> built from scratch using the Cosmos SDK — the same framework that powers multi-billion dollar networks like Cosmos Hub, Osmosis, and Celestia. This means TrustTails doesn't rent space on someone else's chain. <strong>We own our infrastructure.</strong></p>
-    <p>Our Solana token (already live with fixed supply, revoked mint and freeze authorities) gives us community reach and early market presence. Meanwhile, the TAIL Network gives that community something permanent to believe in — a chain with its own rules, its own validators, and its own future.</p>
-    <p>The vision is simple: <strong>Trust • Transparency • Innovation • Community.</strong> Those aren't just words on a website. They're the four pillars we're encoding directly into the architecture of a blockchain that will outlast any single market cycle.</p>
-  </div>
-</section>
-
-<hr class="divider"/>
-
-<!-- TECHNOLOGY -->
-<section id="technology">
-  <div class="section-label">Technology</div>
-  <h2>What makes the <span>TAIL Network</span> technically powerful</h2>
-  <p class="section-intro">Every technical decision was made to give TAIL long-term credibility, interoperability, and independence. Here's what's running under the hood.</p>
-  <div class="tech-grid">
-    <div class="tech-card">
-      <div class="tech-tag">Foundation</div>
-      <h3>Cosmos SDK v0.53.6</h3>
-      <p>The most battle-tested framework for building custom blockchains. Used by Cosmos Hub, Osmosis, Injective, and dozens of production chains securing billions in assets.</p>
+<!-- What SPL Means -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Under the Hood</span>
+      <h2>What the SPL Standard Actually Means</h2>
+      <p class="lead">Understanding the plumbing helps you evaluate any token, not just TAIL. Here is what each layer does.</p>
     </div>
-    <div class="tech-card">
-      <div class="tech-tag">Consensus</div>
-      <h3>CometBFT (Tendermint)</h3>
-      <p>Byzantine fault-tolerant consensus with instant finality. Blocks are final the moment they're committed — no waiting for 6 confirmations like Bitcoin or Ethereum.</p>
-    </div>
-    <div class="tech-card">
-      <div class="tech-tag">Interoperability</div>
-      <h3>IBC Protocol</h3>
-      <p>Inter-Blockchain Communication — the native internet protocol for Cosmos chains. TAIL can send and receive assets across 50+ other IBC-enabled chains without any bridge risk.</p>
-    </div>
-    <div class="tech-card">
-      <div class="tech-tag">Sovereignty</div>
-      <h3>Own Validators</h3>
-      <p>The TAIL Network runs its own independent validators. No dependency on Ethereum miners, Solana validators, or any third-party network to process TAIL transactions.</p>
-    </div>
-    <div class="tech-card">
-      <div class="tech-tag">Governance</div>
-      <h3>On-chain Governance</h3>
-      <p>TAIL holders will vote directly on protocol upgrades, fee structures, and treasury decisions. True community ownership — not just a promise, but a protocol feature.</p>
-    </div>
-    <div class="tech-card">
-      <div class="tech-tag">Transparency</div>
-      <h3>Open Source</h3>
-      <p>Every line of the TAIL Network is built in the open. No hidden smart contracts, no admin keys, no upgrade backdoors. What you see is what runs.</p>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Token Program</h3>
+        <p>The Solana Token Program is a shared on-chain program that defines how SPL tokens are created, transferred, and managed. Every SPL token uses the exact same program — including TAIL. That means the rules governing TAIL are not written by us; they are enforced by Solana's own runtime. No team can overwrite them.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Mint Authority</h3>
+        <p>Mint authority is the keypair that can issue new tokens. When it is revoked, the total supply is permanently sealed — no new TAIL can ever enter circulation. This is not a promise; it is a state change written into the token's on-chain metadata. Solscan reports this as <span class="text-cyan">"Disabled"</span> on the TAIL token page.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+        </div>
+        <h3>Freeze Authority</h3>
+        <p>Freeze authority lets an issuer lock individual wallets from transacting. TAIL's freeze authority is also revoked. No wallet holding TAIL can be frozen, blocked, or restricted by the team — or anyone else. Holders have full, unilateral control over their tokens.</p>
+      </article>
+      <article class="glass reveal d4">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Associated Token Accounts</h3>
+        <p>Your TAIL balance lives in an Associated Token Account derived from your wallet address. Compatible wallets like Phantom or Solflare create this automatically the first time you receive TAIL. Nothing special to configure — it works the same as any other SPL token.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<hr class="divider"/>
-
-<!-- DUAL LAYER -->
-<section id="dual">
-  <div class="section-label">Two Layers, One Vision</div>
-  <h2>How the <span>Solana token</span> and <span>TAIL Network</span> work together</h2>
-  <p class="section-intro">This isn't a pivot or a relaunch. These are two complementary layers of the same long-term strategy — and together, they're stronger than either alone.</p>
-  <div class="dual-wrap">
-    <div class="dual-card">
-      <div class="layer-tag">Layer 1 — Now</div>
-      <h3>TAIL on Solana</h3>
-      <p>Our entry point. Fast, accessible, already live — with a growing community, clean tokenomics, and a fixed supply that proves we're serious.</p>
-      <ul>
-        <li>Fixed supply — 1,000,000,000 TAIL</li>
-        <li>Mint authority permanently revoked</li>
-        <li>Freeze authority permanently revoked</li>
-        <li>Raydium listing planned</li>
-        <li>CoinGecko & DexScreener coming</li>
-        <li>Community growing on X & Telegram</li>
-      </ul>
+<!-- Token Facts -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">On-Chain Facts</span>
+      <h2>Verifiable Token Data</h2>
+      <p class="lead">These are not claims — they are on-chain states. Check them yourself at any time.</p>
     </div>
-    <div class="dual-card">
-      <div class="layer-tag">Layer 2 — Long Term</div>
-      <h3>TAIL Network (Cosmos)</h3>
-      <p>Our destination. A sovereign blockchain that gives TAIL real infrastructure, real utility, and real permanence — independent of any other network.</p>
-      <ul>
-        <li>Custom blockchain — live and running</li>
-        <li>Built on Cosmos SDK v0.53.6</li>
-        <li>IBC-ready for cross-chain transfers</li>
-        <li>Own validators and governance</li>
-        <li>Keplr wallet integration planned</li>
-        <li>Block explorer coming soon</li>
-      </ul>
+    <div class="grid grid-4">
+      <div class="glass stat reveal d1">
+        <div class="num gold" data-count="1000000000">1,000,000,000</div>
+        <div class="lbl">Fixed Total Supply</div>
+      </div>
+      <div class="glass stat reveal d2">
+        <div class="num text-cyan">REVOKED</div>
+        <div class="lbl">Mint Authority</div>
+      </div>
+      <div class="glass stat reveal d3">
+        <div class="num text-cyan">REVOKED</div>
+        <div class="lbl">Freeze Authority</div>
+      </div>
+      <div class="glass stat reveal d4">
+        <div class="num text-gold">SPL</div>
+        <div class="lbl">Token Standard</div>
+      </div>
     </div>
-  </div>
-</section>
-
-<hr class="divider"/>
-
-<!-- TOKENOMICS -->
-<section id="tokenomics">
-  <div class="section-label">Tokenomics</div>
-  <h2>Simple, transparent, <span>fixed forever</span></h2>
-  <p class="section-intro">No inflation. No hidden minting. No team reserve that can dump on holders. TAIL has fixed supply economics designed to build long-term trust.</p>
-  <div class="token-grid">
-    <div class="token-stat">
-      <div class="value">1,000,000,000</div>
-      <div class="label">Total Supply (Fixed)</div>
-    </div>
-    <div class="token-stat">
-      <div class="value">TAIL</div>
-      <div class="label">Token Symbol</div>
-    </div>
-    <div class="token-stat">
-      <div class="value">Revoked</div>
-      <div class="label">Mint Authority</div>
-    </div>
-    <div class="token-stat">
-      <div class="value">Revoked</div>
-      <div class="label">Freeze Authority</div>
-    </div>
-  </div>
-  <div class="token-note">
-    <strong>Why fixed supply matters:</strong> When a project revokes its mint authority, it permanently removes the ability to create new tokens. This is one of the strongest trust signals in crypto — it means no team, no founder, and no smart contract can ever dilute your holdings by printing more TAIL. Combined with a revoked freeze authority (which means nobody can freeze your wallet), TrustTails has made the most investor-friendly tokenomics decisions possible at launch.
-  </div>
-</section>
-
-<hr class="divider"/>
-
-<!-- ROADMAP -->
-<section id="roadmap">
-  <div class="section-label">Roadmap</div>
-  <h2>Where we've been, <span>where we're going</span></h2>
-  <p class="section-intro">Every phase builds on the last. We don't announce things we haven't started — and we don't move to the next phase until the current one is solid.</p>
-  <div class="roadmap-grid">
-    <div class="roadmap-card done">
-      <div class="phase-label">Phase 1</div>
-      <div class="status-chip live">✓ Complete</div>
-      <h3>Foundation</h3>
-      <ul>
-        <li>TAIL token created on Solana</li>
-        <li>Fixed supply locked forever</li>
-        <li>Mint & freeze authority revoked</li>
-        <li>Website launched</li>
-        <li>X profile live</li>
-        <li>Telegram community launched</li>
-        <li>Whitepaper v1.0 published</li>
-        <li>TAIL Network blockchain built</li>
-      </ul>
-    </div>
-    <div class="roadmap-card">
-      <div class="phase-label">Phase 2</div>
-      <div class="status-chip active">In Progress</div>
-      <h3>Growth</h3>
-      <ul>
-        <li>Community building campaign</li>
-        <li>X bot & social automation</li>
-        <li>Website upgrades</li>
-        <li>Transparency updates</li>
-        <li>Block explorer launch</li>
-        <li>Keplr wallet integration</li>
-        <li>Cosmos Chain Registry listing</li>
-      </ul>
-    </div>
-    <div class="roadmap-card">
-      <div class="phase-label">Phase 3</div>
-      <div class="status-chip soon">Coming Soon</div>
-      <h3>Market</h3>
-      <ul>
-        <li>Raydium DEX listing</li>
-        <li>DexScreener profile live</li>
-        <li>CoinGecko application</li>
-        <li>Liquidity planning</li>
-        <li>Solana & Cosmos outreach</li>
-        <li>Community campaigns</li>
-      </ul>
-    </div>
-    <div class="roadmap-card">
-      <div class="phase-label">Phase 4</div>
-      <div class="status-chip future">Future</div>
-      <h3>Ecosystem</h3>
-      <ul>
-        <li>TAIL Network public mainnet</li>
-        <li>IBC bridge to Solana TAIL</li>
-        <li>Governance launch</li>
-        <li>Validator program</li>
-        <li>Partnership development</li>
-        <li>Long-term utility features</li>
-      </ul>
+    <div style="margin-top:40px;text-align:center">
+      <p style="color:var(--muted);font-size:.92rem;margin-bottom:20px">Contract address — always verify before interacting:</p>
+      <code style="display:inline-block;background:var(--surface);border:1px solid var(--border-2);border-radius:var(--radius-sm);padding:14px 24px;font-family:var(--font-mono);font-size:.82rem;color:var(--cyan-2);letter-spacing:.04em;word-break:break-all">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+      <div style="margin-top:20px">
+        <a class="btn btn-ghost" href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Verify on Solscan
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<hr class="divider"/>
-
-<!-- WHY INVEST -->
-<section id="invest">
-  <div class="section-label">For Investors</div>
-  <h2>Why <span>TrustTails</span> is worth paying attention to</h2>
-  <p class="section-intro">Here is the honest case for TrustTails — no hype, no promises we can't keep, just the real reasons this project is different.</p>
-  <div class="invest-grid">
-    <div class="invest-card">
-      <div class="num">01</div>
-      <h3>Real Infrastructure, Not Just a Token</h3>
-      <p>Most community tokens stop at the token. TrustTails has already built and launched an independent blockchain. That's months of technical work most projects never do. It signals long-term commitment, not a quick cash grab.</p>
+<!-- How Solana Works for TAIL -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Solana</span>
+      <h2>The Network Underneath <span class="text-grad">TAIL</span></h2>
+      <p class="lead">Choosing Solana was a deliberate decision, not a default. The chain's characteristics directly affect what TAIL can and cannot do. Learn more on the <a href="/solana.html" class="text-cyan">Why Solana page</a>.</p>
     </div>
-    <div class="invest-card">
-      <div class="num">02</div>
-      <h3>Proven Technical Foundation</h3>
-      <p>Cosmos SDK powers some of the most successful chains in crypto. Choosing it means TAIL inherits years of security research, battle-tested consensus, and a thriving developer ecosystem — not an experimental unknown.</p>
-    </div>
-    <div class="invest-card">
-      <div class="num">03</div>
-      <h3>Fixed Supply — Permanent Scarcity</h3>
-      <p>1 billion TAIL. Forever. With mint authority permanently revoked, there is mathematically no way for anyone to dilute your holdings. Scarcity is built into the protocol, not a promise that can be broken later.</p>
-    </div>
-    <div class="invest-card">
-      <div class="num">04</div>
-      <h3>Native Cross-Chain Capability</h3>
-      <p>Through IBC, the TAIL Network can communicate with 50+ other Cosmos chains natively — without bridges. As the Cosmos ecosystem grows, so does TAIL's reach. Interoperability is not a roadmap item. It's already built in.</p>
-    </div>
-    <div class="invest-card">
-      <div class="num">05</div>
-      <h3>Two-Layer Strategy = Two Growth Paths</h3>
-      <p>The Solana token builds community and market presence now. The TAIL Network builds the infrastructure for long-term utility. Each layer strengthens the other — and gives investors two distinct vectors of growth to track.</p>
-    </div>
-    <div class="invest-card">
-      <div class="num">06</div>
-      <h3>Early Stage = Early Opportunity</h3>
-      <p>TrustTails is pre-Raydium, pre-CoinGecko, pre-mainnet. The projects that produce the most significant returns are typically found before they're widely known — when the infrastructure exists but the market hasn't noticed yet.</p>
+    <div class="grid grid-3">
+      <article class="glass cyan reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Sub-Second Finality</h3>
+        <p>Solana's Proof-of-History and Proof-of-Stake consensus confirms transactions in under a second under normal conditions. When you transfer TAIL, it settles almost immediately — not in minutes or hours.</p>
+      </article>
+      <article class="glass cyan reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Negligible Fees</h3>
+        <p>A typical Solana transaction costs a fraction of a cent. Transferring TAIL to another wallet, checking balances, or interacting with DEXes does not require meaningful fee capital. Low friction is a property of the network, not a promise we make.</p>
+      </article>
+      <article class="glass cyan reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Deep Explorer Coverage</h3>
+        <p>Solana has multiple independent block explorers. Solscan, Solana Explorer, and SolanaFM all index TAIL transactions. If one is down you can verify on another — no single point of failure for transparency.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<hr class="divider"/>
-
-<!-- DISCLAIMER -->
-<div class="disclaimer">
-  <strong>Disclaimer:</strong> Nothing on this page constitutes financial, legal, or investment advice. TrustTails (TAIL) is an experimental blockchain project in active development. Cryptocurrency investments involve significant risk, including the possible loss of principal. Always conduct your own research before making any investment decisions. The TAIL Network is currently in development/testnet phase and is not yet a public mainnet.
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-links">
-    <a href="https://trusttails.io">Home</a>
-    <a href="https://x.com/trusttailscoin" target="_blank">X / Twitter</a>
-    <a href="#">Telegram</a>
-    <a href="#">Whitepaper PDF</a>
+<!-- How to Interact -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Interacting with TAIL</span>
+      <h2>Wallets, Explorers &amp; What to Check</h2>
+      <p class="lead">TAIL is pre-launch — it is not available to buy yet. When it is, here is exactly how the mechanics work. See the <a href="/how-to-buy.html" class="text-cyan">how to buy guide</a> for step-by-step instructions.</p>
+    </div>
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="20 6 9 17 4 12"/></svg>
+          What to do
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+            Use a self-custody Solana wallet — Phantom, Solflare, or Backpack are widely used options
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+            Verify the contract address matches <span class="text-cyan">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</span> before any interaction
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+            Check Solscan to confirm mint authority and freeze authority both show "Disabled"
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+            Watch our official <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-gold">X</a> and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-gold">Telegram</a> for launch announcements
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+            Understand that crypto carries significant risk, including total loss of value, before holding any amount
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          What to avoid
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            DMs claiming to offer TAIL presales or early access — we will never DM you first
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Unofficial contract addresses — there is only one real TAIL token address
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Sharing your seed phrase or private key with anyone, for any reason, ever
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Treating anything on this site as financial advice — it is not
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            FOMO-buying based on price predictions — nobody can reliably predict token prices
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <p>TrustTails (TAIL) • Trust • Transparency • Innovation • Community</p>
-  <p style="margin-top:0.5rem;">© 2026 TrustTails. All rights reserved.</p>
-</footer>
+</section>
 
+<!-- Long-Term Infrastructure Ambition -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Long-Term Vision</span>
+      <h2>Infrastructure Ambition — <span class="text-grad">Honest Framing</span></h2>
+      <p class="lead">TrustTails started as a meme to get noticed. The long-term direction is finance-adjacent infrastructure — but that is an ambition, not a current fact. Here is exactly where things stand.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Solana as Infrastructure Layer</h3>
+        <p>Solana's throughput and settlement speed make it technically suitable for payment and settlement use cases at scale. TAIL lives on that layer. Whether TAIL eventually serves a role in any real financial infrastructure is a question that depends on adoption, regulatory development, and community growth — none of which are guaranteed.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>No Current Partnerships</h3>
+        <p>TrustTails has no current partnerships with any bank, payments company, or financial institution. We will not claim otherwise. If that changes, it will be announced publicly through our official channels and verifiable through the counterparty's own communications — not through anonymous DMs or unverifiable screenshots.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Earning Trust Takes Time</h3>
+        <p>Everything after getting noticed has to be earned, not claimed. That means building real community, demonstrating transparent governance, and only making claims we can back with on-chain evidence. The technology foundation is solid. What gets built on top of it is the work ahead. Read our <a href="/vision.html" class="text-cyan">full vision</a>.</p>
+      </article>
+      <article class="glass reveal d4">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Always Verify On-Chain</h3>
+        <p>Never take our word for any technical claim. The TAIL contract is public. The authority states are public. The supply is public. Solscan indexes every transaction. If something on this page contradicts what you see on-chain, trust the chain. Review our full <a href="/security.html" class="text-cyan">security page</a> and <a href="/trust-and-transparency.html" class="text-cyan">transparency standards</a>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Technical FAQ</h2>
+      <p class="lead">Straight answers. More on the <a href="/faq.html" class="text-cyan">main FAQ page</a>.</p>
+    </div>
+    <div class="faq reveal" style="max-width:760px;margin-inline:auto">
+      <details class="faq-item">
+        <summary class="plus">What is an SPL token?</summary>
+        <div class="faq-a">
+          <p>SPL stands for Solana Program Library. The Token Program within SPL defines how tokens are created and managed on Solana. Any token following this standard — including TAIL — uses the same on-chain rules and behaves predictably. It is the Solana equivalent of the ERC-20 standard on Ethereum, except enforced by a shared program rather than individually deployed contracts.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">How do I know the mint authority is actually revoked?</summary>
+        <div class="faq-a">
+          <p>Go to <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">solscan.io/token/4NoNV3jSYLR...uk6Rc</a> and look at the token's Overview tab. The "Mint Authority" and "Freeze Authority" fields will show "Disabled" or null when revoked. This is read directly from the on-chain account data — it cannot be falsified by the token issuer.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">Which wallets support TAIL?</summary>
+        <div class="faq-a">
+          <p>Any self-custody Solana wallet that supports SPL tokens will work with TAIL. Phantom, Solflare, and Backpack are commonly used options. TAIL is pre-launch and not yet listed, so you would need to add it manually by its contract address once it launches. We are not affiliated with or endorsing any specific wallet provider.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">Is TAIL audited?</summary>
+        <div class="faq-a">
+          <p>TAIL uses the standard Solana Token Program — a widely-deployed, battle-tested on-chain program that has not been custom-modified. We have not commissioned a third-party smart contract audit for TAIL itself at this stage. We will announce any future audits through official channels if and when they occur. Never trust a claim of an audit that does not link to a publicly accessible report from a named firm.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">Will TrustTails deploy any additional contracts?</summary>
+        <div class="faq-a">
+          <p>Any future smart contract deployments — for staking, governance, or other purposes — would be announced publicly before deployment, with contract addresses verifiable on-chain. The only official TAIL token contract is <span class="text-cyan">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</span>. Anything else claiming to be TAIL is not.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="plus">Why does the total supply being fixed matter?</summary>
+        <div class="faq-a">
+          <p>A revoked mint authority means there is a hard ceiling on supply — 1,000,000,000 TAIL and no more. In token projects where mint authority is retained, the team can inflate supply at any time, diluting existing holders. TAIL's revoked mint removes that risk permanently. It does not make TAIL valuable — that depends on adoption — but it removes one specific class of rug-pull risk.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Pre-Launch</span>
+      <h2>Follow the Launch — Do Not Miss It</h2>
+      <p class="lead">TAIL is not available to buy yet. Join the community to be notified through official channels when that changes. Never trust DMs claiming early access.</p>
+    </div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center" class="reveal d2">
+      <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg>
+        Telegram Community
+      </a>
+      <a class="btn btn-ghost" href="https://x.com/trusttailscoin" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg>
+        Follow on X
+      </a>
+      <a class="btn btn-cyan" href="/tokenomics.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        View Tokenomics
+      </a>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:.83rem;color:var(--faint)">This is not financial advice. Cryptocurrency can lose all value. Always do your own research.</p>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/index.html"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Project</h4><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/roadmap.html">Roadmap</a><a href="/whitepaper.html">Whitepaper</a><a href="/vision.html">Vision</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit.html">Is it legit?</a><a href="/security.html">Security</a><a href="/trust-and-transparency.html">Transparency</a><a href="/how-to-buy.html">How to buy</a><a href="/compare.html">How we compare</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/index.html">Insights</a><a href="/solana.html">Why Solana?</a><a href="/faq.html">FAQ</a><a href="/community.html">Community</a><a href="/contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here should be construed as a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="/assets/js/app.js" defer></script>
 </body>
 </html>
