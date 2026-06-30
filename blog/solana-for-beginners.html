@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Solana for Beginners: Wallets, SOL & Fees Explained</title>
+<meta name="description" content="New to Solana? A friendly beginner guide to wallets, SOL, transaction fees, and staying safe — everything you need before exploring tokens like TAIL.">
+<link rel="canonical" href="https://trusttails.io/blog/solana-for-beginners.html">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trusttails.io/blog/solana-for-beginners.html">
+<meta property="og:title" content="Solana for Beginners: Wallets, SOL & Fees Explained">
+<meta property="og:description" content="New to Solana? A friendly beginner guide to wallets, SOL, transaction fees, and staying safe — everything you need before exploring tokens like TAIL.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Solana for Beginners: Wallets, SOL & Fees Explained">
+<meta name="twitter:description" content="New to Solana? A friendly beginner guide to wallets, SOL, transaction fees, and staying safe — everything you need before exploring tokens like TAIL.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://trusttails.io/blog/index.html"},{"@type":"ListItem","position":3,"name":"Solana for beginners","item":"https://trusttails.io/blog/solana-for-beginners.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Solana for Beginners: Wallets, SOL & Fees Explained","description":"New to Solana? A friendly beginner guide to wallets, SOL, transaction fees, and staying safe — everything you need before exploring tokens like TAIL.","url":"https://trusttails.io/blog/solana-for-beginners.html","image":"https://trusttails.io/assets/img/og-cover.png","publisher":{"@type":"Organization","name":"TrustTails","url":"https://trusttails.io"},"datePublished":"2026-06-30","author":{"@type":"Organization","name":"TrustTails"}}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/index.html" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a></nav>
+  <div class="nav-cta"><a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+  <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div>
+</div></header>
+<div class="mobile-menu"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/how-to-buy.html">How to buy</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a><a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a></div>
+
+<!-- PAGE HEADER -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Insights · Basics</span>
+      <h1>Solana for Beginners:<br>Wallets, SOL &amp; Fees Explained</h1>
+      <p class="lead">If you're new to crypto and wondering what Solana actually is, how wallets work, and why everyone talks about "gas fees," this plain-English guide covers the essentials — no assumed knowledge required.</p>
+    </div>
+    <div class="grid grid-4" style="margin-top:2rem">
+      <div class="glass stat reveal d1">
+        <div class="num gold">~400ms</div>
+        <div class="lbl">Average block time</div>
+      </div>
+      <div class="glass stat reveal d2">
+        <div class="num gold">&lt;$0.001</div>
+        <div class="lbl">Typical transaction fee</div>
+      </div>
+      <div class="glass stat reveal d3">
+        <div class="num gold">65,000+</div>
+        <div class="lbl">Transactions per second (peak)</div>
+      </div>
+      <div class="glass stat reveal d4">
+        <div class="num gold">2020</div>
+        <div class="lbl">Mainnet launch year</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS SOLANA -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Chain</span>
+      <h2>What is Solana?</h2>
+      <p>A quick, honest explanation of the network before you start using it.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>A blockchain, not a company</h3>
+        <p>Solana is an open, public blockchain — a distributed ledger maintained by thousands of validator nodes worldwide. No single organisation controls it. Transactions are verified and recorded permanently without a central gatekeeper.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Why it's fast and cheap</h3>
+        <p>Solana uses a combination of Proof of History (PoH) and Proof of Stake (PoS) to order transactions before they're confirmed. This allows the network to process transactions in under a second and charge fees measured in fractions of a cent — a meaningful practical difference from older chains where fees can spike to dollars.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <h3>Where tokens live</h3>
+        <p>All tokens built on Solana — including TAIL — follow the SPL token standard (Solana Program Library). Each token has a unique on-chain address called a mint address. You can verify any SPL token independently on <a href="https://solscan.io" target="_blank" rel="noopener" class="text-cyan">Solscan</a>, which is a free public blockchain explorer. Nothing to trust on faith.</p>
+      </article>
+    </div>
+    <p class="reveal" style="margin-top:2rem;text-align:center">Want to understand why TrustTails chose Solana specifically? Read <a href="/solana.html" class="text-gold">Why Solana?</a></p>
+  </div>
+</section>
+
+<!-- SOL THE CURRENCY -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">The Native Currency</span>
+      <h2>What is SOL?</h2>
+      <p>SOL is Solana's native currency — the fuel that makes everything on the network move.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>SOL pays for transactions</h3>
+        <p>Every time you send tokens, swap on a DEX, or interact with a program on Solana, you pay a small fee in SOL — typically less than $0.001. Think of it as postage: the network needs a tiny incentive to validators who confirm your transaction. You don't need much SOL for everyday activity, but you always need some. A balance of 0.05–0.1 SOL is usually more than enough to get started.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>SOL and SPL tokens are different things</h3>
+        <p>SOL is the native coin of the Solana blockchain. SPL tokens — like TAIL — are separate assets that run on top of Solana. You might hold zero SOL but a million TAIL tokens, but you would not be able to do anything with them without a small SOL balance to cover fees. This is an important practical point: always keep a small SOL reserve in any wallet you actively use.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WALLETS -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Getting Set Up</span>
+      <h2>Wallets: What They Are and How to Set One Up</h2>
+      <p>Your wallet is not an account with a company — it is a pair of cryptographic keys that only you hold.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        </div>
+        <h3>Phantom Wallet</h3>
+        <p>Phantom is the most widely used Solana wallet. It installs as a browser extension (Chrome, Firefox, Brave, Edge) and also has iOS and Android apps. Setup takes about two minutes: install, click "Create new wallet," write down your seed phrase, and set a local password. Phantom shows your SOL balance and any SPL tokens held at that address automatically.</p>
+        <p style="margin-top:0.75rem"><strong>Official link:</strong> <a href="https://phantom.app" target="_blank" rel="noopener" class="text-cyan">phantom.app</a> — always go directly. Never install from a link in a DM or social post.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3>Solflare Wallet</h3>
+        <p>Solflare is a strong alternative, particularly if you intend to stake SOL or want a slightly more detailed interface. Available as a browser extension and mobile app. Setup is identical in principle: create a wallet, secure your seed phrase, done. Both Phantom and Solflare are non-custodial — meaning only you hold the keys, and no company can freeze or access your funds.</p>
+        <p style="margin-top:0.75rem"><strong>Official link:</strong> <a href="https://solflare.com" target="_blank" rel="noopener" class="text-cyan">solflare.com</a></p>
+      </article>
+    </div>
+
+    <!-- SEED PHRASE WARNING -->
+    <div class="proof-split reveal" style="margin-top:3rem">
+      <div class="do-dont is-do">
+        <h3>Seed phrase — what to do</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Write it on paper — ideally two copies stored in different physical locations
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Treat it like a house key: anyone who has it controls your wallet
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Verify your seed phrase immediately after creating the wallet — the wallet will prompt you to confirm the words in order
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Keep it offline — a physical notebook in a secure place is safer than a digital note
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>Seed phrase — what never to do</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Never screenshot your seed phrase or store it in cloud notes, email, or messaging apps
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Never type it into any website, form, or DM — no legitimate service ever asks for it
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Never share it with "support" agents — these are scammers, always
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Never enter it to "verify" or "unlock" a wallet via a link in a Telegram or X message
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES & GAS -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Transaction Costs</span>
+      <h2>Fees and "Gas" on Solana</h2>
+      <p>Solana's fee model is one of its clearest practical advantages for everyday users.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>How much does a transaction cost?</h3>
+        <p>Base fees on Solana are calculated in lamports (1 SOL = 1,000,000,000 lamports). A standard transfer typically costs around 5,000 lamports — roughly $0.0007 at most SOL price levels. More complex operations like swaps on a DEX cost more, but rarely above $0.01 in normal conditions.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Priority fees</h3>
+        <p>During high-demand periods, you can optionally add a priority fee to get your transaction confirmed faster. Wallets like Phantom let you choose between Standard, Fast, and Turbo fee modes. For most routine activity, Standard is fine. Priority fees on Solana are still a fraction of what base fees look like on Ethereum during busy times.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Rent and account storage</h3>
+        <p>Solana requires a small SOL deposit (called "rent") to open any new on-chain account — including a new token account for each SPL token you hold. This is typically around 0.002 SOL. When you close a token account you no longer need, that rent is returned to you. It is not a fee you lose; it is more like a refundable deposit.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS A DEX -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Trading</span>
+      <h2>What is a DEX?</h2>
+      <p>DEX stands for Decentralised Exchange — the mechanism through which most Solana tokens are traded.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
+        <h3>How a DEX works</h3>
+        <p>On a centralised exchange (like a stock brokerage), an order book matches buyers and sellers through the company's servers. A DEX replaces that with on-chain smart contracts called liquidity pools. Users deposit two tokens (say, SOL and TAIL) into a pool. When someone wants to swap, the smart contract handles it automatically using a mathematical formula — no company intermediary, no withdrawal limits, no KYC for basic use.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <h3>Raydium, Jupiter, and others</h3>
+        <p>The most common DEXes on Solana are <strong>Raydium</strong> (automated market maker with liquidity pools) and <strong>Jupiter</strong> (a DEX aggregator that finds the best route across multiple pools). Most Solana token launches create a liquidity pool on Raydium. TrustTails (TAIL) is pre-launch — no pool exists yet. When trading does open, details will be announced on the <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-gold">official announcements channel</a> only.</p>
+      </article>
+    </div>
+    <p class="reveal" style="margin-top:2rem;text-align:center">For a step-by-step walkthrough of buying once trading opens, see <a href="/how-to-buy.html" class="text-gold">How to Buy TAIL</a>.</p>
+  </div>
+</section>
+
+<!-- SAFETY -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Stay Safe</span>
+      <h2>Core Safety for Solana Beginners</h2>
+      <p>The Solana ecosystem has genuine scam activity. Being new makes you a target — knowing the patterns protects you.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Fake presales and DMs</h3>
+        <p>TrustTails is pre-launch. There is no presale, no early allocation, and no private sale. If anyone — on X, Telegram, Discord, or anywhere else — messages you claiming to offer early TAIL tokens, early access, or "guaranteed" allocation, it is a scam. Block and report. The only official channels are listed on the <a href="/about.html" class="text-gold">About page</a>.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Verify on-chain directly</h3>
+        <p>Any claim about a token — supply, authorities, contract address — can be checked independently on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a>. Look for the mint address, whether mint authority is revoked, and whether freeze authority is revoked. TAIL's mint address is <code class="text-cyan">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. If a token someone sends you does not match this address exactly, it is not TAIL.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Wallet permissions matter</h3>
+        <p>When a website asks to connect your wallet, read what it is requesting. A swap on a DEX needs permission to interact with specific tokens — it should never ask for blanket "approve all" permissions. If a site asks you to approve an unusual transaction you did not initiate, reject it and disconnect. Phantom shows a clear summary of every transaction before you confirm. Read it every time.</p>
+      </article>
+    </div>
+    <p class="reveal" style="margin-top:2rem;text-align:center">For a deeper dive into how TrustTails approaches security and on-chain transparency, read our <a href="/security.html" class="text-gold">Security page</a> and the <a href="/is-it-legit.html" class="text-gold">Is it legit?</a> overview.</p>
+  </div>
+</section>
+
+<!-- ROADMAP CONTEXT: PHASES -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Before You Explore</span>
+      <h2>A Note on Pre-Launch Tokens</h2>
+    </div>
+    <div class="glass reveal" style="max-width:760px;margin:0 auto;padding:2rem 2.5rem">
+      <p>TAIL is a pre-launch SPL token. It is not currently tradeable. No liquidity pool exists on Raydium or any DEX. DexScreener will not show a listing yet.</p>
+      <p style="margin-top:1rem">We share this clearly because misinformation spreads fast in crypto. Anything claiming TAIL is already trading or that you can buy it right now is false. When trading does open, it will be announced first on the <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-gold">official Telegram announcements channel</a> and on <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">X (@trusttailscoin)</a>.</p>
+      <p style="margin-top:1rem">This guide is educational. Nothing on this page or anywhere on the TrustTails website is financial advice. Cryptocurrency can lose all of its value. Please only engage with amounts you could afford to lose entirely, and always do your own research.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Quick Answers for Beginners</h2>
+    </div>
+    <div class="faq" style="max-width:760px;margin:0 auto">
+      <details class="faq-item reveal">
+        <summary>Do I need to verify my identity to use a Solana wallet?<span class="plus"></span></summary>
+        <div class="faq-a">No. Creating a Phantom or Solflare wallet requires no name, email, or ID. You generate a wallet locally and you are immediately in control. Some centralised exchanges that support Solana do require identity verification — but interacting with on-chain DEXes does not.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What is a "mint address" and why does it matter?<span class="plus"></span></summary>
+        <div class="faq-a">Every SPL token on Solana has a unique on-chain identifier called a mint address. It is like a fingerprint — no two genuine tokens share one. When someone references a token, always check the mint address matches what you expect. Scammers create tokens with similar names and logos but different mint addresses. TAIL's mint address is <code>4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>, verifiable on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener">Solscan</a>.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What does "mint authority revoked" mean?<span class="plus"></span></summary>
+        <div class="faq-a">When a token is created on Solana, the creator holds mint authority — the ability to create more tokens. If mint authority is revoked, that power is permanently removed. No one can ever increase the supply beyond what was set at launch. For TAIL, mint authority is revoked. The supply is fixed at 1,000,000,000 tokens. You can confirm this on Solscan.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What does "freeze authority revoked" mean?<span class="plus"></span></summary>
+        <div class="faq-a">Freeze authority would allow the token creator to freeze individual wallets — preventing them from sending or receiving the token. Revoking it means no one can do this. Your tokens are yours to move freely. TAIL's freeze authority is also revoked, as shown on Solscan.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>I received TAIL tokens in my wallet already — what's going on?<span class="plus"></span></summary>
+        <div class="faq-a">TAIL is not currently being distributed. If you see tokens claiming to be TAIL in your wallet that you did not purchase or receive from a verified source, treat it as suspicious. Scammers "airdrop" fake tokens to wallets to lure people into connecting to malicious sites. Do not interact with unexpected tokens — consult our <a href="/security.html">security page</a> for guidance.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Can I use the same wallet for multiple Solana tokens?<span class="plus"></span></summary>
+        <div class="faq-a">Yes. One Solana wallet address can hold SOL, TAIL, and any number of other SPL tokens simultaneously. Each new token type requires a small rent deposit to open a token account, but you use the same wallet address for everything. No need for separate wallets per token.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow">Keep Learning</span>
+      <h2>Now you know the basics — go deeper</h2>
+      <p>Explore the TrustTails project itself, read the whitepaper, or ask the community anything. Honest answers only.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="/how-to-buy.html">How to buy TAIL</a>
+        <a class="btn btn-ghost" href="/security.html">Security &amp; on-chain proof</a>
+        <a class="btn btn-cyan" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Ask the community</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/index.html"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Project</h4><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/roadmap.html">Roadmap</a><a href="/whitepaper.html">Whitepaper</a><a href="/vision.html">Vision</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit.html">Is it legit?</a><a href="/security.html">Security</a><a href="/trust-and-transparency.html">Transparency</a><a href="/how-to-buy.html">How to buy</a><a href="/compare.html">How we compare</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/index.html">Insights</a><a href="/solana.html">Why Solana?</a><a href="/faq.html">FAQ</a><a href="/community.html">Community</a><a href="/contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here should be construed as a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

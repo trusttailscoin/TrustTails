@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Fixed Supply Explained: Why 1 Billion TAIL Never Changes</title>
+<meta name="description" content="What a fixed token supply really means, how it is enforced on-chain, and why TrustTails fixed its supply at 1,000,000,000 TAIL with no way to mint more.">
+<link rel="canonical" href="https://trusttails.io/blog/fixed-supply-explained.html">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trusttails.io/blog/fixed-supply-explained.html">
+<meta property="og:title" content="Fixed Supply Explained: Why 1 Billion TAIL Never Changes">
+<meta property="og:description" content="What a fixed token supply really means, how it is enforced on-chain, and why TrustTails fixed its supply at 1,000,000,000 TAIL with no way to mint more.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Fixed Supply Explained: Why 1 Billion TAIL Never Changes">
+<meta name="twitter:description" content="What a fixed token supply really means, how it is enforced on-chain, and why TrustTails fixed its supply at 1,000,000,000 TAIL with no way to mint more.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://trusttails.io/blog/index.html"},{"@type":"ListItem","position":3,"name":"Fixed supply explained","item":"https://trusttails.io/blog/fixed-supply-explained.html"}]}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Fixed Supply Explained: Why 1 Billion TAIL Never Changes",
+  "description": "What a fixed token supply really means, how it is enforced on-chain, and why TrustTails fixed its supply at 1,000,000,000 TAIL with no way to mint more.",
+  "url": "https://trusttails.io/blog/fixed-supply-explained.html",
+  "datePublished": "2026-06-30",
+  "author": {"@type": "Organization", "name": "TrustTails"},
+  "publisher": {"@type": "Organization", "name": "TrustTails", "url": "https://trusttails.io"},
+  "image": "https://trusttails.io/assets/img/og-cover.png",
+  "about": [
+    {"@type": "Thing", "name": "Token supply"},
+    {"@type": "Thing", "name": "Solana SPL token"},
+    {"@type": "Thing", "name": "Mint authority"}
+  ]
+}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/index.html" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a></nav>
+  <div class="nav-cta"><a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+  <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div>
+</div></header>
+<div class="mobile-menu"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/how-to-buy.html">How to buy</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a><a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a></div>
+
+<!-- PAGE HEADER -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Insights · Tokenomics</span>
+      <h1>Fixed Supply Explained:<br>Why 1 Billion TAIL Never Changes</h1>
+      <p class="lead">What a fixed token supply actually means, how it is enforced at the protocol level, and why supply mechanics — while important — are only one piece of a much larger picture.</p>
+    </div>
+    <div class="reveal d2" style="display:flex;align-items:center;gap:12px;margin-top:8px;font-size:.85rem;color:var(--muted)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      <span>Published 30 June 2026</span>
+      <span style="margin:0 6px">·</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span>7 min read</span>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO: WHY SUPPLY MECHANICS MATTER -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Foundation</span>
+      <h2>Supply is a policy decision — and policies can be changed</h2>
+      <p>Unless they are made impossible to change.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Inflationary tokens</h3>
+        <p>Many tokens are designed so that new supply can be created at any time — to pay staking rewards, fund a treasury, or compensate the team. This is not inherently dishonest, but it means existing holders share value with a growing pool of tokens. The key question is always: who controls the tap, and are they transparent about it?</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Fixed-supply tokens</h3>
+        <p>A fixed supply means the total number of tokens in existence is set at launch and cannot increase. No new minting, no printing. The supply number is known by everyone on day one. But "fixed supply" as a statement of intent is not enough — it has to be enforced at the code level, not just promised in a document.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW MINT AUTHORITY WORKS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">On Solana</span>
+      <h2>What mint authority actually is</h2>
+      <p>On Solana, every SPL token has two optional permissions attached to the mint account: <strong class="text-gold">mint authority</strong> and <strong class="text-cyan">freeze authority</strong>. Understanding each one clarifies exactly what a team can and cannot do.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Mint authority</h3>
+        <p>The wallet or program that holds mint authority can call the <code>mintTo</code> instruction, which creates new tokens and deposits them to any account. If this authority is active, new supply can be created without warning. It is the on-chain equivalent of a printing press.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+        </div>
+        <h3>Freeze authority</h3>
+        <p>The wallet or program that holds freeze authority can call <code>freezeAccount</code>, which prevents a token account from sending or receiving. If active, a team could theoretically lock any holder's tokens. For community tokens, this is a significant trust concern.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+        </div>
+        <h3>Revoked = permanent</h3>
+        <p>When either authority is set to <code>null</code> via the <code>setAuthority</code> instruction, the action is final. There is no administrator, no governance vote, and no future upgrade path that can restore it. The Solana runtime enforces this permanently at the protocol level.</p>
+      </article>
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:32px;color:var(--muted);max-width:640px;margin-left:auto;margin-right:auto">You do not have to take a team's word for it. The state of both authorities is publicly readable on-chain. Any block explorer will show you <code>null</code> if they have been revoked. Learn more about what this means practically in our dedicated article: <a href="/blog/why-revoked-authorities-matter.html" class="text-gold">Why Revoked Authorities Matter</a>.</p>
+  </div>
+</section>
+
+<!-- TAIL SUPPLY STATS -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">TrustTails · TAIL</span>
+      <h2>The numbers, on the record</h2>
+      <p>These are not projections or targets. They are the current on-chain state of the TAIL mint, verifiable by anyone.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="glass stat reveal d1">
+        <div class="num gold" data-count="1000000000">1,000,000,000</div>
+        <div class="lbl">Total TAIL supply (fixed)</div>
+      </div>
+      <div class="glass stat reveal d2">
+        <div class="num gold">0</div>
+        <div class="lbl">New tokens that can ever be minted</div>
+      </div>
+      <div class="glass stat reveal d3">
+        <div class="num gold">REVOKED</div>
+        <div class="lbl">Mint authority status</div>
+      </div>
+      <div class="glass stat reveal d4">
+        <div class="num gold">REVOKED</div>
+        <div class="lbl">Freeze authority status</div>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:32px">
+      <p style="color:var(--muted);margin-bottom:16px">Verify this yourself on Solscan. Check the "Mint Authority" and "Freeze Authority" fields under the token details.</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+        <code style="color:var(--cyan-2);font-size:.8rem;background:var(--bg-3);padding:6px 12px;border-radius:6px">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+        <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+        <a class="btn btn-ghost btn-sm" href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener">Verify on Solscan ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIXED SUPPLY vs FIAT INFLATION -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Context</span>
+      <h2>How fiat money supply works — and why it matters here</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="reveal d1" style="padding:0 8px">
+        <p>Central banks — the institutions that issue national currencies — have the authority to expand the money supply. They do this through several mechanisms: lowering interest rates to encourage lending, purchasing government bonds through open market operations, or, in extraordinary circumstances, creating new base money directly.</p>
+        <p style="margin-top:16px">The argument for this flexibility is that economies contract and expand, and rigid money supplies can amplify downturns. The argument against it, held by many hard-money advocates, is that unchecked expansion erodes the purchasing power of existing holders over time — which is what most people experience as inflation.</p>
+        <p style="margin-top:16px">Between 2020 and 2022, many developed economies saw significant increases in broad money supply. Whether that caused subsequent inflation, contributed to it, or was simply coincident is a question economists actively debate. The point for our purposes is simpler: fiat currency supply is a policy variable, controlled by institutions.</p>
+      </div>
+      <div class="reveal d2" style="padding:0 8px">
+        <p>A fixed-supply token does not work that way. The supply is set once — in TAIL's case at exactly 1,000,000,000 — and the mechanism for creating more has been permanently disabled. There is no central bank, no committee, and no governance vote that can reverse this.</p>
+        <p style="margin-top:16px">This is not an argument that fixed-supply tokens are superior investments, or that they will appreciate in value. Supply is one variable among many. Demand matters. Utility matters. Community trust matters. Distribution matters. A token with fixed supply and no real use can still go to zero.</p>
+        <p style="margin-top:16px">What fixed supply with revoked authorities does provide is a specific kind of honesty: the supply you see today is the supply that will exist tomorrow, next year, and in ten years. That is a verifiable, permanent fact — not a promise from a team that might change its mind.</p>
+        <p style="margin-top:16px">For a deeper look at TAIL's complete token distribution, see the <a href="/tokenomics.html" class="text-gold">Tokenomics page</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DO / DON'T: HONEST FRAMING -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Honest framing</span>
+      <h2>What fixed supply does and does not mean</h2>
+      <p>Clarity here is more useful than optimism. These are the actual implications.</p>
+    </div>
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>What it does mean</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
+            The total supply is permanently known: 1,000,000,000 TAIL, no more
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
+            No team or wallet can mint new tokens and dilute existing holders
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
+            The supply constraint is enforced by Solana's runtime, not by trust in the team
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
+            Anyone can independently verify mint and freeze authority status on-chain, at any time
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
+            It removes a common risk vector present in many token projects
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>What it does not mean</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Fixed supply does not guarantee price appreciation or any positive return
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Scarcity alone does not create value — demand and utility must exist independently
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            It does not protect against all risks: smart contract bugs, market sentiment, regulatory changes, or project failure remain real possibilities
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            It is not a substitute for doing your own research before any financial decision
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Nothing on this page is financial advice — crypto can lose all of its value
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY TAIL CHOSE FIXED SUPPLY -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">TrustTails philosophy</span>
+      <h2>Why we chose this approach</h2>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Transparency by default</h3>
+        <p>TrustTails started as a meme to get noticed. Everything after that has to be earned, not claimed. The first thing we can do to earn credibility is to be honest about what we are and what we have locked in — not what we hope will happen.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Removing team risk</h3>
+        <p>When a team retains mint authority, the community has to trust that the team will never abuse it — indefinitely, across team changes, under financial pressure. Revoking it eliminates that variable. It is not a boast; it is a removal of a risk that should not exist in the first place.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+        </div>
+        <h3>A baseline, not a ceiling</h3>
+        <p>Fixed supply is table stakes — the minimum bar we think any community-first project should clear. The harder work is building something that deserves trust beyond the technical safeguards. That is the ongoing effort described in our <a href="/roadmap.html" class="text-gold">Roadmap</a>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SCARCITY vs VALUE: HONEST NOTE -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">A note on scarcity</span>
+      <h2>Scarcity is a necessary condition for value — it is not a sufficient one</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="reveal d1" style="padding:0 8px">
+        <p>Economics teaches that for something to hold value, it generally needs to be scarce — if there is an unlimited supply, marginal value approaches zero. This is why fixed supply removes one downward pressure on a token's value proposition. But scarcity is the floor, not the ceiling.</p>
+        <p style="margin-top:16px">There are countless tokens with fixed or deflationary supply that have lost most of their value. The supply constraint did not save them because demand collapsed — whether from a loss of community confidence, failure to build anything real, market-wide downturns, or simple disinterest over time.</p>
+      </div>
+      <div class="reveal d2" style="padding:0 8px">
+        <p>Value in a token — to the extent it exists at all — comes from a combination of factors: the size and engagement of the community, the clarity and honesty of the team's communication, whether the project is building something with real-world relevance, and the broader macro environment for digital assets.</p>
+        <p style="margin-top:16px">TrustTails is pre-launch. We do not have trading history, price data, or revenue. We have a fixed, verifiable supply, a community forming around shared values, and an exploratory long-term direction. That is what is honestly on offer right now.</p>
+        <p style="margin-top:16px">For the full picture of where we think this could go — stated carefully and without promises — see our <a href="/about.html" class="text-gold">About page</a> and the <a href="/whitepaper.html" class="text-gold">Whitepaper</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO VERIFY -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Verify it yourself</span>
+      <h2>How to check TAIL's supply on-chain</h2>
+      <p>Do not rely on any website — including this one. Here is how to confirm the supply state directly from the Solana blockchain.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3>Step 1 — Go to Solscan</h3>
+        <p>Visit <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">solscan.io</a> and paste the TAIL mint address into the search bar, or use our direct link.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Step 2 — Check token details</h3>
+        <p>On the token page, look for the fields labelled "Mint Authority" and "Freeze Authority". Both should show <strong>null</strong> or "Revoked". If they show a wallet address, that is a different token — do not confuse them.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+        </div>
+        <h3>Step 3 — Confirm total supply</h3>
+        <p>The "Total Supply" field should read exactly 1,000,000,000 TAIL. "Current Supply" should match — since the mint is revoked, circulating supply cannot exceed total supply.</p>
+      </article>
+    </div>
+
+    <div class="glass reveal" style="margin-top:40px;padding:24px 28px;border-left:3px solid var(--gold)">
+      <h3 style="margin-bottom:10px;font-size:1rem" class="text-gold">Scam warning — pre-launch period</h3>
+      <p style="color:var(--muted);font-size:.92rem;margin:0">TrustTails is currently pre-launch. We do not have a live trading pool, a presale, or any mechanism to purchase TAIL tokens yet. Be very cautious of any DMs, Telegram messages, or websites claiming to offer early access, presale allocation, or a live market for TAIL. The only official channels are <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-gold">@trusttailscoin on X</a>, <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-gold">our Telegram community</a>, and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-gold">the announcements channel</a>. When the launch is live, it will be announced there — nowhere else first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Common questions</span>
+      <h2>FAQ: Supply &amp; authorities</h2>
+    </div>
+    <div class="faq">
+      <details class="faq-item reveal">
+        <summary>Can the team ever restore mint authority after revoking it?<span class="plus"></span></summary>
+        <div class="faq-a">No. On Solana, setting an authority to <code>null</code> via the <code>setAuthority</code> instruction is irreversible. The Solana runtime enforces this permanently. There is no administrator, multisig, or governance mechanism that can undo it — not even the original creator of the token. This is verifiable on-chain at any time.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Does "fixed supply" mean the price will go up?<span class="plus"></span></summary>
+        <div class="faq-a">No, and we would be concerned about any project that implies it does. Fixed supply removes one specific risk — the risk of dilution through new minting. It does not create demand, utility, or adoption. All of those things are what determine whether a token holds value over time. Nothing on this site is financial advice, and cryptocurrency can lose all of its value.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What is freeze authority, and why does revoking it matter?<span class="plus"></span></summary>
+        <div class="faq-a">Freeze authority is a permission on a Solana SPL token that allows the authority holder to lock any token account — preventing it from sending or receiving that token. If a team retains freeze authority, they could theoretically freeze a holder's wallet. TAIL's freeze authority has been revoked, which means no wallet — including ours — can freeze any TAIL holder's account. See our full write-up: <a href="/blog/why-revoked-authorities-matter.html" class="text-gold">Why Revoked Authorities Matter</a>.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Is there a TAIL presale or early purchase option?<span class="plus"></span></summary>
+        <div class="faq-a">No. TrustTails is currently pre-launch. There is no presale, no early access purchase, and no live market yet. Any message, DM, or site claiming to offer TAIL tokens for purchase right now is a scam. When launch is live, it will be announced only through our official channels: <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-gold">X</a>, <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-gold">Telegram announcements</a>, and this website.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Where can I read more about TAIL's token distribution?<span class="plus"></span></summary>
+        <div class="faq-a">The complete breakdown of how the 1,000,000,000 TAIL supply is allocated — across community, liquidity, development, and other categories — is on the <a href="/tokenomics.html" class="text-gold">Tokenomics page</a>. The Whitepaper provides additional context: <a href="/whitepaper.html" class="text-gold">read it online</a> or <a href="/whitepaper_v1.pdf" class="text-gold" download>download the PDF</a>.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow">Stay informed</span>
+      <h2>Follow the project as it develops</h2>
+      <p>TrustTails is building in public. Every material update goes through the community channels first. Join the conversation, ask hard questions, and verify everything on-chain.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join Telegram community</a>
+        <a class="btn btn-ghost" href="/tokenomics.html">Explore tokenomics</a>
+        <a class="btn btn-ghost" href="/blog/why-revoked-authorities-matter.html">Why revoked authorities matter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/index.html"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Project</h4><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/roadmap.html">Roadmap</a><a href="/whitepaper.html">Whitepaper</a><a href="/vision.html">Vision</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit.html">Is it legit?</a><a href="/security.html">Security</a><a href="/trust-and-transparency.html">Transparency</a><a href="/how-to-buy.html">How to buy</a><a href="/compare.html">How we compare</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/index.html">Insights</a><a href="/solana.html">Why Solana?</a><a href="/faq.html">FAQ</a><a href="/community.html">Community</a><a href="/contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here should be construed as a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

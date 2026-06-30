@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Why TrustTails Is Built on Solana</title>
+<meta name="description" content="Why TrustTails chose Solana: fast finality and low transaction costs that suit a community token today — and the same properties that matter for finance-grade use cases tomorrow.">
+<link rel="canonical" href="https://trusttails.io/solana.html">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trusttails.io/solana.html">
+<meta property="og:title" content="Why TrustTails Is Built on Solana">
+<meta property="og:description" content="Why TrustTails chose Solana: fast finality and low transaction costs that suit a community token today — and the same properties that matter for finance-grade use cases tomorrow.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Why TrustTails Is Built on Solana">
+<meta name="twitter:description" content="Why TrustTails chose Solana: fast finality and low transaction costs that suit a community token today — and the same properties that matter for finance-grade use cases tomorrow.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Why Solana","item":"https://trusttails.io/solana.html"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/index.html" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a></nav>
+  <div class="nav-cta"><a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+  <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div>
+</div></header>
+<div class="mobile-menu"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/how-to-buy.html">How to buy</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a><a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a></div>
+
+<!-- PAGE HEADER -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Infrastructure</span>
+      <h1>Why TrustTails Is Built on Solana</h1>
+      <p class="lead">The chain a token runs on is a foundational decision, not a cosmetic one. Here is what Solana actually does, why those properties suit TrustTails right now, and why the same characteristics matter if the long-term thesis ever moves from aspiration to reality.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW SOLANA WORKS — accessible explainer -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Solana in plain language</h2>
+      <p>Most blockchains validate transactions by having nodes agree on what happened — a process that takes time and creates bottlenecks. Solana adds a second layer of coordination called <strong class="text-cyan">Proof of History (PoH)</strong>, which acts like a verifiable, trustless clock baked into the protocol itself.</p>
+    </div>
+    <div class="grid grid-2" style="margin-top:32px">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Proof of History</h3>
+        <p>Rather than asking the entire network to agree on the current time, PoH encodes timestamps directly into a cryptographic sequence of hashes. Each transaction includes proof of when it happened, letting validators process events without waiting on each other. The result is a shared, tamper-evident timeline that the network trusts without needing extra rounds of communication.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Proof of Stake security</h3>
+        <p>Solana's consensus layer is Proof of Stake — validators put up real economic value (staked SOL) that they lose if they act dishonestly. This aligns financial incentives with honest behaviour without the energy consumption of Proof of Work. PoH and PoS work together: PoH provides the ordering, PoS provides the security. You get both speed and economic finality.</p>
+      </article>
+    </div>
+    <p class="reveal" style="margin-top:28px;max-width:700px;color:var(--text-2)">This is a simplified overview. If you want a deeper technical read, Solana's own documentation and the <a href="/whitepaper.html" class="text-cyan">TrustTails whitepaper</a> go further. What matters practically: these design decisions produce measurable outcomes for anyone holding or transacting with a Solana SPL token like TAIL.</p>
+  </div>
+</section>
+
+<!-- FOUR PILLARS — Cards -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Why it matters for TAIL</span>
+      <h2>Four properties that shaped the decision</h2>
+      <p>Every chain involves trade-offs. These are the four Solana properties that were most relevant when choosing where to deploy TrustTails.</p>
+    </div>
+    <div class="grid grid-4" style="margin-top:40px">
+      <article class="glass cyan reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Fast finality</h3>
+        <p>Solana targets roughly 400-millisecond slot times, with transactions typically confirmed in under a second. For a community token this means transfers, community rewards, and future on-chain activity settle quickly — not in minutes.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Low transaction fees</h3>
+        <p>Solana transaction fees typically sit around $0.00025 or less per transaction. This is not a rounding error — it means a small holder can move tokens, interact with a contract, or verify their holdings without a significant portion of their balance disappearing in fees. High fees disproportionately harm smaller participants; low fees level the field.</p>
+      </article>
+      <article class="glass cyan reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Throughput at scale</h3>
+        <p>Solana is architected to handle tens of thousands of transactions per second, far above the throughput of earlier-generation chains. This headroom matters if TrustTails ever needs to support high-frequency on-chain activity. The infrastructure does not need to be rebuilt when demands grow.</p>
+      </article>
+      <article class="glass reveal d4">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Developer ecosystem</h3>
+        <p>Solana has an active developer community, well-maintained tooling (Anchor framework, SPL token standard), and deep integrations with wallets and explorers like Solscan. Building on a healthy ecosystem reduces technical risk and makes it easier for the community to independently verify everything about TAIL on-chain.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THIS MEANS TODAY vs LONG-TERM -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Now and later</span>
+      <h2>What Solana's properties mean at each stage</h2>
+    </div>
+    <div class="proof-split reveal" style="margin-top:36px">
+      <div class="do-dont is-do">
+        <h3>Today — community token phase</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Low fees mean participation is not gated by transaction cost. Moving or holding TAIL is accessible to anyone, not just those who can afford $10–$50 per transaction.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Fast confirmation keeps the experience fluid. Checking your balance, verifying on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a>, or interacting with future community features does not require waiting.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            The SPL token standard makes TAIL compatible with a wide range of Solana-native wallets and tools — Phantom, Solflare, and others — without custom integration work.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            On-chain verifiability is immediate. Mint authority revoked, freeze authority revoked, fixed 1,000,000,000 supply — all of this is <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">publicly readable on-chain</a>, not a claim from the team.
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>Long-term thesis — what we are watching, not claiming</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            TrustTails has no current partnership or affiliation with any bank, payments company, or financial institution. Phase 3 of the <a href="/roadmap.html" class="text-gold">roadmap</a> is explicitly labelled long-term and unconfirmed.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            The thesis is that if TAIL ever moves toward finance-sector relevance, the infrastructure would need to handle settlement-grade throughput and sub-cent transaction costs. Solana is built for that. We are not claiming it will happen — only that the foundation is not the obstacle.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Nothing in this section is a promise of future performance, adoption, or price. Crypto markets are unpredictable. TAIL may lose all value. None of this is financial advice.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS ROW -->
+<section class="section--tight section">
+  <div class="container">
+    <div class="grid grid-3 reveal">
+      <div class="glass stat">
+        <div class="num gold">~400ms</div>
+        <div class="lbl">Target slot time</div>
+      </div>
+      <div class="glass stat">
+        <div class="num gold">~$0.00025</div>
+        <div class="lbl">Typical transaction fee</div>
+      </div>
+      <div class="glass stat">
+        <div class="num gold" data-count="1000000000">1,000,000,000</div>
+        <div class="lbl">TAIL — fixed supply, no inflation</div>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:20px;color:var(--text-3);font-size:.85rem">Network figures are approximate and reflect Solana's general characteristics. On-chain TAIL data is verifiable directly on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a> at any time.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Common questions</span>
+      <h2>Solana FAQs</h2>
+    </div>
+    <div class="faq" style="margin-top:36px;max-width:780px;margin-left:auto;margin-right:auto">
+      <details class="faq-item reveal">
+        <summary>Why Solana and not Ethereum or another chain?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Ethereum is the largest smart-contract platform by total value locked, but its base-layer fees have historically been high — often $5–$50+ per transaction during busy periods. For a community token intended to be accessible to everyday holders, those fees create a real barrier. Solana's fee structure is designed to keep participation costs negligible. We chose the chain that best fit the community-first ethos, not the chain with the most name recognition. We are not dismissing other chains — they serve different use cases well — but for TAIL's current purpose, Solana made the most practical sense.</p>
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Is Solana's network reliable? What about past outages?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Solana has experienced network outages in the past, and it would be misleading to pretend otherwise. The network has improved its stability significantly since those early incidents, and the team continues to work on resilience. No blockchain network has a perfect uptime record. We chose Solana knowing its history, because we believe its architectural direction and current maturity represent an acceptable trade-off for a community token at this stage. Holders should independently assess network reliability as part of their own due diligence. This is not a guarantee of future uptime.</p>
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What wallet do I need to hold TAIL?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Any Solana-compatible wallet that supports SPL tokens will work. Phantom and Solflare are two widely used options. Always download wallets only from official sources (their own websites or official app stores). TAIL is not yet trading — this is the pre-launch phase. When the time comes, our <a href="/how-to-buy.html" class="text-cyan">How to buy</a> page will walk through the full process step by step.</p>
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>How do I verify that TAIL is a real, fixed-supply token?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>You do not need to take our word for it. Visit <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a> and search the contract address <code>4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. You will see the total supply (1,000,000,000), the mint authority status (revoked), and the freeze authority status (revoked). Revoked mint authority means no new tokens can ever be created. Revoked freeze authority means no one can freeze your wallet. These are not promises — they are on-chain facts you can verify right now, independently.</p>
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>I saw a presale offer for TAIL on Telegram / social media. Is it real?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>No. TrustTails is pre-launch and there is no presale, no early-access sale, and no official DM campaign. Any account claiming to sell TAIL or offer you early access is a scam. Our official Telegram channels are <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-cyan">TrustTailsCommunity</a> and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">TrustTailsOfficial</a>. Official announcements come only through those channels and <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">@trusttailscoin</a> on X. If someone DMs you claiming to represent TrustTails, report and block them.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNAL LINKS / NEXT STEPS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Keep reading</span>
+      <h2>Other pages that go deeper</h2>
+      <p>The chain is just one piece. Here are the most relevant places to continue learning about TrustTails.</p>
+    </div>
+    <div class="grid grid-3" style="margin-top:36px">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        </div>
+        <h3>Tokenomics</h3>
+        <p>Exactly how the 1,000,000,000 TAIL supply is distributed, why the allocation was designed the way it was, and what the locked period means for the team's own holdings.</p>
+        <a href="/tokenomics.html" class="btn btn-ghost btn-sm" style="margin-top:16px">View tokenomics</a>
+      </article>
+      <article class="glass cyan reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Is it legit?</h3>
+        <p>The transparency page. What we can and cannot verify about TrustTails, how to check everything on-chain yourself, and a clear statement of what this project is not claiming.</p>
+        <a href="/is-it-legit.html" class="btn btn-ghost btn-sm" style="margin-top:16px">Check the facts</a>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Whitepaper</h3>
+        <p>The full technical and conceptual document covering TrustTails' architecture, thesis, token mechanics, and longer-term thinking. Available to read online or download as a PDF.</p>
+        <a href="/whitepaper.html" class="btn btn-ghost btn-sm" style="margin-top:16px">Read whitepaper</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow">Pre-launch — no FOMO, just facts</span>
+      <h2>Follow the build. Make your own call.</h2>
+      <p>TrustTails is not yet trading. There is no urgency manufactured here. Join the community, read the documents, verify everything on-chain — and decide for yourself when the time comes. Any question you have before then, ask it in the community chat or read the <a href="/faq.html" class="text-gold">full FAQ</a>.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join Telegram community</a>
+        <a class="btn btn-ghost" href="/how-to-buy.html">How to buy (when live)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/index.html"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Project</h4><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/roadmap.html">Roadmap</a><a href="/whitepaper.html">Whitepaper</a><a href="/vision.html">Vision</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit.html">Is it legit?</a><a href="/security.html">Security</a><a href="/trust-and-transparency.html">Transparency</a><a href="/how-to-buy.html">How to buy</a><a href="/compare.html">How we compare</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/index.html">Insights</a><a href="/solana.html">Why Solana?</a><a href="/faq.html">FAQ</a><a href="/community.html">Community</a><a href="/contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here should be construed as a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

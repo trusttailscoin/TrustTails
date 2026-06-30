@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>Why Revoked Mint & Freeze Authorities Matter on Solana</title>
+<meta name="description" content="Revoked mint and freeze authorities are two of the strongest safety signals for a Solana token. Here is what they mean and why they protect holders.">
+<link rel="canonical" href="https://trusttails.io/blog/why-revoked-authorities-matter.html">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://trusttails.io/blog/why-revoked-authorities-matter.html">
+<meta property="og:title" content="Why Revoked Mint & Freeze Authorities Matter on Solana">
+<meta property="og:description" content="Revoked mint and freeze authorities are two of the strongest safety signals for a Solana token. Here is what they mean and why they protect holders.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="Why Revoked Mint & Freeze Authorities Matter on Solana">
+<meta name="twitter:description" content="Revoked mint and freeze authorities are two of the strongest safety signals for a Solana token. Here is what they mean and why they protect holders.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://trusttails.io/blog/index.html"},{"@type":"ListItem","position":3,"name":"Why revoked authorities matter","item":"https://trusttails.io/blog/why-revoked-authorities-matter.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Why Revoked Mint & Freeze Authorities Matter on Solana","description":"Revoked mint and freeze authorities are two of the strongest safety signals for a Solana token. Here is what they mean and why they protect holders.","url":"https://trusttails.io/blog/why-revoked-authorities-matter.html","image":"https://trusttails.io/assets/img/og-cover.png","publisher":{"@type":"Organization","name":"TrustTails","url":"https://trusttails.io/","logo":{"@type":"ImageObject","url":"https://trusttails.io/assets/img/logo-nav.png"}},"datePublished":"2026-06-30","dateModified":"2026-06-30","author":{"@type":"Organization","name":"TrustTails"}}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/index.html" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a></nav>
+  <div class="nav-cta"><a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+  <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div>
+</div></header>
+<div class="mobile-menu"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/how-to-buy.html">How to buy</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a><a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a></div>
+
+<!-- PAGE HEADER -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Insights &middot; Token safety</span>
+      <h1>Why Revoked Mint &amp; Freeze Authorities Matter on Solana</h1>
+      <p class="lead">Two settings on a Solana token account carry outsized power over every holder. Understanding them is one of the most practical due-diligence steps you can take before putting any amount into a project.</p>
+    </div>
+    <div class="glass reveal" style="display:inline-flex;align-items:center;gap:12px;padding:10px 18px;margin-top:8px;font-size:.85rem;color:var(--text-2)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>Nothing in this article is financial advice. Crypto assets, including TAIL, can lose all value. Always verify on-chain and do your own research before making any decision.</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT ARE SPL AUTHORITIES -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The basics</span>
+      <h2>What are SPL token authorities?</h2>
+      <p>On Solana, every token created through the SPL Token program can be assigned up to four special permissions, called <em>authorities</em>. Two of them are the ones you should always check.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Mint Authority</h3>
+        <p>A mint authority is a keypair permitted to call the <code>MintTo</code> instruction on the token program — in plain terms, it can <strong>create new tokens at will</strong> and send them anywhere. If a project retains its mint authority, the total supply you see today is not final. More tokens can appear at any time, diluting every existing holder. This is the mechanism behind many rug-pull and "honeypot" attacks: the team mints millions of extra tokens and dumps them on the market.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Freeze Authority</h3>
+        <p>A freeze authority can call the <code>FreezeAccount</code> instruction, which <strong>locks a specific token account</strong> so its owner can no longer transfer, burn, or move those tokens. The tokens stay visible in the wallet but become completely immovable. A malicious team with a freeze authority can effectively confiscate the liquidity value of your holding without ever taking direct ownership — you simply cannot exit.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT REVOKED MEANS -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The key concept</span>
+      <h2>What does "revoked" actually mean?</h2>
+      <p>On Solana, revoking an authority is a permanent, on-chain action. The current authority holder signs a transaction that sets the authority field to <code>None</code> in the mint account's data. Once broadcast and confirmed, no keypair in existence — not even the original team — can reinstate that authority without a hard fork of the entire Solana network. It is, in practical terms, irreversible.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Fixed supply, provably</h3>
+        <p>With mint authority revoked, the token supply shown on-chain today is the supply that will exist forever. There is no admin key that can change it. This is a factual, verifiable property — not a promise from a whitepaper.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Your tokens stay yours</h3>
+        <p>With freeze authority revoked, no address — including any team wallet or smart contract — can prevent you from moving your TAIL. Your wallet's private key is the only thing controlling your balance.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Anyone can verify it</h3>
+        <p>These authority fields are stored in public, readable account data. No trust required. Any block explorer — including Solscan — will display them directly on the token's page. Verification takes under a minute.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO CHECK ON SOLSCAN -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Step-by-step</span>
+      <h2>How to verify authority status on Solscan</h2>
+      <p>You do not need to trust any project's claims. Here is exactly how to check any Solana token in under two minutes.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 1</span>
+          <h3>Open Solscan and navigate to the token page</h3>
+          <p>Go to <a href="https://solscan.io" target="_blank" rel="noopener" class="text-cyan">solscan.io</a> and paste the token's mint address into the search bar. For TrustTails, that address is <code>4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. You can also use the direct link below.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 2</span>
+          <h3>Look at the "Overview" panel</h3>
+          <p>On the token's overview page, Solscan displays a summary card near the top. Look for two fields: <strong>Mint Authority</strong> and <strong>Freeze Authority</strong>. These fields will show either a wallet address (still active) or the word <strong>Disabled</strong>.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 3</span>
+          <h3>Confirm both read "Disabled"</h3>
+          <p>If either field shows a wallet address, that authority is still active. If both fields say <strong>Disabled</strong>, the authorities have been revoked and cannot be reinstated. For TrustTails (TAIL), both fields should read Disabled — verify this yourself rather than taking our word for it.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <span class="tl-status live">Step 4</span>
+          <h3>Cross-check the supply figure</h3>
+          <p>While you are there, confirm the total supply matches what the project claims. For TrustTails, the verified total supply is exactly 1,000,000,000 TAIL — no more, no less. A mismatch between a project's claimed supply and the on-chain figure is a serious warning sign. Learn more about full verification in our <a href="/how-to-verify-a-solana-token.html" class="text-cyan">how to verify a Solana token</a> guide.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a class="btn btn-cyan" href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener">Verify TrustTails on Solscan</a>
+    </div>
+  </div>
+</section>
+
+<!-- DO AND DON'T -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Context</span>
+      <h2>Necessary — but not sufficient</h2>
+      <p>Revoked authorities are a meaningful baseline check. They are not a guarantee of a project's quality, longevity, or value. Here is how to think about them honestly.</p>
+    </div>
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>What revoked authorities confirm</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+            The team cannot mint additional tokens to inflate supply or dilute holders
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+            No address can freeze your token account and prevent you from selling or moving your tokens
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+            These properties are permanent and verifiable on-chain — you do not need to trust a claim in a whitepaper
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+            Two common attack vectors used in low-quality token launches are structurally impossible with this token
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>What revoked authorities do not confirm</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            That the project will succeed, gain adoption, or retain any value over time
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            That the initial token distribution was fair — check wallet concentration separately
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            That smart contract logic (if any) is safe — a separate code audit addresses this
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            That the liquidity pool (when one exists) cannot be removed by pool owners — check LP lock status separately
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:24px;max-width:760px;color:var(--text-2);line-height:1.75">Revoked authorities eliminate two specific risks. They sit alongside — not above — other checks such as wallet concentration, liquidity lock status, team transparency, and the project's stated purpose. Our <a href="/security.html" class="text-cyan">security overview</a> and <a href="/is-it-legit.html" class="text-cyan">Is it legit?</a> pages cover the fuller picture of how to evaluate a token holistically.</p>
+  </div>
+</section>
+
+<!-- TRUSTTAILS SPECIFICS -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">TrustTails (TAIL)</span>
+      <h2>How this applies to TAIL</h2>
+      <p>Here are the on-chain facts for TrustTails as they exist today. These are not claims — they are the values stored at the mint address and readable by anyone.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="glass stat reveal d1">
+        <div class="num gold" data-count="1000000000">1,000,000,000</div>
+        <div class="lbl">Total supply (TAIL) — fixed</div>
+      </div>
+      <div class="glass stat reveal d2">
+        <div class="num gold">REVOKED</div>
+        <div class="lbl">Mint authority status</div>
+      </div>
+      <div class="glass stat reveal d3">
+        <div class="num gold">REVOKED</div>
+        <div class="lbl">Freeze authority status</div>
+      </div>
+      <div class="glass stat reveal d4">
+        <div class="num gold">SPL</div>
+        <div class="lbl">Token standard (Solana)</div>
+      </div>
+    </div>
+    <div class="glass reveal" style="margin-top:32px;padding:24px 28px">
+      <p style="margin:0 0 10px;font-size:.9rem;color:var(--text-2);font-weight:600;letter-spacing:.04em;text-transform:uppercase">Mint address</p>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <code class="text-cyan" style="font-size:.9rem;word-break:break-all">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+        <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" aria-label="Copy mint address">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+        <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">View on Solscan</a>
+      </div>
+    </div>
+    <div class="glass reveal" style="margin-top:16px;padding:20px 24px;border-left:3px solid var(--gold)">
+      <p style="margin:0;color:var(--text-2);font-size:.93rem;line-height:1.7"><strong class="text-gold">Pre-launch notice:</strong> TrustTails is not yet trading. There is no Raydium pool or exchange listing at the time of writing. Be cautious of anyone claiming to sell TAIL tokens now, offering presales, or DMing you with early-access offers — these are scams. Follow only the official channels: <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">X (@trusttailscoin)</a> and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">Telegram announcements</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCAM AWARENESS -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Stay safe</span>
+      <h2>Authority checks in the context of scam awareness</h2>
+      <p>Understanding authorities also helps you spot a specific class of scam that targets pre-launch communities.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Fake token clones</h3>
+        <p>Bad actors sometimes deploy copycat tokens with the same name and logo as a legitimate project — but with active mint and freeze authorities. Always check the contract address before interacting with any token. The only real TAIL address is <code>4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. If an authority field on any token page shows a wallet address instead of Disabled, treat that token as suspect regardless of what name it carries.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Unsolicited DMs and "presale" offers</h3>
+        <p>No member of the TrustTails team will contact you privately to offer tokens, whitelist spots, or early-access deals. Anyone doing so is not affiliated with the project. TrustTails is pre-launch and has made no presale offers through any channel. All official announcements go through the verified <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">Telegram announcements channel</a> and <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">X account</a> only.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Quick answers</span>
+      <h2>Common questions about SPL authorities</h2>
+    </div>
+    <div class="faq">
+      <details class="faq-item reveal">
+        <summary>Can a revoked mint authority ever be restored?<span class="plus"></span></summary>
+        <div class="faq-a">No. On Solana, once an authority is set to <code>None</code> through the SPL Token program's <code>SetAuthority</code> instruction, that change is permanent. The on-chain account data no longer references any keypair as the authority, and there is no mechanism in the protocol to restore it without a network-level change affecting all Solana participants. This is one of the most robust guarantees available in the SPL ecosystem.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Does revoking authorities mean the token has been audited for security?<span class="plus"></span></summary>
+        <div class="faq-a">No. Revoking mint and freeze authorities is an action at the token-account level. It eliminates two specific risks (new supply creation and account freezing). It does not constitute a smart contract security audit, and it does not say anything about how initial tokens were distributed, whether liquidity is locked, or whether the project's goals are credible. Treat it as one important data point alongside the others described in our <a href="/security.html" class="text-cyan">security page</a> and <a href="/is-it-legit.html" class="text-cyan">Is it legit?</a> overview.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What other authorities exist on SPL tokens and should I check them too?<span class="plus"></span></summary>
+        <div class="faq-a">The SPL Token program supports four authority types: Mint, Freeze, Account Owner (which controls a specific token account, not the mint itself), and Close Account. The mint-level authorities most relevant to holder safety are Mint Authority and Freeze Authority — the two covered on this page. Account Owner and Close Account authorities operate at the individual wallet account level and are standard features that every token holder controls for their own accounts, not something the token issuer holds.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>If TrustTails is pre-launch, where can I learn more without relying on hype?<span class="plus"></span></summary>
+        <div class="faq-a">The best place to start is the <a href="/whitepaper.html" class="text-cyan">whitepaper</a>, which documents the project's thesis, token distribution, and the distinction between confirmed plans and long-term aspirations. The <a href="/is-it-legit.html" class="text-cyan">Is it legit?</a> page walks through a systematic checklist a sceptical reader might apply. For community discussion, the <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-cyan">Telegram community</a> is the main channel. All official announcements are on the <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">announcements channel</a>.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FURTHER READING / INTERNAL LINKS -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Go deeper</span>
+      <h2>Related reading</h2>
+      <p>Understanding authorities is one piece of a broader due-diligence process. These pages cover the rest.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3><a href="/is-it-legit.html" class="text-grad">Is it legit?</a></h3>
+        <p>A full sceptic's checklist applied to TrustTails — wallet concentration, liquidity, team accountability, and more. Go beyond the authority check.</p>
+        <a href="/is-it-legit.html" class="btn btn-ghost btn-sm" style="margin-top:12px">Read more</a>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <h3><a href="/security.html" class="text-grad">Security overview</a></h3>
+        <p>A broader look at the structural choices made to reduce risk in TrustTails — from supply decisions to community controls.</p>
+        <a href="/security.html" class="btn btn-ghost btn-sm" style="margin-top:12px">Read more</a>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M11 8v3l2 2"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3><a href="/how-to-verify-a-solana-token.html" class="text-grad">How to verify a Solana token</a></h3>
+        <p>A practical walkthrough covering supply checks, holder concentration, liquidity lock status, and how to read Solscan data for any project.</p>
+        <a href="/how-to-verify-a-solana-token.html" class="btn btn-ghost btn-sm" style="margin-top:12px">Read more</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow">Stay informed</span>
+      <h2>Follow along as we build in the open</h2>
+      <p>TrustTails is pre-launch. No price predictions, no hype, no fake urgency — just transparent updates as the project progresses. Join the community to follow the honest version of this story.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join Telegram community</a>
+        <a class="btn btn-ghost" href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener">Announcements channel</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/index.html"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Project</h4><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/roadmap.html">Roadmap</a><a href="/whitepaper.html">Whitepaper</a><a href="/vision.html">Vision</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit.html">Is it legit?</a><a href="/security.html">Security</a><a href="/trust-and-transparency.html">Transparency</a><a href="/how-to-buy.html">How to buy</a><a href="/compare.html">How we compare</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/index.html">Insights</a><a href="/solana.html">Why Solana?</a><a href="/faq.html">FAQ</a><a href="/community.html">Community</a><a href="/contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here should be construed as a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

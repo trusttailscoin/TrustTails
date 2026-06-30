@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>TrustTails Security — Revoked Authorities & Staying Safe</title>
+<meta name="description" content="How TrustTails protects holders at the contract level (revoked mint and freeze authorities) and how you can protect yourself from scams, impersonators, and fake presales.">
+<link rel="canonical" href="https://trusttails.io/security.html">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trusttails.io/security.html">
+<meta property="og:title" content="TrustTails Security — Revoked Authorities & Staying Safe">
+<meta property="og:description" content="How TrustTails protects holders at the contract level (revoked mint and freeze authorities) and how you can protect yourself from scams, impersonators, and fake presales.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="TrustTails Security — Revoked Authorities & Staying Safe">
+<meta name="twitter:description" content="How TrustTails protects holders at the contract level (revoked mint and freeze authorities) and how you can protect yourself from scams, impersonators, and fake presales.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Security","item":"https://trusttails.io/security.html"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/index.html" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a></nav>
+  <div class="nav-cta"><a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+  <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div>
+</div></header>
+<div class="mobile-menu"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/how-to-buy.html">How to buy</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a><a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a></div>
+
+<!-- PAGE HEADER -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Contract Security &amp; Self-Protection</span>
+      <h1>Security at Every Layer</h1>
+      <p class="lead">TrustTails was designed with two security questions in mind: what can the contract itself guarantee on-chain, and what do you need to do to stay safe off-chain? This page answers both — plainly, without hype.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PART 1: CONTRACT-LEVEL SECURITY -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Part 1 — On-Chain Protections</span>
+      <h2>What the Contract Itself Guarantees</h2>
+      <p>On Solana, an SPL token's behaviour is determined by its mint account. Two authorities on that account — mint authority and freeze authority — control the most consequential powers a token issuer can hold. TrustTails has permanently surrendered both.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/><path d="M9 3.5A9 9 0 0 1 21 12"/><line x1="3" y1="3" x2="21" y2="21"/></svg>
+        </div>
+        <h3>Mint Authority: Revoked</h3>
+        <p>Mint authority is the power to create new TAIL tokens from nothing. When it is held, the issuer can inflate the supply at will — diluting every existing holder without warning. TrustTails has <strong class="text-gold">permanently revoked this authority</strong>. The total supply is fixed at exactly 1,000,000,000 TAIL and cannot be increased by anyone, ever. This is verifiable on-chain; no announcement or promise from the team is needed.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><line x1="3" y1="3" x2="21" y2="21"/></svg>
+        </div>
+        <h3>Freeze Authority: Revoked</h3>
+        <p>Freeze authority is the power to lock a specific wallet's token balance — preventing the holder from transferring or selling their tokens. On projects that retain this authority, the issuer can freeze any account without notice. TrustTails has <strong class="text-cyan">permanently revoked this authority</strong>. No wallet can ever be frozen by the project. Your tokens remain yours to move, hold, or transfer without interference from the team.</p>
+      </article>
+    </div>
+
+    <!-- Supply stat -->
+    <div class="grid grid-3" style="margin-top:2rem">
+      <div class="glass stat reveal d1">
+        <div class="num gold" data-count="1000000000">1,000,000,000</div>
+        <div class="lbl">Total TAIL Supply — Fixed Forever</div>
+      </div>
+      <div class="glass stat reveal d2">
+        <div class="num gold">REVOKED</div>
+        <div class="lbl">Mint Authority Status</div>
+      </div>
+      <div class="glass stat reveal d3">
+        <div class="num gold">REVOKED</div>
+        <div class="lbl">Freeze Authority Status</div>
+      </div>
+    </div>
+
+    <!-- Verify on Solscan -->
+    <div class="glass reveal" style="margin-top:2rem;padding:2rem 2.4rem">
+      <div class="section-head" style="margin-bottom:1rem">
+        <span class="eyebrow">Verify It Yourself</span>
+        <h3>The Only Source of Truth Is On-Chain</h3>
+      </div>
+      <p>Don't take our word for it. Paste the contract address into <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a> and inspect the mint account directly. Look for <strong>Mint Authority: None</strong> and <strong>Freeze Authority: None</strong> — those fields confirm that both have been permanently surrendered. If they show any address other than "None", stop — that is not TrustTails.</p>
+      <p style="margin-top:1rem">Official contract address:</p>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem">
+        <code class="text-cyan" style="font-size:.9rem;word-break:break-all">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+        <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+        <a class="btn btn-ghost btn-sm" href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener">View on Solscan &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PART 2: SELF-PROTECTION -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Part 2 — Protecting Yourself</span>
+      <h2>Your Security Is Still Your Responsibility</h2>
+      <p>A sound contract is necessary — but it only covers the on-chain side. The most common way people lose funds in crypto has nothing to do with the token contract: it is social engineering, fake links, and impersonators. Here is what to watch for.</p>
+    </div>
+
+    <!-- DO / DON'T -->
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>Do This</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <strong>Verify the contract address independently.</strong> Copy it from <a href="/is-it-legit.html">our Is It Legit? page</a> and confirm it on Solscan before interacting with any token.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <strong>Use a reputable, self-custody wallet.</strong> Phantom, Solflare, and Backpack are widely used for Solana. For larger holdings, consider a hardware wallet (Ledger, Trezor) where your private key never touches an internet-connected device.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <strong>Join only official channels.</strong> Check the list of official links below. Bookmark them directly — do not search for them through unverified sources.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <strong>Report impersonators.</strong> If you see a fake TrustTails account, fake presale link, or suspicious airdrop, report it on the platform and alert us via <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">the community Telegram</a>.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <strong>Read the whitepaper.</strong> Understanding what a project claims to do is a basic first step. <a href="/whitepaper.html">Read it here</a> or <a href="/whitepaper_v1.pdf">download the PDF</a>.
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>Never Do This</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <strong>Never share your seed phrase or private key.</strong> Not with the team, not with "support", not with anyone. No legitimate project ever needs it. Anyone who asks for it is attempting to steal your wallet.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <strong>Never buy from a DM or an unsolicited link.</strong> TrustTails is pre-launch. There is no Raydium pool, no presale, and no early-access link. Any DM offering you early TAIL is a scam.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <strong>Never claim airdrops from unknown sources.</strong> Airdrop scams often ask you to "connect your wallet" and sign a transaction that drains it. TrustTails has not announced any airdrop.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <strong>Never invest more than you can afford to lose entirely.</strong> Cryptocurrency — including TAIL — can lose all of its value. Nothing on this site is financial advice.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <strong>Never trust an account just because it looks official.</strong> Impersonators copy logos, usernames, and website layouts. Always verify URLs character by character before connecting your wallet.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICIAL CHANNELS -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Official Links Only</span>
+      <h2>Where TrustTails Actually Is</h2>
+      <p>Bookmark these. There are no other official TrustTails channels. Anything not on this list is either a fan page or an impersonator — treat it with caution.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg>
+        </div>
+        <h3>X (Twitter)</h3>
+        <p>Project updates, milestones, and community posts. Official handle: <strong>@trusttailscoin</strong>.</p>
+        <a class="btn btn-ghost btn-sm" href="https://x.com/trusttailscoin" target="_blank" rel="noopener" style="margin-top:1rem">x.com/trusttailscoin &rarr;</a>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg>
+        </div>
+        <h3>Telegram Community</h3>
+        <p>The main group where the community talks, asks questions, and flags issues. Moderated.</p>
+        <a class="btn btn-ghost btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" style="margin-top:1rem">t.me/TrustTailsCommunity &rarr;</a>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.71 3.53 2 2 0 0 1 3.68 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.65a16 16 0 0 0 5.44 5.44l1.71-1.71a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 14.92v2Z"/></svg>
+        </div>
+        <h3>Telegram Announcements</h3>
+        <p>Read-only channel for official announcements: launches, updates, and important notices.</p>
+        <a class="btn btn-ghost btn-sm" href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" style="margin-top:1rem">t.me/TrustTailsOfficial &rarr;</a>
+      </article>
+      <article class="glass reveal d1">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3>Email</h3>
+        <p>Direct contact for media, partnerships, or security reports. Response times may vary.</p>
+        <a class="btn btn-ghost btn-sm" href="mailto:trusttailscoin@gmail.com" style="margin-top:1rem">trusttailscoin@gmail.com &rarr;</a>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>This Website</h3>
+        <p><strong>trusttails.io</strong> — verify the URL bar. Every page lives here. No other domain is official.</p>
+        <a class="btn btn-ghost btn-sm" href="/index.html" style="margin-top:1rem">trusttails.io &rarr;</a>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>On-Chain (Solscan)</h3>
+        <p>The contract itself is the most trustworthy source. Verify mint authority, freeze authority, and total supply directly.</p>
+        <a class="btn btn-ghost btn-sm" href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" style="margin-top:1rem">View on Solscan &rarr;</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SCAM WARNINGS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Common Scam Patterns</span>
+      <h2>How Impersonators Operate</h2>
+      <p>Knowing the playbook makes you much harder to deceive. These patterns appear on nearly every pre-launch token — TAIL is no exception.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Fake Presale Links</h3>
+        <p>Scammers create lookalike sites claiming you can buy TAIL at a discount before launch. <strong>TrustTails has no presale and no early-access purchase mechanism.</strong> Any site claiming otherwise is fraudulent. When trading opens, it will be announced exclusively through official channels.</p>
+      </article>
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Unsolicited DMs</h3>
+        <p>No member of the TrustTails team will initiate a direct message to offer you tokens, swap deals, or "VIP" access. If someone DMs you claiming to be from TrustTails, assume it is a scam. Block and report them.</p>
+      </article>
+      <article class="glass reveal d3">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Fake Airdrop Portals</h3>
+        <p>Airdrop sites that look like TrustTails ask you to "connect wallet and claim." The signature you approve often grants unlimited spending permission to a malicious contract. TrustTails has announced no airdrop. Do not connect your wallet to any third-party site claiming to distribute TAIL.</p>
+      </article>
+      <article class="glass cyan reveal d4">
+        <div class="icon cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Lookalike Accounts</h3>
+        <p>Impersonator accounts on X or Telegram will copy profile pictures, bios, and even post histories. Always verify using the official handles above. When in doubt, navigate directly to the URL — do not click links from search results or suggested accounts.</p>
+      </article>
+    </div>
+    <p class="reveal" style="margin-top:2rem;color:var(--muted)">Further reading: <a href="/blog/how-to-spot-a-rug-pull.html" class="text-cyan">How to spot a rug pull</a> and <a href="/is-it-legit.html" class="text-cyan">Is TrustTails legit?</a> — two pages that go deeper on due diligence before you commit any funds to any crypto project.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Security FAQ</span>
+      <h2>Common Questions</h2>
+    </div>
+    <div class="faq">
+      <details class="faq-item reveal">
+        <summary>What does "mint authority revoked" actually mean?<span class="plus"></span></summary>
+        <div class="faq-a">On Solana, every SPL token is controlled by a mint account. That account has an optional "mint authority" — an address that can issue new tokens. When mint authority is revoked, the field is set to null on-chain, meaning no address — including the original deployer — can ever create additional supply. This is permanent and irreversible. You can confirm it by viewing the token on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener">Solscan</a> and checking that Mint Authority shows "None".</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Can the team freeze my tokens?<span class="plus"></span></summary>
+        <div class="faq-a">No. Freeze authority has been permanently revoked. With freeze authority revoked, it is technically impossible for the team — or anyone — to lock your balance. Your tokens remain in your full control as long as you hold your private key securely. This was a deliberate design decision and is verifiable on-chain: Freeze Authority will show "None" on Solscan.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Someone messaged me on Telegram offering early TAIL. Is this legitimate?<span class="plus"></span></summary>
+        <div class="faq-a">No. TrustTails is pre-launch and has no presale, early-access, or private-sale mechanism. Any DM offering you TAIL tokens, swap deals, or VIP allocations is a scam. The TrustTails team does not initiate direct messages. Block the account, report it to Telegram, and alert the community in the official group: <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">t.me/TrustTailsCommunity</a>.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>How do I verify the contract address is correct?<span class="plus"></span></summary>
+        <div class="faq-a">Copy the address from this page: <code>4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. Go to <a href="https://solscan.io" target="_blank" rel="noopener">solscan.io</a> directly (type the URL yourself, do not click a link), paste it in the search bar, and confirm the token name reads "TrustTails" with ticker "TAIL". Also see our <a href="/is-it-legit.html">Is It Legit?</a> page for a full due-diligence checklist.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Has TrustTails been audited by a security firm?<span class="plus"></span></summary>
+        <div class="faq-a">We have not announced a formal third-party security audit at this time. We will disclose any audit engagement publicly through official channels when it occurs. In the meantime, the most reliable verification remains the on-chain state of the mint account — which anyone can inspect independently without trusting any third party, including us. See <a href="/trust-and-transparency.html">our Transparency page</a> for full disclosure on the current project status.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What wallet should I use for Solana tokens?<span class="plus"></span></summary>
+        <div class="faq-a">Phantom, Solflare, and Backpack are popular self-custody wallets for Solana. Self-custody means only you hold the private key — the wallet provider has no access to your funds. For larger balances, hardware wallets like Ledger (compatible with Phantom) keep your private key offline entirely. Regardless of which wallet you choose, write down your seed phrase and store it physically in a secure location. Never type it into any website or share it with anyone.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow">Stay Informed</span>
+      <h2>The Safest Step Is Staying Connected to Official Sources</h2>
+      <p>Join the community, follow the announcements channel, and bookmark this site. When trading opens, you'll hear it here first — not from a DM.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join Telegram Community</a>
+        <a class="btn btn-ghost" href="/is-it-legit.html">Due Diligence Checklist</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/index.html"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Project</h4><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/roadmap.html">Roadmap</a><a href="/whitepaper.html">Whitepaper</a><a href="/vision.html">Vision</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit.html">Is it legit?</a><a href="/security.html">Security</a><a href="/trust-and-transparency.html">Transparency</a><a href="/how-to-buy.html">How to buy</a><a href="/compare.html">How we compare</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/index.html">Insights</a><a href="/solana.html">Why Solana?</a><a href="/faq.html">FAQ</a><a href="/community.html">Community</a><a href="/contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here should be construed as a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>

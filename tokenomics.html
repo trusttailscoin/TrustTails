@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js')</script>
+<title>TrustTails Tokenomics — Fixed 1B Supply, Revoked Authorities</title>
+<meta name="description" content="TrustTails (TAIL) tokenomics: a fixed supply of 1,000,000,000, revoked mint and freeze authorities, and a public contract on Solana you can verify.">
+<link rel="canonical" href="https://trusttails.io/tokenomics.html">
+<meta name="theme-color" content="#060B16">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trusttails.io/tokenomics.html">
+<meta property="og:title" content="TrustTails Tokenomics — Fixed 1B Supply, Revoked Authorities">
+<meta property="og:description" content="TrustTails (TAIL) tokenomics: a fixed supply of 1,000,000,000, revoked mint and freeze authorities, and a public contract on Solana you can verify.">
+<meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
+<meta property="og:site_name" content="TrustTails">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@trusttailscoin">
+<meta name="twitter:title" content="TrustTails Tokenomics — Fixed 1B Supply, Revoked Authorities">
+<meta name="twitter:description" content="TrustTails (TAIL) tokenomics: a fixed supply of 1,000,000,000, revoked mint and freeze authorities, and a public contract on Solana you can verify.">
+<meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://trusttails.io/"},{"@type":"ListItem","position":2,"name":"Tokenomics","item":"https://trusttails.io/tokenomics.html"}]}</script>
+</head>
+<body>
+<header class="nav"><div class="container">
+  <a class="brand" href="/index.html" aria-label="TrustTails home"><img src="/assets/img/logo-nav.png" alt="TrustTails logo"><span><b>Trust</b><span>Tails</span></span></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a></nav>
+  <div class="nav-cta"><a class="btn btn-gold btn-sm" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a>
+  <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div>
+</div></header>
+<div class="mobile-menu"><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/is-it-legit.html">Is it legit?</a><a href="/roadmap.html">Roadmap</a><a href="/how-to-buy.html">How to buy</a><a href="/blog/index.html">Insights</a><a href="/faq.html">FAQ</a><a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join community</a></div>
+
+<!-- PAGE HEADER -->
+<section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">TAIL · Solana SPL</span>
+      <h1>Tokenomics built on<br><span class="text-grad">what you can verify</span></h1>
+      <p class="lead">Fixed supply. Revoked authorities. Public contract. These are the only numbers that matter — and every one of them lives on-chain where anyone can check them right now.</p>
+    </div>
+
+    <!-- Stat tiles -->
+    <div class="grid grid-3" style="margin-top:48px">
+      <div class="glass stat reveal d1">
+        <div class="num gold" data-count="1000000000">1,000,000,000</div>
+        <div class="lbl">Total supply — TAIL (fixed, forever)</div>
+      </div>
+      <div class="glass stat reveal d2">
+        <div class="num" style="color:var(--cyan-2);font-size:2rem;font-weight:700;letter-spacing:.04em">REVOKED</div>
+        <div class="lbl">Mint authority — no new tokens can ever be created</div>
+      </div>
+      <div class="glass stat reveal d3">
+        <div class="num" style="color:var(--cyan-2);font-size:2rem;font-weight:700;letter-spacing:.04em">REVOKED</div>
+        <div class="lbl">Freeze authority — no wallet can ever be frozen</div>
+      </div>
+    </div>
+
+    <!-- Contract address -->
+    <div class="glass reveal" style="margin-top:32px;padding:28px 32px;text-align:center">
+      <p style="margin:0 0 10px;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted)">Contract / Mint address · Solana</p>
+      <code class="text-cyan" style="font-size:1rem;word-break:break-all;letter-spacing:.03em">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+      <div style="margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="copy-btn btn btn-ghost btn-sm" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="copy-label">Copy address</span>
+        </button>
+        <a class="btn btn-cyan btn-sm" href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Verify on Solscan
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THE NUMBERS MEAN -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Plain English</span>
+      <h2>What each parameter actually means</h2>
+      <p>Three on-chain facts. Here is why each one matters for anyone holding TAIL.</p>
+    </div>
+    <div class="grid grid-3" style="margin-top:48px">
+
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Fixed Supply — 1,000,000,000 TAIL</h3>
+        <p>One billion tokens were minted at launch. That is the entire supply — no vesting drip, no reserved inflation schedule. The number you see on Solscan today is the number that will exist in ten years. Dilution via new issuance is structurally impossible.</p>
+      </article>
+
+      <article class="glass cyan reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="9" y1="12" x2="11" y2="14"/><line x1="15" y1="10" x2="11" y2="14"/></svg>
+        </div>
+        <h3>Mint Authority Revoked</h3>
+        <p>On Solana, a token's mint authority is the private key permission that allows new tokens to be printed. Once revoked, it cannot be reassigned or recovered — not by the founding team, not by anyone. Minting additional TAIL is permanently and provably off the table.</p>
+      </article>
+
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Freeze Authority Revoked</h3>
+        <p>Freeze authority is the ability to lock a specific wallet so it cannot send or receive a token. With this authority revoked, no wallet holding TAIL can ever be frozen — not by the team, not by any technical upgrade. Your tokens remain in your control.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DON'T CLAIM -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Honest accounting</span>
+      <h2>What we publish — and what we don't</h2>
+      <p>Many projects post elaborate allocation pie charts. We want to be straightforward about what we can honestly show you.</p>
+    </div>
+
+    <div class="proof-split reveal" style="margin-top:48px">
+      <div class="do-dont is-do">
+        <h3>What is verifiable on-chain</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+            Total supply: exactly 1,000,000,000 TAIL
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+            Mint authority status: revoked (confirmed on Solscan)
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+            Freeze authority status: revoked (confirmed on Solscan)
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+            Token standard: Solana SPL
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+            Current holder distribution (live on Solscan)
+          </li>
+        </ul>
+      </div>
+      <div class="do-dont is-dont">
+        <h3>What we won't fabricate</h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Invented allocation percentages (team %, treasury %, liquidity %) — we have not published a breakdown and will not invent one
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Presale or vesting schedules that don't exist
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Price targets, projections, or return estimates
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Claimed audits, partnerships, or exchange listings not yet confirmed
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="reveal" style="margin-top:36px;text-align:center;color:var(--text-muted);max-width:680px;margin-left:auto;margin-right:auto">If and when a full allocation breakdown, audit report, or liquidity event is ready to share, it will appear here with a verifiable on-chain reference — not a marketing slide. See the <a href="/roadmap.html" class="text-gold">roadmap</a> for current phase status.</p>
+  </div>
+</section>
+
+<!-- VERIFY YOURSELF -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="eyebrow">On-chain verification</span>
+      <h2>Don't take our word for it — check the chain</h2>
+      <p>Every claim on this page is readable directly from Solana's public ledger. Open Solscan, paste the contract address, and look at the token metadata yourself. Revoked authorities show as <strong style="color:var(--cyan-2)">null</strong> on the token detail page. The supply figure is in the overview. No account access required.</p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener noreferrer">Open on Solscan</a>
+        <a class="btn btn-ghost" href="/is-it-legit.html">Is TrustTails legit?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCAM WARNING -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Stay safe</span>
+      <h2>Pre-launch scam awareness</h2>
+      <p>TrustTails is currently pre-launch. There is no active trading pool, no presale, and no official token sale of any kind. Scammers exploit pre-launch projects — please read this before engaging with anything claiming to be TAIL.</p>
+    </div>
+    <div class="grid grid-2" style="margin-top:48px">
+
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>There is no presale</h3>
+        <p>Any account, DM, or website offering to sell you TAIL tokens before the official launch announcement is a scam. The only official channels are listed on our <a href="/about.html" class="text-gold">About page</a> and below. We will never DM you first asking for funds or wallet credentials.</p>
+      </article>
+
+      <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Verify the contract address</h3>
+        <p>The only legitimate TAIL token contract is <code class="text-cyan" style="font-size:.9em;word-break:break-all">4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. If a token you are looking at has a different address — regardless of the name or logo — it is not TrustTails. Always copy the address from this page or from our <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-gold">verified X account</a>.</p>
+      </article>
+
+    </div>
+
+    <div class="glass reveal" style="margin-top:32px;padding:24px 28px">
+      <p style="margin:0;font-size:.92rem;color:var(--text-muted)"><strong style="color:var(--gold)">Official channels only:</strong> <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">X @trusttailscoin</a> &nbsp;·&nbsp; <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-cyan">Telegram community</a> &nbsp;·&nbsp; <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">Telegram announcements</a> &nbsp;·&nbsp; <a href="mailto:trusttailscoin@gmail.com" class="text-cyan">trusttailscoin@gmail.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--tight" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>Tokenomics FAQ</h2>
+    </div>
+
+    <div class="faq" style="max-width:760px;margin:48px auto 0">
+
+      <details class="faq-item reveal">
+        <summary>Does "fixed supply" mean price will go up?<span class="plus"></span></summary>
+        <div class="faq-a">No. Fixed supply means no new tokens can be minted — that is a structural property, not a price guarantee. Price is determined by market demand, liquidity, and many factors outside our control. Cryptocurrency markets are highly volatile and TAIL could lose all value. Nothing here is financial advice.</div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>What exactly does revoking mint authority do on Solana?<span class="plus"></span></summary>
+        <div class="faq-a">On Solana's SPL token standard, each token can have an optional mint authority — a keypair that controls whether new tokens can be issued. When this authority is set to <code>null</code> (revoked), no new tokens can ever be minted, regardless of who holds the original deployer wallet. The revocation is a permanent, irreversible on-chain state change you can inspect directly on Solscan.</div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>What does revoking freeze authority protect me from?<span class="plus"></span></summary>
+        <div class="faq-a">Without freeze authority revoked, a token issuer could theoretically lock any holder's wallet — preventing them from transferring or selling their tokens. Revoking this authority removes that capability entirely. No wallet holding TAIL can be frozen by any party, including the founding team. This is verifiable on-chain as a <code>null</code> freeze authority in the token metadata.</div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>Why don't you publish a team allocation or treasury percentage?<span class="plus"></span></summary>
+        <div class="faq-a">We have not published a breakdown because we will not publish numbers we cannot back up on-chain in a way you can independently verify. What you can see right now is total supply and current holder distribution on Solscan. We believe a falsified pie chart is more harmful than an honest "we haven't published that yet." If a verifiable allocation breakdown becomes available, it will appear here.</div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>Where can I buy TAIL?<span class="plus"></span></summary>
+        <div class="faq-a">TrustTails is currently pre-launch. There is no active trading pool and TAIL is not yet available to purchase through any legitimate venue. Any offer to sell you TAIL right now is a scam. We will announce the launch through our <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-gold">official X account</a> and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-gold">Telegram announcements channel</a>.</div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>Has the contract been audited?<span class="plus"></span></summary>
+        <div class="faq-a">We have not commissioned or received a formal smart contract audit. We will not claim one until it exists and can be publicly referenced. The on-chain verifiable facts — fixed supply, revoked mint authority, revoked freeze authority — are structural protections that anyone can verify independently without relying on an audit firm's report. See our <a href="/security.html" class="text-gold">security page</a> for more detail on how we approach this.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- RELATED PAGES -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Continue reading</span>
+      <h2>More from TrustTails</h2>
+    </div>
+    <div class="grid grid-3" style="margin-top:40px">
+
+      <article class="glass reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3>Is TrustTails legit?</h3>
+        <p>A direct answer to the question every sensible person asks before engaging with any crypto project.</p>
+        <a href="/is-it-legit.html" class="btn btn-ghost btn-sm" style="margin-top:16px">Read more</a>
+      </article>
+
+      <article class="glass cyan reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Security</h3>
+        <p>How the revoked authorities, fixed supply, and public contract combine to form TrustTails' security posture.</p>
+        <a href="/security.html" class="btn btn-ghost btn-sm" style="margin-top:16px">Read more</a>
+      </article>
+
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/></svg>
+        </div>
+        <h3>Whitepaper</h3>
+        <p>The full project rationale, community thesis, and long-term direction — written without hype or fabricated milestones.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+          <a href="/whitepaper.html" class="btn btn-ghost btn-sm">Read online</a>
+          <a href="/whitepaper_v1.pdf" class="btn btn-ghost btn-sm" download>Download PDF</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="/index.html"><img src="/assets/img/logo-nav.png" alt="TrustTails"><span><b>Trust</b><span style="color:var(--gold)">Tails</span></span></a>
+      <p>A community-first token on Solana. Trust, transparency, and a refusal to oversell.</p>
+      <div class="socials" style="margin-top:18px"><a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-5.4-7.06L4.5 22H1.24l8.02-9.17L1 2h7.07l4.88 6.46L18.244 2Z"/></svg></a><a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 2 2 9.5l5.5 2L20 5 9.5 14.5l-.5 5 3.5-3.5 4.5 3.5L22 2Z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Project</h4><a href="/about.html">About</a><a href="/tokenomics.html">Tokenomics</a><a href="/roadmap.html">Roadmap</a><a href="/whitepaper.html">Whitepaper</a><a href="/vision.html">Vision</a></div>
+    <div class="footer-col"><h4>Trust</h4><a href="/is-it-legit.html">Is it legit?</a><a href="/security.html">Security</a><a href="/trust-and-transparency.html">Transparency</a><a href="/how-to-buy.html">How to buy</a><a href="/compare.html">How we compare</a></div>
+    <div class="footer-col"><h4>Learn</h4><a href="/blog/index.html">Insights</a><a href="/solana.html">Why Solana?</a><a href="/faq.html">FAQ</a><a href="/community.html">Community</a><a href="/contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year>2026</span> TrustTails (TAIL) &middot; Trust &middot; Transparency &middot; Community</p><p>Contract: <code style="color:var(--cyan-2);font-size:.78rem">4NoNV3jSYLR&hellip;uk6Rc</code></p></div>
+  <p class="disclaimer">Disclaimer: This website describes intentions and a roadmap, not guarantees, partnerships, or investment advice. TrustTails is not affiliated with, endorsed by, or partnered with any bank, financial institution, or payments company unless and until such an agreement is publicly announced. Cryptocurrency carries significant risk, including total loss of value. Nothing here should be construed as a promise of future performance, adoption, or returns.</p>
+</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>
