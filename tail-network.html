@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TAIL Network — TrustTails Blockchain</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #050d18;
+      --bg2:       #0a1628;
+      --bg3:       #0f1e35;
+      --card:      #0d1a2e;
+      --border:    rgba(0, 220, 255, 0.15);
+      --cyan:      #00dcff;
+      --cyan-dim:  #00aac7;
+      --cyan-glow: rgba(0, 220, 255, 0.18);
+      --white:     #f0f6ff;
+      --muted:     #7a96b8;
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(5, 13, 24, 0.92);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--cyan);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+    .nav-links { display: flex; gap: 1.8rem; align-items: center; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan); }
+    .nav-btn {
+      background: transparent;
+      border: 1.5px solid var(--cyan);
+      color: var(--cyan);
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover { background: var(--cyan); color: var(--bg); }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(0,220,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid var(--border);
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.6rem;
+      background: var(--cyan-glow);
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 span { color: var(--cyan); }
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .badge {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--cyan);
+    }
+    .badge span { color: var(--muted); margin-right: 0.4rem; }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--cyan);
+      color: var(--bg);
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-outline {
+      background: transparent;
+      color: var(--cyan);
+      border: 1.5px solid var(--cyan);
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--cyan); color: var(--bg); }
+
+    /* ── SECTION WRAPPER ── */
+    section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.7rem;
+    }
+    h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+    h2 span { color: var(--cyan); }
+    .section-intro {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 700px;
+      margin-bottom: 3rem;
+    }
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── PROBLEM SECTION ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .problem-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem;
+    }
+    .problem-card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .problem-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .problem-card p { color: var(--muted); font-size: 0.92rem; }
+
+    /* ── SOLUTION ── */
+    .solution-wrap {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 3rem;
+    }
+    .solution-wrap p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .solution-wrap p:last-child { margin-bottom: 0; }
+    .solution-wrap strong { color: var(--white); }
+
+    /* ── TECH STACK ── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .tech-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .tech-card:hover {
+      border-color: var(--cyan-dim);
+      box-shadow: 0 0 24px var(--cyan-glow);
+    }
+    .tech-card .tech-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .tech-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .tech-card p { color: var(--muted); font-size: 0.88rem; }
+
+    /* ── TOKENOMICS ── */
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .token-stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .token-stat .value {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 0.3rem;
+    }
+    .token-stat .label { color: var(--muted); font-size: 0.85rem; }
+    .token-note {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--cyan);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .token-note strong { color: var(--white); }
+
+    /* ── ROADMAP ── */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .roadmap-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem;
+      position: relative;
+    }
+    .roadmap-card.done { border-color: var(--cyan-dim); }
+    .phase-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.5rem;
+    }
+    .roadmap-card h3 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .roadmap-card ul { list-style: none; }
+    .roadmap-card ul li {
+      color: var(--muted);
+      font-size: 0.88rem;
+      padding: 0.3rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .roadmap-card ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-size: 0.75rem;
+    }
+    .roadmap-card.done ul li::before { content: '✓'; }
+    .status-chip {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.7rem;
+      border-radius: 100px;
+      margin-bottom: 0.8rem;
+    }
+    .status-chip.live { background: rgba(0,220,100,0.15); color: #00dc64; }
+    .status-chip.active { background: rgba(0,220,255,0.15); color: var(--cyan); }
+    .status-chip.soon { background: rgba(180,100,255,0.15); color: #c084fc; }
+    .status-chip.future { background: rgba(120,120,120,0.15); color: var(--muted); }
+
+    /* ── WHY INVEST ── */
+    .invest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .invest-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+    .invest-card .num {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--cyan);
+      opacity: 0.4;
+      margin-bottom: 0.5rem;
+    }
+    .invest-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .invest-card p { color: var(--muted); font-size: 0.9rem; }
+
+    /* ── DUAL LAYER ── */
+    .dual-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 640px) { .dual-wrap { grid-template-columns: 1fr; } }
+    .dual-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .dual-card .layer-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .dual-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+    .dual-card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 0.6rem; }
+    .dual-card ul { list-style: none; margin-top: 0.5rem; }
+    .dual-card ul li {
+      color: var(--muted);
+      font-size: 0.88rem;
+      padding: 0.25rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .dual-card ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-size: 0.75rem;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--cyan); text-decoration: none; }
+    footer .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .hero { padding: 4rem 1.2rem 3rem; }
+      section { padding: 3.5rem 1.2rem; }
+      .solution-wrap { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://trusttails.io" class="nav-logo">TrustTails (TAIL)</a>
+  <div class="nav-links">
+    <a href="https://trusttails.io">Home</a>
+    <a href="#about">About</a>
+    <a href="#technology">Technology</a>
+    <a href="#tokenomics">Tokenomics</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#invest">Why Invest</a>
+    <a href="https://trusttails.io" class="nav-btn">Buy TAIL</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">TAIL Network Whitepaper v1.0</div>
+  <h1>The <span>TAIL Network</span><br/>A New Independent Blockchain</h1>
+  <p>TrustTails is building its own sovereign blockchain — combining the community strength of a Solana token with the infrastructure power of a custom Cosmos SDK chain.</p>
+  <div class="hero-badges">
+    <div class="badge"><span>Network</span>TAIL Chain</div>
+    <div class="badge"><span>Framework</span>Cosmos SDK v0.53.6</div>
+    <div class="badge"><span>Supply</span>1,000,000,000 TAIL</div>
+    <div class="badge"><span>Status</span>Blockchain Live ✓</div>
+  </div>
+  <div class="hero-cta">
+    <a href="#about" class="btn-primary">Read the Vision</a>
+    <a href="https://trusttails.io" class="btn-outline">Back to Home</a>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ABOUT / PROBLEM -->
+<section id="about">
+  <div class="section-label">The Problem</div>
+  <h2>Why the crypto world needed <span>something different</span></h2>
+  <p class="section-intro">The majority of crypto projects today share the same fundamental weakness — they're built on someone else's infrastructure. TrustTails was created to change that.</p>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="icon">🏠</div>
+      <h3>Paying Rent Forever</h3>
+      <p>Tokens built on Ethereum, Solana, or BNB Chain pay fees to those networks forever. They're tenants, not owners — subject to congestion, price spikes, and rule changes outside their control.</p>
+    </div>
+    <div class="problem-card">
+      <div class="icon">🔒</div>
+      <h3>No True Sovereignty</h3>
+      <p>Most tokens can't set their own rules, fee structures, or governance models. They inherit the limitations of whatever chain they live on — limiting what they can ever become.</p>
+    </div>
+    <div class="problem-card">
+      <div class="icon">🌐</div>
+      <h3>Isolated Ecosystems</h3>
+      <p>Without native cross-chain communication, tokens are trapped on one network. Moving assets between chains requires risky bridges — which are among the most frequently exploited vulnerabilities in crypto.</p>
+    </div>
+    <div class="problem-card">
+      <div class="icon">🎭</div>
+      <h3>The Meme Coin Trap</h3>
+      <p>Community-driven tokens without real infrastructure are dismissed as meme coins — even when the team, vision, and community are genuine. Credibility requires more than a token. It requires infrastructure.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="section-label">Our Answer</div>
+  <h2>TrustTails: <span>Built different, from the ground up</span></h2>
+  <p class="section-intro">TrustTails isn't just a token. It's a two-layer project — a live Solana token building community today, and a sovereign blockchain being built for the long term.</p>
+  <div class="solution-wrap">
+    <p>The TAIL Network is an <strong>independent, sovereign blockchain</strong> built from scratch using the Cosmos SDK — the same framework that powers multi-billion dollar networks like Cosmos Hub, Osmosis, and Celestia. This means TrustTails doesn't rent space on someone else's chain. <strong>We own our infrastructure.</strong></p>
+    <p>Our Solana token (already live with fixed supply, revoked mint and freeze authorities) gives us community reach and early market presence. Meanwhile, the TAIL Network gives that community something permanent to believe in — a chain with its own rules, its own validators, and its own future.</p>
+    <p>The vision is simple: <strong>Trust • Transparency • Innovation • Community.</strong> Those aren't just words on a website. They're the four pillars we're encoding directly into the architecture of a blockchain that will outlast any single market cycle.</p>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- TECHNOLOGY -->
+<section id="technology">
+  <div class="section-label">Technology</div>
+  <h2>What makes the <span>TAIL Network</span> technically powerful</h2>
+  <p class="section-intro">Every technical decision was made to give TAIL long-term credibility, interoperability, and independence. Here's what's running under the hood.</p>
+  <div class="tech-grid">
+    <div class="tech-card">
+      <div class="tech-tag">Foundation</div>
+      <h3>Cosmos SDK v0.53.6</h3>
+      <p>The most battle-tested framework for building custom blockchains. Used by Cosmos Hub, Osmosis, Injective, and dozens of production chains securing billions in assets.</p>
+    </div>
+    <div class="tech-card">
+      <div class="tech-tag">Consensus</div>
+      <h3>CometBFT (Tendermint)</h3>
+      <p>Byzantine fault-tolerant consensus with instant finality. Blocks are final the moment they're committed — no waiting for 6 confirmations like Bitcoin or Ethereum.</p>
+    </div>
+    <div class="tech-card">
+      <div class="tech-tag">Interoperability</div>
+      <h3>IBC Protocol</h3>
+      <p>Inter-Blockchain Communication — the native internet protocol for Cosmos chains. TAIL can send and receive assets across 50+ other IBC-enabled chains without any bridge risk.</p>
+    </div>
+    <div class="tech-card">
+      <div class="tech-tag">Sovereignty</div>
+      <h3>Own Validators</h3>
+      <p>The TAIL Network runs its own independent validators. No dependency on Ethereum miners, Solana validators, or any third-party network to process TAIL transactions.</p>
+    </div>
+    <div class="tech-card">
+      <div class="tech-tag">Governance</div>
+      <h3>On-chain Governance</h3>
+      <p>TAIL holders will vote directly on protocol upgrades, fee structures, and treasury decisions. True community ownership — not just a promise, but a protocol feature.</p>
+    </div>
+    <div class="tech-card">
+      <div class="tech-tag">Transparency</div>
+      <h3>Open Source</h3>
+      <p>Every line of the TAIL Network is built in the open. No hidden smart contracts, no admin keys, no upgrade backdoors. What you see is what runs.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- DUAL LAYER -->
+<section id="dual">
+  <div class="section-label">Two Layers, One Vision</div>
+  <h2>How the <span>Solana token</span> and <span>TAIL Network</span> work together</h2>
+  <p class="section-intro">This isn't a pivot or a relaunch. These are two complementary layers of the same long-term strategy — and together, they're stronger than either alone.</p>
+  <div class="dual-wrap">
+    <div class="dual-card">
+      <div class="layer-tag">Layer 1 — Now</div>
+      <h3>TAIL on Solana</h3>
+      <p>Our entry point. Fast, accessible, already live — with a growing community, clean tokenomics, and a fixed supply that proves we're serious.</p>
+      <ul>
+        <li>Fixed supply — 1,000,000,000 TAIL</li>
+        <li>Mint authority permanently revoked</li>
+        <li>Freeze authority permanently revoked</li>
+        <li>Raydium listing planned</li>
+        <li>CoinGecko & DexScreener coming</li>
+        <li>Community growing on X & Telegram</li>
+      </ul>
+    </div>
+    <div class="dual-card">
+      <div class="layer-tag">Layer 2 — Long Term</div>
+      <h3>TAIL Network (Cosmos)</h3>
+      <p>Our destination. A sovereign blockchain that gives TAIL real infrastructure, real utility, and real permanence — independent of any other network.</p>
+      <ul>
+        <li>Custom blockchain — live and running</li>
+        <li>Built on Cosmos SDK v0.53.6</li>
+        <li>IBC-ready for cross-chain transfers</li>
+        <li>Own validators and governance</li>
+        <li>Keplr wallet integration planned</li>
+        <li>Block explorer coming soon</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- TOKENOMICS -->
+<section id="tokenomics">
+  <div class="section-label">Tokenomics</div>
+  <h2>Simple, transparent, <span>fixed forever</span></h2>
+  <p class="section-intro">No inflation. No hidden minting. No team reserve that can dump on holders. TAIL has fixed supply economics designed to build long-term trust.</p>
+  <div class="token-grid">
+    <div class="token-stat">
+      <div class="value">1,000,000,000</div>
+      <div class="label">Total Supply (Fixed)</div>
+    </div>
+    <div class="token-stat">
+      <div class="value">TAIL</div>
+      <div class="label">Token Symbol</div>
+    </div>
+    <div class="token-stat">
+      <div class="value">Revoked</div>
+      <div class="label">Mint Authority</div>
+    </div>
+    <div class="token-stat">
+      <div class="value">Revoked</div>
+      <div class="label">Freeze Authority</div>
+    </div>
+  </div>
+  <div class="token-note">
+    <strong>Why fixed supply matters:</strong> When a project revokes its mint authority, it permanently removes the ability to create new tokens. This is one of the strongest trust signals in crypto — it means no team, no founder, and no smart contract can ever dilute your holdings by printing more TAIL. Combined with a revoked freeze authority (which means nobody can freeze your wallet), TrustTails has made the most investor-friendly tokenomics decisions possible at launch.
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="section-label">Roadmap</div>
+  <h2>Where we've been, <span>where we're going</span></h2>
+  <p class="section-intro">Every phase builds on the last. We don't announce things we haven't started — and we don't move to the next phase until the current one is solid.</p>
+  <div class="roadmap-grid">
+    <div class="roadmap-card done">
+      <div class="phase-label">Phase 1</div>
+      <div class="status-chip live">✓ Complete</div>
+      <h3>Foundation</h3>
+      <ul>
+        <li>TAIL token created on Solana</li>
+        <li>Fixed supply locked forever</li>
+        <li>Mint & freeze authority revoked</li>
+        <li>Website launched</li>
+        <li>X profile live</li>
+        <li>Telegram community launched</li>
+        <li>Whitepaper v1.0 published</li>
+        <li>TAIL Network blockchain built</li>
+      </ul>
+    </div>
+    <div class="roadmap-card">
+      <div class="phase-label">Phase 2</div>
+      <div class="status-chip active">In Progress</div>
+      <h3>Growth</h3>
+      <ul>
+        <li>Community building campaign</li>
+        <li>X bot & social automation</li>
+        <li>Website upgrades</li>
+        <li>Transparency updates</li>
+        <li>Block explorer launch</li>
+        <li>Keplr wallet integration</li>
+        <li>Cosmos Chain Registry listing</li>
+      </ul>
+    </div>
+    <div class="roadmap-card">
+      <div class="phase-label">Phase 3</div>
+      <div class="status-chip soon">Coming Soon</div>
+      <h3>Market</h3>
+      <ul>
+        <li>Raydium DEX listing</li>
+        <li>DexScreener profile live</li>
+        <li>CoinGecko application</li>
+        <li>Liquidity planning</li>
+        <li>Solana & Cosmos outreach</li>
+        <li>Community campaigns</li>
+      </ul>
+    </div>
+    <div class="roadmap-card">
+      <div class="phase-label">Phase 4</div>
+      <div class="status-chip future">Future</div>
+      <h3>Ecosystem</h3>
+      <ul>
+        <li>TAIL Network public mainnet</li>
+        <li>IBC bridge to Solana TAIL</li>
+        <li>Governance launch</li>
+        <li>Validator program</li>
+        <li>Partnership development</li>
+        <li>Long-term utility features</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- WHY INVEST -->
+<section id="invest">
+  <div class="section-label">For Investors</div>
+  <h2>Why <span>TrustTails</span> is worth paying attention to</h2>
+  <p class="section-intro">Here is the honest case for TrustTails — no hype, no promises we can't keep, just the real reasons this project is different.</p>
+  <div class="invest-grid">
+    <div class="invest-card">
+      <div class="num">01</div>
+      <h3>Real Infrastructure, Not Just a Token</h3>
+      <p>Most community tokens stop at the token. TrustTails has already built and launched an independent blockchain. That's months of technical work most projects never do. It signals long-term commitment, not a quick cash grab.</p>
+    </div>
+    <div class="invest-card">
+      <div class="num">02</div>
+      <h3>Proven Technical Foundation</h3>
+      <p>Cosmos SDK powers some of the most successful chains in crypto. Choosing it means TAIL inherits years of security research, battle-tested consensus, and a thriving developer ecosystem — not an experimental unknown.</p>
+    </div>
+    <div class="invest-card">
+      <div class="num">03</div>
+      <h3>Fixed Supply — Permanent Scarcity</h3>
+      <p>1 billion TAIL. Forever. With mint authority permanently revoked, there is mathematically no way for anyone to dilute your holdings. Scarcity is built into the protocol, not a promise that can be broken later.</p>
+    </div>
+    <div class="invest-card">
+      <div class="num">04</div>
+      <h3>Native Cross-Chain Capability</h3>
+      <p>Through IBC, the TAIL Network can communicate with 50+ other Cosmos chains natively — without bridges. As the Cosmos ecosystem grows, so does TAIL's reach. Interoperability is not a roadmap item. It's already built in.</p>
+    </div>
+    <div class="invest-card">
+      <div class="num">05</div>
+      <h3>Two-Layer Strategy = Two Growth Paths</h3>
+      <p>The Solana token builds community and market presence now. The TAIL Network builds the infrastructure for long-term utility. Each layer strengthens the other — and gives investors two distinct vectors of growth to track.</p>
+    </div>
+    <div class="invest-card">
+      <div class="num">06</div>
+      <h3>Early Stage = Early Opportunity</h3>
+      <p>TrustTails is pre-Raydium, pre-CoinGecko, pre-mainnet. The projects that produce the most significant returns are typically found before they're widely known — when the infrastructure exists but the market hasn't noticed yet.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>Disclaimer:</strong> Nothing on this page constitutes financial, legal, or investment advice. TrustTails (TAIL) is an experimental blockchain project in active development. Cryptocurrency investments involve significant risk, including the possible loss of principal. Always conduct your own research before making any investment decisions. The TAIL Network is currently in development/testnet phase and is not yet a public mainnet.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="https://trusttails.io">Home</a>
+    <a href="https://x.com/trusttailscoin" target="_blank">X / Twitter</a>
+    <a href="#">Telegram</a>
+    <a href="#">Whitepaper PDF</a>
+  </div>
+  <p>TrustTails (TAIL) • Trust • Transparency • Innovation • Community</p>
+  <p style="margin-top:0.5rem;">© 2026 TrustTails. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
