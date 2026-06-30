@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>document.documentElement.classList.add('js')</script>
-<title>Why TrustTails Is Built on Solana</title>
-<meta name="description" content="Why TrustTails chose Solana: fast finality and low transaction costs that suit a community token today — and the same properties that matter for finance-grade use cases tomorrow.">
+<title>Why $TAIL Launched on Solana (and How It Differs from TAIL Network)</title>
+<meta name="description" content="Why the $TAIL coin launched on Solana — speed, low fees, accessibility for the community — and how that differs from TAIL Network, the independent Cosmos SDK chain in development.">
 <link rel="canonical" href="https://trusttails.io/solana">
 <meta name="theme-color" content="#060B16">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://trusttails.io/solana">
-<meta property="og:title" content="Why TrustTails Is Built on Solana">
-<meta property="og:description" content="Why TrustTails chose Solana: fast finality and low transaction costs that suit a community token today — and the same properties that matter for finance-grade use cases tomorrow.">
+<meta property="og:title" content="Why $TAIL Launched on Solana (and How It Differs from TAIL Network)">
+<meta property="og:description" content="Why the $TAIL coin launched on Solana — speed, low fees, accessibility for the community — and how that differs from TAIL Network, the independent Cosmos SDK chain in development.">
 <meta property="og:image" content="https://trusttails.io/assets/img/og-cover.png">
 <meta property="og:site_name" content="TrustTails">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@trusttailscoin">
-<meta name="twitter:title" content="Why TrustTails Is Built on Solana">
-<meta name="twitter:description" content="Why TrustTails chose Solana: fast finality and low transaction costs that suit a community token today — and the same properties that matter for finance-grade use cases tomorrow.">
+<meta name="twitter:title" content="Why $TAIL Launched on Solana (and How It Differs from TAIL Network)">
+<meta name="twitter:description" content="Why the $TAIL coin launched on Solana — speed, low fees, accessibility for the community — and how that differs from TAIL Network, the independent Cosmos SDK chain in development.">
 <meta name="twitter:image" content="https://trusttails.io/assets/img/og-cover.png">
 <link rel="icon" type="image/png" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,246 +86,476 @@
 </div>
 <!--/NAV-->
 
-<!-- PAGE HEADER -->
+<!-- ═══════════════════════════════════════════════════════════
+     HERO — page intro
+═══════════════════════════════════════════════════════════ -->
 <section class="section" style="padding-top:calc(var(--nav-h) + 56px)">
   <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow">Infrastructure</span>
-      <h1>Why TrustTails Is Built on Solana</h1>
-      <p class="lead">The chain a token runs on is a foundational decision, not a cosmetic one. Here is what Solana actually does, why those properties suit TrustTails right now, and why the same characteristics matter if the long-term thesis ever moves from aspiration to reality.</p>
+    <div class="section-head reveal">
+      <span class="eyebrow">Architecture &amp; Chain Strategy</span>
+      <h1>Why $TAIL Launched on Solana — and How It Differs from TAIL Network</h1>
+      <p class="lead">Two things that sound similar but are architecturally distinct: a community SPL token live on Solana today, and a separate sovereign blockchain being built on the Cosmos SDK. Here is exactly what each one is, why they exist, and how the plan intends to connect them.</p>
+    </div>
+
+    <div class="reveal d1" style="display:inline-block">
+      <div class="contract-pill">
+        <span class="lbl">$TAIL Contract (Solana · Verified)</span>
+        <code>4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>
+        <button class="copy-btn" data-copy="4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+      </div>
+      <p style="margin-top:12px;font-size:.82rem;color:var(--faint)">Verify independently:
+        <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener noreferrer" style="color:var(--cyan-2)">Solscan ↗</a>
+        &middot; Mint authority: Revoked &middot; Freeze authority: Revoked &middot; Supply: 1,000,000,000
+      </p>
     </div>
   </div>
 </section>
 
-<!-- HOW SOLANA WORKS — accessible explainer -->
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 1 — Why Solana for the $TAIL coin
+═══════════════════════════════════════════════════════════ -->
 <section class="section" style="background:var(--bg-2)">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">How it works</span>
-      <h2>Solana in plain language</h2>
-      <p>Most blockchains validate transactions by having nodes agree on what happened — a process that takes time and creates bottlenecks. Solana adds a second layer of coordination called <strong class="text-cyan">Proof of History (PoH)</strong>, which acts like a verifiable, trustless clock baked into the protocol itself.</p>
+      <span class="eyebrow">Part 1 — The Community Coin</span>
+      <h2>Why $TAIL Started on Solana</h2>
+      <p class="lead">The Solana $TAIL coin is the part that is <strong class="text-gold">live and verifiable on-chain right now</strong>. Solana was chosen as the launch chain for practical, community-first reasons — not as the permanent end-state for the project.</p>
     </div>
-    <div class="grid grid-2" style="margin-top:32px">
+    <div class="grid grid-3">
+
       <article class="glass reveal d1">
         <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
-        <h3>Proof of History</h3>
-        <p>Rather than asking the entire network to agree on the current time, PoH encodes timestamps directly into a cryptographic sequence of hashes. Each transaction includes proof of when it happened, letting validators process events without waiting on each other. The result is a shared, tamper-evident timeline that the network trusts without needing extra rounds of communication.</p>
+        <h3>Sub-second finality</h3>
+        <p>Solana confirms transactions in roughly 400 milliseconds. For a community that needs to move quickly — joining, sharing, and tracking — that speed matters in practice every day.</p>
       </article>
+
       <article class="glass reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Negligible transaction fees</h3>
+        <p>Fees on Solana average fractions of a cent per transaction. This keeps participation accessible regardless of wallet size — no meaningful portion of a holding is consumed by gas costs.</p>
+      </article>
+
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Where the community already is</h3>
+        <p>Solana has a large, active ecosystem of wallets, DEX aggregators, and token explorers that most crypto participants already know how to use. Lower friction means more genuine community participation.</p>
+      </article>
+
+      <article class="glass reveal d1">
         <div class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3>Proof of Stake security</h3>
-        <p>Solana's consensus layer is Proof of Stake — validators put up real economic value (staked SOL) that they lose if they act dishonestly. This aligns financial incentives with honest behaviour without the energy consumption of Proof of Work. PoH and PoS work together: PoH provides the ordering, PoS provides the security. You get both speed and economic finality.</p>
+        <h3>Revoked authorities — fully verifiable</h3>
+        <p>Both the <strong>mint authority</strong> (ability to create new tokens) and the <strong>freeze authority</strong> (ability to freeze wallets) are permanently revoked. The fixed supply of 1,000,000,000 $TAIL is locked. Verify this directly on Solscan — no trust required.</p>
       </article>
-    </div>
-    <p class="reveal" style="margin-top:28px;max-width:700px;color:var(--text-2)">This is a simplified overview. If you want a deeper technical read, Solana's own documentation and the <a href="/whitepaper" class="text-cyan">TrustTails whitepaper</a> go further. What matters practically: these design decisions produce measurable outcomes for anyone holding or transacting with a Solana SPL token like TAIL.</p>
-  </div>
-</section>
 
-<!-- FOUR PILLARS — Cards -->
-<section class="section">
-  <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow">Why it matters for TAIL</span>
-      <h2>Four properties that shaped the decision</h2>
-      <p>Every chain involves trade-offs. These are the four Solana properties that were most relevant when choosing where to deploy TrustTails.</p>
-    </div>
-    <div class="grid grid-4" style="margin-top:40px">
-      <article class="glass cyan reveal d1">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <h3>Fast finality</h3>
-        <p>Solana targets roughly 400-millisecond slot times, with transactions typically confirmed in under a second. For a community token this means transfers, community rewards, and future on-chain activity settle quickly — not in minutes.</p>
-      </article>
       <article class="glass reveal d2">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        </div>
-        <h3>Low transaction fees</h3>
-        <p>Solana transaction fees typically sit around $0.00025 or less per transaction. This is not a rounding error — it means a small holder can move tokens, interact with a contract, or verify their holdings without a significant portion of their balance disappearing in fees. High fees disproportionately harm smaller participants; low fees level the field.</p>
-      </article>
-      <article class="glass cyan reveal d3">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h3>Throughput at scale</h3>
-        <p>Solana is architected to handle tens of thousands of transactions per second, far above the throughput of earlier-generation chains. This headroom matters if TrustTails ever needs to support high-frequency on-chain activity. The infrastructure does not need to be rebuilt when demands grow.</p>
-      </article>
-      <article class="glass reveal d4">
         <div class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
-        <h3>Developer ecosystem</h3>
-        <p>Solana has an active developer community, well-maintained tooling (Anchor framework, SPL token standard), and deep integrations with wallets and explorers like Solscan. Building on a healthy ecosystem reduces technical risk and makes it easier for the community to independently verify everything about TAIL on-chain.</p>
+        <h3>Proven SPL token standard</h3>
+        <p>SPL (Solana Program Library) is Solana's well-established token standard — used by thousands of projects. Building on a proven standard reduces execution risk during the community-building phase, before the sovereign chain is ready.</p>
       </article>
+
+      <article class="glass reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>Community entry point, not exit point</h3>
+        <p>Solana is where the community starts gathering today. The $TAIL coin is the entry point into the TrustTails ecosystem while TAIL Network is being developed — a practical starting position, not a statement that Solana is the final destination.</p>
+      </article>
+
+    </div>
+
+    <div class="glass reveal" style="margin-top:32px;border-color:rgba(242,183,54,.3);background:rgba(242,183,54,.05)">
+      <div style="display:flex;gap:16px;align-items:flex-start">
+        <div class="icon" style="flex-shrink:0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div>
+          <h3 style="margin-bottom:8px">Trading is pre-launch — scam warning</h3>
+          <p>The $TAIL coin is live on-chain, but trading has not yet officially launched. There are no presales, no official listings, and no team members who will DM you asking to send funds. Anyone claiming otherwise is running a scam. Official community channels are listed at the bottom of this page. Always verify the contract address directly on Solscan before any interaction.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT THIS MEANS TODAY vs LONG-TERM -->
-<section class="section" style="background:var(--bg-2)">
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 2 — What TAIL Network is (and isn't)
+═══════════════════════════════════════════════════════════ -->
+<section class="section">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">Now and later</span>
-      <h2>What Solana's properties mean at each stage</h2>
+      <span class="eyebrow">Part 2 — TAIL Network</span>
+      <h2>TAIL Network: An Independent Layer-1 <span class="text-grad">In Development</span></h2>
+      <p class="lead">TAIL Network is a <strong>separate, independent blockchain</strong> being built on the Cosmos SDK. It is not live. It is not a Solana chain, not an EVM chain, and not an upgrade to the $TAIL SPL token — it is a distinct sovereign network being constructed from the ground up.</p>
     </div>
-    <div class="proof-split reveal" style="margin-top:36px">
-      <div class="do-dont is-do">
-        <h3>Today — community token phase</h3>
-        <ul>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            Low fees mean participation is not gated by transaction cost. Moving or holding TAIL is accessible to anyone, not just those who can afford $10–$50 per transaction.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            Fast confirmation keeps the experience fluid. Checking your balance, verifying on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a>, or interacting with future community features does not require waiting.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            The SPL token standard makes TAIL compatible with a wide range of Solana-native wallets and tools — Phantom, Solflare, and others — without custom integration work.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            On-chain verifiability is immediate. Mint authority revoked, freeze authority revoked, fixed 1,000,000,000 supply — all of this is <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">publicly readable on-chain</a>, not a claim from the team.
-          </li>
-        </ul>
+
+    <div class="glass cyan reveal" style="margin-bottom:32px">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
       </div>
-      <div class="do-dont is-dont">
-        <h3>Long-term thesis — what we are watching, not claiming</h3>
-        <ul>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            TrustTails has no current partnership or affiliation with any bank, payments company, or financial institution. Phase 3 of the <a href="/roadmap" class="text-gold">roadmap</a> is explicitly labelled long-term and unconfirmed.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            The thesis is that if TAIL ever moves toward finance-sector relevance, the infrastructure would need to handle settlement-grade throughput and sub-cent transaction costs. Solana is built for that. We are not claiming it will happen — only that the foundation is not the obstacle.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            Nothing in this section is a promise of future performance, adoption, or price. Crypto markets are unpredictable. TAIL may lose all value. None of this is financial advice.
-          </li>
-        </ul>
-      </div>
+      <h3 style="margin-bottom:10px">What is the Cosmos SDK?</h3>
+      <p>The Cosmos SDK is an open-source framework for building <strong style="color:var(--cyan-2)">independent, application-specific, sovereign blockchains</strong>. Rather than deploying a token on top of an existing chain like Solana or Ethereum, a team using the Cosmos SDK builds and controls their own chain entirely — its own validators, its own consensus, its own upgrade path, its own economic rules.</p>
+      <p style="margin-top:14px">These chains can connect to each other through a protocol called <strong style="color:var(--cyan-2)">IBC (Inter-Blockchain Communication)</strong> — meaning sovereignty does not mean isolation. A Cosmos SDK chain can transfer assets and data to and from other IBC-compatible chains. This interoperability is what makes bridging from the Solana $TAIL coin to TAIL Network a plausible eventual path.</p>
+    </div>
+
+    <div class="grid grid-2">
+
+      <article class="glass cyan reveal d1">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4.5V12a9 9 0 01-9 9A9 9 0 013 12V6.5L12 2z"/></svg>
+        </div>
+        <h3>Sovereignty — full control</h3>
+        <p>On Solana, $TAIL operates within the rules and constraints of Solana's network — including Solana's upgrade decisions, fee policies, and validator set. On TAIL Network, the project controls everything: governance, upgrades, fee structures, and economic design, with no dependency on another team's decisions.</p>
+      </article>
+
+      <article class="glass cyan reveal d2">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <h3>Application-specific design</h3>
+        <p>A sovereign chain can be optimised entirely for its use case — transaction types, block parameters, governance modules — rather than competing for blockspace on a general-purpose network built to serve many unrelated applications simultaneously.</p>
+      </article>
+
+      <article class="glass cyan reveal d3">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <h3>IBC interoperability</h3>
+        <p>Cosmos SDK chains communicate natively via IBC. This means TAIL Network can, in principle, connect to the broader Cosmos ecosystem and establish bridge infrastructure — including, eventually, back toward the Solana ecosystem where the community starts today.</p>
+      </article>
+
+      <article class="glass cyan reveal d4">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3>In development — no mainnet yet</h3>
+        <p>TAIL Network does not have a live mainnet, an active explorer, or live validators today. It is being built. We will not fabricate a chain ID, a launch date, or staking parameters. Updates will be shared through official channels as development progresses meaningfully.</p>
+      </article>
+
     </div>
   </div>
 </section>
 
-<!-- STATS ROW -->
-<section class="section--tight section">
-  <div class="container">
-    <div class="grid grid-3 reveal">
-      <div class="glass stat">
-        <div class="num gold">~400ms</div>
-        <div class="lbl">Target slot time</div>
-      </div>
-      <div class="glass stat">
-        <div class="num gold">~$0.00025</div>
-        <div class="lbl">Typical transaction fee</div>
-      </div>
-      <div class="glass stat">
-        <div class="num gold" data-count="1000000000">1,000,000,000</div>
-        <div class="lbl">TAIL — fixed supply, no inflation</div>
-      </div>
-    </div>
-    <p class="reveal" style="text-align:center;margin-top:20px;color:var(--text-3);font-size:.85rem">Network figures are approximate and reflect Solana's general characteristics. On-chain TAIL data is verifiable directly on <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a> at any time.</p>
-  </div>
-</section>
-
-<!-- FAQ -->
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 3 — Side-by-side comparison
+═══════════════════════════════════════════════════════════ -->
 <section class="section" style="background:var(--bg-2)">
   <div class="container">
     <div class="section-head center reveal">
-      <span class="eyebrow">Common questions</span>
-      <h2>Solana FAQs</h2>
+      <span class="eyebrow">Clear comparison</span>
+      <h2>$TAIL Coin vs TAIL Network</h2>
+      <p class="lead">These are two distinct things. Understanding the difference protects you from confusion and from anyone misrepresenting one as the other.</p>
     </div>
-    <div class="faq" style="margin-top:36px;max-width:780px;margin-left:auto;margin-right:auto">
-      <details class="faq-item reveal">
-        <summary>Why Solana and not Ethereum or another chain?<span class="plus"></span></summary>
-        <div class="faq-a">
-          <p>Ethereum is the largest smart-contract platform by total value locked, but its base-layer fees have historically been high — often $5–$50+ per transaction during busy periods. For a community token intended to be accessible to everyday holders, those fees create a real barrier. Solana's fee structure is designed to keep participation costs negligible. We chose the chain that best fit the community-first ethos, not the chain with the most name recognition. We are not dismissing other chains — they serve different use cases well — but for TAIL's current purpose, Solana made the most practical sense.</p>
-        </div>
-      </details>
-      <details class="faq-item reveal">
-        <summary>Is Solana's network reliable? What about past outages?<span class="plus"></span></summary>
-        <div class="faq-a">
-          <p>Solana has experienced network outages in the past, and it would be misleading to pretend otherwise. The network has improved its stability significantly since those early incidents, and the team continues to work on resilience. No blockchain network has a perfect uptime record. We chose Solana knowing its history, because we believe its architectural direction and current maturity represent an acceptable trade-off for a community token at this stage. Holders should independently assess network reliability as part of their own due diligence. This is not a guarantee of future uptime.</p>
-        </div>
-      </details>
-      <details class="faq-item reveal">
-        <summary>What wallet do I need to hold TAIL?<span class="plus"></span></summary>
-        <div class="faq-a">
-          <p>Any Solana-compatible wallet that supports SPL tokens will work. Phantom and Solflare are two widely used options. Always download wallets only from official sources (their own websites or official app stores). TAIL is not yet trading — this is the pre-launch phase. When the time comes, our <a href="/how-to-buy" class="text-cyan">How to buy</a> page will walk through the full process step by step.</p>
-        </div>
-      </details>
-      <details class="faq-item reveal">
-        <summary>How do I verify that TAIL is a real, fixed-supply token?<span class="plus"></span></summary>
-        <div class="faq-a">
-          <p>You do not need to take our word for it. Visit <a href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener" class="text-cyan">Solscan</a> and search the contract address <code>4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc</code>. You will see the total supply (1,000,000,000), the mint authority status (revoked), and the freeze authority status (revoked). Revoked mint authority means no new tokens can ever be created. Revoked freeze authority means no one can freeze your wallet. These are not promises — they are on-chain facts you can verify right now, independently.</p>
-        </div>
-      </details>
-      <details class="faq-item reveal">
-        <summary>I saw a presale offer for TAIL on Telegram / social media. Is it real?<span class="plus"></span></summary>
-        <div class="faq-a">
-          <p>No. TrustTails is pre-launch and there is no presale, no early-access sale, and no official DM campaign. Any account claiming to sell TAIL or offer you early access is a scam. Our official Telegram channels are <a href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener" class="text-cyan">TrustTailsCommunity</a> and <a href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener" class="text-cyan">TrustTailsOfficial</a>. Official announcements come only through those channels and <a href="https://x.com/trusttailscoin" target="_blank" rel="noopener" class="text-cyan">@trusttailscoin</a> on X. If someone DMs you claiming to represent TrustTails, report and block them.</p>
-        </div>
-      </details>
+
+    <div class="grid grid-4" style="margin-bottom:48px">
+      <div class="glass stat reveal d1">
+        <div class="num gold">SPL</div>
+        <div class="lbl">$TAIL token standard (Solana)</div>
+      </div>
+      <div class="glass stat reveal d2">
+        <div class="num" style="font-size:1.4rem;color:var(--green)">LIVE</div>
+        <div class="lbl">$TAIL on-chain status today</div>
+      </div>
+      <div class="glass stat reveal d3">
+        <div class="num" style="font-size:1.15rem;color:var(--cyan)">Cosmos SDK</div>
+        <div class="lbl">TAIL Network framework</div>
+      </div>
+      <div class="glass stat reveal d4">
+        <div class="num" style="font-size:1.15rem;color:var(--muted)">IN DEV</div>
+        <div class="lbl">TAIL Network current status</div>
+      </div>
+    </div>
+
+    <div class="proof-split reveal">
+      <div class="do-dont is-do">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          $TAIL Coin (Solana) — What is true today
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>SPL token on Solana — verifiable on Solscan right now</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Fixed supply of 1,000,000,000 — mint authority permanently revoked</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Freeze authority permanently revoked — no wallet can be frozen</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Community gathering point — the starting line, not the finish line</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Trading pre-launch — no presale, no official listings yet</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="do-dont is-dont">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          TAIL Network (Cosmos SDK) — What is true today
+        </h3>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Independent Layer-1 built on Cosmos SDK — in development, not live</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>No live mainnet, no active explorer, no validators yet</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Not Solana, not EVM — a sovereign chain with its own consensus</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Chain tokenomics, staking parameters, and chain ID not yet determined</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Launch timeline not announced — updates via official channels only</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- INTERNAL LINKS / NEXT STEPS -->
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 4 — The intended path
+═══════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Roadmap Intention</span>
+      <h2>How Solana and TAIL Network Connect</h2>
+      <p class="lead">This is the intended path — stated as roadmap and intention, not as a guarantee or a commitment with a fixed date. Crypto development is non-linear and plans evolve. Progress will be communicated honestly via official channels.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-rail">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-status live">Live on-chain now</span>
+          <h3>$TAIL coin launches on Solana</h3>
+          <p>The community token is live on Solana with a fixed supply of 1,000,000,000, revoked mint authority, and revoked freeze authority. The community begins forming here. Trading has not yet officially launched. Contract verifiable on Solscan.</p>
+          <ul>
+            <li>SPL token — standard, widely-supported format</li>
+            <li>Fixed supply — no further minting possible</li>
+            <li>Both authorities permanently revoked and verifiable</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item future">
+        <div class="tl-rail">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-status">In development</span>
+          <h3>TAIL Network development progresses</h3>
+          <p>The independent Cosmos SDK chain is being built. When meaningful milestones are reached — testnet, validator onboarding, finalised chain parameters — they will be announced via official channels. No dates or technical parameters are being fabricated in the meantime.</p>
+          <ul>
+            <li>Cosmos SDK — open-source, well-documented framework</li>
+            <li>Sovereign chain with independent governance</li>
+            <li>IBC-compatible for broader ecosystem interoperability</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item future">
+        <div class="tl-rail">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-status">Intended — no date set</span>
+          <h3>Bridge / migration path from Solana to TAIL Network</h3>
+          <p>The plan is for $TAIL holders on Solana to have a migration or bridge path to TAIL Network when it is ready. The mechanics — bridge design, migration window, token ratios — are not determined yet and will be communicated transparently and in full before any action is required. This is stated intention, not a commitment with a timeline.</p>
+          <ul>
+            <li>Migration mechanics to be designed when TAIL Network is closer to ready</li>
+            <li>Full details will be published transparently before action is required</li>
+            <li>No user action needed now — holding $TAIL on Solana is the starting position</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item future">
+        <div class="tl-rail">
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-status">Long-term intention</span>
+          <h3>TAIL Network as the home network</h3>
+          <p>The long-term intention is for TAIL Network to become the primary home — a sovereign chain the project controls, enabling features and governance that would not be possible as a token on someone else's network. This remains an intention tied to development progress, not a guaranteed outcome with a fixed date.</p>
+          <ul>
+            <li>Sovereign control over chain parameters and upgrade cadence</li>
+            <li>Interoperability with the wider Cosmos ecosystem via IBC</li>
+            <li>Governance details to be determined as the network is built</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="glass reveal" style="margin-top:48px">
+      <h3 style="margin-bottom:14px">Why start on Solana at all if you're building your own chain?</h3>
+      <p>Building a sovereign Layer-1 blockchain takes significant time. It involves writing and auditing code, standing up validator infrastructure, testing consensus under load, and proving network stability — all before the chain is appropriate for real-world use. Launching a community token on an established, fast, low-fee network like Solana in the interim makes it possible for the community to form, participate, and organise today — rather than waiting months or years for infrastructure that does not yet exist.</p>
+      <p style="margin-top:14px">This is a recognised pattern in the Cosmos ecosystem. dYdX migrated from Ethereum to its own Cosmos SDK chain. Osmosis launched as a Cosmos chain to control its own DEX logic. The consistent thread: start where the community is accessible, while building toward a sovereign home the project controls. <a href="/tail-network" style="color:var(--gold)">Read more about TAIL Network →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 5 — FAQ
+═══════════════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Questions answered honestly</span>
+      <h2>Common Questions</h2>
+    </div>
+
+    <div class="faq reveal">
+
+      <details class="faq-item">
+        <summary>Is $TAIL a Solana project or a Cosmos project?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Both, in sequence and in different capacities. The $TAIL community token is a Solana SPL token — live on-chain today with a verifiable fixed supply and revoked authorities. TAIL Network is a separate, independent blockchain being built on the Cosmos SDK — it is not yet live. The intention is for the community to eventually migrate from the Solana coin to the Cosmos-based TAIL Network, but TAIL Network is in development and has no mainnet today.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does having a Solana token mean TrustTails is just another Solana memecoin?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>We understand the scepticism — Solana has had an enormous number of short-lived community tokens. The distinction here is that the Solana $TAIL coin is explicitly described as the community entry point, not the final destination. The project is simultaneously building TAIL Network as a sovereign Cosmos SDK chain. Whether that differentiates TrustTails from others is something you should assess by watching what is actually built and delivered — not by taking our word for it. We will not make claims we cannot back with on-chain or verifiable evidence.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What happens to my $TAIL coins on Solana when TAIL Network launches?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>The plan is to provide a bridge or migration path from the Solana $TAIL coin to TAIL Network. The mechanics — bridge design, ratios, timing, migration window — are not determined yet because TAIL Network is still in development. No action is required from you now. When migration details are ready, they will be published fully and transparently via official channels before any action is needed. Be extremely cautious of anyone claiming to offer early migration, a presale, or a bridge that has not been announced in our official channels — those are scams.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Why is TAIL Network using the Cosmos SDK rather than building on an existing L1?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>Deploying a token on an existing chain means operating within the rules, upgrade cycles, and governance decisions of that chain's team. A Cosmos SDK chain gives the project full sovereignty: control over block parameters, fee structures, upgrade paths, and governance design. It also enables IBC interoperability with the broader Cosmos ecosystem. The tradeoff is that building your own chain is significantly harder and slower than deploying a token — which is precisely why the $TAIL community coin exists on Solana in the interim. Full details on the <a href="/tail-network" style="color:var(--gold)">TAIL Network page →</a></p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>When will TAIL Network launch? What is the timeline?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>We do not have a date to share. TAIL Network is in development, and we will not publish a timeline we cannot stand behind. Dates in crypto projects are frequently missed and are often used to create artificial urgency. We prefer to be honest: development takes as long as it takes, we will share meaningful milestones as they are reached, and the official channels listed on this page are the only places to get accurate updates.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is $TAIL a good investment?<span class="plus"></span></summary>
+        <div class="faq-a">
+          <p>We cannot and will not answer that. Nothing on this website is financial advice. Cryptocurrency, including $TAIL, carries significant risk — including the possibility of total loss of value. Please do your own research (DYOR), verify everything on-chain independently, and only participate with amounts you are prepared to lose entirely. This is not a recommendation to buy, hold, or sell any asset.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 6 — Internal links / further reading
+═══════════════════════════════════════════════════════════ -->
 <section class="section">
   <div class="container">
     <div class="section-head center reveal">
-      <span class="eyebrow">Keep reading</span>
-      <h2>Other pages that go deeper</h2>
-      <p>The chain is just one piece. Here are the most relevant places to continue learning about TrustTails.</p>
+      <span class="eyebrow">Continue learning</span>
+      <h2>Explore Further</h2>
+      <p class="lead">Everything linked here reflects the same commitment: accurate information, no hype, verifiable where possible.</p>
     </div>
-    <div class="grid grid-3" style="margin-top:36px">
+    <div class="grid grid-3">
+
       <article class="glass reveal d1">
         <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
         </div>
-        <h3>Tokenomics</h3>
-        <p>Exactly how the 1,000,000,000 TAIL supply is distributed, why the allocation was designed the way it was, and what the locked period means for the team's own holdings.</p>
-        <a href="/tokenomics" class="btn btn-ghost btn-sm" style="margin-top:16px">View tokenomics</a>
+        <h3><a href="/tail-network" style="color:var(--text)">TAIL Network — full overview</a></h3>
+        <p>Everything we can honestly share about TAIL Network: what the Cosmos SDK enables, why sovereignty matters, and what is in development. No fabricated details or invented timelines.</p>
+        <a href="/tail-network" class="btn btn-ghost btn-sm" style="margin-top:16px">Read more →</a>
       </article>
-      <article class="glass cyan reveal d2">
+
+      <article class="glass reveal d2">
         <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         </div>
-        <h3>Is it legit?</h3>
-        <p>The transparency page. What we can and cannot verify about TrustTails, how to check everything on-chain yourself, and a clear statement of what this project is not claiming.</p>
-        <a href="/is-it-legit" class="btn btn-ghost btn-sm" style="margin-top:16px">Check the facts</a>
+        <h3><a href="/how-to-buy" style="color:var(--text)">How to buy $TAIL</a></h3>
+        <p>A step-by-step guide for acquiring $TAIL on Solana when trading launches — including wallet setup, where to buy safely, and how to verify the correct contract address before any transaction.</p>
+        <a href="/how-to-buy" class="btn btn-ghost btn-sm" style="margin-top:16px">How to buy →</a>
       </article>
+
       <article class="glass reveal d3">
         <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         </div>
-        <h3>Whitepaper</h3>
-        <p>The full technical and conceptual document covering TrustTails' architecture, thesis, token mechanics, and longer-term thinking. Available to read online or download as a PDF.</p>
-        <a href="/whitepaper" class="btn btn-ghost btn-sm" style="margin-top:16px">Read whitepaper</a>
+        <h3><a href="/blog/solana-for-beginners" style="color:var(--text)">Solana for beginners</a></h3>
+        <p>New to Solana? A plain-language guide covering wallets, transactions, how SPL tokens work, and what to watch out for — written for crypto newcomers, not insiders with existing knowledge.</p>
+        <a href="/blog/solana-for-beginners" class="btn btn-ghost btn-sm" style="margin-top:16px">Read the guide →</a>
       </article>
+
     </div>
   </div>
 </section>
 
-<!-- CTA BAND -->
+<!-- ═══════════════════════════════════════════════════════════
+     CTA BAND
+═══════════════════════════════════════════════════════════ -->
 <section class="section" style="background:var(--bg-2)">
   <div class="container">
     <div class="cta-band reveal">
-      <span class="eyebrow">Pre-launch — no FOMO, just facts</span>
-      <h2>Follow the build. Make your own call.</h2>
-      <p>TrustTails is not yet trading. There is no urgency manufactured here. Join the community, read the documents, verify everything on-chain — and decide for yourself when the time comes. Any question you have before then, ask it in the community chat or read the <a href="/faq" class="text-gold">full FAQ</a>.</p>
+      <h2>Join the Community — and Verify Everything</h2>
+      <p>The TrustTails community is where $TAIL holders gather, ask questions, and follow development honestly. Official channels only — the team will never DM you first or ask you to send funds.</p>
       <div class="cta-actions">
-        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">Join Telegram community</a>
-        <a class="btn btn-ghost" href="/how-to-buy">How to buy (when live)</a>
+        <a class="btn btn-gold" href="https://t.me/TrustTailsCommunity" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          Telegram community
+        </a>
+        <a class="btn btn-cyan" href="https://t.me/TrustTailsOfficial" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          Official announcements
+        </a>
+        <a class="btn btn-ghost" href="https://x.com/trusttailscoin" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h6.994l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Follow on X
+        </a>
+        <a class="btn btn-ghost" href="https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Verify on Solscan
+        </a>
       </div>
     </div>
   </div>

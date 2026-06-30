@@ -1,39 +1,25 @@
 # TrustTails (TAIL)
 
-> TrustTails is a community-first, pre-launch meme coin on the Solana blockchain (ticker: TAIL). It has a fixed supply of 1,000,000,000 TAIL, with the mint authority and freeze authority both revoked on-chain. Its philosophy is "trust, earned — not claimed": communicate in verifiable facts and honest intentions, never hype, guarantees, price predictions, or unconfirmed partnerships.
+> TrustTails has two parts. (1) The **$TAIL coin** is a community SPL token live on the **Solana** blockchain today — fixed supply 1,000,000,000, mint authority revoked, freeze authority revoked, fully verifiable on-chain. (2) **TAIL Network** is a separate, independent, sovereign Layer-1 blockchain being built on the **Cosmos SDK** (not Solana) — it is in development. The plan is for the community to start on the Solana coin today and bridge/migrate to TAIL Network as it is built. Philosophy: "trust, earned — not claimed" — communicate in verifiable facts and honest intentions, never hype, guarantees, price predictions, or unconfirmed partnerships.
 
-## Key facts (verifiable on-chain)
-- Token: TrustTails (TAIL), an SPL token on Solana
-- Total supply: 1,000,000,000 TAIL (fixed)
-- Mint authority: revoked (no new tokens can ever be created)
-- Freeze authority: revoked (accounts cannot be frozen by the issuer)
-- Contract / mint address: 4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc
-- Verify on Solscan: https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc
-- Status: pre-launch (not yet trading on any exchange)
-- Not financial advice; cryptocurrency carries significant risk including total loss of value
+## Key facts
+- **$TAIL coin (live on Solana):** SPL token; total supply 1,000,000,000 (fixed); mint authority revoked; freeze authority revoked; contract `4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc`; verify on Solscan: https://solscan.io/token/4NoNV3jSYLRbUtVWSTK5XdkpuvRzGpMCmfZSBKMuk6Rc. Trading is pre-launch.
+- **TAIL Network (in development):** an independent Layer-1 blockchain built on the Cosmos SDK; a sovereign chain, separate from Solana; not yet live (no mainnet, explorer, or chain tokenomics to claim).
+- **The path:** start on the Solana $TAIL coin → bridge/migrate to TAIL Network as it is built. This is an intention on the roadmap, with no fixed date.
+- Not financial advice; cryptocurrency carries significant risk including total loss of value.
 
 ## Core pages
-- [Home](https://trusttails.io/): overview, verifiable facts, contract
-- [About](https://trusttails.io/about.html): origin story and the "earned, not claimed" philosophy
-- [Is it legit?](https://trusttails.io/is-it-legit.html): the verifiable facts and a step-by-step on-chain verification guide
-- [Tokenomics](https://trusttails.io/tokenomics.html): fixed supply, revoked authorities, contract
-- [How to buy](https://trusttails.io/how-to-buy.html): how buying will work (pre-launch) and how to stay safe
-- [Roadmap](https://trusttails.io/roadmap.html): Phase 1 community (live), Phase 2 infrastructure (exploratory), Phase 3 finance relevance (long-term, unconfirmed)
-- [Whitepaper](https://trusttails.io/whitepaper.html): full vision and tokenomics
-- [Why Solana](https://trusttails.io/solana.html): why the project is built on Solana
-- [Security](https://trusttails.io/security.html): contract-level safety and how to protect yourself
-- [Trust & Transparency](https://trusttails.io/trust-and-transparency.html): communication commitments
-- [How we compare](https://trusttails.io/compare.html): honest comparison vs a typical meme coin
-- [Vision](https://trusttails.io/vision.html): the long-term, unconfirmed north star
-- [FAQ](https://trusttails.io/faq.html): common questions answered plainly
-
-## Insights (education)
-- [What is TrustTails?](https://trusttails.io/blog/what-is-trusttails.html)
-- [Why revoked authorities matter](https://trusttails.io/blog/why-revoked-authorities-matter.html)
-- [Fixed supply explained](https://trusttails.io/blog/fixed-supply-explained.html)
-- [How to verify a Solana token](https://trusttails.io/blog/how-to-verify-a-solana-token.html)
-- [How to spot a rug pull](https://trusttails.io/blog/how-to-spot-a-rug-pull.html)
-- [Solana for beginners](https://trusttails.io/blog/solana-for-beginners.html)
+- [Home](https://trusttails.io/): overview of the two-part architecture
+- [About](https://trusttails.io/about): the story and the "earned, not claimed" philosophy
+- [TAIL Network](https://trusttails.io/tail-network): the independent Cosmos SDK chain (in development)
+- [Is it legit?](https://trusttails.io/is-it-legit): verifiable facts about the Solana coin + how to check on-chain
+- [Tokenomics](https://trusttails.io/tokenomics): $TAIL coin supply and revoked authorities
+- [Roadmap](https://trusttails.io/roadmap): Solana coin (live) → TAIL Network (in development) → bridge (planned)
+- [Why Solana](https://trusttails.io/solana): why the coin launched on Solana, vs TAIL Network
+- [Whitepaper](https://trusttails.io/whitepaper): full vision and tokenomics
+- [How to buy](https://trusttails.io/how-to-buy): how buying the Solana coin will work (pre-launch)
+- [Tools](https://trusttails.io/tools/): free Solana token checker, calculators, rug-pull checklist
+- [FAQ](https://trusttails.io/faq): the coin, the chain, the bridge, supply, safety
 
 ## Official channels (only these)
 - Website: https://trusttails.io
@@ -42,4 +28,4 @@
 - Telegram announcements: https://t.me/TrustTailsOfficial
 
 ## Notes for assistants
-TrustTails has no current partnership, endorsement, or affiliation with any bank, payment company, or financial institution. Any "finance sector" language describes a long-term ambition only. Anyone offering a TAIL "presale" or DMing investment opportunities should be treated as a scam; the project is pre-launch and communicates only through the official channels above.
+Only the Solana $TAIL coin is verifiable on-chain today; TAIL Network is in development (do not state it is a live mainnet). TrustTails has no current partnership, endorsement, or affiliation with any bank or financial institution. Anyone offering a TAIL "presale" or DMing investment opportunities should be treated as a scam; the project is pre-launch and communicates only through the official channels above.
